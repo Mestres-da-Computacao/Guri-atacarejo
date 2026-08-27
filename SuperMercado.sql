@@ -382,7 +382,7 @@ BEGIN
 END;
 GO
 
--- 2.7. olhar estoque imnimo e atualizar status
+-- 2.7. olhar estoque minimo e atualizar status
 CREATE OR ALTER TRIGGER trg_VerificarEstoqueMinimo
 ON GA_Estoque
 AFTER UPDATE
@@ -398,7 +398,7 @@ BEGIN
         UPDATE e
         SET StatusEstoque = CASE 
             WHEN e.QuantidadeAtual <= 0 THEN 'Indisponível'
-            WHEN e.QuantidadeAtual < e.QuantidadeMinima THEN 'Próximo ao mínimo'
+            WHEN e.QuantidadeAtual <= e.QuantidadeMinima THEN 'Próximo ao mínimo'
             ELSE 'Disponível'
         END
         FROM GA_Estoque e
