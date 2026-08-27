@@ -1,0 +1,11 @@
+C:\Users\EtecFP\Source\Repos\Guri-atacarejo\Guri_atacarejo\bin\Debug\Guri_atacarejo.exe.config
+C:\Users\EtecFP\Source\Repos\Guri-atacarejo\Guri_atacarejo\bin\Debug\Guri_atacarejo.exe
+C:\Users\EtecFP\Source\Repos\Guri-atacarejo\Guri_atacarejo\bin\Debug\Guri_atacarejo.pdb
+C:\Users\EtecFP\Source\Repos\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.csproj.AssemblyReference.cache
+C:\Users\EtecFP\Source\Repos\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.Properties.Resources.resources
+C:\Users\EtecFP\Source\Repos\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.csproj.GenerateResource.cache
+C:\Users\EtecFP\Source\Repos\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.csproj.CoreCompileInputs.cache
+C:\Users\EtecFP\Source\Repos\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.exe
+C:\Users\EtecFP\Source\Repos\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.pdb
+C:\Users\EtecFP\Source\Repos\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.exe.config
+C:\Users\EtecFP\Source\Repos\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.SplashScreen.resources
