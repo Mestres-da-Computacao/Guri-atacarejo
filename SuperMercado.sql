@@ -7,7 +7,9 @@ CREATE TABLE GA_Clientes (
     CPF VARCHAR(14) UNIQUE NOT NULL,
     Genero CHAR(1) CHECK (Genero IN ('M', 'F', 'O')),
     Email VARCHAR(100),
-    Celular VARCHAR(15)
+    Celular VARCHAR(15),
+    NivelFidelidade INT,
+    TotalComprasAcumuladas INT,
 );
 GO
 
