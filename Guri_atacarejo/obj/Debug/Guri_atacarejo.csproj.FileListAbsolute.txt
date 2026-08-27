@@ -9,3 +9,4 @@ C:\Users\EtecFP\Source\Repos\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacar
 C:\Users\EtecFP\Source\Repos\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.pdb
 C:\Users\EtecFP\Source\Repos\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.exe.config
 C:\Users\EtecFP\Source\Repos\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.SplashScreen.resources
+C:\Users\EtecFP\Source\Repos\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.forms.frmLogon.resources
