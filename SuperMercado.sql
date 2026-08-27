@@ -1,8 +1,6 @@
---fim teste(apagar select teste ainda)
+-- Criação das tabelas
 
--- Criamento das tabelas
-
--- 2.1. Clientes
+-- 1.1. Clientes
 CREATE TABLE GA_Clientes (
     IdCliente INT IDENTITY(1,1) PRIMARY KEY,
     Nome VARCHAR(100) NOT NULL,
@@ -13,7 +11,7 @@ CREATE TABLE GA_Clientes (
 );
 GO
 
--- 2.2. Cargos
+-- 1.2. Cargos
 CREATE TABLE GA_Cargos (
     IdCargo INT IDENTITY(1,1) PRIMARY KEY,
     Nome VARCHAR(50) NOT NULL,
@@ -22,14 +20,14 @@ CREATE TABLE GA_Cargos (
 );
 GO
 
--- 2.3. Departamentos
+-- 1.3. Departamentos
 CREATE TABLE GA_Departamentos (
     IdDepartamento INT IDENTITY(1,1) PRIMARY KEY,
     Nome VARCHAR(50) NOT NULL
 );
 GO
 
--- 2.4. Funcionarios
+-- 1.4. Funcionarios
 CREATE TABLE GA_Funcionarios (
     IdFuncionario INT IDENTITY(1,1) PRIMARY KEY,
     FKCargo INT NOT NULL,
@@ -48,7 +46,7 @@ CREATE TABLE GA_Funcionarios (
 );
 GO
 
--- 2.5. Fornecedor
+-- 1.5. Fornecedor
 CREATE TABLE GA_Fornecedor (
     IdFornecedor INT IDENTITY(1,1) PRIMARY KEY,
     Nome VARCHAR(100) NOT NULL,
@@ -59,7 +57,7 @@ CREATE TABLE GA_Fornecedor (
 );
 GO
 
--- 2.6. Categoria
+-- 1.6. Categoria
 CREATE TABLE GA_Categoria (
     IdCategoria INT IDENTITY(1,1) PRIMARY KEY,
     Nome VARCHAR(50) NOT NULL,
@@ -67,7 +65,7 @@ CREATE TABLE GA_Categoria (
 );
 GO
 
--- 2.7. Produtos
+-- 1.7. Produtos
 CREATE TABLE GA_Produtos (
     IdProduto INT IDENTITY(1,1) PRIMARY KEY,
     FKFornecedor INT NOT NULL,
@@ -81,7 +79,7 @@ CREATE TABLE GA_Produtos (
 );
 GO
 
--- 2.8. Estoque
+-- 1.8. estoque
 CREATE TABLE GA_Estoque (
     IdEstoque INT IDENTITY(1,1) PRIMARY KEY,
     FKProdutos INT NOT NULL UNIQUE,
@@ -92,7 +90,7 @@ CREATE TABLE GA_Estoque (
 );
 GO
 
--- 2.9. Compra
+-- 1.9. Compra
 CREATE TABLE GA_Compra (
     IdCompra INT IDENTITY(1,1) PRIMARY KEY,
     FKFornecedor INT NOT NULL,
@@ -107,7 +105,7 @@ CREATE TABLE GA_Compra (
 );
 GO
 
--- 2.10. ItensCompra
+-- 1.10. ItensCompra
 CREATE TABLE GA_ItensCompra (
     IdItemCompra INT IDENTITY(1,1) PRIMARY KEY,
     FKCompra INT NOT NULL,
@@ -120,7 +118,7 @@ CREATE TABLE GA_ItensCompra (
 );
 GO
 
--- 2.11. Venda
+-- 1.11. Venda
 CREATE TABLE GA_Venda (
     IdVenda INT IDENTITY(1,1) PRIMARY KEY,
     FKCliente INT NOT NULL,
@@ -134,7 +132,7 @@ CREATE TABLE GA_Venda (
 );
 GO
 
--- 2.12. ItensVenda
+-- 1.12. ItensVenda
 CREATE TABLE GA_ItensVenda (
     IdItemVenda INT IDENTITY(1,1) PRIMARY KEY,
     FKVenda INT NOT NULL,
@@ -148,11 +146,9 @@ CREATE TABLE GA_ItensVenda (
 GO
 
 
--- 3. Triggers da resenha
+-- 2. Triggers da resenha
 
--- 3. Triggers da resenha
-
--- 3.1. Calcular Subtotal(venda)
+-- 2.1. Calcular Subtotal(venda)
 CREATE OR ALTER TRIGGER trg_CalcSubtotal_ItensVenda
 ON GA_ItensVenda
 INSTEAD OF INSERT
@@ -181,7 +177,7 @@ BEGIN
 END;
 GO
 
--- 3.2. Calcular Subtotal(compra)
+-- 2.2. Calcular Subtotal(compra)
 CREATE OR ALTER TRIGGER trg_CalcSubtotal_ItensCompra
 ON GA_ItensCompra
 INSTEAD OF INSERT
@@ -210,7 +206,7 @@ BEGIN
 END;
 GO
 
--- 3.3. Atualizar ValorTotal da Venda
+-- 2.3. Atualizar ValorTotal da Venda
 CREATE OR ALTER TRIGGER trg_UpdateTotalVenda
 ON GA_ItensVenda
 AFTER INSERT, UPDATE, DELETE
@@ -245,7 +241,7 @@ BEGIN
 END;
 GO
 
--- 3.4. Atualizar ValorTotal da Compra
+-- 2.4. Atualizar ValorTotal da Compra
 CREATE OR ALTER TRIGGER trg_UpdateTotalCompra
 ON GA_ItensCompra
 AFTER INSERT, UPDATE, DELETE
@@ -280,7 +276,7 @@ BEGIN
 END;
 GO
 
--- 3.5. Baixar Estoque(ao vender)
+-- 2.5. Baixar Estoque(ao vender)
 CREATE OR ALTER TRIGGER trg_BaixarEstoqueVenda
 ON GA_ItensVenda
 AFTER INSERT
@@ -344,7 +340,7 @@ BEGIN
 END;
 GO
 
--- 3.6. Adicionar Estoque (ao comprar)
+-- 2.6. Adicionar Estoque (ao comprar)
 CREATE OR ALTER TRIGGER trg_AdicionarEstoqueCompra
 ON GA_ItensCompra
 AFTER INSERT
@@ -386,7 +382,7 @@ BEGIN
 END;
 GO
 
--- 3.7. olhar estoque imnimo e atualizar status
+-- 2.7. olhar estoque imnimo e atualizar status
 CREATE OR ALTER TRIGGER trg_VerificarEstoqueMinimo
 ON GA_Estoque
 AFTER UPDATE
@@ -411,9 +407,9 @@ BEGIN
     END
 END;
 GO
--- 4. Procedures do andersonresenhudo
+-- 3. Procedures do andersonresenhudo
 
--- 4.1. Registrar Venda(com validação de estoque)
+-- 3.1. Registrar Venda(com validação de estoque)
 CREATE OR ALTER PROCEDURE usp_RegistrarVenda
     @FKCliente INT,
     @FKFuncionario INT,
@@ -474,7 +470,7 @@ BEGIN
         CLOSE cur;
         DEALLOCATE cur;
 
-        -- Insere cabeçalho da venda
+        -- Insere as infos da venda
         INSERT INTO GA_Venda
         (
             FKCliente,
@@ -494,7 +490,7 @@ BEGIN
             'Pendente'
         );
 
-        SET @IdVenda = SCOPE_IDENTITY();
+        SET @IdVenda = SCOPE_IDENTITY(); -- Retorna o último ID gerado dentro do escopo(neste caso retornaria o IdVenda) (o escopo é qualquer módulo de execução{procedures, triggers e funcs)
 
         -- Insere os itens (a trigger calcula subtotal e baixa estoque)
         INSERT INTO GA_ItensVenda
@@ -517,7 +513,7 @@ BEGIN
             PrecoUnitario DECIMAL(18,2) '$.PrecoUnitario'
         );
 
-        -- Atualiza status da venda (exemplo: já paga)
+        -- Atualiza status da venda (paga e etc...)
         UPDATE GA_Venda
         SET StatusVenda = 'Pago'
         WHERE IdVenda = @IdVenda;
@@ -556,7 +552,7 @@ BEGIN
 END;
 GO
 
--- 4.2. Registrar Compra (entrada de mercadorias)
+-- 3.2. Registrar Compra (entrada de mercadorias)
 CREATE PROCEDURE usp_RegistrarCompra
     @FKFornecedor INT,
     @FKFuncionario INT,
@@ -572,7 +568,7 @@ BEGIN
 
         INSERT INTO GA_Compra (FKFornecedor, FKFuncionario, DataCompra, ValorTotal, FormaPagamento, DataEntrega, StatusCompra)
         VALUES (@FKFornecedor, @FKFuncionario, GETDATE(), 0, @FormaPagamento, @DataEntrega, 'Pago');
-        SET @IdCompra = SCOPE_IDENTITY();
+        SET @IdCompra = SCOPE_IDENTITY(); -- Retorna a última identity(id) gerada dentro do escopo (o escopo é qualquer módulo de execução{triggers, procedures e funções}
 
         INSERT INTO GA_ItensCompra (FKCompra, FKProduto, Quantidade, PrecoUnitario)
         SELECT @IdCompra, FKProduto, Quantidade, PrecoUnitario
@@ -589,7 +585,7 @@ BEGIN
 END;
 GO
 
--- 4.3. Relatório de Estoque
+-- 3.3. Relatório de Estoque
 CREATE PROCEDURE usp_RelatorioEstoqueCritico
 AS
 BEGIN
