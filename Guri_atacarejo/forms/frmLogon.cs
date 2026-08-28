@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Guri_atacarejo.DataSetTableAdapters;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,21 +11,21 @@ using System.Windows.Forms;
 
 namespace Guri_atacarejo.forms
 {
-    public partial class frmLogon : Form
+    public partial class FrmLogon : Form
     {
-    bool userjacolocou = false;
-        bool pissjacolocou = false;
-        public frmLogon()
+        private bool userJacolocou = false;
+        private bool passJacolocou = false;
+        public FrmLogon()
         {
             InitializeComponent();
         }
 
         private void Usertxtbox_Click(object sender, EventArgs e)
         {
-            if (!userjacolocou)
+            if (!userJacolocou)
             {
                 Usertxtbox.Text = "";
-                userjacolocou = true;
+                userJacolocou = true;
             }
             else
             {
@@ -37,16 +38,16 @@ namespace Guri_atacarejo.forms
             if(Usertxtbox.Text == "") 
             {
                 Usertxtbox.Text = "Digite o usuário";
-                userjacolocou = false;
+                userJacolocou = false;
             }
         }
 
-        private void Pisswordtxtbox_Click(object sender, EventArgs e)
+        private void Passwordtxtbox_Click(object sender, EventArgs e)
         {
-            if (!pissjacolocou)
+            if (!passJacolocou)
             {
-                Pisswordtxtbox.Text = "";
-                pissjacolocou = true;
+                Passwordtxtbox.Text = "";
+                passJacolocou = true;
             }
             else
             {
@@ -54,18 +55,40 @@ namespace Guri_atacarejo.forms
             }
         }
 
-        private void Pisswordtxtbox_Leave(object sender, EventArgs e)
+        private void Passwordtxtbox_Leave(object sender, EventArgs e)
         {
-            if (Pisswordtxtbox.Text == "")
+            if (Passwordtxtbox.Text == "")
             {
-                Pisswordtxtbox.Text = "Digite sua senha";
-                pissjacolocou = false;
+                Passwordtxtbox.Text = "Digite sua senha";
+                passJacolocou = false;
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void BtnEntrar_Click(object sender, EventArgs e)
+        {
+            bool sucesso = Login(Usertxtbox.Text, Passwordtxtbox.Text);
+
+            if (sucesso)
+            {
+                // mostrar o form principal
+            }
+            else
+            {
+                MessageBox.Show("Login inválido. Verifique seu usuário e senha.");
+            }
+        }
+
+        private void BtnRecupSenha_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private bool Login(string username, string senha)
+        {
+            var adapter = new GA_FuncionariosTableAdapter();
+            var tabela = adapter.VerifyNomeAndSenha(username, senha);
+
+            return tabela.Rows.Count > 0;
         }
     }
 }

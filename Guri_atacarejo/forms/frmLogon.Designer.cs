@@ -1,6 +1,6 @@
 ﻿namespace Guri_atacarejo.forms
 {
-    partial class frmLogon
+    partial class FrmLogon
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogon));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogon));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Pisswordtxtbox = new System.Windows.Forms.TextBox();
+            this.Passwordtxtbox = new System.Windows.Forms.TextBox();
             this.Usertxtbox = new System.Windows.Forms.TextBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -47,17 +47,17 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // Pisswordtxtbox
+            // Passwordtxtbox
             // 
-            this.Pisswordtxtbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Pisswordtxtbox.Location = new System.Drawing.Point(155, 304);
-            this.Pisswordtxtbox.Multiline = true;
-            this.Pisswordtxtbox.Name = "Pisswordtxtbox";
-            this.Pisswordtxtbox.Size = new System.Drawing.Size(360, 34);
-            this.Pisswordtxtbox.TabIndex = 1;
-            this.Pisswordtxtbox.Text = "Digite sua senha";
-            this.Pisswordtxtbox.Click += new System.EventHandler(this.Pisswordtxtbox_Click);
-            this.Pisswordtxtbox.Leave += new System.EventHandler(this.Pisswordtxtbox_Leave);
+            this.Passwordtxtbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Passwordtxtbox.Location = new System.Drawing.Point(155, 304);
+            this.Passwordtxtbox.Multiline = true;
+            this.Passwordtxtbox.Name = "Passwordtxtbox";
+            this.Passwordtxtbox.Size = new System.Drawing.Size(360, 34);
+            this.Passwordtxtbox.TabIndex = 1;
+            this.Passwordtxtbox.Text = "Digite sua senha";
+            this.Passwordtxtbox.Click += new System.EventHandler(this.Passwordtxtbox_Click);
+            this.Passwordtxtbox.Leave += new System.EventHandler(this.Passwordtxtbox_Leave);
             // 
             // Usertxtbox
             // 
@@ -81,6 +81,7 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "Entrar";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.BtnEntrar_Click);
             // 
             // button2
             // 
@@ -93,9 +94,9 @@
             this.button2.TabIndex = 4;
             this.button2.Text = "Esqueci minha senha";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.button2.Click += new System.EventHandler(this.BtnRecupSenha_Click);
             // 
-            // frmLogon
+            // FrmLogon
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -104,9 +105,9 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.Usertxtbox);
-            this.Controls.Add(this.Pisswordtxtbox);
+            this.Controls.Add(this.Passwordtxtbox);
             this.Controls.Add(this.pictureBox1);
-            this.Name = "frmLogon";
+            this.Name = "FrmLogon";
             this.Text = "frmLogon";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
@@ -117,7 +118,7 @@
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox Pisswordtxtbox;
+        private System.Windows.Forms.TextBox Passwordtxtbox;
         private System.Windows.Forms.TextBox Usertxtbox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
