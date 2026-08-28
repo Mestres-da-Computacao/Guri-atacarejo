@@ -1,6 +1,16 @@
-﻿################################################################################
-# Este arquivo .gitignore foi criado automaticamente pelo Microsoft(R) Visual Studio.
-################################################################################
+﻿# arquivos de compilação
+bin/
+obj/
+*.user
+*.suo
 
-/.vs/Guri_atacarejo/FileContentIndex
-/.vs
+# Configurações do Visual Studio
+.vs/
+
+# Arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos de log ou temporários
+*.log
+*.tmp   
