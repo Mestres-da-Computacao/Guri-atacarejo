@@ -14,3 +14,9 @@ Thumbs.db
 # Arquivos de log ou temporários
 *.log
 *.tmp   
+
+bin/
+obj/
+.vs/
+*.user
+*.suo
