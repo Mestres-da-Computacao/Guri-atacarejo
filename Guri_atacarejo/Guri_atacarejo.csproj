@@ -1,4 +1,4 @@
-﻿﻿﻿<?xml version="1.0" encoding="utf-8"?>
+﻿﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -46,16 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="db_250405DataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>db_250405DataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="forms\frmexibcaoentidades.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\frmexibcaoentidades.Designer.cs">
       <DependentUpon>frmexibcaoentidades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CardProduto.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CardProduto.Designer.cs">
+      <DependentUpon>CardProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FrmAdicionar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FrmAdicionar.Designer.cs">
+      <DependentUpon>FrmAdicionar.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\frmLogon.cs">
       <SubType>Form</SubType>
@@ -86,6 +93,12 @@
     <EmbeddedResource Include="forms\frmexibcaoentidades.resx">
       <DependentUpon>frmexibcaoentidades.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CardProduto.resx">
+      <DependentUpon>CardProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FrmAdicionar.resx">
+      <DependentUpon>FrmAdicionar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmLogon.resx">
       <DependentUpon>frmLogon.cs</DependentUpon>
     </EmbeddedResource>
@@ -106,6 +119,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="db_250405DataSet.xsc">
       <DependentUpon>db_250405DataSet.xsd</DependentUpon>
