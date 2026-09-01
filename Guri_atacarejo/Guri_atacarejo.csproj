@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CardProduto.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CardProduto.Designer.cs">
+      <DependentUpon>CardProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FrmAdicionar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FrmAdicionar.Designer.cs">
+      <DependentUpon>FrmAdicionar.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\frmLogon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +72,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CardProduto.resx">
+      <DependentUpon>CardProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\FrmAdicionar.resx">
+      <DependentUpon>FrmAdicionar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmLogon.resx">
       <DependentUpon>frmLogon.cs</DependentUpon>
     </EmbeddedResource>
@@ -74,6 +92,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

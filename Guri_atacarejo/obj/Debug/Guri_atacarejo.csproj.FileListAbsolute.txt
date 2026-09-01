@@ -9,3 +9,16 @@ C:\Users\EtecFP\Source\Repos\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacar
 C:\Users\EtecFP\Source\Repos\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.pdb
 C:\Users\EtecFP\Source\Repos\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.exe.config
 C:\Users\EtecFP\Source\Repos\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.SplashScreen.resources
+C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\bin\Debug\Guri_atacarejo.exe
+C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\bin\Debug\Guri_atacarejo.exe.config
+C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.csproj.AssemblyReference.cache
+C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.CardProduto.resources
+C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.forms.FrmAdicionar.resources
+C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.forms.frmLogon.resources
+C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.SplashScreen.resources
+C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.Properties.Resources.resources
+C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.csproj.GenerateResource.cache
+C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.csproj.CoreCompileInputs.cache
+C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.exe
+C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.pdb
+C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\bin\Debug\Guri_atacarejo.pdb
