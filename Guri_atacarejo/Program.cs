@@ -1,5 +1,4 @@
-﻿using Guri_atacarejo.forms;
-using System;
+﻿﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -17,7 +16,7 @@ namespace Guri_atacarejo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmSplash());/*SplashScreen*/
+            Application.Run(new SplashScreen());
         }
     }
 }

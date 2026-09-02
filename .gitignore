@@ -4,6 +4,11 @@ obj/
 *.user
 *.suo
 
+# Cache
+.vs/
+*.cache
+.cache/
+
 # Configurações do Visual Studio
 .vs/
 
