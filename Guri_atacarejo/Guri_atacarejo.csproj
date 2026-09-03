@@ -52,6 +52,12 @@
     <Compile Include="forms\frmLogon.Designer.cs">
       <DependentUpon>frmLogon.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\frmPainel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmPainel.Designer.cs">
+      <DependentUpon>frmPainel.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\FrmSplash.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -62,6 +68,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="forms\frmLogon.resx">
       <DependentUpon>frmLogon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmPainel.resx">
+      <DependentUpon>frmPainel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\FrmSplash.resx">
       <DependentUpon>FrmSplash.cs</DependentUpon>
