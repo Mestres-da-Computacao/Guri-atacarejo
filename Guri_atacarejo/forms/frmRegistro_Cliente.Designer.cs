@@ -30,25 +30,25 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRegistro_Cliente));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.radioButton3 = new System.Windows.Forms.RadioButton();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -76,39 +76,95 @@
             this.groupBox1.Text = "Cadastro de Clientes";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // textBox1
+            // pictureBox2
             // 
-            this.textBox1.Location = new System.Drawing.Point(87, 55);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(378, 29);
-            this.textBox1.TabIndex = 0;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(272, 220);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(193, 156);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 19;
+            this.pictureBox2.TabStop = false;
             // 
-            // label1
+            // button3
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 58);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(72, 24);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Nome :";
+            this.button3.BackColor = System.Drawing.Color.White;
+            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            this.button3.Location = new System.Drawing.Point(13, 284);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(116, 74);
+            this.button3.TabIndex = 17;
+            this.button3.Text = "Cancelar";
+            this.button3.UseVisualStyleBackColor = false;
             // 
-            // label2
+            // button1
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 103);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 24);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "CPF :";
+            this.button1.BackColor = System.Drawing.Color.White;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            this.button1.Location = new System.Drawing.Point(135, 284);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(121, 74);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "Registrar";
+            this.button1.UseVisualStyleBackColor = false;
             // 
-            // textBox2
+            // label5
             // 
-            this.textBox2.Location = new System.Drawing.Point(87, 100);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(378, 29);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            this.textBox2.Leave += new System.EventHandler(this.textBox2_Leave);
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(118, 189);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(95, 24);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Telefone :";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(170, 182);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(0, 24);
+            this.label4.TabIndex = 13;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(219, 185);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(246, 29);
+            this.textBox4.TabIndex = 12;
+            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
+            this.textBox4.Leave += new System.EventHandler(this.textBox4_Leave);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(146, 145);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(67, 24);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Email :";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(219, 142);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(246, 29);
+            this.textBox3.TabIndex = 10;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.radioButton1);
+            this.groupBox2.Controls.Add(this.radioButton2);
+            this.groupBox2.Controls.Add(this.radioButton3);
+            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.White;
+            this.groupBox2.Location = new System.Drawing.Point(13, 135);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(99, 121);
+            this.groupBox2.TabIndex = 9;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Gênero";
             // 
             // radioButton1
             // 
@@ -143,93 +199,39 @@
             this.radioButton3.Text = "Outro";
             this.radioButton3.UseVisualStyleBackColor = true;
             // 
-            // groupBox2
+            // label2
             // 
-            this.groupBox2.Controls.Add(this.radioButton1);
-            this.groupBox2.Controls.Add(this.radioButton2);
-            this.groupBox2.Controls.Add(this.radioButton3);
-            this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(13, 135);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(99, 121);
-            this.groupBox2.TabIndex = 9;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Gênero";
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(9, 103);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 24);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "CPF :";
             // 
-            // label3
+            // textBox2
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(146, 145);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 24);
-            this.label3.TabIndex = 11;
-            this.label3.Text = "Email :";
+            this.textBox2.Location = new System.Drawing.Point(87, 100);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(378, 29);
+            this.textBox2.TabIndex = 2;
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
+            this.textBox2.Leave += new System.EventHandler(this.textBox2_Leave);
             // 
-            // textBox3
+            // label1
             // 
-            this.textBox3.Location = new System.Drawing.Point(219, 142);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(246, 29);
-            this.textBox3.TabIndex = 10;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 58);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(72, 24);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Nome :";
             // 
-            // label4
+            // textBox1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(170, 182);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(0, 24);
-            this.label4.TabIndex = 13;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(219, 185);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(246, 29);
-            this.textBox4.TabIndex = 12;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(118, 189);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(95, 24);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Telefone :";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.button1.Location = new System.Drawing.Point(135, 284);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 74);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Registrar";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.White;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.button3.Location = new System.Drawing.Point(13, 284);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(116, 74);
-            this.button3.TabIndex = 17;
-            this.button3.Text = "Cancelar";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(272, 220);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(193, 156);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 19;
-            this.pictureBox2.TabStop = false;
+            this.textBox1.Location = new System.Drawing.Point(87, 55);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(378, 29);
+            this.textBox1.TabIndex = 0;
             // 
             // frmRegistro_Cliente
             // 
@@ -242,9 +244,9 @@
             this.Text = "frmRegistro_Cliente";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }

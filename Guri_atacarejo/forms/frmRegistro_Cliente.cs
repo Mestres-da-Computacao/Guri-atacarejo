@@ -14,6 +14,7 @@ namespace Guri_atacarejo.forms
     {
         long i = 0;
         string cpformatado;
+        bool cpffoiformatado = false;
         public frmRegistro_Cliente()
         {
             InitializeComponent();
@@ -24,37 +25,63 @@ namespace Guri_atacarejo.forms
 
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-            
-            if (long.TryParse(textBox2.Text, out i) == false)
-            {
-                if(textBox2.Text.Length >= 1)
-                {
-                textBox2.Text = textBox2.Text.Substring(0, textBox2.Text.Length-1);
-                textBox2.SelectionStart = textBox2.Text.Length;
-                textBox2.SelectionLength = 0;
-                }
-            }
-        }
+        
 
         private void textBox2_Leave(object sender, EventArgs e)
         {
-            
-            if (textBox2.Text.Length >= 11) 
+            if (textBox2.Text.Length >= 14) 
             {
-                textBox2.Text = textBox2.Text.Substring(0, 11);
-                cpformatado = textBox2.Text.Substring(0, 3) + "." + textBox2.Text.Substring(3, 3) + "." + textBox2.Text.Substring(6, 3) + "-" + textBox2.Text.Substring(9, 2);
-                textBox2.Text = cpformatado;
+                textBox2.Text = textBox2.Text.Substring(0, 14);
+                if (textBox2.Text[3].ToString() == "." && textBox2.Text[7].ToString() == "." && textBox2.Text[11].ToString() == "-" && textBox2.Text.Length == 14)
+                {
+                    cpffoiformatado = true;
+                }
             }
             else 
             {
-                MessageBox.Show("Valor inválido no Cpf");
+                cpffoiformatado = false;
             }
+            if (textBox2.Text.Length >= 11 && !cpffoiformatado)
+            {
+                textBox2.Text = textBox2.Text.Substring(0, 11);
+                if (long.TryParse(textBox2.Text, out i))
+                {
+                    cpformatado = textBox2.Text.Substring(0, 3) + "." + textBox2.Text.Substring(3, 3) + "." + textBox2.Text.Substring(6, 3) + "-" + textBox2.Text.Substring(9, 2);
+                    textBox2.Text = cpformatado;
+                    cpffoiformatado = true;
+                }
+                else
+                {
+                    MessageBox.Show("Valor inválido no Cpf");
+                    cpffoiformatado = false;
+                    textBox2.Text = string.Empty;
+                }
+            }
+            else if (!cpffoiformatado)
+            {
+                MessageBox.Show("Valor inválido no Cpf");
+                cpffoiformatado = false;
+                textBox2.Text = string.Empty;
+            }
+        }
+
+        private void textBox2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            cpffoiformatado = false;
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBox4_Leave(object sender, EventArgs e)
+        {
             
         }
 
-        string FormatarCpf(string cpf) => $"{cpf.Substring(0, 3)}.{cpf.Substring(3, 3)}.{cpf.Substring(6, 3)}-{cpf.Substring(9, 2)}";
-
+        private void textBox4_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
     }
 }
