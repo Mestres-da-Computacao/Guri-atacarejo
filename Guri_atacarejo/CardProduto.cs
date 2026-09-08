@@ -12,45 +12,53 @@ namespace Guri_atacarejo
 {
     public partial class CardProduto : UserControl
     {
+        public int ProdutoId { get; private set; }
+        public decimal Preco { get; private set; }
+
+        public event EventHandler<QuantidadeAlteradaEventArgs> QuantidadeAlterada;
+
         public CardProduto()
         {
             InitializeComponent();
-
-            imagem.Click += (s, e) => this.OnClick(e);
-            lblNome.Click += (s, e) => this.OnClick(e);
-            lblPreco.Click += (s, e) => this.OnClick(e);
+            numQtd.ValueChanged += NumQtd_ValueChanged;
         }
 
-        public string NomeProduto
+        public void CarregarProduto(int id, string nome, decimal preco)
         {
-            get { return lblNome.Text; }
-            set { lblNome.Text = value; }
+            ProdutoId = id;
+            Preco = preco;
+            lblNome.Text = nome;
+            lblPreco.Text = preco.ToString("C2");
+            numQtd.Value = 0;
         }
 
-        public decimal PrecoProduto
+        public void AtualizarQuantidade(int quantidade)
         {
-            get
-            {
-                decimal.TryParse(
-                    lblPreco.Text.Replace("R$", ""),
-                    out decimal valor
-                );
-
-                return valor;
-            }
-
-            set
-            {
-                lblPreco.Text = value.ToString("C2");
-            }
+            numQtd.ValueChanged -= NumQtd_ValueChanged;
+            numQtd.Value = quantidade;
+            numQtd.ValueChanged += NumQtd_ValueChanged;
         }
 
-        public Image ImagemProduto
+        private void NumQtd_ValueChanged(object sender, EventArgs e)
         {
-            get { return imagem.Image; }
-            set { imagem.Image = value; }
+            QuantidadeAlterada?.Invoke(this,
+                new QuantidadeAlteradaEventArgs(ProdutoId, (int)numQtd.Value));
         }
 
-        public int CodigoProduto { get; set; }
+        private void CardProduto_Load(object sender, EventArgs e)
+        {
+
+        }
+    }
+    public class QuantidadeAlteradaEventArgs : EventArgs
+    {
+        public int ProdutoId { get; }
+        public int Quantidade { get; }
+
+        public QuantidadeAlteradaEventArgs(int produtoId, int quantidade)
+        {
+            ProdutoId = produtoId;
+            Quantidade = quantidade;
+        }
     }
 }
