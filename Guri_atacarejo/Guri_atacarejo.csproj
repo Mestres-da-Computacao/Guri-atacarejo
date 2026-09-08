@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="forms\frmLoginCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmLoginCliente.Designer.cs">
+      <DependentUpon>frmLoginCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\frmLogon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -60,6 +66,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="forms\frmLoginCliente.resx">
+      <DependentUpon>frmLoginCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmLogon.resx">
       <DependentUpon>frmLogon.cs</DependentUpon>
     </EmbeddedResource>
