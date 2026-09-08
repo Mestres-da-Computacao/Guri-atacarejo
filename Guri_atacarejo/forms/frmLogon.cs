@@ -88,6 +88,19 @@ namespace Guri_atacarejo.forms
             var adapter = new GA_FuncionariosTableAdapter();
             var tabela = adapter.VerifyNomeAndSenha(username, senha);
 
+            if (tabela.Rows.Count > 0)
+            {
+                var adapterNivel = new GA_FuncionariosTableAdapter();
+                var tabelaNivel = adapterNivel.GetNivelFuncionario(username);
+
+                if (tabelaNivel.Rows.Count > 0)
+                {
+                    int nivelFuncionario = Convert.ToInt32(tabelaNivel.Rows[0]["FKCargo"]);
+                }
+
+                return true;
+            }
+
             return tabela.Rows.Count > 0;
         }
     }
