@@ -75,7 +75,7 @@
             // 
             this.button1.BackColor = System.Drawing.Color.Transparent;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(278, 397);
+            this.button1.Location = new System.Drawing.Point(270, 397);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(137, 47);
             this.button1.TabIndex = 3;
@@ -88,7 +88,7 @@
             this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.SystemColors.ButtonFace;
-            this.button2.Location = new System.Drawing.Point(266, 344);
+            this.button2.Location = new System.Drawing.Point(256, 344);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(165, 25);
             this.button2.TabIndex = 4;
