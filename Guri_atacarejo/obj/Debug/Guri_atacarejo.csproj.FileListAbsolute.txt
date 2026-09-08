@@ -13,7 +13,6 @@ C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\
 C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\bin\Debug\Guri_atacarejo.exe.config
 C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.csproj.AssemblyReference.cache
 C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.CardProduto.resources
-C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.forms.FrmAdicionar.resources
 C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.forms.frmLogon.resources
 C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.SplashScreen.resources
 C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.Properties.Resources.resources
@@ -22,3 +21,5 @@ C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\
 C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.exe
 C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.pdb
 C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\bin\Debug\Guri_atacarejo.pdb
+C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.forms.frmAdicionar.resources
+C:\Users\pauli\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.forms.CardCarrinho.resources

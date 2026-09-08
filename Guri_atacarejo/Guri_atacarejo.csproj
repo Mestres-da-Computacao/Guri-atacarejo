@@ -46,17 +46,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CardCarrinho.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CardCarrinho.Designer.cs">
+      <DependentUpon>CardCarrinho.cs</DependentUpon>
+    </Compile>
     <Compile Include="CardProduto.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="CardProduto.Designer.cs">
       <DependentUpon>CardProduto.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\FrmAdicionar.cs">
+    <Compile Include="forms\frmAdicionar.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\FrmAdicionar.Designer.cs">
-      <DependentUpon>FrmAdicionar.cs</DependentUpon>
+    <Compile Include="forms\frmAdicionar.Designer.cs">
+      <DependentUpon>frmAdicionar.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\frmLogon.cs">
       <SubType>Form</SubType>
@@ -70,13 +76,17 @@
     <Compile Include="forms\FrmSplash.Designer.cs">
       <DependentUpon>FrmSplash.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\Produto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="CardCarrinho.resx">
+      <DependentUpon>CardCarrinho.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CardProduto.resx">
       <DependentUpon>CardProduto.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\FrmAdicionar.resx">
-      <DependentUpon>FrmAdicionar.cs</DependentUpon>
+    <EmbeddedResource Include="forms\frmAdicionar.resx">
+      <DependentUpon>frmAdicionar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmLogon.resx">
       <DependentUpon>frmLogon.cs</DependentUpon>
@@ -106,6 +116,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minilogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

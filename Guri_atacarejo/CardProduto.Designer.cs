@@ -30,51 +30,54 @@
         {
             this.lblNome = new System.Windows.Forms.Label();
             this.lblPreco = new System.Windows.Forms.Label();
-            this.imagem = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.imagem)).BeginInit();
+            this.numQtd = new System.Windows.Forms.NumericUpDown();
+            ((System.ComponentModel.ISupportInitialize)(this.numQtd)).BeginInit();
             this.SuspendLayout();
             // 
             // lblNome
             // 
             this.lblNome.AutoSize = true;
-            this.lblNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNome.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.lblNome.Location = new System.Drawing.Point(3, 232);
+            this.lblNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNome.ForeColor = System.Drawing.Color.Black;
+            this.lblNome.Location = new System.Drawing.Point(3, 9);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(0, 20);
-            this.lblNome.TabIndex = 1;
+            this.lblNome.Size = new System.Drawing.Size(62, 24);
+            this.lblNome.TabIndex = 0;
+            this.lblNome.Text = "Nome";
             // 
             // lblPreco
             // 
             this.lblPreco.AutoSize = true;
-            this.lblPreco.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPreco.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPreco.ForeColor = System.Drawing.Color.Black;
-            this.lblPreco.Location = new System.Drawing.Point(157, 232);
+            this.lblPreco.Location = new System.Drawing.Point(250, 9);
             this.lblPreco.Name = "lblPreco";
-            this.lblPreco.Size = new System.Drawing.Size(0, 20);
-            this.lblPreco.TabIndex = 2;
+            this.lblPreco.Size = new System.Drawing.Size(60, 24);
+            this.lblPreco.TabIndex = 1;
+            this.lblPreco.Text = "Preço";
             // 
-            // imagem
+            // numQtd
             // 
-            this.imagem.Location = new System.Drawing.Point(0, 0);
-            this.imagem.Name = "imagem";
-            this.imagem.Size = new System.Drawing.Size(247, 218);
-            this.imagem.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.imagem.TabIndex = 3;
-            this.imagem.TabStop = false;
+            this.numQtd.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numQtd.Location = new System.Drawing.Point(854, 3);
+            this.numQtd.Name = "numQtd";
+            this.numQtd.Size = new System.Drawing.Size(69, 35);
+            this.numQtd.TabIndex = 2;
             // 
             // CardProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.White;
+            this.BackColor = System.Drawing.Color.WhiteSmoke;
             this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Controls.Add(this.imagem);
+            this.Controls.Add(this.numQtd);
             this.Controls.Add(this.lblPreco);
             this.Controls.Add(this.lblNome);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "CardProduto";
-            this.Size = new System.Drawing.Size(245, 260);
-            ((System.ComponentModel.ISupportInitialize)(this.imagem)).EndInit();
+            this.Size = new System.Drawing.Size(926, 41);
+            this.Load += new System.EventHandler(this.CardProduto_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.numQtd)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -84,6 +87,6 @@
 
         private System.Windows.Forms.Label lblNome;
         private System.Windows.Forms.Label lblPreco;
-        private System.Windows.Forms.PictureBox imagem;
+        private System.Windows.Forms.NumericUpDown numQtd;
     }
 }
