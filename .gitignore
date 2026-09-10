@@ -1,4 +1,4 @@
-# arquivos de compilação
+﻿# arquivos de compilação
 bin/
 obj/
 *.user
@@ -14,3 +14,9 @@ Thumbs.db
 # Arquivos de log ou temporários
 *.log
 *.tmp   
+
+bin/
+obj/
+.vs/
+*.user
+*.suo
