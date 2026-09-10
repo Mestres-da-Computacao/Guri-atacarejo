@@ -32,20 +32,20 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.button3 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnRegist = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtTelefone = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.radioButton3 = new System.Windows.Forms.RadioButton();
+            this.rbHomem = new System.Windows.Forms.RadioButton();
+            this.rbMulher = new System.Windows.Forms.RadioButton();
+            this.rbOutro = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtCPF = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNome = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -55,17 +55,17 @@
             // 
             this.groupBox1.Controls.Add(this.pictureBox2);
             this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnRegist);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.txtTelefone);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.txtEmail);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.txtCPF);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtNome);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -74,7 +74,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cadastro de Clientes";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // pictureBox2
             // 
@@ -98,17 +97,18 @@
             this.button3.Text = "Cancelar";
             this.button3.UseVisualStyleBackColor = false;
             // 
-            // button1
+            // btnRegist
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.button1.Location = new System.Drawing.Point(135, 284);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(121, 74);
-            this.button1.TabIndex = 15;
-            this.button1.Text = "Registrar";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnRegist.BackColor = System.Drawing.Color.White;
+            this.btnRegist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            this.btnRegist.Location = new System.Drawing.Point(135, 284);
+            this.btnRegist.Name = "btnRegist";
+            this.btnRegist.Size = new System.Drawing.Size(121, 74);
+            this.btnRegist.TabIndex = 15;
+            this.btnRegist.Text = "Registrar";
+            this.btnRegist.UseVisualStyleBackColor = false;
+            this.btnRegist.Click += new System.EventHandler(this.btnRegist_Click);
             // 
             // label5
             // 
@@ -127,14 +127,16 @@
             this.label4.Size = new System.Drawing.Size(0, 24);
             this.label4.TabIndex = 13;
             // 
-            // textBox4
+            // txtTelefone
             // 
-            this.textBox4.Location = new System.Drawing.Point(219, 185);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(246, 29);
-            this.textBox4.TabIndex = 12;
-            this.textBox4.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox4_KeyPress);
-            this.textBox4.Leave += new System.EventHandler(this.textBox4_Leave);
+            this.txtTelefone.Location = new System.Drawing.Point(219, 185);
+            this.txtTelefone.MaxLength = 15;
+            this.txtTelefone.Name = "txtTelefone";
+            this.txtTelefone.Size = new System.Drawing.Size(246, 29);
+            this.txtTelefone.TabIndex = 12;
+            this.txtTelefone.TextChanged += new System.EventHandler(this.txtTel_TextChanged);
+            this.txtTelefone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTel_KeyDown);
+            this.txtTelefone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTel_KeyPress);
             // 
             // label3
             // 
@@ -145,18 +147,19 @@
             this.label3.TabIndex = 11;
             this.label3.Text = "Email :";
             // 
-            // textBox3
+            // txtEmail
             // 
-            this.textBox3.Location = new System.Drawing.Point(219, 142);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(246, 29);
-            this.textBox3.TabIndex = 10;
+            this.txtEmail.Location = new System.Drawing.Point(219, 142);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(246, 29);
+            this.txtEmail.TabIndex = 10;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.radioButton1);
-            this.groupBox2.Controls.Add(this.radioButton2);
-            this.groupBox2.Controls.Add(this.radioButton3);
+            this.groupBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            this.groupBox2.Controls.Add(this.rbHomem);
+            this.groupBox2.Controls.Add(this.rbMulher);
+            this.groupBox2.Controls.Add(this.rbOutro);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(13, 135);
@@ -166,38 +169,35 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Gênero";
             // 
-            // radioButton1
+            // rbHomem
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(6, 25);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(83, 24);
-            this.radioButton1.TabIndex = 5;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "Homem";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbHomem.AutoSize = true;
+            this.rbHomem.Location = new System.Drawing.Point(6, 25);
+            this.rbHomem.Name = "rbHomem";
+            this.rbHomem.Size = new System.Drawing.Size(83, 24);
+            this.rbHomem.TabIndex = 5;
+            this.rbHomem.Text = "Homem";
+            this.rbHomem.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rbMulher
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(6, 55);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(75, 24);
-            this.radioButton2.TabIndex = 6;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "Mulher";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbMulher.AutoSize = true;
+            this.rbMulher.Location = new System.Drawing.Point(6, 55);
+            this.rbMulher.Name = "rbMulher";
+            this.rbMulher.Size = new System.Drawing.Size(75, 24);
+            this.rbMulher.TabIndex = 6;
+            this.rbMulher.Text = "Mulher";
+            this.rbMulher.UseVisualStyleBackColor = true;
             // 
-            // radioButton3
+            // rbOutro
             // 
-            this.radioButton3.AutoSize = true;
-            this.radioButton3.Location = new System.Drawing.Point(6, 85);
-            this.radioButton3.Name = "radioButton3";
-            this.radioButton3.Size = new System.Drawing.Size(67, 24);
-            this.radioButton3.TabIndex = 7;
-            this.radioButton3.TabStop = true;
-            this.radioButton3.Text = "Outro";
-            this.radioButton3.UseVisualStyleBackColor = true;
+            this.rbOutro.AutoSize = true;
+            this.rbOutro.Location = new System.Drawing.Point(6, 85);
+            this.rbOutro.Name = "rbOutro";
+            this.rbOutro.Size = new System.Drawing.Size(67, 24);
+            this.rbOutro.TabIndex = 7;
+            this.rbOutro.Text = "Outro";
+            this.rbOutro.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -208,14 +208,17 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "CPF :";
             // 
-            // textBox2
+            // txtCPF
             // 
-            this.textBox2.Location = new System.Drawing.Point(87, 100);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(378, 29);
-            this.textBox2.TabIndex = 2;
-            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox2_KeyPress);
-            this.textBox2.Leave += new System.EventHandler(this.textBox2_Leave);
+            this.txtCPF.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtCPF.Location = new System.Drawing.Point(87, 100);
+            this.txtCPF.MaxLength = 14;
+            this.txtCPF.Name = "txtCPF";
+            this.txtCPF.Size = new System.Drawing.Size(378, 29);
+            this.txtCPF.TabIndex = 2;
+            this.txtCPF.TextChanged += new System.EventHandler(this.txtCPF_TextChanged);
+            this.txtCPF.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCPF_KeyDown);
+            this.txtCPF.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCPF_KeyPress);
             // 
             // label1
             // 
@@ -226,12 +229,14 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Nome :";
             // 
-            // textBox1
+            // txtNome
             // 
-            this.textBox1.Location = new System.Drawing.Point(87, 55);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(378, 29);
-            this.textBox1.TabIndex = 0;
+            this.txtNome.BackColor = System.Drawing.SystemColors.Window;
+            this.txtNome.Location = new System.Drawing.Point(87, 55);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(378, 29);
+            this.txtNome.TabIndex = 0;
+            this.txtNome.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNome_KeyPress);
             // 
             // frmRegistro_Cliente
             // 
@@ -255,19 +260,19 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtCPF;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton3;
+        private System.Windows.Forms.RadioButton rbHomem;
+        private System.Windows.Forms.RadioButton rbMulher;
+        private System.Windows.Forms.RadioButton rbOutro;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtTelefone;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnRegist;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.PictureBox pictureBox2;
     }

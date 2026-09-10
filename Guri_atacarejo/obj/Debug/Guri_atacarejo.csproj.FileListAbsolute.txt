@@ -22,3 +22,15 @@ C:\Users\Flávio Vinícius\source\repos\Mestres-da-Computacao\Guri-atacarejo\Gur
 C:\Users\Flávio Vinícius\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.csproj.CoreCompileInputs.cache
 C:\Users\Flávio Vinícius\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.exe
 C:\Users\Flávio Vinícius\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.pdb
+C:\Etec\DS\Guri_atacarejo\bin\Debug\Guri_atacarejo.exe.config
+C:\Etec\DS\Guri_atacarejo\bin\Debug\Guri_atacarejo.exe
+C:\Etec\DS\Guri_atacarejo\bin\Debug\Guri_atacarejo.pdb
+C:\Etec\DS\Guri_atacarejo\obj\Debug\Guri_atacarejo.csproj.AssemblyReference.cache
+C:\Etec\DS\Guri_atacarejo\obj\Debug\Guri_atacarejo.forms.frmLogon.resources
+C:\Etec\DS\Guri_atacarejo\obj\Debug\Guri_atacarejo.forms.frmRegistro_Cliente.resources
+C:\Etec\DS\Guri_atacarejo\obj\Debug\Guri_atacarejo.SplashScreen.resources
+C:\Etec\DS\Guri_atacarejo\obj\Debug\Guri_atacarejo.Properties.Resources.resources
+C:\Etec\DS\Guri_atacarejo\obj\Debug\Guri_atacarejo.csproj.GenerateResource.cache
+C:\Etec\DS\Guri_atacarejo\obj\Debug\Guri_atacarejo.csproj.CoreCompileInputs.cache
+C:\Etec\DS\Guri_atacarejo\obj\Debug\Guri_atacarejo.exe
+C:\Etec\DS\Guri_atacarejo\obj\Debug\Guri_atacarejo.pdb
