@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="forms\frmLoginCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmLoginCliente.Designer.cs">
+      <DependentUpon>frmLoginCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataSet.cs">
       <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
@@ -68,8 +74,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="forms\FrmLogon.resx">
-      <DependentUpon>FrmLogon.cs</DependentUpon>
+    <EmbeddedResource Include="forms\frmLoginCliente.resx">
+      <DependentUpon>frmLoginCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmLogon.resx">
+      <DependentUpon>frmLogon.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\FrmSplash.resx">
       <DependentUpon>FrmSplash.cs</DependentUpon>
