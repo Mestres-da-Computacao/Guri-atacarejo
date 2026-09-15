@@ -21,7 +21,7 @@ BEGIN
         Email VARCHAR(100),
         Celular VARCHAR(15),
         NivelFidelidade INT,
-        TotalComprasAcumuladas INT
+        TotalComprasAcumuladas decimal(18,2)
     );
 END;
 GO
@@ -508,6 +508,47 @@ BEGIN
     WHERE i.StatusVenda = 'Cancelado'
       AND d.StatusVenda <> 'Cancelado'
       AND iv.Cancelado = 0;
+END;
+GO
+
+-- 2.8. Atualizar TotalComprasAcumuladas do Cliente
+CREATE OR ALTER TRIGGER trg_AtualizarTotalComprasCliente
+ON GA_Venda
+AFTER INSERT, UPDATE, DELETE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    ;WITH ClientesAfetados AS
+    (
+        SELECT FKCliente AS IdCliente
+        FROM inserted
+        WHERE FKCliente IS NOT NULL
+
+        UNION
+
+        SELECT FKCliente AS IdCliente
+        FROM deleted
+        WHERE FKCliente IS NOT NULL
+    ),
+    Totais AS
+    (
+        SELECT
+            v.FKCliente,
+            SUM(v.ValorTotal) AS Total
+        FROM GA_Venda v
+        INNER JOIN ClientesAfetados ca
+            ON v.FKCliente = ca.IdCliente
+        WHERE v.StatusVenda <> 'Cancelado'
+        GROUP BY v.FKCliente
+    )
+    UPDATE c
+    SET c.TotalComprasAcumuladas = ISNULL(t.Total, 0)
+    FROM GA_Clientes c
+    INNER JOIN ClientesAfetados ca
+        ON c.IdCliente = ca.IdCliente
+    LEFT JOIN Totais t
+        ON t.FKCliente = c.IdCliente;
 END;
 GO
 
