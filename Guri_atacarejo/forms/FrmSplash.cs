@@ -1,4 +1,5 @@
 ﻿using Guri_atacarejo.Properties;
+using Guri_atacarejo.forms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -47,9 +48,9 @@ namespace Guri_atacarejo
          
             timer.Stop();
             this.Hide();
-            // adicionar o frmLogin.show
-            // frmlogon login = new frmlogon;
-            // login.show;
+
+            FrmLogon login = new FrmLogon();
+            login.Show();
 
         }
     }

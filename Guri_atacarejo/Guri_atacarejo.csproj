@@ -64,11 +64,25 @@
     <Compile Include="forms\frmAdicionar.Designer.cs">
       <DependentUpon>frmAdicionar.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmLogon.cs">
+    <Compile Include="forms\frmLoginCliente.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\frmLogon.Designer.cs">
-      <DependentUpon>frmLogon.cs</DependentUpon>
+    <Compile Include="forms\frmLoginCliente.Designer.cs">
+      <DependentUpon>frmLoginCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet.cs">
+      <DependentUpon>DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FrmLogon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\FrmLogon.Designer.cs">
+      <DependentUpon>FrmLogon.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\FrmSplash.cs">
       <SubType>Form</SubType>
@@ -88,6 +102,9 @@
     <EmbeddedResource Include="forms\frmAdicionar.resx">
       <DependentUpon>frmAdicionar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmLoginCliente.resx">
+      <DependentUpon>frmLoginCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmLogon.resx">
       <DependentUpon>frmLogon.cs</DependentUpon>
     </EmbeddedResource>
@@ -104,6 +121,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="DataSet.xsc">
+      <DependentUpon>DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet.xss">
+      <DependentUpon>DataSet.xsd</DependentUpon>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
