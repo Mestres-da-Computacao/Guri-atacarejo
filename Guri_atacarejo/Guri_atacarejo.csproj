@@ -58,11 +58,18 @@
     <Compile Include="CardProduto.Designer.cs">
       <DependentUpon>CardProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extencions\GraphicsExtension.cs" />
     <Compile Include="forms\frmAdicionar.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\frmAdicionar.Designer.cs">
       <DependentUpon>frmAdicionar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmCadastroProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmCadastroProduto.Designer.cs">
+      <DependentUpon>frmCadastroProduto.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\frmLoginCliente.cs">
       <SubType>Form</SubType>
@@ -93,6 +100,18 @@
     <Compile Include="forms\Produto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoundControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RoundControl.Designer.cs">
+      <DependentUpon>RoundControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RoundTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RoundTextBox.Designer.cs">
+      <DependentUpon>RoundTextBox.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="CardCarrinho.resx">
       <DependentUpon>CardCarrinho.cs</DependentUpon>
     </EmbeddedResource>
@@ -101,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmAdicionar.resx">
       <DependentUpon>frmAdicionar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmCadastroProduto.resx">
+      <DependentUpon>frmCadastroProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmLoginCliente.resx">
       <DependentUpon>frmLoginCliente.cs</DependentUpon>
@@ -121,6 +143,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RoundControl.resx">
+      <DependentUpon>RoundControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoundTextBox.resx">
+      <DependentUpon>RoundTextBox.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="DataSet.xsc">
       <DependentUpon>DataSet.xsd</DependentUpon>
     </None>
