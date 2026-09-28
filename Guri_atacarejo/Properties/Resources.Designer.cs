@@ -93,6 +93,16 @@ namespace Guri_atacarejo.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FullLogo__1_ {
+            get {
+                object obj = ResourceManager.GetObject("FullLogo (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap minilogo {
             get {
                 object obj = ResourceManager.GetObject("minilogo", resourceCulture);

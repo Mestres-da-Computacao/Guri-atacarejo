@@ -52,6 +52,7 @@
             this.Controls.Add(this.textBox1);
             this.Name = "RoundTextBox";
             this.Size = new System.Drawing.Size(149, 69);
+            this.Load += new System.EventHandler(this.RoundTextBox_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

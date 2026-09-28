@@ -17,9 +17,32 @@ namespace Guri_atacarejo
         [Browsable(true)]
         [DesignerSerializationVisibility(DesignerSerializationVisibility.Visible)]
         [Bindable(true)]
-        public override string Text { get => textBox1.Text; set => textBox1.Text = value; }
-        public override Color ForeColor { get => textBox1.ForeColor; set => textBox1.ForeColor = value; }
-        [Description("Define a fonte do rótulo do botão.")]
+        public override string Text
+        {
+            get => base.Text;
+            set
+            {
+                // O Designer pode acessar Text antes de InitializeComponent.
+                if (textBox1 == null)
+                {
+                    base.Text = value;
+                    return;
+                }
+
+                textBox1.Text = value ?? string.Empty;
+                base.Text = textBox1.Text;
+            }
+        }
+
+        // A caixa interna herda cor e fonte do controle. Consultar sua
+        // ForeColor aqui criaria uma chamada circular entre pai e filho.
+        public override Color ForeColor
+        {
+            get => base.ForeColor;
+            set => base.ForeColor = value;
+        }
+
+        [Description("Define a fonte do texto.")]
         [Browsable(true)]
         [Bindable(true)]
         [EditorBrowsable(EditorBrowsableState.Always)]
@@ -27,22 +50,36 @@ namespace Guri_atacarejo
         public override Font Font 
         { 
             get => base.Font; 
-            set => textBox1.Font = base.Font = value; 
+            set => base.Font = value;
         }
         public RoundTextBox()
         {
             InitializeComponent();
+            textBox1.Text = base.Text;
+            // Mantém o texto legível mesmo dentro de um GroupBox com título branco.
+            ForeColor = SystemColors.WindowText;
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
             base.OnPaint(e);
+            if (textBox1 == null)
+                return;
+
             textBox1.Location = new Point(Radius + 7, Radius + 7);
-            textBox1.Size = new Size(Width - ((Radius + 7) * 2), Height - ((Radius + 7) * 2));
+            textBox1.Size = new Size(
+                Math.Max(0, Width - ((Radius + 7) * 2)),
+                Math.Max(0, Height - ((Radius + 7) * 2)));
             textBox1.BackColor = BackgroundColor;
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            // Propaga a digitação para Text, TextChanged e os bindings do controle.
+            base.Text = textBox1.Text;
+        }
+
+        private void RoundTextBox_Load(object sender, EventArgs e)
         {
 
         }
