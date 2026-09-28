@@ -61,6 +61,7 @@ BEGIN
         Genero CHAR(1) CHECK (Genero IN ('M', 'F', 'O')),
         Telefone VARCHAR(15),
         Email VARCHAR(100),
+        Senha Varchar(255),
         DataEmissao DATE NOT NULL,
         Salario DECIMAL(18,2) NOT NULL,
         StatusFuncionamento VARCHAR(20) DEFAULT 'Ativo' CHECK (StatusFuncionamento IN ('Ativo', 'Inativo', 'Afastado')),
