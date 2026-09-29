@@ -17,7 +17,7 @@ namespace Guri_atacarejo
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmRegistro_Cliente());/*SplashScreen*/
+            Application.Run(new FrmSplash());/*SplashScreen*/
         }
     }
 }
