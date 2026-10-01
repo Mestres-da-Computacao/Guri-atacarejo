@@ -33,9 +33,10 @@ namespace Guri_atacarejo.forms
             this.telaDeVendasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registroProdutoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.cbent = new System.Windows.Forms.ComboBox();
             this.cbcar = new System.Windows.Forms.ComboBox();
+            this.cbent = new System.Windows.Forms.ComboBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label1 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -66,6 +67,7 @@ namespace Guri_atacarejo.forms
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.cbcar);
             this.groupBox1.Controls.Add(this.cbent);
             this.groupBox1.Controls.Add(this.dataGridView1);
@@ -76,13 +78,16 @@ namespace Guri_atacarejo.forms
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
-            // dataGridView1
+            // cbcar
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 125);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
-            this.dataGridView1.TabIndex = 0;
+            this.cbcar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbcar.FormattingEnabled = true;
+            this.cbcar.Items.AddRange(new object[] {
+            "Nenhuma Entidade Selecionada"});
+            this.cbcar.Location = new System.Drawing.Point(279, 98);
+            this.cbcar.Name = "cbcar";
+            this.cbcar.Size = new System.Drawing.Size(121, 21);
+            this.cbcar.TabIndex = 2;
             // 
             // cbent
             // 
@@ -92,24 +97,28 @@ namespace Guri_atacarejo.forms
             "Funcionários",
             "Produtos",
             "Fornecedores"});
-            this.cbent.Location = new System.Drawing.Point(48, 98);
+            this.cbent.Location = new System.Drawing.Point(76, 98);
             this.cbent.Name = "cbent";
             this.cbent.Size = new System.Drawing.Size(121, 21);
             this.cbent.TabIndex = 1;
             this.cbent.SelectedIndexChanged += new System.EventHandler(this.cbent_SelectedIndexChanged);
             // 
-            // cbcar
+            // dataGridView1
             // 
-            this.cbcar.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbcar.FormattingEnabled = true;
-            this.cbcar.Items.AddRange(new object[] {
-            "Funcionários",
-            "Produtos",
-            "Fornecedores"});
-            this.cbcar.Location = new System.Drawing.Point(231, 98);
-            this.cbcar.Name = "cbcar";
-            this.cbcar.Size = new System.Drawing.Size(121, 21);
-            this.cbcar.TabIndex = 2;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(21, 136);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(240, 150);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 101);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "label1";
             // 
             // frmexibcaoentidades
             // 
@@ -125,6 +134,7 @@ namespace Guri_atacarejo.forms
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -140,5 +150,6 @@ namespace Guri_atacarejo.forms
         private System.Windows.Forms.ComboBox cbcar;
         private System.Windows.Forms.ComboBox cbent;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label1;
     }
 }
