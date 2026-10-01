@@ -58,5 +58,10 @@ namespace Guri_atacarejo.forms
                     break;
             }
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }
