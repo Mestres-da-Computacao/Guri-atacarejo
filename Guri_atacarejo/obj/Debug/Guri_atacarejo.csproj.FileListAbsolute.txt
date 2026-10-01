@@ -18,3 +18,6 @@ C:\Users\Flávio Vinícius\source\repos\Mestres-da-Computacao\Guri-atacarejo\Gur
 C:\Users\Flávio Vinícius\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.csproj.CoreCompileInputs.cache
 C:\Users\Flávio Vinícius\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.exe
 C:\Users\Flávio Vinícius\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\obj\Debug\Guri_atacarejo.pdb
+C:\Users\Flávio Vinícius\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\bin\Debug\Guri_atacarejo.exe.config
+C:\Users\Flávio Vinícius\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\bin\Debug\Guri_atacarejo.exe
+C:\Users\Flávio Vinícius\source\repos\Mestres-da-Computacao\Guri-atacarejo\Guri_atacarejo\bin\Debug\Guri_atacarejo.pdb

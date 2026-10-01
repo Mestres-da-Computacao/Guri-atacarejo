@@ -15,6 +15,8 @@ namespace Guri_atacarejo.forms
         public frmexibcaoentidades()
         {
             InitializeComponent();
+            cbent.SelectedIndex = 0;
+            cbcar.SelectedIndex = 0;
         }
 
         private void cbent_SelectedIndexChanged(object sender, EventArgs e)
@@ -33,6 +35,7 @@ namespace Guri_atacarejo.forms
                     cbcar.Items.Add("Gênero");
                     cbcar.Items.Add("Telefone");
                     cbcar.Items.Add("Nível");
+                    cbcar.SelectedIndex = 0;
                     break;
                 case "1":
                     cbcar.Items.Add("Tudo");
@@ -42,12 +45,14 @@ namespace Guri_atacarejo.forms
                     cbcar.Items.Add("Gênero");
                     cbcar.Items.Add("Celular");
                     cbcar.Items.Add("Total de Compras");
+                    cbcar.SelectedIndex = 0;
                     break;
                 case "2":
                     cbcar.Items.Add("Tudo");
                     cbcar.Items.Add("Nome");
                     cbcar.Items.Add("CNPJ");
                     cbcar.Items.Add("Telefone");
+                    cbcar.SelectedIndex = 0;
                     break;
                 default:
                     break;
