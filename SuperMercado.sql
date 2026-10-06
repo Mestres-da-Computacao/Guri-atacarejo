@@ -106,7 +106,6 @@ BEGIN
         Nome VARCHAR(100) NOT NULL,
         UnidadeMedida VARCHAR(20) NOT NULL,
         Preco DECIMAL(18,2) NOT NULL CHECK (Preco >= 0),
-        DataValidade DATE,
         CONSTRAINT FK_GA_Produtos_Fornecedor FOREIGN KEY (FKFornecedor) REFERENCES GA_Fornecedor(IdFornecedor),
         CONSTRAINT FK_GA_Produtos_Categoria FOREIGN KEY (FKCategoria) REFERENCES GA_Categoria(IdCategoria)
     );
@@ -195,6 +194,19 @@ BEGIN
 END;
 GO
 
+IF OBJECT_ID('GA_Lote', 'U') IS NULL
+BEGIN
+    CREATE TABLE GA_Lote(
+        IdLote INT IDENTITY(1,1) PRIMARY KEY,
+        FKFornecedores INT NOT NULL,
+        FKProduto INT NOT NULL,
+        Quantidade INT NOT NULL CHECK (Quantidade >= 0),
+        DataValidade DATE NOT NULL,
+        CONSTRAINT FK_GA_Lote_Fornecedor FOREIGN KEY (FKFornecedores) REFERENCES GA_Fornecedor(IdFornecedor),
+        CONSTRAINT FK_GA_Lote_Produtos FOREIGN KEY (FKProduto) REFERENCES GA_Produtos(IdProduto)
+    );
+END;
+GO
 
 -- 2. Triggers da resenha
 
