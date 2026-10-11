@@ -107,7 +107,7 @@ namespace Guri_atacarejo.forms
                     Convert.ToInt32(cbDepartamento.SelectedValue), // FKDepartamento
                     txtNome.Text.Trim(), // Nome
                     maskedtxtCpf.Text, // CPF (14 caracteres com a máscara)
-                    dateTimePickerDataNasc.Value.Date, // DataNascimento (nome do seu DateTimePicker)
+                    dateTimePickerDataNasc.Value.Date, // DataNascimento
                     genero, // Genero
                     telefone, // Telefone
                     email, // Email
