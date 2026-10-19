@@ -15,11 +15,30 @@ namespace Guri_atacarejo.forms
         public frmRelatorio()
         {
             InitializeComponent();
+            cbtempo.SelectedIndex = 0;
         }
 
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbtempo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (cbtempo.SelectedIndex) {
+                case 0:
+                    maskData.Mask = "00/00/0000";
+                    break;
+                case 1:
+                    maskData.Mask = "00/0000";
+                    break;
+                case 2:
+                    maskData.Mask = "0000";
+                    break;
+                default:
+                    break;
+            }
+            
         }
     }
 }
