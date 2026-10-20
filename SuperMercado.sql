@@ -183,13 +183,13 @@ BEGIN
     CREATE TABLE GA_ItensVenda (
         IdItemVenda INT IDENTITY(1,1) PRIMARY KEY,
         FKVenda INT NOT NULL,
-        FKProduto INT NOT NULL,
+        FKLote INT NOT NULL,
         Quantidade INT NOT NULL CHECK (Quantidade >= 0),
         PrecoUnitario DECIMAL(18,2) NOT NULL CHECK (PrecoUnitario >= 0),
         Subtotal DECIMAL(18,2) NOT NULL,
         Cancelado BIT NOT NULL DEFAULT 0, -- 0 = item ativo, 1 = item cancelado
         CONSTRAINT FK_GA_ItensVenda_Venda FOREIGN KEY (FKVenda) REFERENCES GA_Venda(IdVenda),
-        CONSTRAINT FK_GA_ItensVenda_Produtos FOREIGN KEY (FKProduto) REFERENCES GA_Produtos(IdProduto)
+        CONSTRAINT FK_GA_ItensVenda_Lote FOREIGN KEY (FKLote) REFERENCES GA_Lote(IdLote)
     );
 END;
 GO
