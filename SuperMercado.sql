@@ -117,12 +117,10 @@ IF OBJECT_ID('GA_Estoque', 'U') IS NULL
 BEGIN
     CREATE TABLE GA_Estoque (
         IdEstoque INT IDENTITY(1,1) PRIMARY KEY,
-        FKProduto INT NOT NULL UNIQUE,
         FKLote INT NOT NULL UNIQUE,
         QuantidadeAtual INT NOT NULL DEFAULT 0 CHECK (QuantidadeAtual >= 0),
         QuantidadeMinima INT NOT NULL DEFAULT 0 CHECK (QuantidadeMinima >= 0),
         StatusEstoque VARCHAR(20) DEFAULT 'Disponível' CHECK (StatusEstoque IN ('Disponível', 'Indisponível', 'Próximo ao mínimo')),
-        CONSTRAINT FK_GA_Estoque_Produto FOREIGN KEY (FKProduto) REFERENCES GA_Produtos(Idproduto)
         CONSTRAINT FK_GA_Estoque_Lote FOREIGN KEY (FKLote) REFERENCES GA_Lote(IdLote)
     );
 END;
