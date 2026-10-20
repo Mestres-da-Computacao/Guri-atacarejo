@@ -42,12 +42,16 @@
             this.txtQuantidade = new Guri_atacarejo.RoundTextBox();
             this.txtPreco = new Guri_atacarejo.RoundTextBox();
             this.txtCodigo = new Guri_atacarejo.RoundTextBox();
+            this.roundComboBox2 = new Guri_atacarejo.RoundComboBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Controls.Add(this.roundComboBox2);
             this.groupBox1.Controls.Add(this.btnCancelar);
             this.groupBox1.Controls.Add(this.btnConfirmar);
             this.groupBox1.Controls.Add(this.label4);
@@ -65,7 +69,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(926, 510);
+            this.groupBox1.Size = new System.Drawing.Size(926, 499);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registro de produto";
@@ -75,51 +79,55 @@
             this.btnCancelar.BackColor = System.Drawing.Color.White;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.btnCancelar.Location = new System.Drawing.Point(409, 419);
+            this.btnCancelar.Location = new System.Drawing.Point(409, 420);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(175, 63);
             this.btnCancelar.TabIndex = 13;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnConfirmar
             // 
             this.btnConfirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirmar.ForeColor = System.Drawing.Color.Transparent;
-            this.btnConfirmar.Location = new System.Drawing.Point(138, 419);
+            this.btnConfirmar.Location = new System.Drawing.Point(138, 420);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(175, 63);
             this.btnConfirmar.TabIndex = 12;
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(50, 241);
+            this.label4.Location = new System.Drawing.Point(50, 242);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(103, 24);
             this.label4.TabIndex = 11;
             this.label4.Text = "Descrição";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Guri_atacarejo.Properties.Resources.FullLogo__1_;
-            this.pictureBox1.Location = new System.Drawing.Point(710, 276);
+            this.pictureBox1.Location = new System.Drawing.Point(709, 341);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 193);
+            this.pictureBox1.Size = new System.Drawing.Size(211, 142);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(493, 140);
+            this.label3.Location = new System.Drawing.Point(495, 140);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(118, 24);
             this.label3.TabIndex = 10;
@@ -181,12 +189,13 @@
             this.txtDescricao.BorderWidth = 1F;
             this.txtDescricao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescricao.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtDescricao.Location = new System.Drawing.Point(30, 266);
+            this.txtDescricao.Location = new System.Drawing.Point(30, 267);
             this.txtDescricao.Margin = new System.Windows.Forms.Padding(1);
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.Radius = 10;
             this.txtDescricao.Size = new System.Drawing.Size(662, 134);
             this.txtDescricao.TabIndex = 4;
+            this.txtDescricao.Load += new System.EventHandler(this.txtDescricao_Load);
             // 
             // txtQuantidade
             // 
@@ -234,12 +243,36 @@
             this.txtCodigo.Size = new System.Drawing.Size(288, 54);
             this.txtCodigo.TabIndex = 1;
             // 
+            // roundComboBox2
+            // 
+            this.roundComboBox2.BackColor = System.Drawing.Color.Transparent;
+            this.roundComboBox2.BackgroundColor = System.Drawing.Color.White;
+            this.roundComboBox2.BorderColor = System.Drawing.Color.Transparent;
+            this.roundComboBox2.BorderWidth = 1F;
+            this.roundComboBox2.Location = new System.Drawing.Point(709, 267);
+            this.roundComboBox2.Margin = new System.Windows.Forms.Padding(1);
+            this.roundComboBox2.Name = "roundComboBox2";
+            this.roundComboBox2.Radius = 10;
+            this.roundComboBox2.Size = new System.Drawing.Size(186, 70);
+            this.roundComboBox2.TabIndex = 15;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(725, 242);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(99, 24);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Categoria";
+            // 
             // frmCadastroProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.ClientSize = new System.Drawing.Size(950, 534);
+            this.ClientSize = new System.Drawing.Size(950, 526);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmCadastroProduto";
             this.Text = "frmCadastroProduto";
@@ -265,5 +298,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label5;
+        private RoundComboBox roundComboBox2;
     }
 }
