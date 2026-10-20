@@ -21,7 +21,7 @@ BEGIN
         Email VARCHAR(100),
         Celular VARCHAR(15),
         NivelFidelidade INT,
-        TotalComprasAcumuladas decimal(18,2)
+        TotalComprasAcumuladas DECIMAL(18,2)
     );
 END;
 GO
@@ -61,7 +61,7 @@ BEGIN
         Genero CHAR(1) CHECK (Genero IN ('M', 'F', 'O')),
         Telefone VARCHAR(15),
         Email VARCHAR(100),
-        Senha Varchar(255),
+        Senha VARCHAR(255),
         DataEmissao DATE NOT NULL,
         Salario DECIMAL(18,2) NOT NULL,
         StatusFuncionamento VARCHAR(20) DEFAULT 'Ativo' CHECK (StatusFuncionamento IN ('Ativo', 'Inativo', 'Afastado')),
@@ -112,7 +112,23 @@ BEGIN
 END;
 GO
 
--- 1.8. estoque
+-- 1.8. Lote
+-- (precisa ser criada ANTES de Estoque, ItensCompra e ItensVenda, pois elas referenciam GA_Lote)
+IF OBJECT_ID('GA_Lote', 'U') IS NULL
+BEGIN
+    CREATE TABLE GA_Lote (
+        IdLote INT IDENTITY(1,1) PRIMARY KEY,
+        FKFornecedores INT NOT NULL,
+        FKProduto INT NOT NULL,
+        Quantidade INT NOT NULL CHECK (Quantidade >= 0),
+        DataValidade DATE NOT NULL,
+        CONSTRAINT FK_GA_Lote_Fornecedor FOREIGN KEY (FKFornecedores) REFERENCES GA_Fornecedor(IdFornecedor),
+        CONSTRAINT FK_GA_Lote_Produtos FOREIGN KEY (FKProduto) REFERENCES GA_Produtos(IdProduto)
+    );
+END;
+GO
+
+-- 1.9. Estoque
 IF OBJECT_ID('GA_Estoque', 'U') IS NULL
 BEGIN
     CREATE TABLE GA_Estoque (
@@ -126,7 +142,7 @@ BEGIN
 END;
 GO
 
--- 1.9. Compra
+-- 1.10. Compra
 IF OBJECT_ID('GA_Compra', 'U') IS NULL
 BEGIN
     CREATE TABLE GA_Compra (
@@ -144,7 +160,7 @@ BEGIN
 END;
 GO
 
--- 1.10. ItensCompra
+-- 1.11. ItensCompra
 IF OBJECT_ID('GA_ItensCompra', 'U') IS NULL
 BEGIN
     CREATE TABLE GA_ItensCompra (
@@ -155,12 +171,12 @@ BEGIN
         PrecoUnitario DECIMAL(18,2) NOT NULL CHECK (PrecoUnitario >= 0),
         Subtotal DECIMAL(18,2) NOT NULL,
         CONSTRAINT FK_GA_ItensCompra_Compra FOREIGN KEY (FKCompra) REFERENCES GA_Compra(IdCompra),
-        CONSTRAINT FK_GA_ItensCompra_Produtos FOREIGN KEY (FKLote) REFERENCES GA_Lote(IdLote)
+        CONSTRAINT FK_GA_ItensCompra_Lote FOREIGN KEY (FKLote) REFERENCES GA_Lote(IdLote)
     );
 END;
 GO
 
--- 1.11. Venda
+-- 1.12. Venda
 IF OBJECT_ID('GA_Venda', 'U') IS NULL
 BEGIN
     CREATE TABLE GA_Venda (
@@ -177,7 +193,7 @@ BEGIN
 END;
 GO
 
--- 1.12. ItensVenda
+-- 1.13. ItensVenda
 IF OBJECT_ID('GA_ItensVenda', 'U') IS NULL
 BEGIN
     CREATE TABLE GA_ItensVenda (
@@ -194,19 +210,6 @@ BEGIN
 END;
 GO
 
-IF OBJECT_ID('GA_Lote', 'U') IS NULL
-BEGIN
-    CREATE TABLE GA_Lote(
-        IdLote INT IDENTITY(1,1) PRIMARY KEY,
-        FKFornecedores INT NOT NULL,
-        FKProduto INT NOT NULL,
-        Quantidade INT NOT NULL CHECK (Quantidade >= 0),
-        DataValidade DATE NOT NULL,
-        CONSTRAINT FK_GA_Lote_Fornecedor FOREIGN KEY (FKFornecedores) REFERENCES GA_Fornecedor(IdFornecedor),
-        CONSTRAINT FK_GA_Lote_Produtos FOREIGN KEY (FKProduto) REFERENCES GA_Produtos(IdProduto)
-    );
-END;
-GO
 
 -- 2. Triggers da resenha
 
@@ -220,11 +223,11 @@ GO
 --      Atualiza automaticamente o valor total da compra.
 --
 -- 2.3. trg_BaixarEstoqueVenda
---      Baixa automaticamente a quantidade de produtos do estoque
+--      Baixa automaticamente a quantidade do LOTE no estoque
 --      quando uma venda é registrada.
 --
 -- 2.4. trg_AdicionarEstoqueCompra
---      Adiciona automaticamente os produtos ao estoque
+--      Adiciona automaticamente a quantidade do LOTE ao estoque
 --      quando uma compra é registrada.
 --
 -- 2.5. trg_AtualizarEstoqueMinimo
@@ -232,11 +235,14 @@ GO
 --      e a quantidade mínima definida.
 --
 -- 2.6. trg_DevolverEstoque_ItemCancelado
---      Devolve ao estoque os produtos de itens de venda cancelados.
+--      Devolve ao estoque (lote) os itens de venda cancelados.
 --
 -- 2.7. trg_CancelarItensAoCancelarVenda
 --      Cancela automaticamente todos os itens ativos quando
 --      uma venda inteira é cancelada.
+--
+-- 2.8. trg_AtualizarTotalComprasCliente
+--      Atualiza o total acumulado de compras do cliente.
 -- ============================================================
 
 
@@ -327,7 +333,7 @@ END;
 GO
 
 
--- 2.3. Baixar Estoque(ao vender)
+-- 2.3. Baixar Estoque do lote (ao vender)
 CREATE OR ALTER TRIGGER trg_BaixarEstoqueVenda
 ON GA_ItensVenda
 AFTER INSERT
@@ -335,22 +341,22 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    -- Verifica se todos os produtos possuem estoque cadastrado
+    -- Verifica se todos os lotes possuem estoque cadastrado
     IF EXISTS
     (
         SELECT 1
         FROM inserted i
         LEFT JOIN GA_Estoque e
-            ON e.FKProdutos = i.FKProduto
+            ON e.FKLote = i.FKLote
         WHERE e.IdEstoque IS NULL
     )
     BEGIN
-        RAISERROR('Não existe registro de estoque para um ou mais produtos da venda.', 16, 1);
+        RAISERROR('Não existe registro de estoque para um ou mais lotes da venda.', 16, 1);
         ROLLBACK TRANSACTION;
         RETURN;
     END;
 
-    -- Verifica se o estoque será suficiente
+    -- Verifica se o estoque do lote será suficiente
     IF EXISTS
     (
         SELECT 1
@@ -358,38 +364,38 @@ BEGIN
         INNER JOIN
         (
             SELECT
-                FKProduto,
+                FKLote,
                 SUM(Quantidade) AS QuantidadeVendida
             FROM inserted
-            GROUP BY FKProduto
+            GROUP BY FKLote
         ) i
-            ON e.FKProdutos = i.FKProduto
+            ON e.FKLote = i.FKLote
         WHERE e.QuantidadeAtual < i.QuantidadeVendida
     )
     BEGIN
-        RAISERROR('Estoque insuficiente para um ou mais produtos da venda.', 16, 1);
+        RAISERROR('Estoque insuficiente para um ou mais lotes da venda.', 16, 1);
         ROLLBACK TRANSACTION;
         RETURN;
     END;
 
-    -- Baixa o estoque agrupando os produtos repetidos
+    -- Baixa o estoque agrupando os lotes repetidos
     UPDATE e
     SET e.QuantidadeAtual = e.QuantidadeAtual - i.QuantidadeVendida
     FROM GA_Estoque e
     INNER JOIN
     (
         SELECT
-            FKProduto,
+            FKLote,
             SUM(Quantidade) AS QuantidadeVendida
         FROM inserted
-        GROUP BY FKProduto
+        GROUP BY FKLote
     ) i
-        ON e.FKProdutos = i.FKProduto;
+        ON e.FKLote = i.FKLote;
 END;
 GO
 
 
--- 2.4. Adicionar Estoque (ao comprar)
+-- 2.4. Adicionar Estoque do lote (ao comprar)
 CREATE OR ALTER TRIGGER trg_AdicionarEstoqueCompra
 ON GA_ItensCompra
 AFTER INSERT
@@ -397,34 +403,34 @@ AS
 BEGIN
     SET NOCOUNT ON;
 
-    -- verifica se o produto tem estoque CADASTRADO se NÃO tiver mostra ERRO
+    -- verifica se o lote tem estoque CADASTRADO; se NÃO tiver, mostra ERRO
     IF EXISTS
     (
         SELECT 1
         FROM inserted i
         LEFT JOIN GA_Estoque e
-            ON e.FKProdutos = i.FKProduto
+            ON e.FKLote = i.FKLote
         WHERE e.IdEstoque IS NULL
     )
     BEGIN
-        RAISERROR('Não existe registro de estoque para um ou mais produtos da compra.', 16, 1);
+        RAISERROR('Não existe registro de estoque para um ou mais lotes da compra.', 16, 1);
         ROLLBACK TRANSACTION;
         RETURN;
     END;
 
-    -- Adiciona o estoque agrupando os produtos repetidos
+    -- Adiciona o estoque agrupando os lotes repetidos
     UPDATE e
     SET e.QuantidadeAtual = e.QuantidadeAtual + i.QuantidadeComprada
     FROM GA_Estoque e
     INNER JOIN
     (
         SELECT
-            FKProduto,
+            FKLote,
             SUM(Quantidade) AS QuantidadeComprada
         FROM inserted
-        GROUP BY FKProduto
+        GROUP BY FKLote
     ) i
-        ON e.FKProdutos = i.FKProduto;
+        ON e.FKLote = i.FKLote;
 END;
 GO
 
@@ -478,14 +484,14 @@ BEGIN
     INNER JOIN
     (
         SELECT
-            i.FKProduto,
+            i.FKLote,
             SUM(i.Quantidade) AS QuantidadeDevolvida
         FROM inserted i
         INNER JOIN deleted d ON i.IdItemVenda = d.IdItemVenda
         WHERE i.Cancelado = 1 AND d.Cancelado = 0
-        GROUP BY i.FKProduto
+        GROUP BY i.FKLote
     ) x
-        ON e.FKProdutos = x.FKProduto;
+        ON e.FKLote = x.FKLote;
 END;
 GO
 
@@ -523,6 +529,7 @@ BEGIN
       AND iv.Cancelado = 0;
 END;
 GO
+
 
 -- 2.8. Atualizar TotalComprasAcumuladas do Cliente
 CREATE OR ALTER TRIGGER trg_AtualizarTotalComprasCliente
@@ -571,15 +578,15 @@ GO
 -- SUMÁRIO - PROCEDURES
 
 -- 3.1. usp_RegistrarVenda
---      Registra uma nova venda, valida o estoque e insere
+--      Registra uma nova venda, valida o estoque dos lotes e insere
 --      os itens da venda.
 --
 -- 3.2. usp_RegistrarCompra
---      Registra uma nova compra e insere os itens comprados,
---      adicionando os produtos ao estoque.
+--      Registra uma nova compra, cria os lotes comprados, cadastra
+--      o estoque de cada lote e insere os itens da compra.
 --
 -- 3.3. usp_RelatorioEstoqueCritico
---      Exibe os produtos que estão abaixo ou no limite
+--      Exibe os lotes que estão abaixo ou no limite
 --      do estoque mínimo.
 --
 -- 3.4. usp_CancelarVenda
@@ -591,7 +598,7 @@ GO
 --      e devolve suas quantidades ao estoque.
 
 
--- 3.1. Registrar Venda(com validação de estoque)
+-- 3.1. Registrar Venda (com validação de estoque por lote)
 CREATE OR ALTER PROCEDURE usp_RegistrarVenda
     @FKCliente INT = NULL,
     @FKFuncionario INT,
@@ -605,22 +612,22 @@ BEGIN
         BEGIN TRANSACTION;
 
         DECLARE @IdVenda INT;
-        DECLARE @Produto INT;
+        DECLARE @Lote INT;
         DECLARE @Qtd INT;
         DECLARE @EstoqueAtual INT;
 
-        -- Cursor para validar estoque antes de inserir
+        -- Cursor para validar estoque do lote antes de inserir
         DECLARE cur CURSOR LOCAL FOR
-        SELECT FKProduto, Quantidade
+        SELECT FKLote, Quantidade
         FROM OPENJSON(@ItensJson)
         WITH (
-            FKProduto INT '$.FKProduto',
+            FKLote INT '$.FKLote',
             Quantidade INT '$.Quantidade'
         );
 
         OPEN cur;
 
-        FETCH NEXT FROM cur INTO @Produto, @Qtd;
+        FETCH NEXT FROM cur INTO @Lote, @Qtd;
 
         WHILE @@FETCH_STATUS = 0
         BEGIN
@@ -628,7 +635,7 @@ BEGIN
 
             SELECT @EstoqueAtual = QuantidadeAtual
             FROM GA_Estoque
-            WHERE FKProdutos = @Produto;
+            WHERE FKLote = @Lote;
 
             IF @EstoqueAtual < @Qtd
             BEGIN
@@ -638,7 +645,7 @@ BEGIN
                 ROLLBACK TRANSACTION;
 
                 RAISERROR(
-                    'Estoque insuficiente para o produto informado.',
+                    'Estoque insuficiente para o lote informado.',
                     16,
                     1
                 );
@@ -646,7 +653,7 @@ BEGIN
                 RETURN;
             END;
 
-            FETCH NEXT FROM cur INTO @Produto, @Qtd;
+            FETCH NEXT FROM cur INTO @Lote, @Qtd;
         END;
 
         CLOSE cur;
@@ -675,28 +682,31 @@ BEGIN
         SET @IdVenda = SCOPE_IDENTITY();
 
         -- Insere os itens usando o preço cadastrado em GA_Produtos
+        -- (o produto é identificado a partir do lote)
         INSERT INTO GA_ItensVenda
         (
             FKVenda,
-            FKProduto,
+            FKLote,
             Quantidade,
             PrecoUnitario,
             Subtotal
         )
         SELECT
             @IdVenda,
-            j.FKProduto,
+            j.FKLote,
             j.Quantidade,
             p.Preco,
             j.Quantidade * p.Preco
         FROM OPENJSON(@ItensJson)
         WITH
         (
-            FKProduto INT '$.FKProduto',
+            FKLote INT '$.FKLote',
             Quantidade INT '$.Quantidade'
         ) j
+        INNER JOIN GA_Lote l
+            ON l.IdLote = j.FKLote
         INNER JOIN GA_Produtos p
-            ON p.IdProduto = j.FKProduto;
+            ON p.IdProduto = l.FKProduto;
 
         -- Atualiza status da venda
         UPDATE GA_Venda
@@ -738,7 +748,10 @@ END;
 GO
 
 
--- 3.2. Registrar Compra (entrada de mercadorias)
+-- 3.2. Registrar Compra (entrada de mercadorias em LOTES)
+-- Para cada item do JSON é criado um novo lote (GA_Lote), o registro
+-- de estoque desse lote (GA_Estoque) e o item da compra (GA_ItensCompra).
+-- A trigger trg_AdicionarEstoqueCompra soma a quantidade ao estoque do lote.
 CREATE OR ALTER PROCEDURE usp_RegistrarCompra
     @FKFornecedor INT,
     @FKFuncionario INT,
@@ -753,6 +766,14 @@ BEGIN
 
     BEGIN TRY
         DECLARE @IdCompra INT;
+
+        DECLARE @NovosLotes TABLE
+        (
+            IdLote INT,
+            Quantidade INT,
+            PrecoUnitario DECIMAL(18,2),
+            QuantidadeMinima INT
+        );
 
         INSERT INTO GA_Compra
         (
@@ -777,28 +798,68 @@ BEGIN
 
         SET @IdCompra = SCOPE_IDENTITY();
 
+        -- Cria um lote para cada item e guarda os IdLote gerados
+        -- (MERGE com ON 1 = 0 permite relacionar o IdLote gerado ao item de origem)
+        MERGE GA_Lote AS destino
+        USING
+        (
+            SELECT
+                j.FKProduto,
+                j.Quantidade,
+                j.DataValidade,
+                j.QuantidadeMinima,
+                p.Preco
+            FROM OPENJSON(@ItensJson)
+            WITH
+            (
+                FKProduto INT '$.FKProduto',
+                Quantidade INT '$.Quantidade',
+                DataValidade DATE '$.DataValidade',
+                QuantidadeMinima INT '$.QuantidadeMinima'
+            ) j
+            INNER JOIN GA_Produtos p
+                ON p.IdProduto = j.FKProduto
+        ) AS origem
+            ON 1 = 0
+        WHEN NOT MATCHED THEN
+            INSERT (FKFornecedores, FKProduto, Quantidade, DataValidade)
+            VALUES (@FKFornecedor, origem.FKProduto, origem.Quantidade, origem.DataValidade)
+        OUTPUT
+            inserted.IdLote,
+            origem.Quantidade,
+            origem.Preco,
+            ISNULL(origem.QuantidadeMinima, 0)
+        INTO @NovosLotes (IdLote, Quantidade, PrecoUnitario, QuantidadeMinima);
+
+        -- Cadastra o estoque de cada novo lote (começa em 0; a trigger de compra soma a quantidade)
+        INSERT INTO GA_Estoque
+        (
+            FKLote,
+            QuantidadeAtual,
+            QuantidadeMinima
+        )
+        SELECT
+            IdLote,
+            0,
+            QuantidadeMinima
+        FROM @NovosLotes;
+
+        -- Insere os itens da compra
         INSERT INTO GA_ItensCompra
         (
             FKCompra,
-            FKProduto,
+            FKLote,
             Quantidade,
             PrecoUnitario,
             Subtotal
         )
         SELECT
             @IdCompra,
-            j.FKProduto,
-            j.Quantidade,
-            p.Preco,
-            j.Quantidade * p.Preco
-        FROM OPENJSON(@ItensJson)
-        WITH
-        (
-            FKProduto INT '$.FKProduto',
-            Quantidade INT '$.Quantidade'
-        ) j
-        INNER JOIN GA_Produtos p
-            ON p.IdProduto = j.FKProduto;
+            IdLote,
+            Quantidade,
+            PrecoUnitario,
+            Quantidade * PrecoUnitario
+        FROM @NovosLotes;
 
         COMMIT TRANSACTION;
 
@@ -942,26 +1003,27 @@ GO
 
 
 -- Registrar uma nova venda.
--- O @ItensJson permite informar um ou vários produtos.
+-- O @ItensJson permite informar um ou vários LOTES (FKLote) e a quantidade vendida de cada um.
 -- EXEC usp_RegistrarVenda
 --     @FKCliente = 1,
 --     @FKFuncionario = 2,
 --     @FormaPagamento = 'Pix',
 --     @ItensJson = '[
---         {"FKProduto": 1, "Quantidade": 2}
+--         {"FKLote": 1, "Quantidade": 2}
 --     ]';
 
 
 -- Registrar uma nova compra.
--- O @ItensJson permite informar um ou vários produtos.
+-- Cada item cria um novo lote do produto informado (FKProduto), com sua validade
+-- e, opcionalmente, a quantidade mínima de estoque desse lote.
 -- EXEC usp_RegistrarCompra
 --     @FKFornecedor = 1,
 --     @FKFuncionario = 2,
 --     @FormaPagamento = 'Boleto',
 --     @DataEntrega = '2026-09-05',
 --     @ItensJson = '[
---         {"FKProduto": 1, "Quantidade": 50},
---         {"FKProduto": 2, "Quantidade": 70}
+--         {"FKProduto": 1, "Quantidade": 50, "DataValidade": "2027-03-01", "QuantidadeMinima": 10},
+--         {"FKProduto": 2, "Quantidade": 70, "DataValidade": "2027-06-15", "QuantidadeMinima": 20}
 --     ]';
 
 -- Cancelar uma venda inteira.
@@ -979,17 +1041,22 @@ GO
 
 -- VIEWS
 
+-- Estoque crítico por lote (o produto é identificado a partir do lote)
 CREATE OR ALTER VIEW vw_EstoqueCritico
 AS
-SELECT 
+SELECT
     p.Nome AS Produto,
+    l.IdLote,
+    l.DataValidade,
     e.QuantidadeAtual,
     e.QuantidadeMinima,
     (e.QuantidadeMinima - e.QuantidadeAtual) AS FaltamParaMinimo,
     e.StatusEstoque
 FROM GA_Estoque e
-INNER JOIN GA_Produtos p 
-    ON e.FKProdutos = p.IdProduto
+INNER JOIN GA_Lote l
+    ON e.FKLote = l.IdLote
+INNER JOIN GA_Produtos p
+    ON l.FKProduto = p.IdProduto
 WHERE e.QuantidadeAtual <= e.QuantidadeMinima;
 GO
 
