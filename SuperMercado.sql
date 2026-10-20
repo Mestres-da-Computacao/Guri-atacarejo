@@ -150,12 +150,12 @@ BEGIN
     CREATE TABLE GA_ItensCompra (
         IdItemCompra INT IDENTITY(1,1) PRIMARY KEY,
         FKCompra INT NOT NULL,
-        FKProduto INT NOT NULL,
+        FKLote INT NOT NULL,
         Quantidade INT NOT NULL CHECK (Quantidade >= 0),
         PrecoUnitario DECIMAL(18,2) NOT NULL CHECK (PrecoUnitario >= 0),
         Subtotal DECIMAL(18,2) NOT NULL,
         CONSTRAINT FK_GA_ItensCompra_Compra FOREIGN KEY (FKCompra) REFERENCES GA_Compra(IdCompra),
-        CONSTRAINT FK_GA_ItensCompra_Produtos FOREIGN KEY (FKProduto) REFERENCES GA_Produtos(IdProduto)
+        CONSTRAINT FK_GA_ItensCompra_Produtos FOREIGN KEY (FKLote) REFERENCES GA_Lote(IdLote)
     );
 END;
 GO
