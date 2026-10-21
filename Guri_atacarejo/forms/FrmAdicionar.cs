@@ -94,5 +94,21 @@ namespace Guri_atacarejo.forms
             if (cardProduto != null)
                 cardProduto.AtualizarQuantidade(0);
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmPainel painelForm = new frmPainel();
+            painelForm.ShowDialog();
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmPainel painelForm = new frmPainel();
+            painelForm.ShowDialog();
+
+            //código para enviar os produtos para o painel principal
+        }
     }
 }
