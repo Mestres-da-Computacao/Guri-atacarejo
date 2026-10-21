@@ -1,8 +1,13 @@
-# arquivos de compilação
+﻿# arquivos de compilação
 bin/
 obj/
 *.user
 *.suo
+
+# Cache
+.vs/
+*.cache
+.cache/
 
 # Configurações do Visual Studio
 .vs/
@@ -14,3 +19,9 @@ Thumbs.db
 # Arquivos de log ou temporários
 *.log
 *.tmp   
+
+bin/
+obj/
+.vs/
+*.user
+*.suo
