@@ -192,20 +192,22 @@
             // registrarClientesToolStripMenuItem
             // 
             this.registrarClientesToolStripMenuItem.Name = "registrarClientesToolStripMenuItem";
-            this.registrarClientesToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.registrarClientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.registrarClientesToolStripMenuItem.Text = "Registrar Cliente";
             // 
             // loginClienteToolStripMenuItem
             // 
             this.loginClienteToolStripMenuItem.Name = "loginClienteToolStripMenuItem";
-            this.loginClienteToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.loginClienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.loginClienteToolStripMenuItem.Text = "Login Cliente";
+            this.loginClienteToolStripMenuItem.Click += new System.EventHandler(this.loginClienteToolStripMenuItem_Click);
             // 
             // logoutClienteToolStripMenuItem
             // 
             this.logoutClienteToolStripMenuItem.Name = "logoutClienteToolStripMenuItem";
-            this.logoutClienteToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.logoutClienteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.logoutClienteToolStripMenuItem.Text = "Logout Cliente";
+            this.logoutClienteToolStripMenuItem.Click += new System.EventHandler(this.logoutClienteToolStripMenuItem_Click);
             // 
             // registrarProdutosToolStripMenuItem
             // 

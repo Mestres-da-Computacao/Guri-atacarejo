@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Guri_atacarejo.sessao
+namespace Guri_atacarejo
 {
     public static class Sessao
     {
