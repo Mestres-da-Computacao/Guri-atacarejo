@@ -1,5 +1,5 @@
 ﻿using Guri_atacarejo.DataSetTableAdapters;
-using Guri_atacarejo.sessao;
+using Guri_atacarejo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

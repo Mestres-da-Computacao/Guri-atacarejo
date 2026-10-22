@@ -6,7 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Guri_atacarejo.sessao;
+using Guri_atacarejo;
 using System.Windows.Forms;
 
 namespace Guri_atacarejo.forms
@@ -58,6 +58,17 @@ namespace Guri_atacarejo.forms
             this.Hide();
             frmAdicionar adicionarForm = new frmAdicionar();
             adicionarForm.ShowDialog();
+        }
+
+        private void loginClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void logoutClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SessaoClientes.NomeCliente = null;
+            SessaoClientes.Senha = null;
         }
     }
 }
