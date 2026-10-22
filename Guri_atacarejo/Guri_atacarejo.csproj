@@ -108,6 +108,12 @@
     <Compile Include="forms\FrmSplash.Designer.cs">
       <DependentUpon>FrmSplash.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\frmTeste.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmTeste.Designer.cs">
+      <DependentUpon>frmTeste.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\Produto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -134,6 +140,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\FrmSplash.resx">
       <DependentUpon>FrmSplash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmTeste.resx">
+      <DependentUpon>frmTeste.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

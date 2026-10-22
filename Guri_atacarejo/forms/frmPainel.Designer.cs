@@ -31,11 +31,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.nmr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.custo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.funcionáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarFuncionárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,27 +42,32 @@
             this.registrarProdutosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAlterar = new System.Windows.Forms.Button();
+            this.btnAdicionar = new System.Windows.Forms.Button();
+            this.btnFinalizar = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblTotal = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
             this.item = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.preco_uni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unidade_medi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Validade = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel5 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.custo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -105,44 +105,15 @@
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.nmr,
+            this.Id,
             this.Produto,
             this.qtd,
             this.custo,
             this.total});
             this.dataGridView1.Location = new System.Drawing.Point(0, 32);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(433, 242);
+            this.dataGridView1.Size = new System.Drawing.Size(433, 254);
             this.dataGridView1.TabIndex = 2;
-            // 
-            // nmr
-            // 
-            this.nmr.HeaderText = "nmr";
-            this.nmr.Name = "nmr";
-            this.nmr.Width = 50;
-            // 
-            // Produto
-            // 
-            this.Produto.HeaderText = "Produto";
-            this.Produto.Name = "Produto";
-            this.Produto.Width = 120;
-            // 
-            // qtd
-            // 
-            this.qtd.HeaderText = "qtd";
-            this.qtd.Name = "qtd";
-            this.qtd.Width = 60;
-            // 
-            // custo
-            // 
-            this.custo.HeaderText = "custo unidade";
-            this.custo.Name = "custo";
-            this.custo.Width = 60;
-            // 
-            // total
-            // 
-            this.total.HeaderText = "total";
-            this.total.Name = "total";
             // 
             // menuStrip1
             // 
@@ -233,52 +204,56 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "LISTA DE PRODUTOS";
             // 
-            // button1
+            // btnCancelar
             // 
-            this.button1.ForeColor = System.Drawing.Color.Black;
-            this.button1.Location = new System.Drawing.Point(8, 16);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(87, 42);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Cancelar Venda";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
+            this.btnCancelar.Location = new System.Drawing.Point(8, 16);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(87, 42);
+            this.btnCancelar.TabIndex = 0;
+            this.btnCancelar.Text = "Cancelar Venda";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // button2
+            // btnAlterar
             // 
-            this.button2.ForeColor = System.Drawing.Color.Black;
-            this.button2.Location = new System.Drawing.Point(110, 16);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(87, 42);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "Alterar Produto";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnAlterar.ForeColor = System.Drawing.Color.Black;
+            this.btnAlterar.Location = new System.Drawing.Point(110, 16);
+            this.btnAlterar.Name = "btnAlterar";
+            this.btnAlterar.Size = new System.Drawing.Size(87, 42);
+            this.btnAlterar.TabIndex = 1;
+            this.btnAlterar.Text = "Alterar Produto";
+            this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
-            // button3
+            // btnAdicionar
             // 
-            this.button3.ForeColor = System.Drawing.Color.Black;
-            this.button3.Location = new System.Drawing.Point(221, 16);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(87, 42);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "Adicionar Produto";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnAdicionar.ForeColor = System.Drawing.Color.Black;
+            this.btnAdicionar.Location = new System.Drawing.Point(221, 16);
+            this.btnAdicionar.Name = "btnAdicionar";
+            this.btnAdicionar.Size = new System.Drawing.Size(87, 42);
+            this.btnAdicionar.TabIndex = 2;
+            this.btnAdicionar.Text = "Adicionar Produto";
+            this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
-            // button4
+            // btnFinalizar
             // 
-            this.button4.ForeColor = System.Drawing.Color.Black;
-            this.button4.Location = new System.Drawing.Point(328, 16);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(87, 42);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Finalizar Compra";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnFinalizar.ForeColor = System.Drawing.Color.Black;
+            this.btnFinalizar.Location = new System.Drawing.Point(328, 16);
+            this.btnFinalizar.Name = "btnFinalizar";
+            this.btnFinalizar.Size = new System.Drawing.Size(87, 42);
+            this.btnFinalizar.TabIndex = 3;
+            this.btnFinalizar.Text = "Finalizar Compra";
+            this.btnFinalizar.UseVisualStyleBackColor = true;
+            this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button4);
-            this.groupBox2.Controls.Add(this.button3);
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.button1);
+            this.groupBox2.Controls.Add(this.btnFinalizar);
+            this.groupBox2.Controls.Add(this.btnAdicionar);
+            this.groupBox2.Controls.Add(this.btnAlterar);
+            this.groupBox2.Controls.Add(this.btnCancelar);
             this.groupBox2.ForeColor = System.Drawing.Color.White;
             this.groupBox2.Location = new System.Drawing.Point(12, 370);
             this.groupBox2.Name = "groupBox2";
@@ -290,13 +265,37 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.label9);
+            this.panel3.Controls.Add(this.lblTotal);
             this.panel3.Controls.Add(this.label8);
             this.panel3.Location = new System.Drawing.Point(464, 370);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(313, 42);
             this.panel3.TabIndex = 7;
             this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.AutoSize = true;
+            this.lblTotal.BackColor = System.Drawing.Color.White;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            this.lblTotal.Location = new System.Drawing.Point(174, 0);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(139, 31);
+            this.lblTotal.TabIndex = 12;
+            this.lblTotal.Text = "R$ 420,69";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.White;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            this.label8.Location = new System.Drawing.Point(2, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(117, 29);
+            this.label8.TabIndex = 1;
+            this.label8.Text = "SubTotal:";
             // 
             // dataGridView2
             // 
@@ -311,36 +310,6 @@
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.Size = new System.Drawing.Size(313, 223);
             this.dataGridView2.TabIndex = 4;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Controls.Add(this.label3);
-            this.panel5.Location = new System.Drawing.Point(464, 300);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(155, 26);
-            this.panel5.TabIndex = 8;
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.White;
-            this.panel6.Controls.Add(this.label4);
-            this.panel6.Controls.Add(this.dataGridView2);
-            this.panel6.Location = new System.Drawing.Point(464, 38);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(313, 256);
-            this.panel6.TabIndex = 9;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.label4.Location = new System.Drawing.Point(3, 6);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(314, 25);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "INFORMAÇÕES DO PRODUTO";
             // 
             // item
             // 
@@ -366,6 +335,15 @@
             this.Validade.Name = "Validade";
             this.Validade.Width = 50;
             // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.Controls.Add(this.label3);
+            this.panel5.Location = new System.Drawing.Point(464, 300);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(155, 26);
+            this.panel5.TabIndex = 8;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -377,6 +355,27 @@
             this.label3.Size = new System.Drawing.Size(105, 24);
             this.label3.TabIndex = 0;
             this.label3.Text = "Registrado:";
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.White;
+            this.panel6.Controls.Add(this.label4);
+            this.panel6.Controls.Add(this.dataGridView2);
+            this.panel6.Location = new System.Drawing.Point(464, 38);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(313, 256);
+            this.panel6.TabIndex = 9;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            this.label4.Location = new System.Drawing.Point(3, 6);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(314, 25);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "INFORMAÇÕES DO PRODUTO";
             // 
             // label5
             // 
@@ -420,31 +419,35 @@
             this.label7.Size = new System.Drawing.Size(65, 24);
             this.label7.TabIndex = 0;
             this.label7.Text = "Troco:";
-            this.label7.Click += new System.EventHandler(this.label7_Click);
             // 
-            // label8
+            // Id
             // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.White;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.label8.Location = new System.Drawing.Point(2, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(117, 29);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "SubTotal:";
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.Width = 50;
             // 
-            // label9
+            // Produto
             // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.White;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.label9.Location = new System.Drawing.Point(174, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(139, 31);
-            this.label9.TabIndex = 12;
-            this.label9.Text = "R$ 420,69";
+            this.Produto.HeaderText = "Produto";
+            this.Produto.Name = "Produto";
+            this.Produto.Width = 120;
+            // 
+            // qtd
+            // 
+            this.qtd.HeaderText = "Quantidade";
+            this.qtd.Name = "qtd";
+            this.qtd.Width = 60;
+            // 
+            // custo
+            // 
+            this.custo.HeaderText = "preço unitario";
+            this.custo.Name = "custo";
+            this.custo.Width = 60;
+            // 
+            // total
+            // 
+            this.total.HeaderText = "total";
+            this.total.Name = "total";
             // 
             // frmPainel
             // 
@@ -493,11 +496,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nmr;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Produto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn custo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn total;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem funcionáriosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
@@ -509,10 +507,10 @@
         private System.Windows.Forms.ToolStripMenuItem registrarProdutosToolStripMenuItem;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnAlterar;
+        private System.Windows.Forms.Button btnAdicionar;
+        private System.Windows.Forms.Button btnFinalizar;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dataGridView2;
@@ -529,6 +527,11 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Produto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn custo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn total;
     }
 }
