@@ -15,9 +15,10 @@ namespace Guri_atacarejo.forms
     {
         public frmPainel painel;
         // contsrutor
-        public frmTeste() // p usar os ngc de frmPainel
+        public frmTeste(frmPainel Form) // p usar os ngc de frmPainel
         {
             InitializeComponent();
+            painel = Form;
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -52,10 +53,8 @@ namespace Guri_atacarejo.forms
                         decimal Valor = reader.GetDecimal(2);
                         int qtd = int.Parse(txtQuantidade.Text);
 
-                        var Form = new frmPainel();
+                        painel.AtualizarProduto(idProd, Nome, Valor, qtd);
 
-                        Form.AtualizarProduto(idProd, Nome, Valor, qtd);
-                        
                     }
                 }
             }

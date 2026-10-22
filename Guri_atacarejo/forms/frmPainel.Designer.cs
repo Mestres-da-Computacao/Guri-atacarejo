@@ -31,6 +31,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.custo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.funcionáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarFuncionárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,11 +68,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.custo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -114,6 +114,36 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(433, 254);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.Width = 50;
+            // 
+            // Produto
+            // 
+            this.Produto.HeaderText = "Produto";
+            this.Produto.Name = "Produto";
+            this.Produto.Width = 120;
+            // 
+            // qtd
+            // 
+            this.qtd.HeaderText = "Quantidade";
+            this.qtd.Name = "qtd";
+            this.qtd.Width = 60;
+            // 
+            // custo
+            // 
+            this.custo.HeaderText = "preço unitario";
+            this.custo.Name = "custo";
+            this.custo.Width = 60;
+            // 
+            // total
+            // 
+            this.total.HeaderText = "total";
+            this.total.Name = "total";
             // 
             // menuStrip1
             // 
@@ -279,11 +309,11 @@
             this.lblTotal.BackColor = System.Drawing.Color.White;
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.lblTotal.Location = new System.Drawing.Point(174, 0);
+            this.lblTotal.Location = new System.Drawing.Point(178, 0);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(139, 31);
+            this.lblTotal.Size = new System.Drawing.Size(109, 31);
             this.lblTotal.TabIndex = 12;
-            this.lblTotal.Text = "R$ 420,69";
+            this.lblTotal.Text = "R$ 0,00";
             // 
             // label8
             // 
@@ -395,9 +425,9 @@
             this.label6.ForeColor = System.Drawing.Color.White;
             this.label6.Location = new System.Drawing.Point(666, 329);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(111, 25);
+            this.label6.Size = new System.Drawing.Size(87, 25);
             this.label6.TabIndex = 10;
-            this.label6.Text = "R$ 420,69";
+            this.label6.Text = "R$ 0,00";
             // 
             // panel4
             // 
@@ -419,35 +449,6 @@
             this.label7.Size = new System.Drawing.Size(65, 24);
             this.label7.TabIndex = 0;
             this.label7.Text = "Troco:";
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.Width = 50;
-            // 
-            // Produto
-            // 
-            this.Produto.HeaderText = "Produto";
-            this.Produto.Name = "Produto";
-            this.Produto.Width = 120;
-            // 
-            // qtd
-            // 
-            this.qtd.HeaderText = "Quantidade";
-            this.qtd.Name = "qtd";
-            this.qtd.Width = 60;
-            // 
-            // custo
-            // 
-            this.custo.HeaderText = "preço unitario";
-            this.custo.Name = "custo";
-            this.custo.Width = 60;
-            // 
-            // total
-            // 
-            this.total.HeaderText = "total";
-            this.total.Name = "total";
             // 
             // frmPainel
             // 
