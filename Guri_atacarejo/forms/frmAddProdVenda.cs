@@ -11,11 +11,11 @@ using System.Data.SqlClient;
 
 namespace Guri_atacarejo.forms
 {
-    public partial class frmTeste : Form
+    public partial class frmAddProdVenda : Form
     {
         public frmPainel painel;
         // contsrutor
-        public frmTeste(frmPainel Form) // p usar os ngc de frmPainel
+        public frmAddProdVenda(frmPainel Form) // p usar os ngc de frmPainel
         {
             InitializeComponent();
             painel = Form;
@@ -52,8 +52,9 @@ namespace Guri_atacarejo.forms
                         string Nome = reader.GetString(1);
                         decimal Valor = reader.GetDecimal(2);
                         int qtd = int.Parse(txtQuantidade.Text);
+                        int loteId = int.Parse(txtLote.Text);
 
-                        painel.AtualizarProduto(idProd, Nome, Valor, qtd);
+                        painel.AtualizarProduto(idProd, Nome, Valor, qtd, loteId);
 
                     }
                 }

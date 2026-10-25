@@ -165,7 +165,7 @@
             this.funcionáriosToolStripMenuItem.Name = "funcionáriosToolStripMenuItem";
             this.funcionáriosToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.funcionáriosToolStripMenuItem.Text = "Funcionários";
-            this.funcionáriosToolStripMenuItem.Click += new System.EventHandler(this.funcionáriosToolStripMenuItem_Click);
+            
             // 
             // registrarFuncionárioToolStripMenuItem
             // 
@@ -301,7 +301,7 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(313, 42);
             this.panel3.TabIndex = 7;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.panel3_Paint);
+
             // 
             // lblTotal
             // 
@@ -469,7 +469,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmPainel";
             this.Text = "frmPainel";
-            this.Load += new System.EventHandler(this.frmPainel_Load);
+
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

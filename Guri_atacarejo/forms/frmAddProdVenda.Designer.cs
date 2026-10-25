@@ -1,6 +1,6 @@
 ﻿namespace Guri_atacarejo.forms
 {
-    partial class frmTeste
+    partial class frmAddProdVenda
     {
         /// <summary>
         /// Required designer variable.
@@ -98,12 +98,12 @@
             this.lblQtd.Text = "Quantidade";
             this.lblQtd.Click += new System.EventHandler(this.label2_Click);
             // 
-            // frmTeste
+            // frmAddProdVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkOrange;
-            this.ClientSize = new System.Drawing.Size(215, 197);
+            this.ClientSize = new System.Drawing.Size(278, 197);
             this.Controls.Add(this.btnAdicionar);
             this.Controls.Add(this.lblQtd);
             this.Controls.Add(this.label2);
@@ -111,8 +111,8 @@
             this.Controls.Add(this.txtQuantidade);
             this.Controls.Add(this.txtLote);
             this.Controls.Add(this.txtID);
-            this.Name = "frmTeste";
-            this.Text = "frmTeste";
+            this.Name = "frmAddProdVenda";
+            this.Text = "frmAddProdVenda";
             this.ResumeLayout(false);
             this.PerformLayout();
 
