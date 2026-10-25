@@ -30,8 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRelatorio));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle14 = new System.Windows.Forms.DataGridViewCellStyle();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
@@ -63,11 +61,12 @@
             this.toolStripButton2});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 3, 0);
+            this.toolStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 2, 0);
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(1266, 34);
+            this.toolStrip1.Size = new System.Drawing.Size(844, 27);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
             // toolStripButton1
             // 
@@ -75,7 +74,7 @@
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(132, 29);
+            this.toolStripButton1.Size = new System.Drawing.Size(88, 24);
             this.toolStripButton1.Text = "Tela de Vendas";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
@@ -85,7 +84,7 @@
             this.toolStripButton4.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton4.Image")));
             this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(155, 29);
+            this.toolStripButton4.Size = new System.Drawing.Size(103, 24);
             this.toolStripButton4.Text = "Registrar Produto";
             // 
             // toolStripButton3
@@ -94,7 +93,7 @@
             this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(182, 29);
+            this.toolStripButton3.Size = new System.Drawing.Size(123, 24);
             this.toolStripButton3.Text = "Registrar Funcionário";
             // 
             // toolStripButton2
@@ -103,8 +102,9 @@
             this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(34, 29);
+            this.toolStripButton2.Size = new System.Drawing.Size(24, 24);
             this.toolStripButton2.Text = "Logout";
+            this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // contextMenuStrip1
             // 
@@ -115,10 +115,13 @@
             // textBox2
             // 
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Location = new System.Drawing.Point(587, 88);
+            this.textBox2.Location = new System.Drawing.Point(391, 57);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(595, 494);
+            this.textBox2.ReadOnly = true;
+            this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textBox2.Size = new System.Drawing.Size(397, 322);
             this.textBox2.TabIndex = 5;
             // 
             // maskData
@@ -127,12 +130,14 @@
             this.maskData.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.maskData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.maskData.ForeColor = System.Drawing.Color.White;
-            this.maskData.Location = new System.Drawing.Point(1078, 38);
+            this.maskData.Location = new System.Drawing.Point(719, 25);
+            this.maskData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.maskData.Mask = "00/00/0000";
             this.maskData.Name = "maskData";
-            this.maskData.Size = new System.Drawing.Size(104, 19);
+            this.maskData.Size = new System.Drawing.Size(69, 13);
             this.maskData.TabIndex = 6;
             this.maskData.ValidatingType = typeof(System.DateTime);
+            this.maskData.TextChanged += new System.EventHandler(this.maskData_TextChanged);
             // 
             // cbtempo
             // 
@@ -142,11 +147,13 @@
             "Dia",
             "Mês",
             "Ano"});
-            this.cbtempo.Location = new System.Drawing.Point(927, 33);
+            this.cbtempo.Location = new System.Drawing.Point(618, 21);
+            this.cbtempo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbtempo.Name = "cbtempo";
-            this.cbtempo.Size = new System.Drawing.Size(121, 28);
+            this.cbtempo.Size = new System.Drawing.Size(82, 21);
             this.cbtempo.TabIndex = 7;
             this.cbtempo.SelectedIndexChanged += new System.EventHandler(this.cbtempo_SelectedIndexChanged);
+            this.cbtempo.Leave += new System.EventHandler(this.cbtempo_Leave);
             // 
             // groupBox1
             // 
@@ -156,42 +163,31 @@
             this.groupBox1.Controls.Add(this.maskData);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(29, 50);
+            this.groupBox1.Location = new System.Drawing.Point(19, 32);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1209, 607);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Size = new System.Drawing.Size(806, 395);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registro do Movimento Finânceiro";
             // 
             // dataGridView1
             // 
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle13.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle13.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle13.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle13.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle13.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle13.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle13;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Data,
             this.Tipo,
             this.Total});
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle14.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle14.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle14.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle14.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle14.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle14;
-            this.dataGridView1.Location = new System.Drawing.Point(23, 88);
+            this.dataGridView1.Location = new System.Drawing.Point(15, 57);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(543, 494);
+            this.dataGridView1.Size = new System.Drawing.Size(362, 321);
             this.dataGridView1.TabIndex = 8;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dataGridView1.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellMouseEnter);
             // 
             // Data
             // 
@@ -213,15 +209,15 @@
             // 
             // frmRelatorio
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.ClientSize = new System.Drawing.Size(1266, 682);
+            this.ClientSize = new System.Drawing.Size(844, 443);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "frmRelatorio";
             this.Text = "frmRelatorio";
+            this.Load += new System.EventHandler(this.frmRelatorio_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
