@@ -14,6 +14,8 @@ namespace Guri_atacarejo.forms
 {
     public partial class frmRegistro_Cliente : Form
     {
+        private const string ConnectionString =
+            "Server=(localdb)\\MSSQLLocalDB;Database=SuperMercado;Trusted_Connection=True;TrustServerCertificate=True;";
 
         string lastTecla;
         long i = 0;
@@ -23,7 +25,6 @@ namespace Guri_atacarejo.forms
         {
             InitializeComponent();
         }
-        
 
         private void txtCPF_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -72,7 +73,6 @@ namespace Guri_atacarejo.forms
                                   valor.Substring(3, 3) + "." +
                                   valor.Substring(6, 3) + "-" +
                                   valor.Substring(9, tamanho - 9);
-
                 }
                 else if (valor.Length >= 7)
                 {
@@ -94,7 +94,6 @@ namespace Guri_atacarejo.forms
 
             formatando = false;
         }
-        
 
         private void txtTel_TextChanged(object sender, EventArgs e)
         {
@@ -105,9 +104,7 @@ namespace Guri_atacarejo.forms
 
             string valor = txtTelefone.Text.Replace("(", "").Replace(")", "").Replace("-", "").Replace(" ", "");
 
-            
-
-            if (valor.Length > 11) 
+            if (valor.Length > 11)
             {
                 valor = valor.Substring(0, 11);
             }
@@ -125,7 +122,6 @@ namespace Guri_atacarejo.forms
                                        valor.Substring(0, 2) + ") " +
                                        valor.Substring(2, r) + "-" +
                                        valor.Substring(2 + r);
-                    
                 }
                 else if (valor.Length >= 3)
                 {
@@ -147,15 +143,54 @@ namespace Guri_atacarejo.forms
 
             formatando = false;
         }
+
         private void txtTel_KeyDown(object sender, KeyEventArgs e)
         {
             lastTecla = e.KeyCode.ToString();
         }
+
         private void txtCPF_KeyDown(object sender, KeyEventArgs e)
         {
-           
             lastTecla = e.KeyCode.ToString();
-           
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmPainel painel = new frmPainel();
+            painel.ShowDialog();
+        }
+
+        // devolve o nome do cliente com esse CPF, ou null se não existir
+        private string BuscarClientePorCpf(string cpf)
+        {
+            using (SqlConnection connection = new SqlConnection(ConnectionString))
+            using (SqlCommand command = new SqlCommand("SELECT Nome FROM GA_Clientes WHERE CPF = @CPF", connection))
+            {
+                command.Parameters.AddWithValue("@CPF", cpf);
+                connection.Open();
+                return command.ExecuteScalar() as string;
+            }
+        }
+
+        private async Task SeguirParaVenda(string nome, string cpf)
+        {
+            SessaoClientes.NomeCliente = nome;
+            SessaoClientes.Cpf = cpf;
+
+            await Task.Delay(1000);
+            this.Hide();
+
+            frmPainel painel = new frmPainel();
+            painel.ShowDialog();
+            this.Close();
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmPainel painel = new frmPainel();
+            painel.ShowDialog();
         }
 
         private async void btnRegist_Click(object sender, EventArgs e)
@@ -211,60 +246,70 @@ namespace Guri_atacarejo.forms
                     MessageBox.Show("CPF digitado incorretamente\n\nCPF deve conter 14 caracteres \n\nEx: 123.456.789-00");
                     txtCPF.BackColor = Color.FromArgb(255, 146, 146);
                     erro = true;
-                    
                 }
                 if (!txtEmail.Text.Contains("@") || !txtEmail.Text.Contains(".com"))
                 {
                     MessageBox.Show("Email digitado incorretamente\n Email deve conter @ e .com");
                     txtEmail.BackColor = Color.FromArgb(255, 146, 146);
                     erro = true;
-                    
                 }
                 if (txtTelefone.Text.Length < 14)
                 {
                     MessageBox.Show("Telefone digitado incorretamente\n\n Ex: (12) 34567-8901 ou (12) 3456-7890");
                     txtTelefone.BackColor = Color.FromArgb(255, 146, 146);
                     erro = true;
-                    
                 }
-                if (!erro) 
+                if (!erro)
                 {
-                    string connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=SuperMercado;Trusted_Connection=True;TrustServerCertificate=True;";
-
-                    string query = "INSERT INTO GA_Clientes (Nome, CPF, Genero, Email, Celular) VALUES (@Nome, @CPF, @Gen, @Email, @Celular)";
-
-                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    try
                     {
+                        // CPF já cadastrado? só pode tentar outro CPF
+                        string nomeExistente = BuscarClientePorCpf(txtCPF.Text);
+
+                        if (nomeExistente != null)
+                        {
+                            MessageBox.Show(
+                                "Já existe um cliente cadastrado com esse CPF.",
+                                "CPF já cadastrado",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+
+                            txtCPF.BackColor = Color.FromArgb(255, 146, 146);
+                            txtCPF.Focus();
+                            txtCPF.SelectAll();
+                            return;
+                        }
+
+                        string query = "INSERT INTO GA_Clientes (Nome, CPF, Genero, Email, Celular) VALUES (@Nome, @CPF, @Gen, @Email, @Celular)";
+
+                        using (SqlConnection connection = new SqlConnection(ConnectionString))
                         using (SqlCommand command = new SqlCommand(query, connection))
                         {
-                            command.Parameters.AddWithValue("@Nome", txtNome.Text);
+                            command.Parameters.AddWithValue("@Nome", txtNome.Text.Trim());
                             command.Parameters.AddWithValue("@CPF", txtCPF.Text);
                             command.Parameters.AddWithValue("@Gen", rbHomem.Checked ? "M" : rbMulher.Checked ? "F" : "O");
-                            command.Parameters.AddWithValue("@Email", txtEmail.Text);
+                            command.Parameters.AddWithValue("@Email", txtEmail.Text.Trim().ToLower());
                             command.Parameters.AddWithValue("@Celular", txtTelefone.Text);
 
                             connection.Open();
-
-                            int linhasAfetadas = command.ExecuteNonQuery();
-
-                            Console.WriteLine($"{linhasAfetadas} linha(s) inserida(s) com sucesso.");
-
-                            MessageBox.Show("Cliente registrado com sucesso!");
+                            command.ExecuteNonQuery();
                         }
+
+                        MessageBox.Show("Cliente registrado com sucesso!");
+                        await SeguirParaVenda(txtNome.Text.Trim(), txtCPF.Text);
                     }
-
-                    // depois que cadastrar, volta pra tela de venda
-                    await Task.Delay(1000);
-                    this.Hide();
-
-                    SessaoClientes.NomeCliente = txtNome.Text;
-                    SessaoClientes.Cpf = txtCPF.Text;
-
-                    frmPainel painel = new frmPainel();
-                    painel.ShowDialog();
+                    catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
+                    {
+                        MessageBox.Show("Já existe um cliente com esses dados (CPF ou e-mail). Confira e tente novamente.");
+                        txtCPF.BackColor = Color.FromArgb(255, 146, 146);
+                        txtCPF.Focus();
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("Erro ao acessar o banco: " + ex.Message);
+                    }
                 }
             }
         }
-
     }
 }

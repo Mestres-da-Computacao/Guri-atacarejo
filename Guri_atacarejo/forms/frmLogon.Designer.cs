@@ -55,7 +55,7 @@
             this.Passwordtxtbox.Multiline = true;
             this.Passwordtxtbox.Name = "Passwordtxtbox";
             this.Passwordtxtbox.Size = new System.Drawing.Size(360, 34);
-            this.Passwordtxtbox.TabIndex = 1;
+            this.Passwordtxtbox.TabIndex = 2;
             this.Passwordtxtbox.Text = "Digite sua senha";
             this.Passwordtxtbox.Click += new System.EventHandler(this.Passwordtxtbox_Click);
             this.Passwordtxtbox.Leave += new System.EventHandler(this.Passwordtxtbox_Leave);
@@ -67,7 +67,7 @@
             this.Usertxtbox.Multiline = true;
             this.Usertxtbox.Name = "Usertxtbox";
             this.Usertxtbox.Size = new System.Drawing.Size(360, 34);
-            this.Usertxtbox.TabIndex = 2;
+            this.Usertxtbox.TabIndex = 1;
             this.Usertxtbox.Text = "Digite o usuário";
             this.Usertxtbox.Click += new System.EventHandler(this.Usertxtbox_Click);
             this.Usertxtbox.Leave += new System.EventHandler(this.Usertxtbox_Leave);
@@ -104,7 +104,7 @@
             this.button3.Location = new System.Drawing.Point(188, 397);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(137, 47);
-            this.button3.TabIndex = 5;
+            this.button3.TabIndex = 4;
             this.button3.Text = "Cancelar";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);

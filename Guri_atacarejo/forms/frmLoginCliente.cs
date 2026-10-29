@@ -16,5 +16,12 @@ namespace Guri_atacarejo.forms
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmPainel painel = new frmPainel();
+            painel.ShowDialog();
+        }
     }
 }

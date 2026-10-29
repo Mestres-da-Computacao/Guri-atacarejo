@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Mail;
 using System.Windows.Forms;
 
 namespace Guri_atacarejo.forms
@@ -51,6 +52,32 @@ namespace Guri_atacarejo.forms
             cbCargo.DisplayMember = "Nome";
             cbCargo.ValueMember = "IdCargo";
             cbCargo.SelectedIndex = -1;
+        }
+
+        private bool EmailValido(string email)
+        {
+            if (string.IsNullOrWhiteSpace(email))
+                return false;
+
+            email = email.Trim();
+
+            try
+            {
+                var endereco = new MailAddress(email);
+
+                if (endereco.Address != email)
+                    return false;
+
+                string dominio = endereco.Host;
+                return dominio.Contains(".")
+                    && !dominio.StartsWith(".")
+                    && !dominio.EndsWith(".")
+                    && dominio.Split('.').Last().Length >= 2;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -161,8 +188,8 @@ namespace Guri_atacarejo.forms
             if (maskedtxtTelefone.Text.Any(char.IsDigit) && !maskedtxtTelefone.MaskCompleted)
                 return Erro("Telefone incompleto.", maskedtxtTelefone);
 
-            if (txtEmail.Text.Trim() != "" && !txtEmail.Text.Contains("@"))
-                return Erro("E-mail inválido.", txtEmail);
+            if (txtEmail.Text.Trim() != "" && !EmailValido(txtEmail.Text))
+                return Erro("E-mail inválido ou incompleto.\nEx: nome@dominio.com", txtEmail);
 
             if (txtSenha.Text.Length < 6)
                 return Erro("A senha deve ter pelo menos 6 caracteres.", txtSenha);
