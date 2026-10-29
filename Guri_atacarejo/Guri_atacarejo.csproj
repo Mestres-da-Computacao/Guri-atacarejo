@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CardTelaCompra.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CardTelaCompra.Designer.cs">
+      <DependentUpon>CardTelaCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmCompra.Designer.cs">
+      <DependentUpon>frmCompra.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\frmexibcaoentidades.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +125,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sessao\Sessao.cs" />
     <Compile Include="Sessao\SessaoClientes.cs" />
+    <EmbeddedResource Include="CardTelaCompra.resx">
+      <DependentUpon>CardTelaCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmCompra.resx">
+      <DependentUpon>frmCompra.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmexibcaoentidades.resx">
       <DependentUpon>frmexibcaoentidades.cs</DependentUpon>
     </EmbeddedResource>
