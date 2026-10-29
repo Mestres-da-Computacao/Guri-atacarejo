@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -46,13 +46,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataSet1.cs">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
+    <Compile Include="forms\frmexibcaoentidades.cs">
+      <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DataSet1.Designer.cs">
+    <Compile Include="forms\frmexibcaoentidades.Designer.cs">
+      <DependentUpon>frmexibcaoentidades.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CardCarrinho.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CardCarrinho.Designer.cs">
+      <DependentUpon>CardCarrinho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CardProduto.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CardProduto.Designer.cs">
+      <DependentUpon>CardProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmAdicionar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmAdicionar.Designer.cs">
+      <DependentUpon>frmAdicionar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmLoginCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmLoginCliente.Designer.cs">
+      <DependentUpon>frmLoginCliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet.cs">
+      <DependentUpon>DataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DataSet1.xsd</DependentUpon>
+      <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="forms\frmCadastroFuncionario.cs">
       <SubType>Form</SubType>
@@ -63,8 +93,20 @@
     <Compile Include="forms\frmLogon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\frmLogon.Designer.cs">
-      <DependentUpon>frmLogon.cs</DependentUpon>
+    <Compile Include="forms\FrmLogon.Designer.cs">
+      <DependentUpon>FrmLogon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmRegistro_Cliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmPainel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmRegistro_Cliente.Designer.cs">
+      <DependentUpon>frmRegistro_Cliente.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmPainel.Designer.cs">
+      <DependentUpon>frmPainel.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\FrmSplash.cs">
       <SubType>Form</SubType>
@@ -72,13 +114,37 @@
     <Compile Include="forms\FrmSplash.Designer.cs">
       <DependentUpon>FrmSplash.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\Produto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="forms\frmCadastroFuncionario.resx">
       <DependentUpon>frmCadastroFuncionario.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="Sessao\Sessao.cs" />
+    <Compile Include="Sessao\SessaoClientes.cs" />
+    <EmbeddedResource Include="forms\frmexibcaoentidades.resx">
+      <DependentUpon>frmexibcaoentidades.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardCarrinho.resx">
+      <DependentUpon>CardCarrinho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardProduto.resx">
+      <DependentUpon>CardProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmAdicionar.resx">
+      <DependentUpon>frmAdicionar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmLoginCliente.resx">
+      <DependentUpon>frmLoginCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmLogon.resx">
       <DependentUpon>frmLogon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmRegistro_Cliente.resx">
+      <DependentUpon>frmRegistro_Cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmPainel.resx">
+      <DependentUpon>frmPainel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\FrmSplash.resx">
       <DependentUpon>FrmSplash.cs</DependentUpon>
@@ -91,17 +157,18 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="DataSet1.xsc">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
+    <None Include="DataSet.xsc">
+      <DependentUpon>DataSet.xsd</DependentUpon>
     </None>
-    <None Include="DataSet1.xsd">
+    <None Include="DataSet.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+      <LastGenOutput>DataSet.Designer.cs</LastGenOutput>
     </None>
-    <None Include="DataSet1.xss">
-      <DependentUpon>DataSet1.xsd</DependentUpon>
+    <None Include="DataSet.xss">
+      <DependentUpon>DataSet.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -115,6 +182,13 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="forms\Texte_pra_envio.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minilogo.png" />
+    <Content Include="forms\Texte_pra_envio.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
