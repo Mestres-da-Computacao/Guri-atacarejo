@@ -1,10 +1,10 @@
-IF DB_ID('SuperMercado') IS NULL
+IF DB_ID('db_250405') IS NULL
 BEGIN
-    CREATE DATABASE SuperMercado;
+    CREATE DATABASE db_250405;
 END;
 GO
 
-USE SuperMercado;
+USE db_250405;
 GO
 
 
