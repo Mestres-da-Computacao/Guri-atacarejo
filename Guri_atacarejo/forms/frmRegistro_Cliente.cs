@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Guri_atacarejo;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -157,7 +158,7 @@ namespace Guri_atacarejo.forms
            
         }
 
-        private void btnRegist_Click(object sender, EventArgs e)
+        private async void btnRegist_Click(object sender, EventArgs e)
         {
             string camposVazios = "";
             bool erro = false;
@@ -251,9 +252,18 @@ namespace Guri_atacarejo.forms
                             MessageBox.Show("Cliente registrado com sucesso!");
                         }
                     }
+
+                    // depois que cadastrar, volta pra tela de venda
+                    await Task.Delay(1000);
+                    this.Hide();
+
+                    SessaoClientes.NomeCliente = txtNome.Text;
+                    SessaoClientes.Cpf = txtCPF.Text;
+
+                    frmPainel painel = new frmPainel();
+                    painel.ShowDialog();
                 }
             }
-
         }
 
     }

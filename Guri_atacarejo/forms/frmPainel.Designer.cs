@@ -164,13 +164,13 @@
             this.funcionáriosToolStripMenuItem.Name = "funcionáriosToolStripMenuItem";
             this.funcionáriosToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.funcionáriosToolStripMenuItem.Text = "Funcionários";
-            this.funcionáriosToolStripMenuItem.Click += new System.EventHandler(this.funcionáriosToolStripMenuItem_Click);
             // 
             // registrarFuncionárioToolStripMenuItem
             // 
             this.registrarFuncionárioToolStripMenuItem.Name = "registrarFuncionárioToolStripMenuItem";
             this.registrarFuncionárioToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.registrarFuncionárioToolStripMenuItem.Text = "Registrar Funcionário";
+            this.registrarFuncionárioToolStripMenuItem.Click += new System.EventHandler(this.registrarFuncionárioToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
@@ -194,6 +194,7 @@
             this.registrarClientesToolStripMenuItem.Name = "registrarClientesToolStripMenuItem";
             this.registrarClientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.registrarClientesToolStripMenuItem.Text = "Registrar Cliente";
+            this.registrarClientesToolStripMenuItem.Click += new System.EventHandler(this.registrarClientesToolStripMenuItem_Click);
             // 
             // loginClienteToolStripMenuItem
             // 

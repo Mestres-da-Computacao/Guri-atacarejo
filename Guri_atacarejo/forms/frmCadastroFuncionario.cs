@@ -1,4 +1,4 @@
-﻿using Guri_atacarejo.DataSet1TableAdapters;
+﻿using Guri_atacarejo.DataSetTableAdapters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,9 +32,9 @@ namespace Guri_atacarejo.forms
             cbCargo.ForeColor = Color.Black;
         }
 
-        private DataSet1 guriDataSet = new DataSet1();
-        private DataSet1TableAdapters.GA_DepartamentosTableAdapter gA_DepartamentosTableAdapter = new DataSet1TableAdapters.GA_DepartamentosTableAdapter();
-        private DataSet1TableAdapters.GA_CargosTableAdapter gA_CargosTableAdapter = new DataSet1TableAdapters.GA_CargosTableAdapter();
+        private DataSet guriDataSet = new DataSet();
+        private DataSetTableAdapters.GA_DepartamentosTableAdapter gA_DepartamentosTableAdapter = new DataSetTableAdapters.GA_DepartamentosTableAdapter();
+        private DataSetTableAdapters.GA_CargosTableAdapter gA_CargosTableAdapter = new DataSetTableAdapters.GA_CargosTableAdapter();
 
         private void FormFuncionarios_Load(object sender, EventArgs e)
         {
@@ -87,38 +87,51 @@ namespace Guri_atacarejo.forms
         {
 
         }
-        private DataSet1TableAdapters.GA_FuncionariosTableAdapter gA_FuncionariosTableAdapter = new DataSet1TableAdapters.GA_FuncionariosTableAdapter();
+        private DataSetTableAdapters.GA_FuncionariosTableAdapter gA_FuncionariosTableAdapter = new DataSetTableAdapters.GA_FuncionariosTableAdapter();
 
-        private void btnConfirmar_Click(object sender, EventArgs e)
+        private async void btnConfirmar_Click(object sender, EventArgs e)
         {
             if (!ValidarCampos()) return;
 
-            // radio bnts
             string genero = radioButtonHomem.Checked ? "M" : radioButtonMulher.Checked ? "F" : "O";
-
-            // Campos opcionais: null vira NULL no banco
             string telefone = maskedtxtTelefone.MaskCompleted ? maskedtxtTelefone.Text : null;
             string email = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text.Trim();
+
+            string nomeFuncionario = txtNome.Text.Trim();
+            DataRowView cargoSelecionado = (DataRowView)cbCargo.SelectedItem;
+            int? nivel = cargoSelecionado["Nivel"] == DBNull.Value
+                ? (int?)null
+                : Convert.ToInt32(cargoSelecionado["Nivel"]);
 
             try
             {
                 gA_FuncionariosTableAdapter.InsertQueryFuncionarios(
-                    Convert.ToInt32(cbCargo.SelectedValue), // FKCargo
-                    Convert.ToInt32(cbDepartamento.SelectedValue), // FKDepartamento
-                    txtNome.Text.Trim(), // Nome
-                    maskedtxtCpf.Text, // CPF (14 caracteres com a máscara)
-                    dateTimePickerDataNasc.Value.Date, // DataNascimento
-                    genero, // Genero
-                    telefone, // Telefone
-                    email, // Email
-                    txtSenha.Text, // Senha
-                    DateTime.Today, // DataEmissao
-                    numericUpDownSalario.Value // Salario
+                    Convert.ToInt32(cbCargo.SelectedValue),
+                    Convert.ToInt32(cbDepartamento.SelectedValue),
+                    nomeFuncionario,
+                    maskedtxtCpf.Text,
+                    dateTimePickerDataNasc.Value.Date,
+                    genero,
+                    telefone,
+                    email,
+                    txtSenha.Text,
+                    DateTime.Today,
+                    numericUpDownSalario.Value
                 );
 
                 MessageBox.Show("Funcionário cadastrado com sucesso!");
 
+                Sessao.NivelFuncionario = nivel ?? 0;
+                Sessao.Usuario = nomeFuncionario;
+
                 LimparCampos();
+
+                await Task.Delay(1000);
+                this.Hide();
+
+                frmPainel painel = new frmPainel();
+                painel.ShowDialog();
+                this.Close();
             }
             catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
             {
@@ -132,7 +145,9 @@ namespace Guri_atacarejo.forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            frmPainel painel = new frmPainel();
+            painel.ShowDialog();
         }
 
         private bool ValidarCampos()

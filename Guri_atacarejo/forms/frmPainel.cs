@@ -16,11 +16,9 @@ namespace Guri_atacarejo.forms
         public frmPainel()
         {
             InitializeComponent();
-        }
-
-        private void funcionáriosToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
+            Console.WriteLine("Nível do funcionário: " + Sessao.NivelFuncionario);
+            Console.WriteLine("Cliente logado: " + SessaoClientes.NomeCliente);
+            Console.WriteLine("CPF do cliente: " + SessaoClientes.Cpf);
         }
 
         private void frmPainel_Load(object sender, EventArgs e)
@@ -62,13 +60,32 @@ namespace Guri_atacarejo.forms
 
         private void loginClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            frmLoginCliente frmLoginCliente = new frmLoginCliente();
+            frmLoginCliente.ShowDialog();
         }
 
         private void logoutClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SessaoClientes.NomeCliente = null;
-            SessaoClientes.Senha = null;
+            SessaoClientes.Cpf = null;
+
+            Console.WriteLine("Cliente logado: " + SessaoClientes.NomeCliente);
+            Console.WriteLine("CPF do cliente: " + SessaoClientes.Cpf);
+        }
+
+        private void registrarClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmRegistro_Cliente registroClienteForm = new frmRegistro_Cliente();
+            registroClienteForm.ShowDialog();
+        }
+
+        private void registrarFuncionárioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmCadastroFuncionario cadastroFuncionarioForm = new frmCadastroFuncionario();
+            cadastroFuncionarioForm.ShowDialog();
         }
     }
 }
