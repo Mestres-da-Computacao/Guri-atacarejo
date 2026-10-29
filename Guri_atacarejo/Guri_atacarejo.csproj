@@ -87,17 +87,17 @@
     <Compile Include="forms\frmLogon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\frmLogon.Designer.cs">
-      <DependentUpon>frmLogon.cs</DependentUpon>
+    <Compile Include="forms\FrmLogon.Designer.cs">
+      <DependentUpon>FrmLogon.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\FrmSplash.cs">
+    <Compile Include="forms\frmRegistro_Cliente.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="forms\FrmSplash.Designer.cs">
-      <DependentUpon>FrmSplash.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\frmPainel.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmRegistro_Cliente.Designer.cs">
+      <DependentUpon>frmRegistro_Cliente.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\frmPainel.Designer.cs">
       <DependentUpon>frmPainel.cs</DependentUpon>
@@ -130,6 +130,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmLogon.resx">
       <DependentUpon>frmLogon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmRegistro_Cliente.resx">
+      <DependentUpon>frmRegistro_Cliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmPainel.resx">
       <DependentUpon>frmPainel.cs</DependentUpon>
@@ -170,6 +173,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="forms\Texte_pra_envio.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\minilogo.png" />
