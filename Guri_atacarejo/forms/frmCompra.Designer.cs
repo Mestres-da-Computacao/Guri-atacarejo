@@ -47,6 +47,7 @@
             // 
             // flowLayoutPanel1
             // 
+            this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.BackColor = System.Drawing.Color.White;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(17, 53);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -91,17 +92,18 @@
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1090, 654);
+            this.groupBox1.Size = new System.Drawing.Size(1213, 654);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tela de compra";
             // 
             // flowLayoutPanel2
             // 
+            this.flowLayoutPanel2.AutoScroll = true;
             this.flowLayoutPanel2.BackColor = System.Drawing.Color.White;
             this.flowLayoutPanel2.Location = new System.Drawing.Point(846, 53);
             this.flowLayoutPanel2.Name = "flowLayoutPanel2";
-            this.flowLayoutPanel2.Size = new System.Drawing.Size(227, 430);
+            this.flowLayoutPanel2.Size = new System.Drawing.Size(350, 430);
             this.flowLayoutPanel2.TabIndex = 1;
             // 
             // textBox2
@@ -109,7 +111,7 @@
             this.textBox2.Location = new System.Drawing.Point(846, 598);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(227, 24);
+            this.textBox2.Size = new System.Drawing.Size(350, 24);
             this.textBox2.TabIndex = 8;
             // 
             // textBox1
@@ -117,7 +119,7 @@
             this.textBox1.Location = new System.Drawing.Point(846, 537);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(227, 24);
+            this.textBox1.Size = new System.Drawing.Size(350, 24);
             this.textBox1.TabIndex = 7;
             // 
             // label2
@@ -200,7 +202,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.ClientSize = new System.Drawing.Size(1114, 678);
+            this.ClientSize = new System.Drawing.Size(1238, 678);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmCompra_";
             this.Text = "frmCompra_";

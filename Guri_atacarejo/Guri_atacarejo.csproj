@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CardCompraProduto.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CardCompraProduto.Designer.cs">
+      <DependentUpon>CardCompraProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="CardTelaCompra.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -125,6 +131,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sessao\Sessao.cs" />
     <Compile Include="Sessao\SessaoClientes.cs" />
+    <EmbeddedResource Include="CardCompraProduto.resx">
+      <DependentUpon>CardCompraProduto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CardTelaCompra.resx">
       <DependentUpon>CardTelaCompra.cs</DependentUpon>
     </EmbeddedResource>
