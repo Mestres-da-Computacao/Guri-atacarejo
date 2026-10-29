@@ -110,5 +110,20 @@ namespace Guri_atacarejo.forms
 
             //código para enviar os produtos para o painel principal
         }
+
+        private void picLogo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPesquisar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblTitulo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
