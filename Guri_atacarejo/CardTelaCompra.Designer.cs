@@ -36,8 +36,14 @@
             // 
             // numQtd
             // 
+            this.numQtd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.numQtd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numQtd.Location = new System.Drawing.Point(731, 3);
+            this.numQtd.Location = new System.Drawing.Point(732, 3);
+            this.numQtd.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
             this.numQtd.Name = "numQtd";
             this.numQtd.Size = new System.Drawing.Size(68, 26);
             this.numQtd.TabIndex = 5;
@@ -47,7 +53,7 @@
             this.lblPreco.AutoSize = true;
             this.lblPreco.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPreco.ForeColor = System.Drawing.Color.Black;
-            this.lblPreco.Location = new System.Drawing.Point(244, 5);
+            this.lblPreco.Location = new System.Drawing.Point(339, 5);
             this.lblPreco.Name = "lblPreco";
             this.lblPreco.Size = new System.Drawing.Size(50, 20);
             this.lblPreco.TabIndex = 4;
@@ -55,7 +61,7 @@
             // 
             // lblNome
             // 
-            this.lblNome.AutoSize = true;
+            this.lblNome.AutoEllipsis = true;
             this.lblNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNome.ForeColor = System.Drawing.Color.Black;
             this.lblNome.Location = new System.Drawing.Point(3, 5);
@@ -68,11 +74,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Controls.Add(this.numQtd);
             this.Controls.Add(this.lblPreco);
             this.Controls.Add(this.lblNome);
             this.Name = "CardTelaCompra";
-            this.Size = new System.Drawing.Size(802, 33);
+            this.Size = new System.Drawing.Size(803, 31);
             this.Load += new System.EventHandler(this.CardTelaCompra_Load);
             ((System.ComponentModel.ISupportInitialize)(this.numQtd)).EndInit();
             this.ResumeLayout(false);
