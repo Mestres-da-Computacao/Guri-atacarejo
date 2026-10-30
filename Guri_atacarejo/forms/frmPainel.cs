@@ -87,5 +87,10 @@ namespace Guri_atacarejo.forms
             frmCadastroFuncionario cadastroFuncionarioForm = new frmCadastroFuncionario();
             cadastroFuncionarioForm.ShowDialog();
         }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
