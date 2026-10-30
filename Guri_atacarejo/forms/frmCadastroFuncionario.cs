@@ -54,6 +54,46 @@ namespace Guri_atacarejo.forms
             cbCargo.SelectedIndex = -1;
         }
 
+        private void AtualizarCargos(string departamento)
+        {
+            cbCargo.Items.Clear();
+
+            string[] cargos;
+
+            switch (departamento)
+            {
+                case "Diretoria":
+                    cargos = new[] { "Gerente Geral", "Subgerente" };
+                    break;
+
+                case "Operação da Loja":
+                    cargos = new[] { "Repositor", "Padeiro", "Açougueiro" };
+                    break;
+
+                case "Estoque":
+                    cargos = new[] { "Estoquista", "Conferente" };
+                    break;
+
+                case "Administrativo":
+                    cargos = new[] { "Recursos Humanos", "Limpeza" };
+                    break;
+
+                case "Atendimento":
+                    cargos = new[] { "Operador de Caixa", "Fiscal de Caixa" };
+                    break;
+
+                default:
+                    cargos = new string[0];
+                    break;
+            }
+
+            cbCargo.Items.AddRange(cargos);
+            if (cbCargo.Items.Count > 0)
+                cbCargo.SelectedIndex = 0;
+            else
+                cbCargo.SelectedIndex = -1;
+        }
+
         private bool EmailValido(string email)
         {
             if (string.IsNullOrWhiteSpace(email))
@@ -226,6 +266,15 @@ namespace Guri_atacarejo.forms
             cbCargo.SelectedIndex = -1;
             radioButtonHomem.Checked = radioButtonMulher.Checked = radioButtonOutro.Checked = false;
             txtNome.Focus();
+        }
+
+        private void cbDepartamento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbDepartamento.SelectedItem == null)
+                return;
+
+            AtualizarCargos(cbDepartamento.SelectedItem.ToString());
+            
         }
     }
 }
