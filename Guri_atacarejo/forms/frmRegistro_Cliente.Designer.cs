@@ -32,6 +32,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.button3 = new System.Windows.Forms.Button();
             this.btnRegist = new System.Windows.Forms.Button();
+            this.txtCPF = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtTelefone = new System.Windows.Forms.TextBox();
@@ -42,7 +43,6 @@
             this.rbMulher = new System.Windows.Forms.RadioButton();
             this.rbOutro = new System.Windows.Forms.RadioButton();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtCPF = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -102,6 +102,21 @@
             this.btnRegist.UseVisualStyleBackColor = false;
             this.btnRegist.Click += new System.EventHandler(this.btnRegist_Click);
             // 
+            // txtCPF
+            // 
+            this.txtCPF.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCPF.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.txtCPF.Location = new System.Drawing.Point(87, 114);
+            this.txtCPF.MaxLength = 14;
+            this.txtCPF.Multiline = true;
+            this.txtCPF.Name = "txtCPF";
+            this.txtCPF.Size = new System.Drawing.Size(385, 21);
+            this.txtCPF.TabIndex = 2;
+            this.txtCPF.TextChanged += new System.EventHandler(this.txtCPF_TextChanged);
+            this.txtCPF.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCPF_KeyDown);
+            this.txtCPF.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCPF_KeyPress);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -124,12 +139,12 @@
             // txtTelefone
             // 
             this.txtTelefone.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtTelefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTelefone.Location = new System.Drawing.Point(226, 219);
+            this.txtTelefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTelefone.Location = new System.Drawing.Point(226, 222);
             this.txtTelefone.MaxLength = 15;
             this.txtTelefone.Multiline = true;
             this.txtTelefone.Name = "txtTelefone";
-            this.txtTelefone.Size = new System.Drawing.Size(246, 28);
+            this.txtTelefone.Size = new System.Drawing.Size(246, 21);
             this.txtTelefone.TabIndex = 12;
             this.txtTelefone.TextChanged += new System.EventHandler(this.txtTel_TextChanged);
             this.txtTelefone.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTel_KeyDown);
@@ -148,11 +163,11 @@
             // txtEmail
             // 
             this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(226, 165);
+            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmail.Location = new System.Drawing.Point(226, 168);
             this.txtEmail.Multiline = true;
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(246, 28);
+            this.txtEmail.Size = new System.Drawing.Size(246, 21);
             this.txtEmail.TabIndex = 10;
             // 
             // groupBox2
@@ -207,21 +222,6 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "CPF :";
             // 
-            // txtCPF
-            // 
-            this.txtCPF.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCPF.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txtCPF.Location = new System.Drawing.Point(87, 111);
-            this.txtCPF.MaxLength = 14;
-            this.txtCPF.Multiline = true;
-            this.txtCPF.Name = "txtCPF";
-            this.txtCPF.Size = new System.Drawing.Size(385, 28);
-            this.txtCPF.TabIndex = 2;
-            this.txtCPF.TextChanged += new System.EventHandler(this.txtCPF_TextChanged);
-            this.txtCPF.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCPF_KeyDown);
-            this.txtCPF.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCPF_KeyPress);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -236,11 +236,11 @@
             // 
             this.txtNome.BackColor = System.Drawing.SystemColors.Window;
             this.txtNome.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNome.Location = new System.Drawing.Point(87, 58);
+            this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNome.Location = new System.Drawing.Point(87, 61);
             this.txtNome.Multiline = true;
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(385, 28);
+            this.txtNome.Size = new System.Drawing.Size(385, 21);
             this.txtNome.TabIndex = 0;
             this.txtNome.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNome_KeyPress);
             // 

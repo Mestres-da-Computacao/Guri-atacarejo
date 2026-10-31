@@ -19,6 +19,12 @@ namespace Guri_atacarejo.forms
 
             ResponsividadeForm.Aplicar(this);
 
+            // Tabelas sem a linha vazia de "nova linha" e sem a coluna de seta
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView2.AllowUserToAddRows = false;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView2.RowHeadersVisible = false;
+
             Console.WriteLine("Nível do funcionário: " + Sessao.NivelFuncionario);
             Console.WriteLine("Cliente logado: " + SessaoClientes.NomeCliente);
             Console.WriteLine("CPF do cliente: " + SessaoClientes.Cpf);

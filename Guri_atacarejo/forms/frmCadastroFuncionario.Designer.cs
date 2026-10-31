@@ -98,7 +98,7 @@
             // 
             this.maskedtxtTelefone.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.maskedtxtTelefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.maskedtxtTelefone.Location = new System.Drawing.Point(437, 163);
+            this.maskedtxtTelefone.Location = new System.Drawing.Point(437, 164);
             this.maskedtxtTelefone.Mask = "\\(00\\) 00000\\-0000";
             this.maskedtxtTelefone.Name = "maskedtxtTelefone";
             this.maskedtxtTelefone.Size = new System.Drawing.Size(163, 22);
@@ -145,7 +145,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(363, 130);
+            this.label9.Location = new System.Drawing.Point(363, 127);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(70, 20);
             this.label9.TabIndex = 21;
@@ -161,7 +161,7 @@
             0,
             0,
             0});
-            this.numericUpDownSalario.Location = new System.Drawing.Point(437, 131);
+            this.numericUpDownSalario.Location = new System.Drawing.Point(437, 128);
             this.numericUpDownSalario.Maximum = new decimal(new int[] {
             999999,
             0,
