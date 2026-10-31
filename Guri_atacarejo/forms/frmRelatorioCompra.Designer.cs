@@ -1,6 +1,6 @@
 ﻿namespace Guri_atacarejo.forms
 {
-    partial class frmRelatorioVenda
+    partial class frmRelatorioCompra
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRelatorioVenda));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRelatorioCompra));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
@@ -40,11 +40,11 @@
             this.maskData = new System.Windows.Forms.MaskedTextBox();
             this.cbtempo = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnResetarFiltro = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnResetarFiltro = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -175,6 +175,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registro do Movimento Finânceiro";
             // 
+            // btnResetarFiltro
+            // 
+            this.btnResetarFiltro.BackColor = System.Drawing.Color.White;
+            this.btnResetarFiltro.FlatAppearance.BorderSize = 0;
+            this.btnResetarFiltro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetarFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetarFiltro.ForeColor = System.Drawing.Color.Black;
+            this.btnResetarFiltro.Location = new System.Drawing.Point(618, 23);
+            this.btnResetarFiltro.Name = "btnResetarFiltro";
+            this.btnResetarFiltro.Size = new System.Drawing.Size(85, 21);
+            this.btnResetarFiltro.TabIndex = 9;
+            this.btnResetarFiltro.Text = "Resetar filtro";
+            this.btnResetarFiltro.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnResetarFiltro.UseVisualStyleBackColor = false;
+            this.btnResetarFiltro.Click += new System.EventHandler(this.btnResetarFiltro_Click);
+            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -216,22 +232,6 @@
             this.Total.MinimumWidth = 8;
             this.Total.Name = "Total";
             this.Total.ReadOnly = true;
-            // 
-            // btnResetarFiltro
-            // 
-            this.btnResetarFiltro.BackColor = System.Drawing.Color.White;
-            this.btnResetarFiltro.FlatAppearance.BorderSize = 0;
-            this.btnResetarFiltro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnResetarFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnResetarFiltro.ForeColor = System.Drawing.Color.Black;
-            this.btnResetarFiltro.Location = new System.Drawing.Point(618, 23);
-            this.btnResetarFiltro.Name = "btnResetarFiltro";
-            this.btnResetarFiltro.Size = new System.Drawing.Size(85, 21);
-            this.btnResetarFiltro.TabIndex = 9;
-            this.btnResetarFiltro.Text = "Resetar filtro";
-            this.btnResetarFiltro.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnResetarFiltro.UseVisualStyleBackColor = false;
-            this.btnResetarFiltro.Click += new System.EventHandler(this.btnResetarFiltro_Click);
             // 
             // frmRelatorioVenda
             // 

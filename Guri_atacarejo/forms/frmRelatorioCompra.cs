@@ -8,11 +8,11 @@ using System.Text;
 
 namespace Guri_atacarejo.forms
 {
-    public partial class frmRelatorioVenda : Form
+    public partial class frmRelatorioCompra : Form
     {
         private readonly string connStr = @"Server=(localdb)\MSSQLLocalDB;Database=SuperMercado;Trusted_Connection=True;";
 
-        public frmRelatorioVenda()
+        public frmRelatorioCompra()
         {
             InitializeComponent();
 
