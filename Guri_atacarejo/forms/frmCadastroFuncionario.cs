@@ -229,5 +229,10 @@ namespace Guri_atacarejo.forms
             radioButtonHomem.Checked = radioButtonMulher.Checked = radioButtonOutro.Checked = false;
             txtNome.Focus();
         }
+
+        private void maskedtxtCpf_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
     }
 }
