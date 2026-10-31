@@ -15,7 +15,7 @@ namespace Guri_atacarejo.forms
     public partial class frmRegistro_Cliente : Form
     {
         private const string ConnectionString =
-            "Server=(localdb)\\MSSQLLocalDB;Database=SuperMercado;Trusted_Connection=True;TrustServerCertificate=True;";
+            "Server=(localdb)\\MSSQLLocalDB;Database=db_250405;Trusted_Connection=True;TrustServerCertificate=True;";
 
         string lastTecla;
         long i = 0;
