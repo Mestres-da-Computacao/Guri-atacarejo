@@ -25,5 +25,10 @@ namespace Guri_atacarejo.forms
             frmPainel painel = new frmPainel();
             painel.ShowDialog();
         }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

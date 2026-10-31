@@ -20,8 +20,6 @@ namespace Guri_atacarejo
         {
             InitializeComponent();
 
-            ResponsividadeForm.Aplicar(this);
-
             int raio = 10;
 
             GraphicsPath path = new GraphicsPath();

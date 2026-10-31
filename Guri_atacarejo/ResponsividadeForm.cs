@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
@@ -47,8 +46,7 @@ namespace Guri_atacarejo
             };
         }
 
-        private static void GuardarOriginais(
-            Control pai, Estado estado)
+        private static void GuardarOriginais(Control pai, Estado estado)
         {
             foreach (Control c in pai.Controls)
             {
@@ -58,12 +56,42 @@ namespace Guri_atacarejo
                     FontSize = c.Font.Size
                 };
 
+                if (c is DataGridView grid)
+                    ConfigurarGrid(grid);
+
+                // Cards (UserControl) e listas dinâmicas (FlowLayoutPanel)
+                // cuidam do próprio layout: não escalar o que há dentro deles.
+                if (c is UserControl || c is FlowLayoutPanel)
+                    continue;
+
                 GuardarOriginais(c, estado);
             }
         }
 
-        private static void Redimensionar(
-            Form form, Estado estado)
+        // Colunas passam a preencher a largura da grade, proporcionais
+        // às larguras definidas no designer.
+        private static void ConfigurarGrid(DataGridView grid)
+        {
+            foreach (DataGridViewColumn col in grid.Columns)
+                col.FillWeight = Math.Max(1, col.Width);
+
+            grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            grid.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            grid.ColumnHeadersHeightSizeMode =
+                DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+        }
+
+        private static void AjustarLinhasGrid(DataGridView grid)
+        {
+            int altura = grid.Font.Height + 12;
+
+            grid.RowTemplate.Height = altura;
+
+            foreach (DataGridViewRow linha in grid.Rows)
+                linha.Height = altura;
+        }
+
+        private static void Redimensionar(Form form, Estado estado)
         {
             if (!estado.Inicializado ||
                 estado.TamanhoOriginal.IsEmpty ||
@@ -89,18 +117,31 @@ namespace Guri_atacarejo
                 if (c.IsDisposed)
                     continue;
 
-                c.Bounds = new Rectangle(
-                    (int)(o.Bounds.X * sx),
-                    (int)(o.Bounds.Y * sy),
-                    (int)(o.Bounds.Width * sx),
-                    (int)(o.Bounds.Height * sy)
-                );
+                // Controles ancorados por Dock (ex.: MenuStrip) não têm
+                // posição/tamanho escalados, só a fonte.
+                if (c.Dock == DockStyle.None)
+                {
+                    c.Bounds = new Rectangle(
+                        (int)(o.Bounds.X * sx),
+                        (int)(o.Bounds.Y * sy),
+                        (int)(o.Bounds.Width * sx),
+                        (int)(o.Bounds.Height * sy)
+                    );
+                }
 
-                c.Font = new Font(
-                    c.Font.FontFamily,
-                    Math.Max(1f, o.FontSize * sFonte),
-                    c.Font.Style
-                );
+                float novaFonte = Math.Max(1f, o.FontSize * sFonte);
+
+                if (Math.Abs(c.Font.Size - novaFonte) > 0.05f)
+                {
+                    c.Font = new Font(
+                        c.Font.FontFamily,
+                        novaFonte,
+                        c.Font.Style
+                    );
+                }
+
+                if (c is DataGridView grid)
+                    AjustarLinhasGrid(grid);
             }
 
             form.ResumeLayout(true);
