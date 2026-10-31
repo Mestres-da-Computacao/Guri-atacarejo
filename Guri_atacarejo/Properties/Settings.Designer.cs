@@ -26,7 +26,7 @@ namespace Guri_atacarejo.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=mercado;Integrated Security=Tr" +
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=SuperMercado;Integrated Security=Tr" +
             "ue;")]
         public string ConnectionString {
             get {
@@ -34,14 +34,5 @@ namespace Guri_atacarejo.Properties {
             }
         }
         
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localdb)\\MSSQLLocalDB;Integrated Security=True;Encrypt=True")]
-        public string ConnectionString1 {
-            get {
-                return ((string)(this["ConnectionString1"]));
-            }
-        }
     }
 }
