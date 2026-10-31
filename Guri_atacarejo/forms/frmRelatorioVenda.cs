@@ -8,12 +8,11 @@ using System.Text;
 
 namespace Guri_atacarejo.forms
 {
-    public partial class frmRelatorio : Form
+    public partial class frmRelatorioVenda : Form
     {
-        private readonly string connStr =
-            @"Server=(localdb)\MSSQLLocalDB;Database=SuperMercado;Trusted_Connection=True;";
+        private readonly string connStr = @"Server=(localdb)\MSSQLLocalDB;Database=SuperMercado;Trusted_Connection=True;";
 
-        public frmRelatorio()
+        public frmRelatorioVenda()
         {
             InitializeComponent();
 
@@ -48,18 +47,24 @@ namespace Guri_atacarejo.forms
 
         private void CarregarProdutos(DateTime? inicio = null, DateTime? fim = null)
         {
-
             dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
             dataGridView1.DefaultCellStyle.BackColor = Color.White;
 
             try
             {
-                string sql = @"SELECT IdCompra, DataCompra, StatusCompra, ValorTotal, FormaPagamento, DataEntrega, FKFornecedor, FKFuncionario FROM GA_Compra";
+                string sql = @"SELECT c.IdCompra, c.DataCompra, c.StatusCompra, c.ValorTotal,
+                                      c.FormaPagamento, c.DataEntrega,
+                                      c.FKFornecedor, c.FKFuncionario,
+                                      f.Nome  AS NomeFornecedor,
+                                      fu.Nome AS NomeFuncionario
+                               FROM GA_Compra c
+                               INNER JOIN GA_Fornecedor   f  ON f.IdFornecedor    = c.FKFornecedor
+                               INNER JOIN GA_Funcionarios fu ON fu.IdFuncionario  = c.FKFuncionario";
 
                 if (inicio.HasValue && fim.HasValue)
-                    sql += " WHERE DataCompra >= @inicio AND DataCompra < @fim";
+                    sql += " WHERE c.DataCompra >= @inicio AND c.DataCompra < @fim";
 
-                sql += " ORDER BY DataCompra DESC";
+                sql += " ORDER BY c.DataCompra DESC";
 
                 using (var conn = new SqlConnection(connStr))
                 using (var da = new SqlDataAdapter(sql, conn))
@@ -139,10 +144,39 @@ namespace Guri_atacarejo.forms
                     break;
             }
 
+            // data inválida (ex.: 67/67/6767): avisa e limpa
             if (!ok)
             {
-                if (mostrarAvisos)
-                    MessageBox.Show("Data inválida.");
+                MessageBox.Show("Data inválida.", "Data inválida",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                maskData.Clear();
+                maskData.Focus();
+                return;
+            }
+
+            // data futura: avisa e limpa
+            DateTime hoje = DateTime.Today;
+            bool futura;
+
+            switch (cbtempo.SelectedIndex)
+            {
+                case 0: // dia
+                    futura = inicio.Date > hoje;
+                    break;
+                case 1: // mês
+                    futura = inicio > new DateTime(hoje.Year, hoje.Month, 1);
+                    break;
+                default: // ano
+                    futura = inicio.Year > hoje.Year;
+                    break;
+            }
+
+            if (futura)
+            {
+                MessageBox.Show("Não é possível consultar datas futuras.", "Data inválida",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                maskData.Clear();
+                maskData.Focus();
                 return;
             }
 
@@ -153,6 +187,7 @@ namespace Guri_atacarejo.forms
         {
             AplicarFiltro(false);
         }
+
         private void maskData_TextChanged(object sender, EventArgs e)
         {
             if (maskData.MaskCompleted)
@@ -173,8 +208,8 @@ namespace Guri_atacarejo.forms
             sb.AppendLine("Data: " + Convert.ToDateTime(drv["DataCompra"]).ToString("dd/MM/yyyy"));
             sb.AppendLine("Status: " + drv["StatusCompra"]);
             sb.AppendLine("Pagamento: " + (drv["FormaPagamento"] == DBNull.Value ? "-" : drv["FormaPagamento"]));
-            sb.AppendLine("Fornecedor (Id): " + drv["FKFornecedor"]);
-            sb.AppendLine("Funcionário (Id): " + drv["FKFuncionario"]);
+            sb.AppendLine("Fornecedor: " + drv["NomeFornecedor"]);
+            sb.AppendLine("Funcionário: " + drv["NomeFuncionario"]);
             sb.AppendLine("Valor total: " + Convert.ToDecimal(drv["ValorTotal"]).ToString("C2"));
             sb.AppendLine();
             sb.AppendLine("ITENS:");
@@ -183,9 +218,11 @@ namespace Guri_atacarejo.forms
             {
                 using (var conn = new SqlConnection(connStr))
                 using (var cmd = new SqlCommand(
-                    @"SELECT FKLote, Quantidade, PrecoUnitario, Subtotal
-              FROM GA_ItensCompra
-              WHERE FKCompra = @id", conn))
+                    @"SELECT p.Nome AS Produto, i.FKLote, i.Quantidade, i.PrecoUnitario, i.Subtotal
+                      FROM GA_ItensCompra i
+                      INNER JOIN GA_Lote l     ON l.IdLote = i.FKLote
+                      INNER JOIN GA_Produtos p ON p.IdProduto = l.FKProduto
+                      WHERE i.FKCompra = @id", conn))
                 {
                     cmd.Parameters.Add("@id", SqlDbType.Int).Value = idCompra;
                     conn.Open();
@@ -196,8 +233,8 @@ namespace Guri_atacarejo.forms
                         while (rd.Read())
                         {
                             temItens = true;
-                            sb.AppendLine(string.Format("- Lote {0}: {1} x {2:C2} = {3:C2}",
-                                rd["FKLote"], rd["Quantidade"],
+                            sb.AppendLine(string.Format("- {0} (Lote {1}): {2} x {3:C2} = {4:C2}",
+                                rd["Produto"], rd["FKLote"], rd["Quantidade"],
                                 rd["PrecoUnitario"], rd["Subtotal"]));
                         }
                         if (!temItens) sb.AppendLine("(nenhum item)");
@@ -217,6 +254,15 @@ namespace Guri_atacarejo.forms
         {
             MostrarDetalhes(e.RowIndex);
         }
+        
+        // reseta o filtro
+        private void btnResetarFiltro_Click(object sender, EventArgs e)
+        {
+            maskData.Clear();
+            cbtempo.SelectedIndex = 0;
+            CarregarProdutos();
+            textBox2.Clear();
+        }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
@@ -234,7 +280,5 @@ namespace Guri_atacarejo.forms
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
         }
-
-        
     }
 }

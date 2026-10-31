@@ -1,6 +1,6 @@
 ﻿namespace Guri_atacarejo.forms
 {
-    partial class frmRelatorio
+    partial class frmRelatorioVenda
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRelatorio));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmRelatorioVenda));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
@@ -44,6 +44,7 @@
             this.Data = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tipo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnResetarFiltro = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -116,7 +117,7 @@
             // 
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox2.Location = new System.Drawing.Point(391, 57);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.ReadOnly = true;
@@ -130,8 +131,8 @@
             this.maskData.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.maskData.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.maskData.ForeColor = System.Drawing.Color.White;
-            this.maskData.Location = new System.Drawing.Point(719, 25);
-            this.maskData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.maskData.Location = new System.Drawing.Point(719, 28);
+            this.maskData.Margin = new System.Windows.Forms.Padding(2);
             this.maskData.Mask = "00/00/0000";
             this.maskData.Name = "maskData";
             this.maskData.Size = new System.Drawing.Size(69, 13);
@@ -141,14 +142,15 @@
             // 
             // cbtempo
             // 
+            this.cbtempo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbtempo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbtempo.FormattingEnabled = true;
             this.cbtempo.Items.AddRange(new object[] {
             "Dia",
             "Mês",
             "Ano"});
-            this.cbtempo.Location = new System.Drawing.Point(618, 21);
-            this.cbtempo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cbtempo.Location = new System.Drawing.Point(522, 23);
+            this.cbtempo.Margin = new System.Windows.Forms.Padding(2);
             this.cbtempo.Name = "cbtempo";
             this.cbtempo.Size = new System.Drawing.Size(82, 21);
             this.cbtempo.TabIndex = 7;
@@ -157,6 +159,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnResetarFiltro);
             this.groupBox1.Controls.Add(this.dataGridView1);
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.cbtempo);
@@ -164,9 +167,9 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold);
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(19, 32);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(806, 395);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.TabStop = false;
@@ -174,16 +177,20 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Data,
             this.Tipo,
             this.Total});
             this.dataGridView1.Location = new System.Drawing.Point(15, 57);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 62;
             this.dataGridView1.RowTemplate.Height = 28;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(362, 321);
             this.dataGridView1.TabIndex = 8;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
@@ -194,20 +201,39 @@
             this.Data.HeaderText = "Data";
             this.Data.MinimumWidth = 8;
             this.Data.Name = "Data";
+            this.Data.ReadOnly = true;
             // 
             // Tipo
             // 
             this.Tipo.HeaderText = "Tipo";
             this.Tipo.MinimumWidth = 8;
             this.Tipo.Name = "Tipo";
+            this.Tipo.ReadOnly = true;
             // 
             // Total
             // 
             this.Total.HeaderText = "Total";
             this.Total.MinimumWidth = 8;
             this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
             // 
-            // frmRelatorio
+            // btnResetarFiltro
+            // 
+            this.btnResetarFiltro.BackColor = System.Drawing.Color.White;
+            this.btnResetarFiltro.FlatAppearance.BorderSize = 0;
+            this.btnResetarFiltro.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnResetarFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnResetarFiltro.ForeColor = System.Drawing.Color.Black;
+            this.btnResetarFiltro.Location = new System.Drawing.Point(618, 23);
+            this.btnResetarFiltro.Name = "btnResetarFiltro";
+            this.btnResetarFiltro.Size = new System.Drawing.Size(85, 21);
+            this.btnResetarFiltro.TabIndex = 9;
+            this.btnResetarFiltro.Text = "Resetar filtro";
+            this.btnResetarFiltro.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnResetarFiltro.UseVisualStyleBackColor = false;
+            this.btnResetarFiltro.Click += new System.EventHandler(this.btnResetarFiltro_Click);
+            // 
+            // frmRelatorioVenda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -215,7 +241,7 @@
             this.ClientSize = new System.Drawing.Size(844, 443);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
-            this.Name = "frmRelatorio";
+            this.Name = "frmRelatorioVenda";
             this.Text = "frmRelatorio";
             this.Load += new System.EventHandler(this.frmRelatorio_Load);
             this.toolStrip1.ResumeLayout(false);
@@ -244,5 +270,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Data;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tipo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Total;
+        private System.Windows.Forms.Button btnResetarFiltro;
     }
 }

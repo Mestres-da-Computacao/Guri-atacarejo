@@ -84,11 +84,11 @@
     <Compile Include="forms\frmLogon.Designer.cs">
       <DependentUpon>frmLogon.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmRelatorio.cs">
+    <Compile Include="forms\frmRelatorioVenda.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\frmRelatorio.Designer.cs">
-      <DependentUpon>frmRelatorio.cs</DependentUpon>
+    <Compile Include="forms\frmRelatorioVenda.Designer.cs">
+      <DependentUpon>frmRelatorioVenda.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\FrmSplash.cs">
       <SubType>Form</SubType>
@@ -129,8 +129,8 @@
     <EmbeddedResource Include="forms\frmPainel.resx">
       <DependentUpon>frmPainel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\frmRelatorio.resx">
-      <DependentUpon>frmRelatorio.cs</DependentUpon>
+    <EmbeddedResource Include="forms\frmRelatorioVenda.resx">
+      <DependentUpon>frmRelatorioVenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\FrmSplash.resx">
       <DependentUpon>FrmSplash.cs</DependentUpon>
