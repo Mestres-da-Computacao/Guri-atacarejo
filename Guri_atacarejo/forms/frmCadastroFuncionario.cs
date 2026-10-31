@@ -19,12 +19,14 @@ namespace Guri_atacarejo.forms
         public frmCadastroFuncionario()
         {
             InitializeComponent();
+
+            ResponsividadeForm.Aplicar(this);
+
             this.Load += FormFuncionarios_Load;
 
-            // se deixar dentro dos eventos não funciona
-            txtNome.MaxLength = 100;   // Nome
-            txtEmail.MaxLength = 100;   // E-mail
-            txtSenha.MaxLength = 255;   // Senha
+            txtNome.MaxLength = 100;
+            txtEmail.MaxLength = 100;
+            txtSenha.MaxLength = 255;
 
             maskedtxtCpf.Mask = "000.000.000-00";
             maskedtxtTelefone.Mask = "(00) 00000-0000";

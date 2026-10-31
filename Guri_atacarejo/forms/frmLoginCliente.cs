@@ -15,6 +15,8 @@ namespace Guri_atacarejo.forms
         public frmLoginCliente()
         {
             InitializeComponent();
+
+            ResponsividadeForm.Aplicar(this);
         }
 
         private void button1_Click(object sender, EventArgs e)

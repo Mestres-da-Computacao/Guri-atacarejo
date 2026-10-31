@@ -24,6 +24,8 @@ namespace Guri_atacarejo.forms
         public frmRegistro_Cliente()
         {
             InitializeComponent();
+
+            ResponsividadeForm.Aplicar(this);
         }
 
         private void txtCPF_KeyPress(object sender, KeyPressEventArgs e)

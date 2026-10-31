@@ -19,6 +19,8 @@ namespace Guri_atacarejo.forms
         public FrmLogon()
         {
             InitializeComponent();
+
+            ResponsividadeForm.Aplicar(this);
         }
 
         private void Usertxtbox_Click(object sender, EventArgs e)

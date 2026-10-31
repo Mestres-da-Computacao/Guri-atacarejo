@@ -19,6 +19,9 @@ namespace Guri_atacarejo
         public SplashScreen()
         {
             InitializeComponent();
+
+            ResponsividadeForm.Aplicar(this);
+
             int raio = 10;
 
             GraphicsPath path = new GraphicsPath();

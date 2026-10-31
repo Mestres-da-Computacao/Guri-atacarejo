@@ -50,12 +50,13 @@
             // 
             // Passwordtxtbox
             // 
+            this.Passwordtxtbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Passwordtxtbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Passwordtxtbox.ForeColor = System.Drawing.Color.Black;
-            this.Passwordtxtbox.Location = new System.Drawing.Point(141, 316);
+            this.Passwordtxtbox.Location = new System.Drawing.Point(156, 282);
             this.Passwordtxtbox.Multiline = true;
             this.Passwordtxtbox.Name = "Passwordtxtbox";
-            this.Passwordtxtbox.Size = new System.Drawing.Size(402, 34);
+            this.Passwordtxtbox.Size = new System.Drawing.Size(402, 26);
             this.Passwordtxtbox.TabIndex = 2;
             this.Passwordtxtbox.Text = "Digite sua senha";
             this.Passwordtxtbox.Click += new System.EventHandler(this.Passwordtxtbox_Click);
@@ -63,12 +64,13 @@
             // 
             // Usertxtbox
             // 
+            this.Usertxtbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Usertxtbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Usertxtbox.ForeColor = System.Drawing.Color.Black;
-            this.Usertxtbox.Location = new System.Drawing.Point(141, 264);
+            this.Usertxtbox.Location = new System.Drawing.Point(156, 241);
             this.Usertxtbox.Multiline = true;
             this.Usertxtbox.Name = "Usertxtbox";
-            this.Usertxtbox.Size = new System.Drawing.Size(402, 34);
+            this.Usertxtbox.Size = new System.Drawing.Size(402, 26);
             this.Usertxtbox.TabIndex = 1;
             this.Usertxtbox.Text = "Digite o usuário";
             this.Usertxtbox.Click += new System.EventHandler(this.Usertxtbox_Click);
@@ -78,11 +80,11 @@
             // 
             this.button1.BackColor = System.Drawing.Color.White;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.button1.Location = new System.Drawing.Point(350, 397);
+            this.button1.Location = new System.Drawing.Point(346, 397);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(137, 47);
+            this.button1.Size = new System.Drawing.Size(128, 40);
             this.button1.TabIndex = 3;
             this.button1.Text = "Entrar";
             this.button1.UseVisualStyleBackColor = false;
@@ -96,7 +98,7 @@
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(256, 356);
+            this.button2.Location = new System.Drawing.Point(257, 326);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(165, 25);
             this.button2.TabIndex = 4;
@@ -108,11 +110,11 @@
             // 
             this.button3.BackColor = System.Drawing.Color.Transparent;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(188, 397);
+            this.button3.Location = new System.Drawing.Point(215, 397);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(137, 47);
+            this.button3.Size = new System.Drawing.Size(125, 40);
             this.button3.TabIndex = 4;
             this.button3.Text = "Cancelar";
             this.button3.UseVisualStyleBackColor = false;
@@ -124,10 +126,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
             this.ClientSize = new System.Drawing.Size(679, 475);
+            this.Controls.Add(this.Usertxtbox);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.Usertxtbox);
             this.Controls.Add(this.Passwordtxtbox);
             this.Controls.Add(this.pictureBox1);
             this.Name = "FrmLogon";

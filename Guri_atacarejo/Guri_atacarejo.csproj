@@ -120,6 +120,7 @@
     <EmbeddedResource Include="forms\frmCadastroFuncionario.resx">
       <DependentUpon>frmCadastroFuncionario.cs</DependentUpon>
     </EmbeddedResource>
+    <Compile Include="ResponsividadeForm.cs" />
     <Compile Include="Sessao\Sessao.cs" />
     <Compile Include="Sessao\SessaoClientes.cs" />
     <EmbeddedResource Include="forms\frmexibcaoentidades.resx">

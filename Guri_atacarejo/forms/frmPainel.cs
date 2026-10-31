@@ -16,11 +16,14 @@ namespace Guri_atacarejo.forms
         public frmPainel()
         {
             InitializeComponent();
+
+            ResponsividadeForm.Aplicar(this);
+
             Console.WriteLine("Nível do funcionário: " + Sessao.NivelFuncionario);
             Console.WriteLine("Cliente logado: " + SessaoClientes.NomeCliente);
             Console.WriteLine("CPF do cliente: " + SessaoClientes.Cpf);
 
-            if(Sessao.NivelFuncionario <= 1)
+            if (Sessao.NivelFuncionario <= 1)
             {
                 registrarFuncionárioToolStripMenuItem.Visible = false;
             }

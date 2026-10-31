@@ -48,7 +48,7 @@
             // 
             this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigo.Location = new System.Drawing.Point(22, 660);
+            this.txtCodigo.Location = new System.Drawing.Point(17, 660);
             this.txtCodigo.Multiline = true;
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(280, 28);
@@ -57,8 +57,8 @@
             // txtPesquisar
             // 
             this.txtPesquisar.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisar.Location = new System.Drawing.Point(551, 35);
+            this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisar.Location = new System.Drawing.Point(559, 35);
             this.txtPesquisar.Multiline = true;
             this.txtPesquisar.Name = "txtPesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(358, 27);
@@ -71,7 +71,7 @@
             this.flpProdutos.BackColor = System.Drawing.Color.White;
             this.flpProdutos.Location = new System.Drawing.Point(17, 79);
             this.flpProdutos.Name = "flpProdutos";
-            this.flpProdutos.Size = new System.Drawing.Size(930, 529);
+            this.flpProdutos.Size = new System.Drawing.Size(925, 529);
             this.flpProdutos.TabIndex = 3;
             // 
             // lblCodigo
@@ -79,7 +79,7 @@
             this.lblCodigo.AutoSize = true;
             this.lblCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodigo.ForeColor = System.Drawing.Color.White;
-            this.lblCodigo.Location = new System.Drawing.Point(18, 621);
+            this.lblCodigo.Location = new System.Drawing.Point(13, 630);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(168, 24);
             this.lblCodigo.TabIndex = 4;
@@ -113,7 +113,7 @@
             this.picLogo.Image = ((System.Drawing.Image)(resources.GetObject("picLogo.Image")));
             this.picLogo.Location = new System.Drawing.Point(962, 35);
             this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(303, 115);
+            this.picLogo.Size = new System.Drawing.Size(292, 100);
             this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picLogo.TabIndex = 8;
             this.picLogo.TabStop = false;
@@ -136,9 +136,9 @@
             // 
             this.picLupa.BackColor = System.Drawing.Color.White;
             this.picLupa.Image = ((System.Drawing.Image)(resources.GetObject("picLupa.Image")));
-            this.picLupa.Location = new System.Drawing.Point(908, 35);
+            this.picLupa.Location = new System.Drawing.Point(916, 35);
             this.picLupa.Name = "picLupa";
-            this.picLupa.Size = new System.Drawing.Size(39, 27);
+            this.picLupa.Size = new System.Drawing.Size(26, 27);
             this.picLupa.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picLupa.TabIndex = 9;
             this.picLupa.TabStop = false;
