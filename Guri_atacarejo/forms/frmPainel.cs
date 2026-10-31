@@ -19,6 +19,15 @@ namespace Guri_atacarejo.forms
             Console.WriteLine("Nível do funcionário: " + Sessao.NivelFuncionario);
             Console.WriteLine("Cliente logado: " + SessaoClientes.NomeCliente);
             Console.WriteLine("CPF do cliente: " + SessaoClientes.Cpf);
+
+            if(Sessao.NivelFuncionario <= 1)
+            {
+                registrarFuncionárioToolStripMenuItem.Visible = false;
+            }
+            else if (Sessao.NivelFuncionario > 1)
+            {
+                registrarFuncionárioToolStripMenuItem.Visible = true;
+            }
         }
 
         private void frmPainel_Load(object sender, EventArgs e)
@@ -86,6 +95,11 @@ namespace Guri_atacarejo.forms
             this.Hide();
             frmCadastroFuncionario cadastroFuncionarioForm = new frmCadastroFuncionario();
             cadastroFuncionarioForm.ShowDialog();
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

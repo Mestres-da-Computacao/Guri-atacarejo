@@ -122,6 +122,7 @@ BEGIN
         FKProduto INT NOT NULL,
         Quantidade INT NOT NULL CHECK (Quantidade >= 0),
         DataValidade DATE NOT NULL,
+        Preço DECIMAL(18,2) NOT NULL,
         CONSTRAINT FK_GA_Lote_Fornecedor FOREIGN KEY (FKFornecedores) REFERENCES GA_Fornecedor(IdFornecedor),
         CONSTRAINT FK_GA_Lote_Produtos FOREIGN KEY (FKProduto) REFERENCES GA_Produtos(IdProduto)
     );
