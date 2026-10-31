@@ -91,7 +91,7 @@
             this.txtDescricao.Location = new System.Drawing.Point(30, 277);
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
-            this.txtDescricao.Size = new System.Drawing.Size(613, 118);
+            this.txtDescricao.Size = new System.Drawing.Size(613, 123);
             this.txtDescricao.TabIndex = 21;
             // 
             // txtQuantidade
@@ -151,9 +151,9 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(176, 418);
+            this.btnCancelar.Location = new System.Drawing.Point(191, 431);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(157, 63);
+            this.btnCancelar.Size = new System.Drawing.Size(140, 51);
             this.btnCancelar.TabIndex = 13;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
@@ -164,9 +164,9 @@
             this.btnConfirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.btnConfirmar.Location = new System.Drawing.Point(348, 418);
+            this.btnConfirmar.Location = new System.Drawing.Point(348, 431);
             this.btnConfirmar.Name = "btnConfirmar";
-            this.btnConfirmar.Size = new System.Drawing.Size(157, 63);
+            this.btnConfirmar.Size = new System.Drawing.Size(140, 51);
             this.btnConfirmar.TabIndex = 12;
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.UseVisualStyleBackColor = false;
