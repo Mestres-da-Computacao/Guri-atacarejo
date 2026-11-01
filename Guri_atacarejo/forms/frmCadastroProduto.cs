@@ -1,12 +1,19 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 
 namespace Guri_atacarejo.forms
 {
     public partial class frmCadastroProduto : Form
     {
+        private readonly string conecta = @"Server=(localdb)\MSSQLLocalDB;Database=SuperMercado;Trusted_Connection=True;";
         private class Original
         {
             public Rectangle Bounds;
@@ -64,5 +71,101 @@ namespace Guri_atacarejo.forms
             }
             ResumeLayout(true);
         }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNome.Text) ||
+                string.IsNullOrWhiteSpace(txtPreco.Text) ||
+                string.IsNullOrWhiteSpace(txtDescricao.Text) ||
+                string.IsNullOrWhiteSpace(txtQuantidade.Text))
+            {
+                MessageBox.Show("Por favor, preencha todos os dados.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string sql = "INSERT INTO Produtos (Nome, Preco, Descricao, Quantidade, FKCategoria) " +
+                       "VALUES (@Nome, @Preco, @Descricao, @Quantidade, @Categoria)";
+
+            using (SqlConnection conexao = new SqlConnection(conecta))
+            {
+                using (SqlCommand comando = new SqlCommand(sql, conexao))
+                {
+                    comando.Parameters.AddWithValue("@Nome", txtNome.Text.Trim());
+                    comando.Parameters.AddWithValue("@Preco", Convert.ToDecimal(txtPreco.Text));
+                    comando.Parameters.AddWithValue("@Descricao", txtDescricao.Text.Trim());
+                    comando.Parameters.AddWithValue("@Quantidade", Convert.ToInt32(txtQuantidade.Text));
+                    comando.Parameters.AddWithValue("@Categoria", cmbCategoria.SelectedItem?.ToString() ?? "Geral");
+
+                    try
+                    {
+                        conexao.Open();
+                        int linhasAfetadas = comando.ExecuteNonQuery();
+
+                        if (linhasAfetadas > 0)
+                        {
+                            MessageBox.Show("O produto foi registrado.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            limpacampos();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Erro ao conectar ou salvar no banco: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
+
+        private void limpacampos()
+        {
+            txtNome.Clear();
+            txtPreco.Clear();
+            txtDescricao.Clear();
+            txtQuantidade.Text = "";
+            cmbCategoria.SelectedIndex = -1;
+            txtNome.Focus();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            limpacampos();
+        }
+        private void txtPreco_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == (char)8)
+            {
+                return;
+            }
+
+            if (e.KeyChar == ',' && !txtPreco.Text.Contains(","))
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void txtQuantidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == (char)8)
+            {
+                return;
+            }
+            e.Handled = true;
+        }
+
+        private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string sql = "SELECT FKCategoria from GA_Produtos";
+            using (SqlConnection conexao = new SqlConnection(conecta))
+            {
+                SqlDataAdapter adaptador = new SqlDataAdapter(sql, conexao);
+                DataTable dt = new DataTable();
+                adaptador.Fill(dt);
+
+                cmbCategoria.DataSource = dt;
+                cmbCategoria.DisplayMember = "FKCategoria";
+            }
+
+        }
     }
 }
+
