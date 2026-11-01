@@ -110,5 +110,19 @@ namespace Guri_atacarejo.forms
         {
 
         }
+
+        private void cbPag_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(cbPag.SelectedIndex == 0) 
+            {
+                TrocoContainer.Visible = true;
+                labelTroco.Visible = true;
+            }
+            else
+            {
+                TrocoContainer.Visible = false;
+                labelTroco.Visible = false;
+            }
+        }
     }
 }
