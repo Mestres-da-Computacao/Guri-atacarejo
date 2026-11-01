@@ -50,43 +50,28 @@ namespace Guri_atacarejo.forms
                 return;
             }
 
-            string sql =
-                "SELECT L.FKProduto, P.Nome, P.Preco " +
-                "FROM GA_Lote L " +
-                "INNER JOIN GA_Produtos P ON L.FKProduto = P.IdProduto " +
-                "WHERE L.IdLote = @lote AND L.FKProduto = @id";
-
             try
             {
-                using (var conn = new SqlConnection(
-                    "Server=(localdb)\\MSSQLLocalDB;Database=db_250405;" +
-                    "Trusted_Connection=True;TrustServerCertificate=True;"))
-                using (var cmd = new SqlCommand(sql, conn))
+                DataSet.DataTable1DataTable produtoLote;
+                using (var adapter = new DataSetTableAdapters.DataTable1TableAdapter())
+                    produtoLote = adapter.GetProdutoOuLote(lote, id);
+
+                if (produtoLote.Rows.Count == 0)
                 {
-                    cmd.Parameters.Add("@id", SqlDbType.Int).Value = id;
-                    cmd.Parameters.Add("@lote", SqlDbType.Int).Value = lote;
+                    MessageBox.Show("Produto ou lote não encontrado.");
+                    return;
+                }
 
-                    conn.Open();
+                DataSet.DataTable1Row produto = produtoLote[0];
+                int idProduto = produto.FKProduto;
+                string nome = produto.Nome;
+                decimal preco = produto.Preco;
 
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        if (!reader.Read())
-                        {
-                            MessageBox.Show("Produto ou lote não encontrado.");
-                            return;
-                        }
-
-                        int idProduto = reader.GetInt32(0);
-                        string nome = reader.GetString(1);
-                        decimal preco = reader.GetDecimal(2);
-
-                        if (!painel.TentarAdicionarProduto(
-                            idProduto, nome, preco, quantidade, lote, out string erro))
-                        {
-                            MessageBox.Show(erro);
-                            return;
-                        }
-                    }
+                if (!painel.TentarAdicionarProduto(
+                    idProduto, nome, preco, quantidade, lote, out string erro))
+                {
+                    MessageBox.Show(erro);
+                    return;
                 }
 
                 clear();

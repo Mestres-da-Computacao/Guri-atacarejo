@@ -10,6 +10,9 @@
     <Shape ID="DesignTable:GA_Lote" ZOrder="6" X="243" Y="393" Height="172" Width="192" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
     <Shape ID="DesignTable:GA_Produtos" ZOrder="5" X="753" Y="387" Height="191" Width="220" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="140" />
     <Shape ID="DesignTable:GA_Fornecedor" ZOrder="3" X="492" Y="631" Height="172" Width="233" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="121" />
+    <Shape ID="DesignTable:GA_Estoque" ZOrder="8" X="1050" Y="120" Height="130" Width="230" AdapterExpanded="true" DataTableExpanded="true" SplitterPosition="46" />
+    <Shape ID="DesignTable:DataTable1" ZOrder="9" X="1050" Y="300" Height="180" Width="260" AdapterExpanded="true" DataTableExpanded="true" SplitterPosition="110" />
+    <Shape ID="DesignTable:GA_VendaResultado" ZOrder="10" X="1050" Y="520" Height="140" Width="260" AdapterExpanded="true" DataTableExpanded="true" SplitterPosition="70" />
   </Shapes>
   <Connectors>
     <Connector ID="DesignRelation:FK_GA_Lote_Produtos" ZOrder="4" LineWidth="11">

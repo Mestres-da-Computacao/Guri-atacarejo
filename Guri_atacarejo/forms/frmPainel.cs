@@ -13,8 +13,6 @@ namespace Guri_atacarejo.forms
 {
     public partial class frmPainel : Form
     {
-        string connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=db_250405;Trusted_Connection=True;TrustServerCertificate=True;";
-
         int[] IdLotes = new int[0];
         public int qtdProd = 0; // quantidade do produto p mandar p pagina de alterar
 
@@ -29,24 +27,17 @@ namespace Guri_atacarejo.forms
             estoque = 0;
             erro = null;
 
-            using (var conn = new SqlConnection(connectionString))
-            using (var cmd = new SqlCommand(
-                "SELECT QuantidadeAtual FROM GA_Estoque WHERE FKLote = @lote", conn))
+            DataSet.GA_EstoqueDataTable estoqueLote;
+            using (var adapter = new DataSetTableAdapters.GA_EstoqueTableAdapter())
+                estoqueLote = adapter.GetDataByLote(idLote);
+            if (estoqueLote.Rows.Count == 0)
             {
-                cmd.Parameters.Add("@lote", SqlDbType.Int).Value = idLote;
-
-                conn.Open();
-                object resultado = cmd.ExecuteScalar();
-
-                if (resultado == null || resultado == DBNull.Value)
-                {
-                    erro = "Não há estoque cadastrado para esse lote.";
-                    return false;
-                }
-
-                estoque = Convert.ToInt32(resultado);
-                return true;
+                erro = "Não há estoque cadastrado para esse lote.";
+                return false;
             }
+
+            estoque = estoqueLote[0].QuantidadeAtual;
+            return true;
         }
 
         public bool TentarAdicionarProduto(
@@ -164,8 +155,7 @@ namespace Guri_atacarejo.forms
         // limpa quando um produto é removido
         private void LimparDetalhes()
         {
-            for (int i = 0; i < 4; i++)
-                dataGridView2.Rows[0].Cells[i].Value = null;
+            dataGridView2.Rows.Clear();
         }
 
         public void removerProd(int linha)
@@ -217,10 +207,7 @@ namespace Guri_atacarejo.forms
 
                 lblTotal.Text = "R$ 0,00";
 
-                dataGridView2.Rows[0].Cells[0].Value = " ";
-                dataGridView2.Rows[0].Cells[1].Value = " ";
-                dataGridView2.Rows[0].Cells[2].Value = " ";
-                dataGridView2.Rows[0].Cells[3].Value = " ";
+                dataGridView2.Rows.Clear();
             }
         }
 
@@ -316,35 +303,22 @@ namespace Guri_atacarejo.forms
 
                 itens.Append("]");
 
-                using (var conn = new SqlConnection(connectionString))
-                using (var cmd = new SqlCommand("usp_RegistrarVenda", conn))
+                // SUBSTITUIR PELOS IDS REAIS DO CLIENTE E DO FUNCIONARIO
+                DataTable resultadoVenda;
+                using (var adapter = new DataSetTableAdapters.GA_VendaTableAdapter())
+                    resultadoVenda = adapter.GetResultadoVenda(1, 1, "Pix", itens.ToString());
+                if (resultadoVenda.Rows.Count > 0)
                 {
-                    cmd.CommandType = CommandType.StoredProcedure;
+                    string mensagem = Convert.ToString(resultadoVenda.Rows[0]["Mensagem"]);
+                    MessageBox.Show(mensagem);
 
-                    // SUBSTITUIR PELOS IDS REAIS DO CLIENTE E DO FUNCIONARIO
-                    cmd.Parameters.Add("@FKCliente", SqlDbType.Int).Value = 1; // Substituir pelo ID real do cliente
-                    cmd.Parameters.Add("@FKFuncionario", SqlDbType.Int).Value = 1; // Substituir pelo ID real do funcionário
-                    cmd.Parameters.Add("@FormaPagamento", SqlDbType.VarChar, 50).Value = "Pix"; //substituir pela forma de pagamento real
-                    cmd.Parameters.Add("@ItensJson", SqlDbType.NVarChar, -1).Value = itens.ToString(); 
-
-                    conn.Open();
-
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            string mensagem = Convert.ToString(reader["Mensagem"]);
-                            MessageBox.Show(mensagem);
-
-                            if (mensagem == "Venda realizada com sucesso!")
-                                LimparVenda();
-                        }
-                        else
-                        {
-                            MessageBox.Show(
-                                "A procedure terminou sem retornar a confirmação da venda.");
-                        }
-                    }
+                    if (mensagem == "Venda realizada com sucesso!")
+                        LimparVenda();
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "A procedure terminou sem retornar a confirmação da venda.");
                 }
             }
             catch (SqlException ex)
@@ -379,35 +353,24 @@ namespace Guri_atacarejo.forms
 
                     lote = IdLotes[e.RowIndex];
                 
-                    using (var conn = new SqlConnection(connectionString))
-                    using (var cmd = new SqlCommand("select P.Nome, P.Preco, P.UnidadeMedida, L.DataValidade from GA_Lote L inner join GA_Produtos P on L.IdLote = @lote and P.IdProduto = @idProduto", conn))
+                    DataSet.DataTable1DataTable detalhes;
+                    using (var adapter = new DataSetTableAdapters.DataTable1TableAdapter())
+                        detalhes = adapter.GetProdutoOuLote(lote, id);
+                    if (detalhes.Rows.Count > 0)
                     {
-                        cmd.Parameters.AddWithValue("@idProduto", id);
-                        cmd.Parameters.AddWithValue("@lote", lote);
-                        conn.Open();
+                        DataSet.DataTable1Row detalhe = detalhes[0];
+                        string nome = detalhe.Nome;
+                        decimal valor = detalhe.Preco;
+                        string unidade = detalhe.UnidadeMedida;
+                        string validade = detalhe.DataValidade.ToString("dd/MM/yyyy");
 
-                        using (var reader = cmd.ExecuteReader())
-                        {
-                            while (reader.Read())
-                            {
-                                string Nome = reader.GetString(0);
-                                decimal Valor = reader.GetDecimal(1);
-                                string UniProd = reader.GetString(2);
-                                string loteVal = reader.GetDateTime(3).ToString("dd/MM/yyyy");
+                        if (dataGridView2.Rows.Count == 0)
+                            dataGridView2.Rows.Add();
 
-                                if (dataGridView2.Rows.Count == 0)
-                                {
-                                    dataGridView2.Rows.Add();
-                                }
-
-                                dataGridView2.Rows[0].Cells[0].Value = Nome;
-                                dataGridView2.Rows[0].Cells[1].Value = Valor;
-                                dataGridView2.Rows[0].Cells[2].Value = UniProd;
-                                dataGridView2.Rows[0].Cells[3].Value = loteVal;
-                            }
-                        }
-
-                        // tem que dar um jeito de atribuir algo para o lote, pq nesse form n tem nenhum modo de pegar. Opção: segunda pagina nandar p cá
+                        dataGridView2.Rows[0].Cells[0].Value = nome;
+                        dataGridView2.Rows[0].Cells[1].Value = valor;
+                        dataGridView2.Rows[0].Cells[2].Value = unidade;
+                        dataGridView2.Rows[0].Cells[3].Value = validade;
                     }
                 }
             }

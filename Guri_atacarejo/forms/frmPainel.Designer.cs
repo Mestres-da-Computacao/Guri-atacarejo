@@ -31,6 +31,11 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.custo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.funcionáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarFuncionárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -63,11 +68,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.custo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -104,7 +104,6 @@
             // 
             this.dataGridView1.AllowUserToAddRows = false;
             this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.AllowUserToResizeColumns = false;
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
@@ -122,6 +121,41 @@
             this.dataGridView1.Size = new System.Drawing.Size(433, 254);
             this.dataGridView1.TabIndex = 2;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 50;
+            // 
+            // Produto
+            // 
+            this.Produto.HeaderText = "Produto";
+            this.Produto.Name = "Produto";
+            this.Produto.ReadOnly = true;
+            this.Produto.Width = 80;
+            // 
+            // qtd
+            // 
+            this.qtd.HeaderText = "Quantidade";
+            this.qtd.Name = "qtd";
+            this.qtd.ReadOnly = true;
+            this.qtd.Width = 80;
+            // 
+            // custo
+            // 
+            this.custo.HeaderText = "preço unitario";
+            this.custo.Name = "custo";
+            this.custo.ReadOnly = true;
+            this.custo.Width = 80;
+            // 
+            // total
+            // 
+            this.total.HeaderText = "total";
+            this.total.Name = "total";
+            this.total.ReadOnly = true;
+            this.total.Width = 80;
             // 
             // menuStrip1
             // 
@@ -430,36 +464,6 @@
             this.label7.Size = new System.Drawing.Size(65, 24);
             this.label7.TabIndex = 0;
             this.label7.Text = "Troco:";
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id";
-            this.Id.Name = "Id";
-            this.Id.Width = 50;
-            // 
-            // Produto
-            // 
-            this.Produto.HeaderText = "Produto";
-            this.Produto.Name = "Produto";
-            this.Produto.Width = 80;
-            // 
-            // qtd
-            // 
-            this.qtd.HeaderText = "Quantidade";
-            this.qtd.Name = "qtd";
-            this.qtd.Width = 80;
-            // 
-            // custo
-            // 
-            this.custo.HeaderText = "preço unitario";
-            this.custo.Name = "custo";
-            this.custo.Width = 80;
-            // 
-            // total
-            // 
-            this.total.HeaderText = "total";
-            this.total.Name = "total";
-            this.total.Width = 80;
             // 
             // frmPainel
             // 
