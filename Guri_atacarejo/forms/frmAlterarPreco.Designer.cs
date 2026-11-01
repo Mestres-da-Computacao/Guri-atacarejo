@@ -37,16 +37,16 @@
             // 
             // txtQtd
             // 
-            this.txtQtd.Location = new System.Drawing.Point(12, 43);
+            this.txtQtd.Location = new System.Drawing.Point(62, 43);
             this.txtQtd.Name = "txtQtd";
             this.txtQtd.Size = new System.Drawing.Size(173, 20);
-            this.txtQtd.TabIndex = 0;
-            this.txtQtd.TextChanged += new System.EventHandler(this.txtQtd_TextChanged);
+            this.txtQtd.TabIndex = 1;
+            this.txtQtd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQtd_KeyPress);
             // 
             // lblQuantidade
             // 
             this.lblQuantidade.AutoSize = true;
-            this.lblQuantidade.Location = new System.Drawing.Point(12, 27);
+            this.lblQuantidade.Location = new System.Drawing.Point(59, 27);
             this.lblQuantidade.Name = "lblQuantidade";
             this.lblQuantidade.Size = new System.Drawing.Size(62, 13);
             this.lblQuantidade.TabIndex = 1;
@@ -67,7 +67,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(96, 85);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 34);
-            this.btnCancelar.TabIndex = 2;
+            this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -77,7 +77,7 @@
             this.btnRemover.Location = new System.Drawing.Point(215, 85);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(75, 34);
-            this.btnRemover.TabIndex = 2;
+            this.btnRemover.TabIndex = 4;
             this.btnRemover.Text = "Remover Produto";
             this.btnRemover.UseVisualStyleBackColor = true;
             this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
