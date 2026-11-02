@@ -35,11 +35,11 @@ namespace Guri_atacarejo.forms
 
             if (Sessao.NivelFuncionario <= 1)
             {
-                registrarFuncionárioToolStripMenuItem.Visible = false;
+                maisOpçõesToolStripMenuItem.Visible = false;
             }
             else if (Sessao.NivelFuncionario > 1)
             {
-                registrarFuncionárioToolStripMenuItem.Visible = true;
+                maisOpçõesToolStripMenuItem.Visible = true;
             }
         }
 
@@ -229,6 +229,10 @@ namespace Guri_atacarejo.forms
                 lblTotal.Text = "R$ 0,00";
 
                 dataGridView2.Rows.Clear();
+
+                //limpa os dados do cliente logado ao cancelar
+                SessaoClientes.NomeCliente = null;
+                SessaoClientes.Cpf = null;
             }
         }
 
@@ -460,16 +464,41 @@ namespace Guri_atacarejo.forms
             registroClienteForm.ShowDialog();
         }
 
-        private void registrarFuncionárioToolStripMenuItem_Click(object sender, EventArgs e)
+        private void relatórioFinanceiroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmRelatorioCompra relaCompra = new frmRelatorioCompra();
+            relaCompra.ShowDialog();
+        }
+
+        private void relatórioDeEstoqueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmRelatorioEstoque relaEstoque = new frmRelatorioEstoque();
+            relaEstoque.ShowDialog();
+        }
+
+        private void registrarProdutosToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            this.Hide(); frmCadastroProduto cadastroProdutoForm = new frmCadastroProduto();
+            cadastroProdutoForm.ShowDialog();
+        }
+
+        private void registrarFuncionariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
             frmCadastroFuncionario cadastroFuncionarioForm = new frmCadastroFuncionario();
             cadastroFuncionarioForm.ShowDialog();
         }
 
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void comprasFornecedoresToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // compra de fornecedores
+        }
 
+        private void lotesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // linkar os lotes aqui também
         }
 
         private void cbPag_SelectedIndexChanged(object sender, EventArgs e)

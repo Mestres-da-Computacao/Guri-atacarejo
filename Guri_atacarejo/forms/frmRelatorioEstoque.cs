@@ -8,7 +8,7 @@ namespace Guri_atacarejo.forms
 {
     public partial class frmRelatorioEstoque : Form
     {
-        string connectionString = "Server=(localdb)\\MSSQLLocalDB;Database=SuperMercado;Trusted_Connection=True;TrustServerCertificate=True;";
+        string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=db_250405;Integrated Security=True;TrustServerCertificate=True;";
 
         int idProduto = 0;          // produto que foi clicado no grid
         string nomeProduto = "";

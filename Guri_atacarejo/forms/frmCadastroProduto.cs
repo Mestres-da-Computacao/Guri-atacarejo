@@ -129,6 +129,9 @@ namespace Guri_atacarejo.forms
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             limpacampos();
+            this.Hide();
+            frmPainel painel = new frmPainel();
+            painel.ShowDialog();
         }
         private void txtPreco_KeyPress(object sender, KeyPressEventArgs e) { 
 

@@ -18,20 +18,17 @@ namespace Guri_atacarejo.forms
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.funcionáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.registrarFuncionárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarClientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.loginClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.registrarProdutosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.registrarCompraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -64,6 +61,16 @@ namespace Guri_atacarejo.forms
             this.panel3 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
+            this.maisOpçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registrarProdutosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.registrarFuncionariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.relatóriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lotesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.relatórioFinanceiroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.relatórioDeEstoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.forneceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registroFornecedoresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compraLotesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -83,8 +90,8 @@ namespace Guri_atacarejo.forms
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.funcionáriosToolStripMenuItem,
             this.clientesToolStripMenuItem,
-            this.registrarProdutosToolStripMenuItem,
-            this.registrarCompraToolStripMenuItem});
+            this.forneceToolStripMenuItem,
+            this.maisOpçõesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -95,18 +102,10 @@ namespace Guri_atacarejo.forms
             // funcionáriosToolStripMenuItem
             // 
             this.funcionáriosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.registrarFuncionárioToolStripMenuItem,
             this.logoutToolStripMenuItem});
             this.funcionáriosToolStripMenuItem.Name = "funcionáriosToolStripMenuItem";
             this.funcionáriosToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.funcionáriosToolStripMenuItem.Text = "Funcionários";
-            // 
-            // registrarFuncionárioToolStripMenuItem
-            // 
-            this.registrarFuncionárioToolStripMenuItem.Name = "registrarFuncionárioToolStripMenuItem";
-            this.registrarFuncionárioToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
-            this.registrarFuncionárioToolStripMenuItem.Text = "Registrar Funcionário";
-            this.registrarFuncionárioToolStripMenuItem.Click += new System.EventHandler(this.registrarFuncionárioToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
@@ -145,20 +144,6 @@ namespace Guri_atacarejo.forms
             this.logoutClienteToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.logoutClienteToolStripMenuItem.Text = "Logout Cliente";
             this.logoutClienteToolStripMenuItem.Click += new System.EventHandler(this.logoutClienteToolStripMenuItem_Click);
-            // 
-            // registrarProdutosToolStripMenuItem
-            // 
-            this.registrarProdutosToolStripMenuItem.Name = "registrarProdutosToolStripMenuItem";
-            this.registrarProdutosToolStripMenuItem.Size = new System.Drawing.Size(116, 20);
-            this.registrarProdutosToolStripMenuItem.Text = "Registrar Produtos";
-            this.registrarProdutosToolStripMenuItem.Click += new System.EventHandler(this.registrarProdutosToolStripMenuItem_Click);
-            // 
-            // registrarCompraToolStripMenuItem
-            // 
-            this.registrarCompraToolStripMenuItem.Name = "registrarCompraToolStripMenuItem";
-            this.registrarCompraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.registrarCompraToolStripMenuItem.Text = "Registrar Compra";
-            this.registrarCompraToolStripMenuItem.Click += new System.EventHandler(this.registrarCompraToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
@@ -209,14 +194,14 @@ namespace Guri_atacarejo.forms
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle45.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle45.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            dataGridViewCellStyle45.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle45.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle45.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            dataGridViewCellStyle45.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle45.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle45;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -224,14 +209,14 @@ namespace Guri_atacarejo.forms
             this.qtd,
             this.custo,
             this.total});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(205)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle46.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle46.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle46.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle46.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(205)))));
+            dataGridViewCellStyle46.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle46.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle46;
             this.dataGridView1.GridColor = System.Drawing.Color.Gray;
             this.dataGridView1.Location = new System.Drawing.Point(0, 36);
             this.dataGridView1.MultiSelect = false;
@@ -312,28 +297,28 @@ namespace Guri_atacarejo.forms
             this.dataGridView2.AllowUserToResizeRows = false;
             this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle47.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            dataGridViewCellStyle47.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle47.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle47;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.item,
             this.preco_uni,
             this.unidade_medi,
             this.Validade});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(205)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle48.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle48.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle48.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(205)))));
+            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle48;
             this.dataGridView2.Location = new System.Drawing.Point(0, 36);
             this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
@@ -574,6 +559,82 @@ namespace Guri_atacarejo.forms
             this.lblTotal.TabIndex = 1;
             this.lblTotal.Text = "R$ 0,00";
             // 
+            // maisOpçõesToolStripMenuItem
+            // 
+            this.maisOpçõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.relatóriosToolStripMenuItem,
+            this.lotesToolStripMenuItem,
+            this.registrarProdutosToolStripMenuItem1,
+            this.registrarFuncionariosToolStripMenuItem});
+            this.maisOpçõesToolStripMenuItem.Name = "maisOpçõesToolStripMenuItem";
+            this.maisOpçõesToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
+            this.maisOpçõesToolStripMenuItem.Text = "Mais opções";
+            // 
+            // registrarProdutosToolStripMenuItem1
+            // 
+            this.registrarProdutosToolStripMenuItem1.Name = "registrarProdutosToolStripMenuItem1";
+            this.registrarProdutosToolStripMenuItem1.Size = new System.Drawing.Size(194, 22);
+            this.registrarProdutosToolStripMenuItem1.Text = "Registrar produtos";
+            this.registrarProdutosToolStripMenuItem1.Click += new System.EventHandler(this.registrarProdutosToolStripMenuItem1_Click);
+            // 
+            // registrarFuncionariosToolStripMenuItem
+            // 
+            this.registrarFuncionariosToolStripMenuItem.Name = "registrarFuncionariosToolStripMenuItem";
+            this.registrarFuncionariosToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.registrarFuncionariosToolStripMenuItem.Text = "Registrar Funcionários";
+            this.registrarFuncionariosToolStripMenuItem.Click += new System.EventHandler(this.registrarFuncionariosToolStripMenuItem_Click);
+            // 
+            // relatóriosToolStripMenuItem
+            // 
+            this.relatóriosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.relatórioFinanceiroToolStripMenuItem,
+            this.relatórioDeEstoqueToolStripMenuItem});
+            this.relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
+            this.relatóriosToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.relatóriosToolStripMenuItem.Text = "Relatórios";
+            // 
+            // lotesToolStripMenuItem
+            // 
+            this.lotesToolStripMenuItem.Name = "lotesToolStripMenuItem";
+            this.lotesToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.lotesToolStripMenuItem.Text = "Lotes";
+            this.lotesToolStripMenuItem.Click += new System.EventHandler(this.lotesToolStripMenuItem_Click);
+            // 
+            // relatórioFinanceiroToolStripMenuItem
+            // 
+            this.relatórioFinanceiroToolStripMenuItem.Name = "relatórioFinanceiroToolStripMenuItem";
+            this.relatórioFinanceiroToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
+            this.relatórioFinanceiroToolStripMenuItem.Text = "Relatório movimentação financeira";
+            this.relatórioFinanceiroToolStripMenuItem.Click += new System.EventHandler(this.relatórioFinanceiroToolStripMenuItem_Click);
+            // 
+            // relatórioDeEstoqueToolStripMenuItem
+            // 
+            this.relatórioDeEstoqueToolStripMenuItem.Name = "relatórioDeEstoqueToolStripMenuItem";
+            this.relatórioDeEstoqueToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.relatórioDeEstoqueToolStripMenuItem.Text = "Relatório fluxo estoque";
+            this.relatórioDeEstoqueToolStripMenuItem.Click += new System.EventHandler(this.relatórioDeEstoqueToolStripMenuItem_Click);
+            // 
+            // forneceToolStripMenuItem
+            // 
+            this.forneceToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.registroFornecedoresToolStripMenuItem,
+            this.compraLotesToolStripMenuItem});
+            this.forneceToolStripMenuItem.Name = "forneceToolStripMenuItem";
+            this.forneceToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
+            this.forneceToolStripMenuItem.Text = "Fornecedores";
+            // 
+            // registroFornecedoresToolStripMenuItem
+            // 
+            this.registroFornecedoresToolStripMenuItem.Name = "registroFornecedoresToolStripMenuItem";
+            this.registroFornecedoresToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.registroFornecedoresToolStripMenuItem.Text = "Registro Fornecedores";
+            // 
+            // compraLotesToolStripMenuItem
+            // 
+            this.compraLotesToolStripMenuItem.Name = "compraLotesToolStripMenuItem";
+            this.compraLotesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.compraLotesToolStripMenuItem.Text = "Compra Lotes";
+            // 
             // frmPainel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -613,14 +674,11 @@ namespace Guri_atacarejo.forms
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem funcionáriosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem registrarFuncionárioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registrarClientesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem loginClienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logoutClienteToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem registrarProdutosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem registrarCompraToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
@@ -653,5 +711,15 @@ namespace Guri_atacarejo.forms
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblTotal;
+        private System.Windows.Forms.ToolStripMenuItem maisOpçõesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem relatóriosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem relatórioFinanceiroToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem relatórioDeEstoqueToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem registrarProdutosToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem registrarFuncionariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lotesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem forneceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem registroFornecedoresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem compraLotesToolStripMenuItem;
     }
 }
