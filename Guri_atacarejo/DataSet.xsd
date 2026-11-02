@@ -584,6 +584,42 @@ SELECT CPF from GA_Clientes where CPF = @cpf</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="GA_Cargos" msprop:Generator_RowEvHandlerName="GA_CargosRowChangeEventHandler" msprop:Generator_RowDeletedName="GA_CargosRowDeleted" msprop:Generator_RowDeletingName="GA_CargosRowDeleting" msprop:Generator_RowEvArgName="GA_CargosRowChangeEvent" msprop:Generator_TablePropName="GA_Cargos" msprop:Generator_RowChangedName="GA_CargosRowChanged" msprop:Generator_RowChangingName="GA_CargosRowChanging" msprop:Generator_TableClassName="GA_CargosDataTable" msprop:Generator_RowClassName="GA_CargosRow" msprop:Generator_TableVarName="tableGA_Cargos" msprop:Generator_UserTableName="GA_Cargos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdCargo" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="IdCargo" msprop:Generator_ColumnPropNameInTable="IdCargoColumn" msprop:Generator_ColumnVarNameInTable="columnIdCargo" msprop:Generator_UserColumnName="IdCargo" type="xs:int" />
+              <xs:element name="Nome" msprop:Generator_ColumnPropNameInRow="Nome" msprop:Generator_ColumnPropNameInTable="NomeColumn" msprop:Generator_ColumnVarNameInTable="columnNome" msprop:Generator_UserColumnName="Nome">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SalarioBase" msprop:Generator_ColumnPropNameInRow="SalarioBase" msprop:Generator_ColumnPropNameInTable="SalarioBaseColumn" msprop:Generator_ColumnVarNameInTable="columnSalarioBase" msprop:Generator_UserColumnName="SalarioBase" type="xs:decimal" />
+              <xs:element name="Nivel" msprop:Generator_ColumnPropNameInRow="Nivel" msprop:Generator_ColumnPropNameInTable="NivelColumn" msprop:Generator_ColumnVarNameInTable="columnNivel" msprop:Generator_UserColumnName="Nivel" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="GA_Departamentos" msprop:Generator_RowEvHandlerName="GA_DepartamentosRowChangeEventHandler" msprop:Generator_RowDeletedName="GA_DepartamentosRowDeleted" msprop:Generator_RowDeletingName="GA_DepartamentosRowDeleting" msprop:Generator_RowEvArgName="GA_DepartamentosRowChangeEvent" msprop:Generator_TablePropName="GA_Departamentos" msprop:Generator_RowChangedName="GA_DepartamentosRowChanged" msprop:Generator_RowChangingName="GA_DepartamentosRowChanging" msprop:Generator_TableClassName="GA_DepartamentosDataTable" msprop:Generator_RowClassName="GA_DepartamentosRow" msprop:Generator_TableVarName="tableGA_Departamentos" msprop:Generator_UserTableName="GA_Departamentos">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdDepartamento" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="IdDepartamento" msprop:Generator_ColumnPropNameInTable="IdDepartamentoColumn" msprop:Generator_ColumnVarNameInTable="columnIdDepartamento" msprop:Generator_UserColumnName="IdDepartamento" type="xs:int" />
+              <xs:element name="Nome" msprop:Generator_ColumnPropNameInRow="Nome" msprop:Generator_ColumnPropNameInTable="NomeColumn" msprop:Generator_ColumnVarNameInTable="columnNome" msprop:Generator_UserColumnName="Nome">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
@@ -605,6 +641,14 @@ SELECT CPF from GA_Clientes where CPF = @cpf</CommandText>
     <xs:unique name="DataTable1_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:DataTable1" />
       <xs:field xpath="mstns:FKProduto" />
+    </xs:unique>
+    <xs:unique name="GA_Cargos_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:GA_Cargos" />
+      <xs:field xpath="mstns:IdCargo" />
+    </xs:unique>
+    <xs:unique name="GA_Departamentos_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:GA_Departamentos" />
+      <xs:field xpath="mstns:IdDepartamento" />
     </xs:unique>
   </xs:element>
   <xs:annotation>
