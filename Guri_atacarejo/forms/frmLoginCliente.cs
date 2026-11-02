@@ -15,6 +15,20 @@ namespace Guri_atacarejo.forms
         public frmLoginCliente()
         {
             InitializeComponent();
+
+            ResponsividadeForm.Aplicar(this);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmPainel painel = new frmPainel();
+            painel.ShowDialog();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

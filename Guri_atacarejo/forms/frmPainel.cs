@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Guri_atacarejo;
 using System.Windows.Forms;
 
 namespace Guri_atacarejo.forms
@@ -20,6 +21,26 @@ namespace Guri_atacarejo.forms
         public frmPainel()
         {
             InitializeComponent();
+            ResponsividadeForm.Aplicar(this);
+
+            // Tabelas sem a linha vazia de "nova linha" e sem a coluna de seta
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView2.AllowUserToAddRows = false;
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView2.RowHeadersVisible = false;
+
+            Console.WriteLine("Nível do funcionário: " + Sessao.NivelFuncionario);
+            Console.WriteLine("Cliente logado: " + SessaoClientes.NomeCliente);
+            Console.WriteLine("CPF do cliente: " + SessaoClientes.Cpf);
+
+            if (Sessao.NivelFuncionario <= 1)
+            {
+                registrarFuncionárioToolStripMenuItem.Visible = false;
+            }
+            else if (Sessao.NivelFuncionario > 1)
+            {
+                registrarFuncionárioToolStripMenuItem.Visible = true;
+            }
         }
 
         private bool TentarObterEstoque(int idLote, out int estoque, out string erro)
@@ -221,7 +242,7 @@ namespace Guri_atacarejo.forms
             }
 
             int linha = dataGridView1.CurrentCell.RowIndex;
-            if (linha >= 0 &&   dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[2].Value != null) // pega o valor de quantidade da linha da celulca focada
+            if (linha >= 0 && dataGridView1.Rows[dataGridView1.CurrentCell.RowIndex].Cells[2].Value != null) // pega o valor de quantidade da linha da celulca focada
             {
                 frmAlterarPreco Alterar = new frmAlterarPreco(this, linha);
                 Alterar.ShowDialog();
@@ -352,7 +373,7 @@ namespace Guri_atacarejo.forms
                     qtdProd = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[2].Value);
 
                     lote = IdLotes[e.RowIndex];
-                
+
                     DataSet.DataTable1DataTable detalhes;
                     using (var adapter = new DataSetTableAdapters.DataTable1TableAdapter())
                         detalhes = adapter.GetProdutoOuLote(lote, id);
@@ -380,6 +401,72 @@ namespace Guri_atacarejo.forms
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            FrmLogon logonForm = new FrmLogon();
+            logonForm.ShowDialog();
+
+            Sessao.NivelFuncionario = 0;
+            Sessao.Usuario = null;
+        }
+
+        private void registrarProdutosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmAdicionar adicionarForm = new frmAdicionar();
+            adicionarForm.ShowDialog();
+        }
+
+        private void loginClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmLoginCliente frmLoginCliente = new frmLoginCliente();
+            frmLoginCliente.ShowDialog();
+        }
+
+        private void logoutClienteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SessaoClientes.NomeCliente = null;
+            SessaoClientes.Cpf = null;
+
+            Console.WriteLine("Cliente logado: " + SessaoClientes.NomeCliente);
+            Console.WriteLine("CPF do cliente: " + SessaoClientes.Cpf);
+        }
+
+        private void registrarClientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmRegistro_Cliente registroClienteForm = new frmRegistro_Cliente();
+            registroClienteForm.ShowDialog();
+        }
+
+        private void registrarFuncionárioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmCadastroFuncionario cadastroFuncionarioForm = new frmCadastroFuncionario();
+            cadastroFuncionarioForm.ShowDialog();
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void cbPag_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbPag.SelectedIndex == 0)
+            {
+                TrocoContainer.Visible = true;
+                labelTroco.Visible = true;
+            }
+            else
+            {
+                TrocoContainer.Visible = false;
+                labelTroco.Visible = false;
+            }
         }
     }
 }

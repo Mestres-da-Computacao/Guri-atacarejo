@@ -1,4 +1,5 @@
 ﻿using Guri_atacarejo.DataSetTableAdapters;
+using Guri_atacarejo;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,6 +19,8 @@ namespace Guri_atacarejo.forms
         public FrmLogon()
         {
             InitializeComponent();
+
+            ResponsividadeForm.Aplicar(this);
         }
 
         private void Usertxtbox_Click(object sender, EventArgs e)
@@ -70,7 +73,9 @@ namespace Guri_atacarejo.forms
 
             if (sucesso)
             {
-                // mostrar o form principal
+                this.Hide();
+                frmPainel painel = new frmPainel();
+                painel.ShowDialog();
             }
             else
             {
@@ -95,13 +100,30 @@ namespace Guri_atacarejo.forms
 
                 if (tabelaNivel.Rows.Count > 0)
                 {
-                    int nivelFuncionario = Convert.ToInt32(tabelaNivel.Rows[0]["FKCargo"]);
+                    Sessao.NivelFuncionario =
+                        Convert.ToInt32(tabelaNivel.Rows[0]["FKCargo"]);
+
+                    Sessao.Usuario = username;
                 }
 
                 return true;
             }
 
-            return tabela.Rows.Count > 0;
+            return false;
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var resultado = MessageBox.Show(
+            "Deseja realmente sair?",
+            "Confirmação",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
+
+            if (resultado == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
     }
 }
