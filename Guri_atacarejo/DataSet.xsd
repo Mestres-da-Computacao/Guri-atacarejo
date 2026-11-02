@@ -2,15 +2,14 @@
 <xs:schema id="DataSet" targetNamespace="http://tempuri.org/DataSet.xsd" xmlns:mstns="http://tempuri.org/DataSet.xsd" xmlns="http://tempuri.org/DataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Guri_atacarejo.Properties.Settings.GlobalReference.Default.ConnectionString" Provider="System.Data.SqlClient" />
-          <Connection AppSettingsObjectName="Settings" AppSettingsPropertyName="ConnectionString1" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString1 (Settings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.Guri_atacarejo.Properties.Settings.GlobalReference.Default.ConnectionString" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="GA_FuncionariosTableAdapter" GeneratorDataComponentClassName="GA_FuncionariosTableAdapter" Name="GA_Funcionarios" UserDataComponentName="GA_FuncionariosTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="ConnectionString1 (Settings)" DbObjectName="master.dbo.GA_Funcionarios" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="InsertFuncionario" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="InsertFuncionario" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="InsertFuncionario" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="db_250405.dbo.GA_Funcionarios" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="InsertFuncionario" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="InsertFuncionario" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="InsertFuncionario" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>INSERT INTO GA_Funcionarios (Nome, Senha) VALUES (@nome, @senha)</CommandText>
@@ -24,7 +23,7 @@
             </MainSource>
             <Mappings />
             <Sources>
-              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="master.dbo.GA_Funcionarios" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="VerifyNomeAndSenha" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="VerifyNomeAndSenha" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="VerifyNomeAndSenha" UserSourceName="FillBy">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="db_250405.dbo.GA_Funcionarios" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="VerifyNomeAndSenha" GeneratorSourceName="FillBy" GetMethodModifier="Public" GetMethodName="VerifyNomeAndSenha" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="VerifyNomeAndSenha" UserSourceName="FillBy">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT IdFuncionario, Nome, Senha FROM GA_Funcionarios
@@ -36,7 +35,7 @@ WHERE Nome = @username AND Senha = @senha</CommandText>
                   </DbCommand>
                 </SelectCommand>
               </DbSource>
-              <DbSource ConnectionRef="ConnectionString1 (Settings)" DbObjectName="master.dbo.GA_Funcionarios" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy1" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetNivelFuncionario" GeneratorSourceName="FillBy1" GetMethodModifier="Public" GetMethodName="GetNivelFuncionario" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetNivelFuncionario" UserSourceName="FillBy1">
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="db_250405.dbo.GA_Funcionarios" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillBy1" GenerateMethods="Both" GenerateShortCommands="true" GeneratorGetMethodName="GetNivelFuncionario" GeneratorSourceName="FillBy1" GetMethodModifier="Public" GetMethodName="GetNivelFuncionario" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetNivelFuncionario" UserSourceName="FillBy1">
                 <SelectCommand>
                   <DbCommand CommandType="Text" ModifiedByUser="true">
                     <CommandText>SELECT FKCargo FROM GA_funcionarios WHERE Nome = @username
@@ -48,6 +47,65 @@ WHERE Nome = @username AND Senha = @senha</CommandText>
                 </SelectCommand>
               </DbSource>
             </Sources>
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="GA_CompraRelatorioTableAdapter" GeneratorDataComponentClassName="GA_CompraRelatorioTableAdapter" Name="GA_CompraRelatorio" UserDataComponentName="GA_CompraRelatorioTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="db_250405.dbo.GA_Compra" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillCompras" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetCompras" GeneratorSourceName="FillCompras" GetMethodModifier="Public" GetMethodName="GetCompras" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetCompras" UserSourceName="FillCompras">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT c.IdCompra, c.DataCompra, c.StatusCompra, c.ValorTotal, c.FormaPagamento, c.DataEntrega, c.FKFornecedor, c.FKFuncionario, f.Nome AS NomeFornecedor, fu.Nome AS NomeFuncionario
+FROM dbo.GA_Compra AS c
+INNER JOIN dbo.GA_Fornecedor AS f ON f.IdFornecedor = c.FKFornecedor
+INNER JOIN dbo.GA_Funcionarios AS fu ON fu.IdFuncionario = c.FKFuncionario
+WHERE (@inicio IS NULL OR c.DataCompra &gt;= @inicio) AND (@fim IS NULL OR c.DataCompra &lt; @fim)
+ORDER BY c.DataCompra DESC</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="true" AutogeneratedName="inicio" DataSourceName="db_250405.dbo.GA_Compra" DataTypeServer="date" DbType="Date" Direction="Input" ParameterName="@inicio" Precision="0" ProviderType="Date" Scale="0" Size="3" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                      <Parameter AllowDbNull="true" AutogeneratedName="fim" DataSourceName="db_250405.dbo.GA_Compra" DataTypeServer="date" DbType="Date" Direction="Input" ParameterName="@fim" Precision="0" ProviderType="Date" Scale="0" Size="3" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="IdCompra" DataSetColumn="IdCompra" />
+              <Mapping SourceColumn="DataCompra" DataSetColumn="DataCompra" />
+              <Mapping SourceColumn="StatusCompra" DataSetColumn="StatusCompra" />
+              <Mapping SourceColumn="ValorTotal" DataSetColumn="ValorTotal" />
+              <Mapping SourceColumn="FormaPagamento" DataSetColumn="FormaPagamento" />
+              <Mapping SourceColumn="DataEntrega" DataSetColumn="DataEntrega" />
+              <Mapping SourceColumn="FKFornecedor" DataSetColumn="FKFornecedor" />
+              <Mapping SourceColumn="FKFuncionario" DataSetColumn="FKFuncionario" />
+              <Mapping SourceColumn="NomeFornecedor" DataSetColumn="NomeFornecedor" />
+              <Mapping SourceColumn="NomeFuncionario" DataSetColumn="NomeFuncionario" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="GA_ItensCompraRelatorioTableAdapter" GeneratorDataComponentClassName="GA_ItensCompraRelatorioTableAdapter" Name="GA_ItensCompraRelatorio" UserDataComponentName="GA_ItensCompraRelatorioTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="ConnectionString (Settings)" DbObjectName="db_250405.dbo.GA_ItensCompra" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="FillItensPorCompra" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetItensPorCompra" GeneratorSourceName="FillItensPorCompra" GetMethodModifier="Public" GetMethodName="GetItensPorCompra" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetItensPorCompra" UserSourceName="FillItensPorCompra">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT p.Nome AS Produto, i.FKLote, i.Quantidade, i.PrecoUnitario, i.Subtotal
+FROM dbo.GA_ItensCompra AS i
+INNER JOIN dbo.GA_Lote AS l ON l.IdLote = i.FKLote
+INNER JOIN dbo.GA_Produtos AS p ON p.IdProduto = l.FKProduto
+WHERE i.FKCompra = @idCompra</CommandText>
+                    <Parameters>
+                      <Parameter AllowDbNull="false" AutogeneratedName="idCompra" DataSourceName="db_250405.dbo.GA_ItensCompra" DataTypeServer="int" DbType="Int32" Direction="Input" ParameterName="@idCompra" Precision="0" ProviderType="Int" Scale="0" Size="4" SourceColumn="" SourceColumnNullMapping="false" SourceVersion="Current" />
+                    </Parameters>
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="Produto" DataSetColumn="Produto" />
+              <Mapping SourceColumn="FKLote" DataSetColumn="FKLote" />
+              <Mapping SourceColumn="Quantidade" DataSetColumn="Quantidade" />
+              <Mapping SourceColumn="PrecoUnitario" DataSetColumn="PrecoUnitario" />
+              <Mapping SourceColumn="Subtotal" DataSetColumn="Subtotal" />
+            </Mappings>
+            <Sources />
           </TableAdapter>
         </Tables>
         <Sources />
@@ -61,7 +119,38 @@ WHERE Nome = @username AND Senha = @senha</CommandText>
           <xs:complexType>
           </xs:complexType>
         </xs:element>
+        <xs:element name="GA_CompraRelatorio" msprop:Generator_RowClassName="GA_CompraRelatorioRow" msprop:Generator_RowEvHandlerName="GA_CompraRelatorioRowChangeEventHandler" msprop:Generator_RowDeletedName="GA_CompraRelatorioRowDeleted" msprop:Generator_RowDeletingName="GA_CompraRelatorioRowDeleting" msprop:Generator_RowEvArgName="GA_CompraRelatorioRowChangeEvent" msprop:Generator_TablePropName="GA_CompraRelatorio" msprop:Generator_RowChangedName="GA_CompraRelatorioRowChanged" msprop:Generator_UserTableName="GA_CompraRelatorio" msprop:Generator_RowChangingName="GA_CompraRelatorioRowChanging" msprop:Generator_TableClassName="GA_CompraRelatorioDataTable" msprop:Generator_TableVarName="tableGA_CompraRelatorio">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdCompra" msprop:Generator_ColumnPropNameInRow="IdCompra" msprop:Generator_ColumnPropNameInTable="IdCompraColumn" msprop:Generator_ColumnVarNameInTable="columnIdCompra" msprop:Generator_UserColumnName="IdCompra" type="xs:int" />
+              <xs:element name="DataCompra" msprop:Generator_ColumnPropNameInRow="DataCompra" msprop:Generator_ColumnPropNameInTable="DataCompraColumn" msprop:Generator_ColumnVarNameInTable="columnDataCompra" msprop:Generator_UserColumnName="DataCompra" type="xs:dateTime" />
+              <xs:element name="StatusCompra" msprop:Generator_ColumnPropNameInRow="StatusCompra" msprop:Generator_ColumnPropNameInTable="StatusCompraColumn" msprop:Generator_ColumnVarNameInTable="columnStatusCompra" msprop:Generator_UserColumnName="StatusCompra" type="xs:string" />
+              <xs:element name="ValorTotal" msprop:Generator_ColumnPropNameInRow="ValorTotal" msprop:Generator_ColumnPropNameInTable="ValorTotalColumn" msprop:Generator_ColumnVarNameInTable="columnValorTotal" msprop:Generator_UserColumnName="ValorTotal" type="xs:decimal" />
+              <xs:element name="FormaPagamento" minOccurs="0" msprop:Generator_ColumnPropNameInRow="FormaPagamento" msprop:Generator_ColumnPropNameInTable="FormaPagamentoColumn" msprop:Generator_ColumnVarNameInTable="columnFormaPagamento" msprop:Generator_UserColumnName="FormaPagamento" type="xs:string" />
+              <xs:element name="DataEntrega" minOccurs="0" msprop:Generator_ColumnPropNameInRow="DataEntrega" msprop:Generator_ColumnPropNameInTable="DataEntregaColumn" msprop:Generator_ColumnVarNameInTable="columnDataEntrega" msprop:Generator_UserColumnName="DataEntrega" type="xs:dateTime" />
+              <xs:element name="FKFornecedor" msprop:Generator_ColumnPropNameInRow="FKFornecedor" msprop:Generator_ColumnPropNameInTable="FKFornecedorColumn" msprop:Generator_ColumnVarNameInTable="columnFKFornecedor" msprop:Generator_UserColumnName="FKFornecedor" type="xs:int" />
+              <xs:element name="FKFuncionario" msprop:Generator_ColumnPropNameInRow="FKFuncionario" msprop:Generator_ColumnPropNameInTable="FKFuncionarioColumn" msprop:Generator_ColumnVarNameInTable="columnFKFuncionario" msprop:Generator_UserColumnName="FKFuncionario" type="xs:int" />
+              <xs:element name="NomeFornecedor" msprop:Generator_ColumnPropNameInRow="NomeFornecedor" msprop:Generator_ColumnPropNameInTable="NomeFornecedorColumn" msprop:Generator_ColumnVarNameInTable="columnNomeFornecedor" msprop:Generator_UserColumnName="NomeFornecedor" type="xs:string" />
+              <xs:element name="NomeFuncionario" msprop:Generator_ColumnPropNameInRow="NomeFuncionario" msprop:Generator_ColumnPropNameInTable="NomeFuncionarioColumn" msprop:Generator_ColumnVarNameInTable="columnNomeFuncionario" msprop:Generator_UserColumnName="NomeFuncionario" type="xs:string" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="GA_ItensCompraRelatorio" msprop:Generator_RowClassName="GA_ItensCompraRelatorioRow" msprop:Generator_RowEvHandlerName="GA_ItensCompraRelatorioRowChangeEventHandler" msprop:Generator_RowDeletedName="GA_ItensCompraRelatorioRowDeleted" msprop:Generator_RowDeletingName="GA_ItensCompraRelatorioRowDeleting" msprop:Generator_RowEvArgName="GA_ItensCompraRelatorioRowChangeEvent" msprop:Generator_TablePropName="GA_ItensCompraRelatorio" msprop:Generator_RowChangedName="GA_ItensCompraRelatorioRowChanged" msprop:Generator_UserTableName="GA_ItensCompraRelatorio" msprop:Generator_RowChangingName="GA_ItensCompraRelatorioRowChanging" msprop:Generator_TableClassName="GA_ItensCompraRelatorioDataTable" msprop:Generator_TableVarName="tableGA_ItensCompraRelatorio">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Produto" msprop:Generator_ColumnPropNameInRow="Produto" msprop:Generator_ColumnPropNameInTable="ProdutoColumn" msprop:Generator_ColumnVarNameInTable="columnProduto" msprop:Generator_UserColumnName="Produto" type="xs:string" />
+              <xs:element name="FKLote" msprop:Generator_ColumnPropNameInRow="FKLote" msprop:Generator_ColumnPropNameInTable="FKLoteColumn" msprop:Generator_ColumnVarNameInTable="columnFKLote" msprop:Generator_UserColumnName="FKLote" type="xs:int" />
+              <xs:element name="Quantidade" msprop:Generator_ColumnPropNameInRow="Quantidade" msprop:Generator_ColumnPropNameInTable="QuantidadeColumn" msprop:Generator_ColumnVarNameInTable="columnQuantidade" msprop:Generator_UserColumnName="Quantidade" type="xs:int" />
+              <xs:element name="PrecoUnitario" msprop:Generator_ColumnPropNameInRow="PrecoUnitario" msprop:Generator_ColumnPropNameInTable="PrecoUnitarioColumn" msprop:Generator_ColumnVarNameInTable="columnPrecoUnitario" msprop:Generator_UserColumnName="PrecoUnitario" type="xs:decimal" />
+              <xs:element name="Subtotal" msprop:Generator_ColumnPropNameInRow="Subtotal" msprop:Generator_ColumnPropNameInTable="SubtotalColumn" msprop:Generator_ColumnVarNameInTable="columnSubtotal" msprop:Generator_UserColumnName="Subtotal" type="xs:decimal" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
+    <xs:unique name="GA_CompraRelatorioPrimaryKey" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:GA_CompraRelatorio" />
+      <xs:field xpath="mstns:IdCompra" />
+    </xs:unique>
   </xs:element>
 </xs:schema>

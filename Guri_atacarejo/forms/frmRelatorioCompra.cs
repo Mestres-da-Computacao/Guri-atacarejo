@@ -1,6 +1,5 @@
-﻿using System;
+using System;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
 using System.Globalization;
@@ -10,8 +9,6 @@ namespace Guri_atacarejo.forms
 {
     public partial class frmRelatorioCompra : Form
     {
-        private readonly string connStr = @"Server=(localdb)\MSSQLLocalDB;Database=SuperMercado;Trusted_Connection=True;";
-
         public frmRelatorioCompra()
         {
             InitializeComponent();
@@ -52,55 +49,32 @@ namespace Guri_atacarejo.forms
 
             try
             {
-                string sql = @"SELECT c.IdCompra, c.DataCompra, c.StatusCompra, c.ValorTotal,
-                                      c.FormaPagamento, c.DataEntrega,
-                                      c.FKFornecedor, c.FKFuncionario,
-                                      f.Nome  AS NomeFornecedor,
-                                      fu.Nome AS NomeFuncionario
-                               FROM GA_Compra c
-                               INNER JOIN GA_Fornecedor   f  ON f.IdFornecedor    = c.FKFornecedor
-                               INNER JOIN GA_Funcionarios fu ON fu.IdFuncionario  = c.FKFuncionario";
+                DataSet.GA_CompraRelatorioDataTable compras;
+                using (var adapter = new DataSetTableAdapters.GA_CompraRelatorioTableAdapter())
+                    compras = adapter.GetCompras(inicio, fim);
 
-                if (inicio.HasValue && fim.HasValue)
-                    sql += " WHERE c.DataCompra >= @inicio AND c.DataCompra < @fim";
+                dataGridView1.AutoGenerateColumns = false;
+                dataGridView1.Columns.Clear();
 
-                sql += " ORDER BY c.DataCompra DESC";
-
-                using (var conn = new SqlConnection(connStr))
-                using (var da = new SqlDataAdapter(sql, conn))
+                dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
                 {
-                    if (inicio.HasValue && fim.HasValue)
-                    {
-                        da.SelectCommand.Parameters.Add("@inicio", SqlDbType.Date).Value = inicio.Value;
-                        da.SelectCommand.Parameters.Add("@fim", SqlDbType.Date).Value = fim.Value;
-                    }
+                    DataPropertyName = "DataCompra",
+                    HeaderText = "Data",
+                    DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy" }
+                });
+                dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "StatusCompra",
+                    HeaderText = "Tipo"
+                });
+                dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
+                {
+                    DataPropertyName = "ValorTotal",
+                    HeaderText = "Valor",
+                    DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" }
+                });
 
-                    var dt = new DataTable();
-                    da.Fill(dt);
-
-                    dataGridView1.AutoGenerateColumns = false;
-                    dataGridView1.Columns.Clear();
-
-                    dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        DataPropertyName = "DataCompra",
-                        HeaderText = "Data",
-                        DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy" }
-                    });
-                    dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        DataPropertyName = "StatusCompra",
-                        HeaderText = "Tipo"
-                    });
-                    dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
-                    {
-                        DataPropertyName = "ValorTotal",
-                        HeaderText = "Valor",
-                        DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" }
-                    });
-
-                    dataGridView1.DataSource = dt;
-                }
+                dataGridView1.DataSource = compras;
             }
             catch (Exception ex)
             {
@@ -216,28 +190,19 @@ namespace Guri_atacarejo.forms
 
             try
             {
-                using (var conn = new SqlConnection(connStr))
-                using (var cmd = new SqlCommand(
-                    @"SELECT p.Nome AS Produto, i.FKLote, i.Quantidade, i.PrecoUnitario, i.Subtotal
-                      FROM GA_ItensCompra i
-                      INNER JOIN GA_Lote l     ON l.IdLote = i.FKLote
-                      INNER JOIN GA_Produtos p ON p.IdProduto = l.FKProduto
-                      WHERE i.FKCompra = @id", conn))
-                {
-                    cmd.Parameters.Add("@id", SqlDbType.Int).Value = idCompra;
-                    conn.Open();
+                DataSet.GA_ItensCompraRelatorioDataTable itens;
+                using (var adapter = new DataSetTableAdapters.GA_ItensCompraRelatorioTableAdapter())
+                    itens = adapter.GetItensPorCompra(idCompra);
 
-                    using (var rd = cmd.ExecuteReader())
+                if (itens.Rows.Count == 0)
+                    sb.AppendLine("(nenhum item)");
+                else
+                {
+                    foreach (DataRow item in itens.Rows)
                     {
-                        bool temItens = false;
-                        while (rd.Read())
-                        {
-                            temItens = true;
-                            sb.AppendLine(string.Format("- {0} (Lote {1}): {2} x {3:C2} = {4:C2}",
-                                rd["Produto"], rd["FKLote"], rd["Quantidade"],
-                                rd["PrecoUnitario"], rd["Subtotal"]));
-                        }
-                        if (!temItens) sb.AppendLine("(nenhum item)");
+                        sb.AppendLine(string.Format("- {0} (Lote {1}): {2} x {3:C2} = {4:C2}",
+                            item["Produto"], item["FKLote"], item["Quantidade"],
+                            item["PrecoUnitario"], item["Subtotal"]));
                     }
                 }
             }

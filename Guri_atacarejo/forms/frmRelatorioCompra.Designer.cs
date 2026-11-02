@@ -233,7 +233,7 @@
             this.Total.Name = "Total";
             this.Total.ReadOnly = true;
             // 
-            // frmRelatorioVenda
+            // frmRelatorioCompra
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -241,7 +241,7 @@
             this.ClientSize = new System.Drawing.Size(844, 443);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.toolStrip1);
-            this.Name = "frmRelatorioVenda";
+            this.Name = "frmRelatorioCompra";
             this.Text = "frmRelatorio";
             this.Load += new System.EventHandler(this.frmRelatorio_Load);
             this.toolStrip1.ResumeLayout(false);

@@ -7,6 +7,8 @@
 <DiagramLayout xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ex:showrelationlabel="False" ViewPortX="0" ViewPortY="0" xmlns:ex="urn:schemas-microsoft-com:xml-msdatasource-layout-extended" xmlns="urn:schemas-microsoft-com:xml-msdatasource-layout">
   <Shapes>
     <Shape ID="DesignTable:GA_Funcionarios" ZOrder="1" X="75" Y="121" Height="135" Width="300" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="24" OldDataTableHeight="0" SplitterPosition="46" />
+    <Shape ID="DesignTable:GA_CompraRelatorio" ZOrder="2" X="430" Y="121" Height="131" Width="360" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="80" />
+    <Shape ID="DesignTable:GA_ItensCompraRelatorio" ZOrder="3" X="850" Y="121" Height="121" Width="320" AdapterExpanded="true" DataTableExpanded="true" OldAdapterHeight="0" OldDataTableHeight="0" SplitterPosition="70" />
   </Shapes>
   <Connectors />
 </DiagramLayout>
