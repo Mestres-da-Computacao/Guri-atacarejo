@@ -122,9 +122,11 @@ namespace Guri_atacarejo.forms
             return false;
         }
 
-        private void maskedTextBox2_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            frmPainel painel = new frmPainel();
+            painel.ShowDialog();
         }
     }
 }

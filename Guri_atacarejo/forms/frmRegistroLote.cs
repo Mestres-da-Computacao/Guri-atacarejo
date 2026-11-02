@@ -88,7 +88,8 @@ namespace Guri_atacarejo.forms
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close();
-
+            frmPainel painel = new frmPainel();
+            painel.ShowDialog();
         }
 
         private void LimparCampos()

@@ -36,10 +36,12 @@ namespace Guri_atacarejo.forms
             if (Sessao.NivelFuncionario <= 1)
             {
                 maisOpçõesToolStripMenuItem.Visible = false;
+                relatóriosToolStripMenuItem1.Visible = false;
             }
             else if (Sessao.NivelFuncionario > 1)
             {
                 maisOpçõesToolStripMenuItem.Visible = true;
+                relatóriosToolStripMenuItem1.Visible = true;
             }
         }
 
@@ -491,14 +493,44 @@ namespace Guri_atacarejo.forms
             cadastroFuncionarioForm.ShowDialog();
         }
 
-        private void comprasFornecedoresToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // compra de fornecedores
-        }
-
         private void lotesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // linkar os lotes aqui também
+        }
+
+        private void relatórioMovimentaçãoFinanceiraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmRelatorioCompra relCompra = new frmRelatorioCompra();
+            relCompra.ShowDialog();
+        }
+
+        private void relatórioFluxoEstoqueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmRelatorioEstoque relEstoque = new frmRelatorioEstoque();
+            relEstoque.ShowDialog();
+        }
+
+        private void registoDeLotesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmRegistroLote registroLoteForm = new frmRegistroLote();
+            registroLoteForm.ShowDialog();
+        }
+
+        private void registrarFornecedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmRegistroFornecedor registroFornecedorForm = new frmRegistroFornecedor();
+            registroFornecedorForm.ShowDialog();
+        }
+
+        private void compraDeLotesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmCompra_ compraForm = new frmCompra_();
+            compraForm.ShowDialog();
         }
 
         private void cbPag_SelectedIndexChanged(object sender, EventArgs e)
