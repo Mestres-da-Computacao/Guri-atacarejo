@@ -31,6 +31,7 @@ namespace Guri_atacarejo.forms
             this.loginClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarProdutosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registrarCompraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -82,7 +83,8 @@ namespace Guri_atacarejo.forms
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.funcionáriosToolStripMenuItem,
             this.clientesToolStripMenuItem,
-            this.registrarProdutosToolStripMenuItem});
+            this.registrarProdutosToolStripMenuItem,
+            this.registrarCompraToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -150,6 +152,13 @@ namespace Guri_atacarejo.forms
             this.registrarProdutosToolStripMenuItem.Size = new System.Drawing.Size(116, 20);
             this.registrarProdutosToolStripMenuItem.Text = "Registrar Produtos";
             this.registrarProdutosToolStripMenuItem.Click += new System.EventHandler(this.registrarProdutosToolStripMenuItem_Click);
+            // 
+            // registrarCompraToolStripMenuItem
+            // 
+            this.registrarCompraToolStripMenuItem.Name = "registrarCompraToolStripMenuItem";
+            this.registrarCompraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.registrarCompraToolStripMenuItem.Text = "Registrar Compra";
+            this.registrarCompraToolStripMenuItem.Click += new System.EventHandler(this.registrarCompraToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
@@ -611,6 +620,7 @@ namespace Guri_atacarejo.forms
         private System.Windows.Forms.ToolStripMenuItem loginClienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logoutClienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registrarProdutosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem registrarCompraToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;

@@ -9,6 +9,7 @@ namespace Guri_atacarejo
     public static class Sessao
     {
         public static int NivelFuncionario { get; set; }
+        public static int IdFuncionario { get; set; }
         public static string Usuario { get; set; }
     }
 

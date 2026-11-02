@@ -417,6 +417,7 @@ namespace Guri_atacarejo.forms
             logonForm.ShowDialog();
 
             Sessao.NivelFuncionario = 0;
+            Sessao.IdFuncionario = 0;
             Sessao.Usuario = null;
         }
 
@@ -425,6 +426,15 @@ namespace Guri_atacarejo.forms
             this.Hide();
             frmAdicionar adicionarForm = new frmAdicionar();
             adicionarForm.ShowDialog();
+            this.Show();
+        }
+
+        private void registrarCompraToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (var compraForm = new frmCompra_())
+            {
+                compraForm.ShowDialog(this);
+            }
         }
 
         private void loginClienteToolStripMenuItem_Click(object sender, EventArgs e)
