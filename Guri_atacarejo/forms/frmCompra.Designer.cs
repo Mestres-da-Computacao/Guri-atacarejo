@@ -33,8 +33,8 @@
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.txtFornecedor = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Ações = new System.Windows.Forms.GroupBox();
@@ -65,6 +65,7 @@
             this.btnCancelar.TabIndex = 2;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnConfirmar
             // 
@@ -78,12 +79,13 @@
             this.btnConfirmar.TabIndex = 3;
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.UseVisualStyleBackColor = false;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.flowLayoutPanel2);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtTotal);
+            this.groupBox1.Controls.Add(this.txtFornecedor);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.Ações);
@@ -106,21 +108,23 @@
             this.flowLayoutPanel2.Size = new System.Drawing.Size(350, 430);
             this.flowLayoutPanel2.TabIndex = 1;
             // 
-            // textBox2
+            // txtTotal
             // 
-            this.textBox2.Location = new System.Drawing.Point(846, 598);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(350, 24);
-            this.textBox2.TabIndex = 8;
+            this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.Location = new System.Drawing.Point(846, 598);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.ReadOnly = true;
+            this.txtTotal.Size = new System.Drawing.Size(350, 26);
+            this.txtTotal.TabIndex = 8;
             // 
-            // textBox1
+            // txtFornecedor
             // 
-            this.textBox1.Location = new System.Drawing.Point(846, 537);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(350, 24);
-            this.textBox1.TabIndex = 7;
+            this.txtFornecedor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFornecedor.Location = new System.Drawing.Point(846, 537);
+            this.txtFornecedor.Name = "txtFornecedor";
+            this.txtFornecedor.ReadOnly = true;
+            this.txtFornecedor.Size = new System.Drawing.Size(350, 26);
+            this.txtFornecedor.TabIndex = 7;
             // 
             // label2
             // 
@@ -170,6 +174,7 @@
             this.btnreglote.TabIndex = 7;
             this.btnreglote.Text = "Registrar Lote";
             this.btnreglote.UseVisualStyleBackColor = false;
+            this.btnreglote.Click += new System.EventHandler(this.btnreglote_Click);
             // 
             // btnaddforn
             // 
@@ -183,6 +188,7 @@
             this.btnaddforn.TabIndex = 6;
             this.btnaddforn.Text = "Adicionar Fornecedor";
             this.btnaddforn.UseVisualStyleBackColor = false;
+            this.btnaddforn.Click += new System.EventHandler(this.btnregforn_Click);
             // 
             // btnregforn
             // 
@@ -196,6 +202,7 @@
             this.btnregforn.TabIndex = 5;
             this.btnregforn.Text = "Registrar Fornecedor";
             this.btnregforn.UseVisualStyleBackColor = false;
+            this.btnregforn.Click += new System.EventHandler(this.btnregforn_Click);
             // 
             // frmCompra_
             // 
@@ -206,6 +213,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "frmCompra_";
             this.Text = "frmCompra_";
+            this.Load += new System.EventHandler(this.frmCompra__Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.Ações.ResumeLayout(false);
@@ -223,8 +231,8 @@
         private System.Windows.Forms.Button btnaddforn;
         private System.Windows.Forms.Button btnregforn;
         private System.Windows.Forms.Button btnreglote;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTotal;
+        private System.Windows.Forms.TextBox txtFornecedor;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel2;

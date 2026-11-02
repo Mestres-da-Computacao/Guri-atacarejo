@@ -45,6 +45,7 @@
             this.loginClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarProdutosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registrarCompraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
@@ -149,7 +150,8 @@
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.funcionáriosToolStripMenuItem,
             this.clientesToolStripMenuItem,
-            this.registrarProdutosToolStripMenuItem});
+            this.registrarProdutosToolStripMenuItem,
+            this.registrarCompraToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
@@ -216,6 +218,13 @@
             this.registrarProdutosToolStripMenuItem.Text = "Registrar Produtos";
             this.registrarProdutosToolStripMenuItem.Click += new System.EventHandler(this.registrarProdutosToolStripMenuItem_Click);
             // 
+            // registrarCompraToolStripMenuItem
+            //
+            this.registrarCompraToolStripMenuItem.Name = "registrarCompraToolStripMenuItem";
+            this.registrarCompraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.registrarCompraToolStripMenuItem.Text = "Registrar Compra";
+            this.registrarCompraToolStripMenuItem.Click += new System.EventHandler(this.registrarCompraToolStripMenuItem_Click);
+            //
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
@@ -511,6 +520,7 @@
         private System.Windows.Forms.ToolStripMenuItem loginClienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logoutClienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registrarProdutosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem registrarCompraToolStripMenuItem;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button1;

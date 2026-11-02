@@ -101,6 +101,8 @@ namespace Guri_atacarejo.forms
                     Sessao.NivelFuncionario =
                         Convert.ToInt32(tabelaNivel.Rows[0]["FKCargo"]);
 
+                    Sessao.IdFuncionario =
+                        Convert.ToInt32(tabela.Rows[0]["IdFuncionario"]);
                     Sessao.Usuario = username;
                 }
 

@@ -808,14 +808,15 @@ BEGIN
                 j.Quantidade,
                 j.DataValidade,
                 j.QuantidadeMinima,
-                p.Preco
+                j.Preco
             FROM OPENJSON(@ItensJson)
             WITH
             (
                 FKProduto INT '$.FKProduto',
                 Quantidade INT '$.Quantidade',
                 DataValidade DATE '$.DataValidade',
-                QuantidadeMinima INT '$.QuantidadeMinima'
+                QuantidadeMinima INT '$.QuantidadeMinima',
+                Preco DECIMAL(18,2) '$.Preco'
             ) j
             INNER JOIN GA_Produtos p
                 ON p.IdProduto = j.FKProduto
