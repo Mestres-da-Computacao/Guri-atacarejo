@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,6 +47,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CardCompraProduto.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CardCompraProduto.Designer.cs">
+      <DependentUpon>CardCompraProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CardTelaCompra.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CardTelaCompra.Designer.cs">
+      <DependentUpon>CardTelaCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmCompra.Designer.cs">
+      <DependentUpon>frmCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmexibcaoentidades.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmexibcaoentidades.Designer.cs">
+      <DependentUpon>frmexibcaoentidades.cs</DependentUpon>
+    </Compile>
     <Compile Include="CardCarrinho.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -58,11 +83,24 @@
     <Compile Include="CardProduto.Designer.cs">
       <DependentUpon>CardProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Extencions\GraphicsExtension.cs" />
     <Compile Include="forms\frmAdicionar.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\frmAdicionar.Designer.cs">
       <DependentUpon>frmAdicionar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmCadastroProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmCadastroProduto.Designer.cs">
+      <DependentUpon>frmCadastroProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmAlterarPreco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmAlterarPreco.Designer.cs">
+      <DependentUpon>frmAlterarPreco.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\frmLoginCliente.cs">
       <SubType>Form</SubType>
@@ -78,29 +116,53 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="forms\frmCadastroFuncionario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmCadastroFuncionario.Designer.cs">
+      <DependentUpon>frmCadastroFuncionario.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\frmLogon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\frmLogon.Designer.cs">
-      <DependentUpon>frmLogon.cs</DependentUpon>
+    <Compile Include="forms\FrmLogon.Designer.cs">
+      <DependentUpon>FrmLogon.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmRegistroLote.cs">
+    <Compile Include="forms\frmRegistroFornecedor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\frmRegistroLote.Designer.cs">
-      <DependentUpon>frmRegistroLote.cs</DependentUpon>
+    <Compile Include="forms\frmRegistroFornecedor.Designer.cs">
+      <DependentUpon>frmRegistroFornecedor.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\FrmSplash.cs">
+    <Compile Include="forms\frmMDI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="forms\FrmSplash.Designer.cs">
-      <DependentUpon>FrmSplash.cs</DependentUpon>
+    <Compile Include="forms\frmMDI.Designer.cs">
+      <DependentUpon>frmMDI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmRelatorioCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmRelatorioCompra.Designer.cs">
+      <DependentUpon>frmRelatorioCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmRegistro_Cliente.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\frmPainel.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="forms\frmRegistro_Cliente.Designer.cs">
+      <DependentUpon>frmRegistro_Cliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\frmPainel.Designer.cs">
       <DependentUpon>frmPainel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmRelatorioEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmRelatorioEstoque.Designer.cs">
+      <DependentUpon>frmRelatorioEstoque.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\FrmSplash.cs">
       <SubType>Form</SubType>
@@ -108,9 +170,57 @@
     <Compile Include="forms\FrmSplash.Designer.cs">
       <DependentUpon>FrmSplash.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\frmAddProdVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmAddProdVenda.Designer.cs">
+      <DependentUpon>frmAddProdVenda.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\Produto.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoundComboBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RoundComboBox.Designer.cs">
+      <DependentUpon>RoundComboBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RoundControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RoundControl.Designer.cs">
+      <DependentUpon>RoundControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RoundDate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RoundDate.Designer.cs">
+      <DependentUpon>RoundDate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RoundTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RoundTextBox.Designer.cs">
+      <DependentUpon>RoundTextBox.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="forms\frmCadastroFuncionario.resx">
+      <DependentUpon>frmCadastroFuncionario.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="ResponsividadeForm.cs" />
+    <Compile Include="Sessao\Sessao.cs" />
+    <Compile Include="Sessao\SessaoClientes.cs" />
+    <EmbeddedResource Include="CardCompraProduto.resx">
+      <DependentUpon>CardCompraProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CardTelaCompra.resx">
+      <DependentUpon>CardTelaCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmCompra.resx">
+      <DependentUpon>frmCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmexibcaoentidades.resx">
+      <DependentUpon>frmexibcaoentidades.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CardCarrinho.resx">
       <DependentUpon>CardCarrinho.cs</DependentUpon>
     </EmbeddedResource>
@@ -120,20 +230,41 @@
     <EmbeddedResource Include="forms\frmAdicionar.resx">
       <DependentUpon>frmAdicionar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmCadastroProduto.resx">
+      <DependentUpon>frmCadastroProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmAlterarPreco.resx">
+      <DependentUpon>frmAlterarPreco.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmLoginCliente.resx">
       <DependentUpon>frmLoginCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmLogon.resx">
       <DependentUpon>frmLogon.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmRegistroFornecedor.resx">
+      <DependentUpon>frmRegistroFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmMDI.resx">
+      <DependentUpon>frmMDI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmRegistro_Cliente.resx">
+      <DependentUpon>frmRegistro_Cliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmPainel.resx">
       <DependentUpon>frmPainel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="forms\frmRegistroLote.resx">
-      <DependentUpon>frmRegistroLote.cs</DependentUpon>
+    <EmbeddedResource Include="forms\frmRelatorioEstoque.resx">
+      <DependentUpon>frmRelatorioEstoque.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmRelatorioCompra.resx">
+      <DependentUpon>frmRelatorioCompra.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\FrmSplash.resx">
       <DependentUpon>FrmSplash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmAddProdVenda.resx">
+      <DependentUpon>frmAddProdVenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -145,6 +276,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RoundComboBox.resx">
+      <DependentUpon>RoundComboBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoundControl.resx">
+      <DependentUpon>RoundControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RoundDate.resx">
+      <DependentUpon>RoundDate.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="DataSet.xsc">
       <DependentUpon>DataSet.xsd</DependentUpon>
     </None>
@@ -170,8 +310,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="forms\Texte_pra_envio.txt" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\minilogo.png" />
     <Content Include="forms\Texte_pra_envio.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FullLogo %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
