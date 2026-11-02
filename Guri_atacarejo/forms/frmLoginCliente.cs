@@ -1,4 +1,4 @@
-﻿using Guri_atacarejo.DataSetTableAdapters;
+using Guri_atacarejo.DataSetTableAdapters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

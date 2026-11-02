@@ -1,4 +1,4 @@
-﻿namespace Guri_atacarejo.forms
+namespace Guri_atacarejo.forms
 {
     partial class FrmLoginCliente
     {

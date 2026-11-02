@@ -12,7 +12,7 @@ namespace Guri_atacarejo.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "18.9.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "18.11.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -26,21 +26,25 @@ namespace Guri_atacarejo.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=mercado;Integrated Security=Tr" +
-            "ue;")]
-        public string ConnectionString {
-            get {
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=db_250405;Integrated Security=True;TrustServerCertificate=True;")]
+        public string ConnectionString
+        {
+            get
+            {
                 return ((string)(this["ConnectionString"]));
             }
         }
-        
+
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=(localdb)\\MSSQLLocalDB;Integrated Security=True;Encrypt=True")]
-        public string ConnectionString1 {
-            get {
-                return ((string)(this["ConnectionString1"]));
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=lipesPC;Initial Catalog=SuperMercado;Integrated Security=True;Encrypt" +
+            "=True;TrustServerCertificate=True")]
+        public string SuperMercadoConnectionString
+        {
+            get
+            {
+                return ((string)(this["SuperMercadoConnectionString"]));
             }
         }
     }
