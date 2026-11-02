@@ -96,6 +96,12 @@
     <Compile Include="forms\FrmLogon.Designer.cs">
       <DependentUpon>FrmLogon.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\frmRegistroFornecedor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmRegistroFornecedor.Designer.cs">
+      <DependentUpon>frmRegistroFornecedor.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\frmRegistro_Cliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +146,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmLogon.resx">
       <DependentUpon>frmLogon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmRegistroFornecedor.resx">
+      <DependentUpon>frmRegistroFornecedor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmRegistro_Cliente.resx">
       <DependentUpon>frmRegistro_Cliente.cs</DependentUpon>
