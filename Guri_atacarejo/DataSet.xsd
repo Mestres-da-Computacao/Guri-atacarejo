@@ -537,12 +537,6 @@ SELECT CPF from GA_Clientes where CPF = @cpf</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-      </xs:choice>
-    </xs:complexType>
-    <xs:unique name="GA_CompraRelatorioPrimaryKey" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:GA_CompraRelatorio" />
-      <xs:field xpath="mstns:IdCompra" />
-    </xs:unique>
         <xs:element name="GA_Lote" msprop:Generator_RowEvHandlerName="GA_LoteRowChangeEventHandler" msprop:Generator_RowDeletedName="GA_LoteRowDeleted" msprop:Generator_RowDeletingName="GA_LoteRowDeleting" msprop:Generator_RowEvArgName="GA_LoteRowChangeEvent" msprop:Generator_TablePropName="GA_Lote" msprop:Generator_RowChangedName="GA_LoteRowChanged" msprop:Generator_RowChangingName="GA_LoteRowChanging" msprop:Generator_TableClassName="GA_LoteDataTable" msprop:Generator_RowClassName="GA_LoteRow" msprop:Generator_TableVarName="tableGA_Lote" msprop:Generator_UserTableName="GA_Lote">
           <xs:complexType>
             <xs:sequence>
@@ -578,48 +572,7 @@ SELECT CPF from GA_Clientes where CPF = @cpf</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="GA_Fornecedor" msprop:Generator_RowEvHandlerName="GA_FornecedorRowChangeEventHandler" msprop:Generator_RowDeletedName="GA_FornecedorRowDeleted" msprop:Generator_RowDeletingName="GA_FornecedorRowDeleting" msprop:Generator_RowEvArgName="GA_FornecedorRowChangeEvent" msprop:Generator_TablePropName="GA_Fornecedor" msprop:Generator_RowChangedName="GA_FornecedorRowChanged" msprop:Generator_RowChangingName="GA_FornecedorRowChanging" msprop:Generator_TableClassName="GA_FornecedorDataTable" msprop:Generator_RowClassName="GA_FornecedorRow" msprop:Generator_TableVarName="tableGA_Fornecedor" msprop:Generator_UserTableName="GA_Fornecedor">
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="IdFornecedor" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnPropNameInRow="IdFornecedor" msprop:Generator_ColumnPropNameInTable="IdFornecedorColumn" msprop:Generator_ColumnVarNameInTable="columnIdFornecedor" msprop:Generator_UserColumnName="IdFornecedor" type="xs:int" />
-              <xs:element name="Nome" msprop:Generator_ColumnPropNameInRow="Nome" msprop:Generator_ColumnPropNameInTable="NomeColumn" msprop:Generator_ColumnVarNameInTable="columnNome" msprop:Generator_UserColumnName="Nome">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="100" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="CNPJ" msprop:Generator_ColumnPropNameInRow="CNPJ" msprop:Generator_ColumnPropNameInTable="CNPJColumn" msprop:Generator_ColumnVarNameInTable="columnCNPJ" msprop:Generator_UserColumnName="CNPJ">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="18" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Email" msprop:Generator_ColumnPropNameInRow="Email" msprop:Generator_ColumnPropNameInTable="EmailColumn" msprop:Generator_ColumnVarNameInTable="columnEmail" msprop:Generator_UserColumnName="Email" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="100" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Telefone" msprop:Generator_ColumnPropNameInRow="Telefone" msprop:Generator_ColumnPropNameInTable="TelefoneColumn" msprop:Generator_ColumnVarNameInTable="columnTelefone" msprop:Generator_UserColumnName="Telefone" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="15" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="Endereco" msprop:Generator_ColumnPropNameInRow="Endereco" msprop:Generator_ColumnPropNameInTable="EnderecoColumn" msprop:Generator_ColumnVarNameInTable="columnEndereco" msprop:Generator_UserColumnName="Endereco">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="200" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
+        
         <xs:element name="GA_Estoque" msprop:Generator_RowEvHandlerName="GA_EstoqueRowChangeEventHandler" msprop:Generator_RowDeletedName="GA_EstoqueRowDeleted" msprop:Generator_RowDeletingName="GA_EstoqueRowDeleting" msprop:Generator_RowEvArgName="GA_EstoqueRowChangeEvent" msprop:Generator_TablePropName="GA_Estoque" msprop:Generator_RowChangedName="GA_EstoqueRowChanged" msprop:Generator_UserTableName="GA_Estoque" msprop:Generator_RowChangingName="GA_EstoqueRowChanging" msprop:Generator_RowClassName="GA_EstoqueRow" msprop:Generator_TableClassName="GA_EstoqueDataTable" msprop:Generator_TableVarName="tableGA_Estoque">
           <xs:complexType>
             <xs:sequence>
@@ -710,9 +663,9 @@ SELECT CPF from GA_Clientes where CPF = @cpf</CommandText>
         </xs:element>
       </xs:choice>
     </xs:complexType>
-    <xs:unique name="GA_Fornecedor_Constraint1" msdata:ConstraintName="GA_Fornecedor_Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:GA_Fornecedor" />
-      <xs:field xpath="mstns:IdFornecedor" />
+    <xs:unique name="GA_CompraRelatorioPrimaryKey" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:GA_CompraRelatorio" />
+      <xs:field xpath="mstns:IdCompra" />
     </xs:unique>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">
       <xs:selector xpath=".//mstns:GA_Lote" />
