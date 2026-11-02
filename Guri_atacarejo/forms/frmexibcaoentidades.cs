@@ -15,6 +15,9 @@ namespace Guri_atacarejo.forms
         public frmexibcaoentidades()
         {
             InitializeComponent();
+
+            ResponsividadeForm.Aplicar(this);
+
             cbent.SelectedIndex = 0;
             cbcar.SelectedIndex = 0;
         }

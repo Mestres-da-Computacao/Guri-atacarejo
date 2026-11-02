@@ -9,13 +9,6 @@ namespace Guri_atacarejo
     public static class SessaoClientes
     {
         public static string NomeCliente { get; set; }
-        public static string Senha { get; set; }
+        public static string Cpf { get; set; }
     }
-
-    // para logout:
-    //SessaoClientes.NomeCliente = null;
-    //SessaoClientes.Senha = null;
-
-    //using:
-    // using Guri_atacarejo.SessaoClientes;
 }
