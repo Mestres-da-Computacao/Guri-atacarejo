@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -70,6 +71,12 @@
     <Compile Include="forms\frmAdicionar.Designer.cs">
       <DependentUpon>frmAdicionar.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\frmAlterarPreco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmAlterarPreco.Designer.cs">
+      <DependentUpon>frmAlterarPreco.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\frmLoginCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +103,15 @@
     <Compile Include="forms\FrmLogon.Designer.cs">
       <DependentUpon>FrmLogon.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\frmMDI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmMDI.Designer.cs">
+      <DependentUpon>frmMDI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\FrmSplash.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="forms\frmRegistro_Cliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +129,12 @@
     </Compile>
     <Compile Include="forms\FrmSplash.Designer.cs">
       <DependentUpon>FrmSplash.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmAddProdVenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmAddProdVenda.Designer.cs">
+      <DependentUpon>frmAddProdVenda.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\Produto.cs" />
     <Compile Include="Program.cs" />
@@ -135,11 +157,17 @@
     <EmbeddedResource Include="forms\frmAdicionar.resx">
       <DependentUpon>frmAdicionar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmAlterarPreco.resx">
+      <DependentUpon>frmAlterarPreco.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmLoginCliente.resx">
       <DependentUpon>frmLoginCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmLogon.resx">
       <DependentUpon>frmLogon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmMDI.resx">
+      <DependentUpon>frmMDI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmRegistro_Cliente.resx">
       <DependentUpon>frmRegistro_Cliente.cs</DependentUpon>
@@ -149,6 +177,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\FrmSplash.resx">
       <DependentUpon>FrmSplash.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmAddProdVenda.resx">
+      <DependentUpon>frmAddProdVenda.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
