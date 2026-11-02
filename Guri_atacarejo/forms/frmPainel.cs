@@ -257,6 +257,13 @@ namespace Guri_atacarejo.forms
                 return;
             }
 
+            if (cbPag.SelectedIndex < 0)
+            {
+                MessageBox.Show("Escolha um modo de pagamento para continuar.");
+                cbPag.Focus();
+                return;
+            }
+
             btnFinalizar.Enabled = false;
 
             try
@@ -423,8 +430,8 @@ namespace Guri_atacarejo.forms
         private void loginClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            frmLoginCliente frmLoginCliente = new frmLoginCliente();
-            frmLoginCliente.ShowDialog();
+            FrmLoginCliente loginClienteForm = new FrmLoginCliente();
+            loginClienteForm.ShowDialog();
         }
 
         private void logoutClienteToolStripMenuItem_Click(object sender, EventArgs e)

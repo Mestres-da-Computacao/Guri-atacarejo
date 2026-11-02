@@ -14,7 +14,7 @@ namespace Guri_atacarejo.forms
     public partial class frmCadastroProduto : Form
     {
         const string PrefixoPreco = "R$ ";
-        private readonly string conecta = @"Server=(localdb)\MSSQLLocalDB;Database=SuperMercado;Trusted_Connection=True;";
+        private readonly string conecta = global::Guri_atacarejo.Properties.Settings.Default.ConnectionString;
         private class Original
         {
             public Rectangle Bounds;
@@ -212,4 +212,3 @@ namespace Guri_atacarejo.forms
         }
     }
 }
-
