@@ -134,6 +134,12 @@
     <Compile Include="forms\frmRegistroFornecedor.Designer.cs">
       <DependentUpon>frmRegistroFornecedor.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\frmRegistroLote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmRegistroLote.Designer.cs">
+      <DependentUpon>frmRegistroLote.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\frmMDI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -244,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmRegistroFornecedor.resx">
       <DependentUpon>frmRegistroFornecedor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmRegistroLote.resx">
+      <DependentUpon>frmRegistroLote.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmMDI.resx">
       <DependentUpon>frmMDI.cs</DependentUpon>

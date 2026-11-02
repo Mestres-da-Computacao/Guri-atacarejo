@@ -601,11 +601,10 @@ namespace Guri_atacarejo.forms
 
         private void btnreglote_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(
-                "Os lotes e o estoque são registrados ao confirmar a compra.",
-                "Registro de lote",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            using (var form = new frmRegistroLote())
+            {
+                form.ShowDialog(this);
+            }
         }
 
     }
