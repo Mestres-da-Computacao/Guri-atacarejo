@@ -19,7 +19,43 @@ namespace Guri_atacarejo.forms
         public frmAdicionar()
         {
             InitializeComponent();
-            this.Load += frmAdicionar_Load;
+
+            ResponsividadeForm.Aplicar(this);
+
+            flpProdutos.FlowDirection = FlowDirection.TopDown;
+            flpProdutos.WrapContents = false;
+
+            flpCarrinho.FlowDirection = FlowDirection.TopDown;
+            flpCarrinho.WrapContents = false;
+
+            // Layout dispara também quando a barra de rolagem aparece/some
+            flpProdutos.Layout += (s, e) => AjustarLarguraCards(flpProdutos);
+            flpCarrinho.Layout += (s, e) => AjustarLarguraCards(flpCarrinho);
+        }
+
+        private void AjustarLarguraCards(FlowLayoutPanel flp)
+        {
+            // ClientSize já desconta a barra de rolagem vertical
+            int largura = flp.ClientSize.Width - flp.Padding.Horizontal;
+            if (largura <= 0)
+                return;
+
+            // Altura do card definida aqui (não depende de escala externa)
+            bool ehProdutos = flp == flpProdutos;
+            int altura = ehProdutos
+                ? Math.Max(50, Math.Min(110, flp.ClientSize.Height / 7))
+                : Math.Max(60, Math.Min(110, flp.ClientSize.Height / 6));
+
+            foreach (Control card in flp.Controls)
+            {
+                int w = largura - card.Margin.Horizontal;
+
+                if (card.Width != w)
+                    card.Width = w;
+
+                if (card.Height != altura)
+                    card.Height = altura;
+            }
         }
 
         private void frmAdicionar_Load(object sender, EventArgs e)
@@ -31,6 +67,10 @@ namespace Guri_atacarejo.forms
                 (3, "Óleo de Soja 900ml", 7.20m),
                 (4, "Açúcar 1kg", 4.75m),
                 (5, "Café 500g", 12.30m),
+                (6, "Café 500g", 12.30m),
+                (7, "Café 500g", 12.30m),
+                (8, "Café 500g", 12.30m),
+                (9, "Café 500g", 12.30m),
             };
 
             flpProdutos.Controls.Clear();
@@ -38,11 +78,16 @@ namespace Guri_atacarejo.forms
             foreach (var p in produtosDisponiveis)
             {
                 var card = new CardProduto();
+
                 card.CarregarProduto(p.Id, p.Nome, p.Preco);
+
                 card.QuantidadeAlterada += Card_QuantidadeAlterada;
 
                 flpProdutos.Controls.Add(card);
             }
+
+            AjustarLarguraCards(flpProdutos);
+            AjustarLarguraCards(flpCarrinho);
         }
 
         private void Card_QuantidadeAlterada(object sender, QuantidadeAlteradaEventArgs e)
@@ -76,6 +121,8 @@ namespace Guri_atacarejo.forms
 
                 flpCarrinho.Controls.Add(novoCard);
                 cardsNoCarrinho[produtoId] = novoCard;
+
+                AjustarLarguraCards(flpCarrinho);
             }
         }
 

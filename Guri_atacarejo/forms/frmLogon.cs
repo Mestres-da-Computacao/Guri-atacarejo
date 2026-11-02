@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -19,6 +20,8 @@ namespace Guri_atacarejo.forms
         public FrmLogon()
         {
             InitializeComponent();
+
+            ResponsividadeForm.Aplicar(this);
         }
 
         private void Usertxtbox_Click(object sender, EventArgs e)
@@ -88,12 +91,20 @@ namespace Guri_atacarejo.forms
 
         private bool Login(string username, string senha)
         {
+            var connectionString = new SqlConnectionStringBuilder(
+                Properties.Settings.Default.ConnectionString)
+            {
+                InitialCatalog = "db_250405"
+            }.ConnectionString;
+
             var adapter = new GA_FuncionariosTableAdapter();
+            adapter.Connection.ConnectionString = connectionString;
             var tabela = adapter.VerifyNomeAndSenha(username, senha);
 
             if (tabela.Rows.Count > 0)
             {
                 var adapterNivel = new GA_FuncionariosTableAdapter();
+                adapterNivel.Connection.ConnectionString = connectionString;
                 var tabelaNivel = adapterNivel.GetNivelFuncionario(username);
 
                 if (tabelaNivel.Rows.Count > 0)
@@ -101,6 +112,8 @@ namespace Guri_atacarejo.forms
                     Sessao.NivelFuncionario =
                         Convert.ToInt32(tabelaNivel.Rows[0]["FKCargo"]);
 
+                    Sessao.IdFuncionario =
+                        Convert.ToInt32(tabela.Rows[0]["IdFuncionario"]);
                     Sessao.Usuario = username;
                 }
 

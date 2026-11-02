@@ -14,8 +14,8 @@ namespace Guri_atacarejo.forms
 {
     public partial class frmRegistro_Cliente : Form
     {
-        private const string ConnectionString =
-            "Server=(localdb)\\MSSQLLocalDB;Database=SuperMercado;Trusted_Connection=True;TrustServerCertificate=True;";
+        private static readonly string ConnectionString =
+            global::Guri_atacarejo.Properties.Settings.Default.ConnectionString;
 
         string lastTecla;
         long i = 0;
@@ -24,6 +24,8 @@ namespace Guri_atacarejo.forms
         public frmRegistro_Cliente()
         {
             InitializeComponent();
+
+            ResponsividadeForm.Aplicar(this);
         }
 
         private void txtCPF_KeyPress(object sender, KeyPressEventArgs e)
