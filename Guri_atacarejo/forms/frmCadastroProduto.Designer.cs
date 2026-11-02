@@ -83,6 +83,7 @@
             this.cmbCategoria.Name = "cmbCategoria";
             this.cmbCategoria.Size = new System.Drawing.Size(219, 33);
             this.cmbCategoria.TabIndex = 22;
+            this.cmbCategoria.SelectedIndexChanged += new System.EventHandler(this.cmbCategoria_SelectedIndexChanged);
             // 
             // txtDescricao
             // 
@@ -103,6 +104,7 @@
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.Size = new System.Drawing.Size(411, 30);
             this.txtQuantidade.TabIndex = 20;
+            this.txtQuantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantidade_KeyPress);
             // 
             // txtPreco
             // 
@@ -113,6 +115,11 @@
             this.txtPreco.Name = "txtPreco";
             this.txtPreco.Size = new System.Drawing.Size(411, 30);
             this.txtPreco.TabIndex = 19;
+            this.txtPreco.Text = "R$ ";
+            this.txtPreco.Click += new System.EventHandler(this.txtPreco_Click);
+            this.txtPreco.TextChanged += new System.EventHandler(this.txtPreco_TextChanged);
+            this.txtPreco.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPreco_KeyDown);
+            this.txtPreco.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPreco_KeyPress);
             // 
             // txtCodigo
             // 

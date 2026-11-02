@@ -13,6 +13,7 @@ namespace Guri_atacarejo.forms
 {
     public partial class frmCadastroProduto : Form
     {
+        const string PrefixoPreco = "R$ ";
         private readonly string conecta = @"Server=(localdb)\MSSQLLocalDB;Database=SuperMercado;Trusted_Connection=True;";
         private class Original
         {
@@ -91,7 +92,7 @@ namespace Guri_atacarejo.forms
                 using (SqlCommand comando = new SqlCommand(sql, conexao))
                 {
                     comando.Parameters.AddWithValue("@Nome", txtNome.Text.Trim());
-                    comando.Parameters.AddWithValue("@Preco", Convert.ToDecimal(txtPreco.Text));
+                    comando.Parameters.AddWithValue("@Preco", Convert.ToDecimal(txtPreco.Text.Trim()));
                     comando.Parameters.AddWithValue("@Descricao", txtDescricao.Text.Trim());
                     comando.Parameters.AddWithValue("@Quantidade", Convert.ToInt32(txtQuantidade.Text));
                     comando.Parameters.AddWithValue("@Categoria", cmbCategoria.SelectedItem?.ToString() ?? "Geral");
@@ -118,7 +119,7 @@ namespace Guri_atacarejo.forms
         private void limpacampos()
         {
             txtNome.Clear();
-            txtPreco.Clear();
+            txtPreco.Text = "R$ ";
             txtDescricao.Clear();
             txtQuantidade.Text = "";
             cmbCategoria.SelectedIndex = -1;
@@ -129,28 +130,71 @@ namespace Guri_atacarejo.forms
         {
             limpacampos();
         }
-        private void txtPreco_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtPreco_KeyPress(object sender, KeyPressEventArgs e) { 
+
+            if (e.KeyChar == (char) Keys.Back)
         {
-            if (Char.IsDigit(e.KeyChar) || e.KeyChar == (char)8)
+            if (txtPreco.SelectionStart <= PrefixoPreco.Length && txtPreco.SelectionLength == 0)
+                e.Handled = true;
+            return;
+        }
+ 
+            if (char.IsDigit(e.KeyChar))
+            {
+                if (txtPreco.SelectionStart<PrefixoPreco.Length)
+                    txtPreco.SelectionStart = txtPreco.Text.Length;
+                return;
+            }
+ 
+            if (e.KeyChar == ',' && !txtPreco.Text.Contains(",") &&
+                txtPreco.Text.Length > PrefixoPreco.Length)
             {
                 return;
             }
 
-            if (e.KeyChar == ',' && !txtPreco.Text.Contains(","))
-            {
-                return;
-            }
-            e.Handled = true;
+        e.Handled = true;
         }
+ 
+        private void txtPreco_KeyDown(object sender, KeyEventArgs e)
+{
+    if (e.KeyCode == Keys.Delete && txtPreco.SelectionStart < PrefixoPreco.Length)
+        e.SuppressKeyPress = true;
+}
 
-        private void txtQuantidade_KeyPress(object sender, KeyPressEventArgs e)
+    private void txtPreco_TextChanged(object sender, EventArgs e)
+    {
+        string atual = txtPreco.Text;
+        string corpo = atual.StartsWith(PrefixoPreco) ? atual.Substring(PrefixoPreco.Length) : atual;
+
+        string limpo = Regex.Replace(corpo, @"[^\d,]", "");
+
+        int i = limpo.IndexOf(',');
+        if (i >= 0)
+            limpo = limpo.Substring(0, i + 1) + limpo.Substring(i + 1).Replace(",", "");
+
+        string novo = PrefixoPreco + limpo;
+        if (atual != novo)
         {
-            if (Char.IsDigit(e.KeyChar) || e.KeyChar == (char)8)
-            {
-                return;
-            }
-            e.Handled = true;
+            txtPreco.Text = novo;
+            txtPreco.SelectionStart = txtPreco.Text.Length;
         }
+    }
+
+    private void txtPreco_Click(object sender, EventArgs e)
+    {
+        if (txtPreco.SelectionStart < PrefixoPreco.Length)
+            txtPreco.SelectionStart = txtPreco.Text.Length;
+    }
+
+
+    private void txtQuantidade_KeyPress(object sender, KeyPressEventArgs e)
+            {
+                if (Char.IsDigit(e.KeyChar) || e.KeyChar == (char)8)
+                {
+                    return;
+                }
+                e.Handled = true;
+            }
 
         private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
         {
