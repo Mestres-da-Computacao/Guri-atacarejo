@@ -12,6 +12,8 @@ namespace Guri_atacarejo.forms
         {
             InitializeComponent();
 
+            ResponsividadeForm.Aplicar(this);
+
             textBox1.MaxLength = 100;
             textBox1.KeyPress += textBox1_KeyPress;
             textBox1.TextChanged += textBox1_TextChanged;
@@ -118,6 +120,11 @@ namespace Guri_atacarejo.forms
             MessageBox.Show(mensagem, "Campo inválido", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             campo.Focus();
             return false;
+        }
+
+        private void maskedTextBox2_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
     }
 }
