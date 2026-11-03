@@ -2,7 +2,8 @@ using System;
 using System.Linq;
 using System.Windows.Forms;
 using System.Data.SqlClient;
-
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 namespace Guri_atacarejo.forms
 {
     public partial class FrmLoginCliente : Form
@@ -12,6 +13,27 @@ namespace Guri_atacarejo.forms
             InitializeComponent();
         }
 
+        private void textBox1_Click(object sender, EventArgs e)
+        {
+            if (!cpfJacolocou)
+            {
+                textBox1.Text = "";
+                cpfJacolocou = true;
+            }
+            else
+            {
+                return;
+            }
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            if (textBox1.Text == "")
+            {
+                textBox1.Text = "Digite o cpf";
+                cpfJacolocou = false;
+            }
+        }
         private void button2_Click(object sender, EventArgs e)
         {
             try

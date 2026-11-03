@@ -638,7 +638,129 @@ GO
 --      Cancela apenas os itens selecionados de uma venda
 --      e devolve suas quantidades ao estoque.
 
+--EXECUTAR NO BANCO DA ESCOLA, A PROCEDURE ATUAL ESTÁ DESATUALIZADA
+ALTER PROCEDURE usp_RegistrarCompra
+    @FKFornecedor INT,
+    @FKFuncionario INT,
+    @FormaPagamento VARCHAR(50),
+    @DataEntrega DATE,
+    @ItensJson NVARCHAR(MAX)
+AS
+BEGIN
+    SET NOCOUNT ON;
 
+    BEGIN TRANSACTION;
+
+    BEGIN TRY
+        DECLARE @IdCompra INT;
+
+        DECLARE @NovosLotes TABLE
+        (
+            IdLote INT,
+            Quantidade INT,
+            PrecoUnitario DECIMAL(18,2),
+            QuantidadeMinima INT
+        );
+
+        INSERT INTO GA_Compra
+        (
+            FKFornecedor,
+            FKFuncionario,
+            DataCompra,
+            ValorTotal,
+            FormaPagamento,
+            DataEntrega,
+            StatusCompra
+        )
+        VALUES
+        (
+            @FKFornecedor,
+            @FKFuncionario,
+            GETDATE(),
+            0,
+            @FormaPagamento,
+            @DataEntrega,
+            'Pago'
+        );
+
+        SET @IdCompra = SCOPE_IDENTITY();
+
+        MERGE GA_Lote AS destino
+        USING
+        (
+            SELECT
+                j.FKProduto,
+                j.Quantidade,
+                j.DataValidade,
+                j.QuantidadeMinima,
+                j.Preco
+            FROM OPENJSON(@ItensJson)
+            WITH
+            (
+                FKProduto INT '$.FKProduto',
+                Quantidade INT '$.Quantidade',
+                DataValidade DATE '$.DataValidade',
+                QuantidadeMinima INT '$.QuantidadeMinima',
+                Preco DECIMAL(18,2) '$.Preco'
+            ) j
+            INNER JOIN GA_Produtos p
+                ON p.IdProduto = j.FKProduto
+        ) AS origem
+            ON 1 = 0
+        WHEN NOT MATCHED THEN
+            INSERT (FKFornecedores, FKProduto, Quantidade, DataValidade, [Preço])
+            VALUES (@FKFornecedor, origem.FKProduto, origem.Quantidade, origem.DataValidade, origem.Preco)
+        OUTPUT
+            inserted.IdLote,
+            origem.Quantidade,
+            origem.Preco,
+            ISNULL(origem.QuantidadeMinima, 0)
+        INTO @NovosLotes (IdLote, Quantidade, PrecoUnitario, QuantidadeMinima);
+
+        INSERT INTO GA_Estoque
+        (
+            FKLote,
+            QuantidadeAtual,
+            QuantidadeMinima
+        )
+        SELECT
+            IdLote,
+            0,
+            QuantidadeMinima
+        FROM @NovosLotes;
+
+        INSERT INTO GA_ItensCompra
+        (
+            FKCompra,
+            FKLote,
+            Quantidade,
+            PrecoUnitario,
+            Subtotal
+        )
+        SELECT
+            @IdCompra,
+            IdLote,
+            Quantidade,
+            PrecoUnitario,
+            Quantidade * PrecoUnitario
+        FROM @NovosLotes;
+
+        COMMIT TRANSACTION;
+
+        SELECT
+            @IdCompra AS IdCompraGerada,
+            'Compra registrada com sucesso!' AS Mensagem;
+
+    END TRY
+    BEGIN CATCH
+
+        IF XACT_STATE() <> 0
+            ROLLBACK TRANSACTION;
+
+        THROW;
+    END CATCH
+END;
+    
 -- 3.1. Registrar Venda (com validação de estoque por lote)
 CREATE OR ALTER PROCEDURE usp_RegistrarVenda
     @FKCliente INT = NULL,
