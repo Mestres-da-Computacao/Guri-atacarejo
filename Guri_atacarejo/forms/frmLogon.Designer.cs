@@ -30,110 +30,112 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmLogon));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.Passwordtxtbox = new System.Windows.Forms.TextBox();
-            this.Usertxtbox = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.BtnEntrar = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.Passwordtxtbox = new Guri_atacarejo.CampoTexto();
+            this.Usertxtbox = new Guri_atacarejo.CampoTexto();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(24, 15);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(453, 50);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(857, 287);
+            this.pictureBox1.Size = new System.Drawing.Size(375, 257);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
-            // Passwordtxtbox
+            // BtnEntrar
             // 
-            this.Passwordtxtbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Passwordtxtbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Passwordtxtbox.ForeColor = System.Drawing.Color.Black;
-            this.Passwordtxtbox.Location = new System.Drawing.Point(208, 347);
-            this.Passwordtxtbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Passwordtxtbox.Multiline = true;
-            this.Passwordtxtbox.Name = "Passwordtxtbox";
-            this.Passwordtxtbox.Size = new System.Drawing.Size(536, 32);
-            this.Passwordtxtbox.TabIndex = 2;
-            this.Passwordtxtbox.Text = "Digite sua senha";
-            this.Passwordtxtbox.Click += new System.EventHandler(this.Passwordtxtbox_Click);
-            this.Passwordtxtbox.Leave += new System.EventHandler(this.Passwordtxtbox_Leave);
-            // 
-            // Usertxtbox
-            // 
-            this.Usertxtbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.Usertxtbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Usertxtbox.ForeColor = System.Drawing.Color.Black;
-            this.Usertxtbox.Location = new System.Drawing.Point(208, 297);
-            this.Usertxtbox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Usertxtbox.Multiline = true;
-            this.Usertxtbox.Name = "Usertxtbox";
-            this.Usertxtbox.Size = new System.Drawing.Size(536, 32);
-            this.Usertxtbox.TabIndex = 1;
-            this.Usertxtbox.Text = "Digite o usuário";
-            this.Usertxtbox.Click += new System.EventHandler(this.Usertxtbox_Click);
-            this.Usertxtbox.Leave += new System.EventHandler(this.Usertxtbox_Leave);
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.button1.Location = new System.Drawing.Point(461, 489);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(171, 49);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Entrar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.BtnEntrar_Click);
+            this.BtnEntrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(141)))), ((int)(((byte)(60)))));
+            this.BtnEntrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnEntrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnEntrar.ForeColor = System.Drawing.Color.White;
+            this.BtnEntrar.Location = new System.Drawing.Point(654, 566);
+            this.BtnEntrar.Name = "BtnEntrar";
+            this.BtnEntrar.Size = new System.Drawing.Size(123, 49);
+            this.BtnEntrar.TabIndex = 3;
+            this.BtnEntrar.Text = "Entrar";
+            this.BtnEntrar.UseVisualStyleBackColor = false;
+            this.BtnEntrar.Click += new System.EventHandler(this.BtnEntrar_Click);
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.Color.Transparent;
+            this.button3.BackColor = System.Drawing.Color.White;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(287, 489);
-            this.button3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(141)))), ((int)(((byte)(60)))));
+            this.button3.Location = new System.Drawing.Point(525, 566);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(167, 49);
+            this.button3.Size = new System.Drawing.Size(123, 49);
             this.button3.TabIndex = 4;
             this.button3.Text = "Cancelar";
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(151)))), ((int)(((byte)(44)))));
+            this.panel1.Controls.Add(this.Passwordtxtbox);
+            this.panel1.Controls.Add(this.Usertxtbox);
+            this.panel1.Controls.Add(this.button3);
+            this.panel1.Controls.Add(this.BtnEntrar);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1326, 705);
+            this.panel1.TabIndex = 5;
+            // 
+            // Passwordtxtbox
+            // 
+            this.Passwordtxtbox.BackColor = System.Drawing.Color.Transparent;
+            this.Passwordtxtbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Passwordtxtbox.ForeColor = System.Drawing.Color.White;
+            this.Passwordtxtbox.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.Passwordtxtbox.Location = new System.Drawing.Point(379, 436);
+            this.Passwordtxtbox.Name = "Passwordtxtbox";
+            this.Passwordtxtbox.PlaceholderText = "Digite sua senha";
+            this.Passwordtxtbox.Size = new System.Drawing.Size(535, 40);
+            this.Passwordtxtbox.TabIndex = 6;
+            // 
+            // Usertxtbox
+            // 
+            this.Usertxtbox.BackColor = System.Drawing.Color.Transparent;
+            this.Usertxtbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Usertxtbox.ForeColor = System.Drawing.Color.White;
+            this.Usertxtbox.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.Usertxtbox.Location = new System.Drawing.Point(379, 343);
+            this.Usertxtbox.Name = "Usertxtbox";
+            this.Usertxtbox.PlaceholderText = "Digite o usuário";
+            this.Usertxtbox.Size = new System.Drawing.Size(535, 45);
+            this.Usertxtbox.TabIndex = 5;
+            // 
             // FrmLogon
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.ClientSize = new System.Drawing.Size(905, 585);
-            this.Controls.Add(this.Usertxtbox);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.Passwordtxtbox);
-            this.Controls.Add(this.pictureBox1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(83)))), ((int)(((byte)(46)))));
+            this.ClientSize = new System.Drawing.Size(1350, 729);
+            this.Controls.Add(this.panel1);
             this.Name = "FrmLogon";
-            this.Text = "frmLogon";
+            this.Text = "Login";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox Passwordtxtbox;
-        private System.Windows.Forms.TextBox Usertxtbox;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button BtnEntrar;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Panel panel1;
+        private CampoTexto Usertxtbox;
+        private CampoTexto Passwordtxtbox;
     }
 }

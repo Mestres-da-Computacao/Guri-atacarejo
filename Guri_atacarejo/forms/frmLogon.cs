@@ -15,57 +15,29 @@ namespace Guri_atacarejo.forms
 {
     public partial class FrmLogon : Form
     {
-        private bool userJacolocou = false;
-        private bool passJacolocou = false;
+        // OBS: não precisa mais de userJacolocou / passJacolocou,
+        // o placeholder agora é nativo dentro do CampoTexto.
+
         public FrmLogon()
         {
             InitializeComponent();
 
+            // Placeholders e modo senha (pode ser feito pelo Designer também)
+            Usertxtbox.PlaceholderText = "Digite o usuário";
+            Passwordtxtbox.PlaceholderText = "Digite sua senha";
+            Passwordtxtbox.IsPassword = true;   // oculta com bolinhas + botão de olho
+
+            // Enter no campo de senha = clicar em Entrar
+            Passwordtxtbox.KeyDown += (s, e) =>
+            {
+                if (e.KeyCode == Keys.Enter)
+                {
+                    e.SuppressKeyPress = true;
+                    BtnEntrar.PerformClick();
+                }
+            };
+
             ResponsividadeForm.Aplicar(this);
-        }
-
-        private void Usertxtbox_Click(object sender, EventArgs e)
-        {
-            if (!userJacolocou)
-            {
-                Usertxtbox.Text = "";
-                userJacolocou = true;
-            }
-            else
-            {
-                return;
-            }
-        }
-
-        private void Usertxtbox_Leave(object sender, EventArgs e)
-        {
-            if(Usertxtbox.Text == "") 
-            {
-                Usertxtbox.Text = "Digite o usuário";
-                userJacolocou = false;
-            }
-        }
-
-        private void Passwordtxtbox_Click(object sender, EventArgs e)
-        {
-            if (!passJacolocou)
-            {
-                Passwordtxtbox.Text = "";
-                passJacolocou = true;
-            }
-            else
-            {
-                return;
-            }
-        }
-
-        private void Passwordtxtbox_Leave(object sender, EventArgs e)
-        {
-            if (Passwordtxtbox.Text == "")
-            {
-                Passwordtxtbox.Text = "Digite sua senha";
-                passJacolocou = false;
-            }
         }
 
         private void BtnEntrar_Click(object sender, EventArgs e)
@@ -84,10 +56,10 @@ namespace Guri_atacarejo.forms
                 SessaoClientes.NomeCliente = null;
                 SessaoClientes.Cpf = null;
                 SessaoClientes.IdCliente = 0;
-                Usertxtbox.Text = "Digite o usuário";
-                Passwordtxtbox.Text = "Digite sua senha";
-                userJacolocou = false;
-                passJacolocou = false;
+
+                Usertxtbox.Text = "";
+                Passwordtxtbox.Text = "";
+                Passwordtxtbox.MostrarSenha = false;   // volta a ocultar a senha
                 this.Show();
             }
             else

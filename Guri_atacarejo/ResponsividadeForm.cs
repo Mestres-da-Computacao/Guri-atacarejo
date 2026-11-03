@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using Guri_atacarejo.forms;
 
 namespace Guri_atacarejo
 {
@@ -78,9 +79,10 @@ namespace Guri_atacarejo
                 if (c is DataGridView grid)
                     ConfigurarGrid(grid);
 
-                // Cards (UserControl) e listas dinâmicas (FlowLayoutPanel)
-                // cuidam do próprio layout: não escalar o que há dentro deles.
-                if (c is UserControl || c is FlowLayoutPanel)
+                // Cards (UserControl), listas dinâmicas (FlowLayoutPanel) e o
+                // CampoTexto cuidam do próprio layout interno: o controle em si
+                // é redimensionado, mas o que há dentro dele NÃO deve ser escalado.
+                if (c is UserControl || c is FlowLayoutPanel || c is CampoTexto)
                     continue;
 
                 GuardarOriginais(c, estado);
@@ -92,7 +94,8 @@ namespace Guri_atacarejo
             return c is TextBoxBase
                 || c is ComboBox
                 || c is NumericUpDown
-                || c is DateTimePicker;
+                || c is DateTimePicker
+                || c is CampoTexto;
         }
 
         // Procura o campo de entrada mais próximo, à direita do rótulo,

@@ -59,6 +59,9 @@
     <Compile Include="CardTelaCompra.Designer.cs">
       <DependentUpon>CardTelaCompra.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\CampoTexto.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="forms\frmCompra.cs">
       <SubType>Form</SubType>
     </Compile>
