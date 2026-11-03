@@ -92,7 +92,9 @@ namespace Guri_atacarejo.forms
 
             if (!maskedTextBox1.MaskCompleted)
                 return Erro("Informe um CNPJ completo.", maskedTextBox1);
-
+            ValidadorCPF validador = new ValidadorCPF();
+            if (!validador.ValidarCPF(maskedTextBox1.Text))
+                return Erro("Informe um CNPJ válido.", maskedTextBox1);
             if (string.IsNullOrWhiteSpace(textBox3.Text))
                 return Erro("Informe o endereço do fornecedor.", textBox3);
 

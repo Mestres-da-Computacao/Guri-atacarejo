@@ -63,6 +63,13 @@ namespace Guri_atacarejo.forms
                 textBox1.Focus();
                 return false;
             }
+            ValidadorCPF validador = new ValidadorCPF();
+            if (!validador.ValidarCPF(cpfNumerico))
+            {
+                MessageBox.Show("Informe um CPF válido com 11 dígitos.");
+                textBox1.Focus();
+                return false;
+            }
 
             const string query =
                 @"SELECT IdCliente, Nome, CPF

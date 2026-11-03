@@ -170,6 +170,10 @@ namespace Guri_atacarejo.forms
 
             if (!maskedtxtCpf.MaskCompleted)
                 return Erro("CPF incompleto.", maskedtxtCpf);
+            // Chama a validação matemática do CPF
+            ValidadorCPF validador = new ValidadorCPF();
+            if (!validador.ValidarCPF(maskedtxtCpf.Text))
+                return Erro("CPF inválido.", maskedtxtCpf);
 
             if (maskedtxtTelefone.Text.Any(char.IsDigit) && !maskedtxtTelefone.MaskCompleted)
                 return Erro("Telefone incompleto.", maskedtxtTelefone);

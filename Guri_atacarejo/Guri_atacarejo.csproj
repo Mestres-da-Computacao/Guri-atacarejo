@@ -189,6 +189,7 @@
       <DependentUpon>frmAddProdVenda.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\Produto.cs" />
+    <Compile Include="forms\ValidadorCPF.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RoundComboBox.cs">

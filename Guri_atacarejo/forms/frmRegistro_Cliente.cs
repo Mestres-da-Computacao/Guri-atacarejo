@@ -240,6 +240,13 @@ namespace Guri_atacarejo.forms
                     txtCPF.BackColor = Color.FromArgb(255, 146, 146);
                     erro = true;
                 }
+                ValidadorCPF validador = new ValidadorCPF();
+                if(validador.ValidarCPF(txtCPF.Text) == false)
+                {
+                    MessageBox.Show("CPF digitado incorretamente\n\nCPF inválido");
+                    txtCPF.BackColor = Color.FromArgb(255, 146, 146);
+                    erro = true;
+                }
                 if (!txtEmail.Text.Contains("@") || !txtEmail.Text.Contains(".com"))
                 {
                     MessageBox.Show("Email digitado incorretamente\n Email deve conter @ e .com");
