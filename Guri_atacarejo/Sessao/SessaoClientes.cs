@@ -10,5 +10,6 @@ namespace Guri_atacarejo
     {
         public static string NomeCliente { get; set; }
         public static string Cpf { get; set; }
+        public static int IdCliente { get; set; }
     }
 }

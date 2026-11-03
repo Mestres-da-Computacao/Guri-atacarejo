@@ -41,7 +41,7 @@ namespace Guri_atacarejo.forms
                 cpfJacolocou = false;
             }
         }
-        private void button1_Click(object sender, EventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
             Login(textBox1.Text);
         }
@@ -53,7 +53,10 @@ namespace Guri_atacarejo.forms
 
             if (tabela.Rows.Count > 0)
             {
-                Application.Run(new frmAdicionar());
+                int idCliente = Convert.ToInt32(tabela.Rows[0]["IdCliente"]);
+
+                SessaoClientes.IdCliente = idCliente;
+                this.Hide();
                 return true;
             }
             else
@@ -62,8 +65,24 @@ namespace Guri_atacarejo.forms
                 return false;
             }
         }
+        //private bool Login(string cpf)
+        //{
+        //    var adapter = new GA_ClientesTableAdapter();
+        //    var tabela = adapter.verifycpf(cpf);
 
-        private void button2_Click(object sender, EventArgs e)
+        //    if (tabela.Rows.Count > 0)
+        //    {
+        //        Application.Run(new frmAdicionar());
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        textBox1.Text = "Cpf não encontrado";
+        //        return false;
+        //    }
+        //}
+
+        private void button1_Click(object sender, EventArgs e)
         {
 
         }

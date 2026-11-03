@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Guri_atacarejo;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,8 +8,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Guri_atacarejo;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Guri_atacarejo.forms
 {
@@ -17,7 +18,6 @@ namespace Guri_atacarejo.forms
         int[] IdLotes = new int[0];
         public int qtdProd = 0; // quantidade do produto p mandar p pagina de alterar
 
-        // get/set p receber os valores
         public frmPainel()
         {
             InitializeComponent();
@@ -255,6 +255,14 @@ namespace Guri_atacarejo.forms
 
         private void btnFinalizar_Click(object sender, EventArgs e)
         {
+
+            string formaPagamento = "";
+
+            if (cbPag.SelectedItem != null)
+            {
+                formaPagamento = cbPag.SelectedItem.ToString();
+            }
+
             if (dataGridView1.Rows.Count == 0)
             {
                 MessageBox.Show("Não há produtos para finalizar a venda.");
@@ -335,10 +343,14 @@ namespace Guri_atacarejo.forms
 
                 itens.Append("]");
 
+
+
+                
+
                 // SUBSTITUIR PELOS IDS REAIS DO CLIENTE E DO FUNCIONARIO
                 DataTable resultadoVenda;
                 using (var adapter = new DataSetTableAdapters.GA_VendaTableAdapter())
-                    resultadoVenda = adapter.GetResultadoVenda(1, 1, "Pix", itens.ToString());
+                    resultadoVenda = adapter.GetResultadoVenda(SessaoClientes.IdCliente, Sessao.IdFuncionario, formaPagamento, itens.ToString());
                 if (resultadoVenda.Rows.Count > 0)
                 {
                     string mensagem = Convert.ToString(resultadoVenda.Rows[0]["Mensagem"]);
@@ -370,7 +382,7 @@ namespace Guri_atacarejo.forms
             dataGridView2.Rows.Clear();
 
             IdLotes = new int[0];
-            lblTotal.Text = "R$ 0,00";
+            lblTotal.Text = "R$ 00,00";
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -507,11 +519,67 @@ namespace Guri_atacarejo.forms
             {
                 TrocoContainer.Visible = true;
                 labelTroco.Visible = true;
+                txtReciboDinheiro.Visible = true;
+                lblRS.Visible = true;
             }
             else
             {
                 TrocoContainer.Visible = false;
                 labelTroco.Visible = false;
+                txtReciboDinheiro.Visible = false;
+                lblRS.Visible = false;
+            }
+        }
+
+        private void label5_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void txtReciboDinheiro_Enter(object sender, EventArgs e)
+        {
+            if (txtReciboDinheiro.Text == "00,00")
+            {
+                txtReciboDinheiro.Text = "";
+            }
+            
+        }
+
+        private void txtReciboDinheiro_Leave(object sender, EventArgs e)
+        {
+            if (txtReciboDinheiro.Text == "")
+            {
+                txtReciboDinheiro.Text = "0,00";
+            }
+        }
+
+        private void txtReciboDinheiro_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '.' && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == ',' || e.KeyChar == '.') && txtReciboDinheiro.Text.Contains(',') || txtReciboDinheiro.Text.Contains('.'))
+            {
+                e.Handled = true;
+            }
+
+            if (e.KeyChar == (char)Keys.Enter)
+            {
+                decimal recebido = decimal.Parse(txtReciboDinheiro.Text);
+
+
+                decimal total =  decimal.Parse(lblTotal.Text.Substring(3));
+
+                labelTroco.Text = (recebido - total).ToString("N2");
+                this.ActiveControl = null;
+
             }
         }
     }

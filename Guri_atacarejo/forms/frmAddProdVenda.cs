@@ -73,7 +73,6 @@ namespace Guri_atacarejo.forms
                     MessageBox.Show(erro);
                     return;
                 }
-
                 clear();
             }
             catch (SqlException ex)

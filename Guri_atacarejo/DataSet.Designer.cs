@@ -1,4 +1,5 @@
-namespace Guri_atacarejo {
+namespace Guri_atacarejo
+{
 
 
     /// <summary>
@@ -10,14 +11,15 @@ namespace Guri_atacarejo {
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
     [global::System.Xml.Serialization.XmlRootAttribute("DataSet")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class DataSet : global::System.Data.DataSet {
+    public partial class DataSet : global::System.Data.DataSet
+    {
 
         private GA_FuncionariosDataTable tableGA_Funcionarios;
 
         private GA_CompraRelatorioDataTable tableGA_CompraRelatorio;
 
         private GA_ItensCompraRelatorioDataTable tableGA_ItensCompraRelatorio;
-        
+
 
         private GA_LoteDataTable tableGA_Lote;
 
@@ -47,7 +49,8 @@ namespace Guri_atacarejo {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public DataSet() {
+        public DataSet()
+        {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -59,8 +62,10 @@ namespace Guri_atacarejo {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         protected DataSet(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) :
-                base(info, context, false) {
-            if ((this.IsBinarySerialized(info, context) == true)) {
+                base(info, context, false)
+        {
+            if ((this.IsBinarySerialized(info, context) == true))
+            {
                 this.InitVars(false);
                 global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler1 = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
                 this.Tables.CollectionChanged += schemaChangedHandler1;
@@ -68,43 +73,56 @@ namespace Guri_atacarejo {
                 return;
             }
             string strSchema = ((string)(info.GetValue("XmlSchema", typeof(string))));
-            if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
+            if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema))
+            {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["GA_Funcionarios"] != null)) {
+                if ((ds.Tables["GA_Funcionarios"] != null))
+                {
                     base.Tables.Add(new GA_FuncionariosDataTable(ds.Tables["GA_Funcionarios"]));
                 }
-                if ((ds.Tables["GA_Lote"] != null)) {
+                if ((ds.Tables["GA_Lote"] != null))
+                {
                     base.Tables.Add(new GA_LoteDataTable(ds.Tables["GA_Lote"]));
                 }
-                if ((ds.Tables["GA_CompraRelatorio"] != null)) {
+                if ((ds.Tables["GA_CompraRelatorio"] != null))
+                {
                     base.Tables.Add(new GA_CompraRelatorioDataTable(ds.Tables["GA_CompraRelatorio"]));
                 }
-                if ((ds.Tables["GA_ItensCompraRelatorio"] != null)) {
+                if ((ds.Tables["GA_ItensCompraRelatorio"] != null))
+                {
                     base.Tables.Add(new GA_ItensCompraRelatorioDataTable(ds.Tables["GA_ItensCompraRelatorio"]));
                 }
-                if ((ds.Tables["GA_Produtos"] != null)) {
+                if ((ds.Tables["GA_Produtos"] != null))
+                {
                     base.Tables.Add(new GA_ProdutosDataTable(ds.Tables["GA_Produtos"]));
                 }
-                if ((ds.Tables["GA_Fornecedor"] != null)) {
+                if ((ds.Tables["GA_Fornecedor"] != null))
+                {
                     base.Tables.Add(new GA_FornecedorDataTable(ds.Tables["GA_Fornecedor"]));
                 }
-                if ((ds.Tables["GA_Estoque"] != null)) {
+                if ((ds.Tables["GA_Estoque"] != null))
+                {
                     base.Tables.Add(new GA_EstoqueDataTable(ds.Tables["GA_Estoque"]));
                 }
-                if ((ds.Tables["DataTable1"] != null)) {
+                if ((ds.Tables["DataTable1"] != null))
+                {
                     base.Tables.Add(new DataTable1DataTable(ds.Tables["DataTable1"]));
                 }
-                if ((ds.Tables["GA_VendaResultado"] != null)) {
+                if ((ds.Tables["GA_VendaResultado"] != null))
+                {
                     base.Tables.Add(new GA_VendaResultadoDataTable(ds.Tables["GA_VendaResultado"]));
                 }
-                if ((ds.Tables["GA_Clientes"] != null)) {
+                if ((ds.Tables["GA_Clientes"] != null))
+                {
                     base.Tables.Add(new GA_ClientesDataTable(ds.Tables["GA_Clientes"]));
                 }
-                if ((ds.Tables["GA_Cargos"] != null)) {
+                if ((ds.Tables["GA_Cargos"] != null))
+                {
                     base.Tables.Add(new GA_CargosDataTable(ds.Tables["GA_Cargos"]));
                 }
-                if ((ds.Tables["GA_Departamentos"] != null)) {
+                if ((ds.Tables["GA_Departamentos"] != null))
+                {
                     base.Tables.Add(new GA_DepartamentosDataTable(ds.Tables["GA_Departamentos"]));
                 }
                 this.DataSetName = ds.DataSetName;
@@ -116,7 +134,8 @@ namespace Guri_atacarejo {
                 this.Merge(ds, false, global::System.Data.MissingSchemaAction.Add);
                 this.InitVars();
             }
-            else {
+            else
+            {
                 this.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
             }
             this.GetSerializationData(info, context);
@@ -129,8 +148,10 @@ namespace Guri_atacarejo {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public GA_FuncionariosDataTable GA_Funcionarios {
-            get {
+        public GA_FuncionariosDataTable GA_Funcionarios
+        {
+            get
+            {
                 return this.tableGA_Funcionarios;
             }
         }
@@ -139,8 +160,10 @@ namespace Guri_atacarejo {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public GA_LoteDataTable GA_Lote {
-            get {
+        public GA_LoteDataTable GA_Lote
+        {
+            get
+            {
                 return this.tableGA_Lote;
             }
         }
@@ -149,8 +172,10 @@ namespace Guri_atacarejo {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public GA_ProdutosDataTable GA_Produtos {
-            get {
+        public GA_ProdutosDataTable GA_Produtos
+        {
+            get
+            {
                 return this.tableGA_Produtos;
             }
         }
@@ -159,8 +184,10 @@ namespace Guri_atacarejo {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public GA_FornecedorDataTable GA_Fornecedor {
-            get {
+        public GA_FornecedorDataTable GA_Fornecedor
+        {
+            get
+            {
                 return this.tableGA_Fornecedor;
             }
         }
@@ -169,8 +196,10 @@ namespace Guri_atacarejo {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public GA_EstoqueDataTable GA_Estoque {
-            get {
+        public GA_EstoqueDataTable GA_Estoque
+        {
+            get
+            {
                 return this.tableGA_Estoque;
             }
         }
@@ -179,8 +208,10 @@ namespace Guri_atacarejo {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public DataTable1DataTable DataTable1 {
-            get {
+        public DataTable1DataTable DataTable1
+        {
+            get
+            {
                 return this.tableDataTable1;
             }
         }
@@ -189,8 +220,10 @@ namespace Guri_atacarejo {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public GA_VendaResultadoDataTable GA_VendaResultado {
-            get {
+        public GA_VendaResultadoDataTable GA_VendaResultado
+        {
+            get
+            {
                 return this.tableGA_VendaResultado;
             }
         }
@@ -199,8 +232,10 @@ namespace Guri_atacarejo {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public GA_ClientesDataTable GA_Clientes {
-            get {
+        public GA_ClientesDataTable GA_Clientes
+        {
+            get
+            {
                 return this.tableGA_Clientes;
             }
         }
@@ -209,8 +244,10 @@ namespace Guri_atacarejo {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public GA_CargosDataTable GA_Cargos {
-            get {
+        public GA_CargosDataTable GA_Cargos
+        {
+            get
+            {
                 return this.tableGA_Cargos;
             }
         }
@@ -219,8 +256,10 @@ namespace Guri_atacarejo {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public GA_DepartamentosDataTable GA_Departamentos {
-            get {
+        public GA_DepartamentosDataTable GA_Departamentos
+        {
+            get
+            {
                 return this.tableGA_Departamentos;
             }
         }
@@ -228,31 +267,38 @@ namespace Guri_atacarejo {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public GA_CompraRelatorioDataTable GA_CompraRelatorio {
-            get {
+        public GA_CompraRelatorioDataTable GA_CompraRelatorio
+        {
+            get
+            {
                 return this.tableGA_CompraRelatorio;
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public GA_ItensCompraRelatorioDataTable GA_ItensCompraRelatorio {
-            get {
+        public GA_ItensCompraRelatorioDataTable GA_ItensCompraRelatorio
+        {
+            get
+            {
                 return this.tableGA_ItensCompraRelatorio;
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.BrowsableAttribute(true)]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Visible)]
-        public override global::System.Data.SchemaSerializationMode SchemaSerializationMode {
-            get {
+        public override global::System.Data.SchemaSerializationMode SchemaSerializationMode
+        {
+            get
+            {
                 return this._schemaSerializationMode;
             }
-            set {
+            set
+            {
                 this._schemaSerializationMode = value;
             }
         }
@@ -260,8 +306,10 @@ namespace Guri_atacarejo {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public new global::System.Data.DataTableCollection Tables {
-            get {
+        public new global::System.Data.DataTableCollection Tables
+        {
+            get
+            {
                 return base.Tables;
             }
         }
@@ -269,15 +317,18 @@ namespace Guri_atacarejo {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.DesignerSerializationVisibilityAttribute(global::System.ComponentModel.DesignerSerializationVisibility.Hidden)]
-        public new global::System.Data.DataRelationCollection Relations {
-            get {
+        public new global::System.Data.DataRelationCollection Relations
+        {
+            get
+            {
                 return base.Relations;
             }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected override void InitializeDerivedDataSet() {
+        protected override void InitializeDerivedDataSet()
+        {
             this.BeginInit();
             this.InitClass();
             this.EndInit();
@@ -285,7 +336,8 @@ namespace Guri_atacarejo {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public override global::System.Data.DataSet Clone() {
+        public override global::System.Data.DataSet Clone()
+        {
             DataSet cln = ((DataSet)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
@@ -294,57 +346,73 @@ namespace Guri_atacarejo {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected override bool ShouldSerializeTables() {
+        protected override bool ShouldSerializeTables()
+        {
             return false;
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected override bool ShouldSerializeRelations() {
+        protected override bool ShouldSerializeRelations()
+        {
             return false;
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected override void ReadXmlSerializable(global::System.Xml.XmlReader reader) {
-            if ((this.DetermineSchemaSerializationMode(reader) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
+        protected override void ReadXmlSerializable(global::System.Xml.XmlReader reader)
+        {
+            if ((this.DetermineSchemaSerializationMode(reader) == global::System.Data.SchemaSerializationMode.IncludeSchema))
+            {
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["GA_Funcionarios"] != null)) {
+                if ((ds.Tables["GA_Funcionarios"] != null))
+                {
                     base.Tables.Add(new GA_FuncionariosDataTable(ds.Tables["GA_Funcionarios"]));
                 }
-                if ((ds.Tables["GA_Lote"] != null)) {
+                if ((ds.Tables["GA_Lote"] != null))
+                {
                     base.Tables.Add(new GA_LoteDataTable(ds.Tables["GA_Lote"]));
                 }
-                if ((ds.Tables["GA_CompraRelatorio"] != null)) {
+                if ((ds.Tables["GA_CompraRelatorio"] != null))
+                {
                     base.Tables.Add(new GA_CompraRelatorioDataTable(ds.Tables["GA_CompraRelatorio"]));
                 }
-                if ((ds.Tables["GA_ItensCompraRelatorio"] != null)) {
+                if ((ds.Tables["GA_ItensCompraRelatorio"] != null))
+                {
                     base.Tables.Add(new GA_ItensCompraRelatorioDataTable(ds.Tables["GA_ItensCompraRelatorio"]));
                 }
-                if ((ds.Tables["GA_Produtos"] != null)) {
+                if ((ds.Tables["GA_Produtos"] != null))
+                {
                     base.Tables.Add(new GA_ProdutosDataTable(ds.Tables["GA_Produtos"]));
                 }
-                if ((ds.Tables["GA_Fornecedor"] != null)) {
+                if ((ds.Tables["GA_Fornecedor"] != null))
+                {
                     base.Tables.Add(new GA_FornecedorDataTable(ds.Tables["GA_Fornecedor"]));
                 }
-                if ((ds.Tables["GA_Estoque"] != null)) {
+                if ((ds.Tables["GA_Estoque"] != null))
+                {
                     base.Tables.Add(new GA_EstoqueDataTable(ds.Tables["GA_Estoque"]));
                 }
-                if ((ds.Tables["DataTable1"] != null)) {
+                if ((ds.Tables["DataTable1"] != null))
+                {
                     base.Tables.Add(new DataTable1DataTable(ds.Tables["DataTable1"]));
                 }
-                if ((ds.Tables["GA_VendaResultado"] != null)) {
+                if ((ds.Tables["GA_VendaResultado"] != null))
+                {
                     base.Tables.Add(new GA_VendaResultadoDataTable(ds.Tables["GA_VendaResultado"]));
                 }
-                if ((ds.Tables["GA_Clientes"] != null)) {
+                if ((ds.Tables["GA_Clientes"] != null))
+                {
                     base.Tables.Add(new GA_ClientesDataTable(ds.Tables["GA_Clientes"]));
                 }
-                if ((ds.Tables["GA_Cargos"] != null)) {
+                if ((ds.Tables["GA_Cargos"] != null))
+                {
                     base.Tables.Add(new GA_CargosDataTable(ds.Tables["GA_Cargos"]));
                 }
-                if ((ds.Tables["GA_Departamentos"] != null)) {
+                if ((ds.Tables["GA_Departamentos"] != null))
+                {
                     base.Tables.Add(new GA_DepartamentosDataTable(ds.Tables["GA_Departamentos"]));
                 }
                 this.DataSetName = ds.DataSetName;
@@ -356,7 +424,8 @@ namespace Guri_atacarejo {
                 this.Merge(ds, false, global::System.Data.MissingSchemaAction.Add);
                 this.InitVars();
             }
-            else {
+            else
+            {
                 this.ReadXml(reader);
                 this.InitVars();
             }
@@ -364,7 +433,8 @@ namespace Guri_atacarejo {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected override global::System.Xml.Schema.XmlSchema GetSchemaSerializable() {
+        protected override global::System.Xml.Schema.XmlSchema GetSchemaSerializable()
+        {
             global::System.IO.MemoryStream stream = new global::System.IO.MemoryStream();
             this.WriteXmlSchema(new global::System.Xml.XmlTextWriter(stream, null));
             stream.Position = 0;
@@ -373,82 +443,108 @@ namespace Guri_atacarejo {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal void InitVars() {
+        internal void InitVars()
+        {
             this.InitVars(true);
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        internal void InitVars(bool initTable) {
+        internal void InitVars(bool initTable)
+        {
             this.tableGA_Funcionarios = ((GA_FuncionariosDataTable)(base.Tables["GA_Funcionarios"]));
-            if ((initTable == true)) {
-                if ((this.tableGA_Funcionarios != null)) {
+            if ((initTable == true))
+            {
+                if ((this.tableGA_Funcionarios != null))
+                {
                     this.tableGA_Funcionarios.InitVars();
                 }
             }
             this.tableGA_CompraRelatorio = ((GA_CompraRelatorioDataTable)(base.Tables["GA_CompraRelatorio"]));
-            if ((initTable == true)) {
-                if ((this.tableGA_CompraRelatorio != null)) {
+            if ((initTable == true))
+            {
+                if ((this.tableGA_CompraRelatorio != null))
+                {
                     this.tableGA_CompraRelatorio.InitVars();
                 }
             }
             this.tableGA_ItensCompraRelatorio = ((GA_ItensCompraRelatorioDataTable)(base.Tables["GA_ItensCompraRelatorio"]));
-            if ((initTable == true)) {
-                if ((this.tableGA_ItensCompraRelatorio != null)) {
+            if ((initTable == true))
+            {
+                if ((this.tableGA_ItensCompraRelatorio != null))
+                {
                     this.tableGA_ItensCompraRelatorio.InitVars();
                 }
             }
             this.tableGA_Lote = ((GA_LoteDataTable)(base.Tables["GA_Lote"]));
-            if ((initTable == true)) {
-                if ((this.tableGA_Lote != null)) {
+            if ((initTable == true))
+            {
+                if ((this.tableGA_Lote != null))
+                {
                     this.tableGA_Lote.InitVars();
                 }
             }
             this.tableGA_Produtos = ((GA_ProdutosDataTable)(base.Tables["GA_Produtos"]));
-            if ((initTable == true)) {
-                if ((this.tableGA_Produtos != null)) {
+            if ((initTable == true))
+            {
+                if ((this.tableGA_Produtos != null))
+                {
                     this.tableGA_Produtos.InitVars();
                 }
             }
             this.tableGA_Fornecedor = ((GA_FornecedorDataTable)(base.Tables["GA_Fornecedor"]));
-            if ((initTable == true)) {
-                if ((this.tableGA_Fornecedor != null)) {
+            if ((initTable == true))
+            {
+                if ((this.tableGA_Fornecedor != null))
+                {
                     this.tableGA_Fornecedor.InitVars();
                 }
             }
             this.tableGA_Estoque = ((GA_EstoqueDataTable)(base.Tables["GA_Estoque"]));
-            if ((initTable == true)) {
-                if ((this.tableGA_Estoque != null)) {
+            if ((initTable == true))
+            {
+                if ((this.tableGA_Estoque != null))
+                {
                     this.tableGA_Estoque.InitVars();
                 }
             }
             this.tableDataTable1 = ((DataTable1DataTable)(base.Tables["DataTable1"]));
-            if ((initTable == true)) {
-                if ((this.tableDataTable1 != null)) {
+            if ((initTable == true))
+            {
+                if ((this.tableDataTable1 != null))
+                {
                     this.tableDataTable1.InitVars();
                 }
             }
             this.tableGA_VendaResultado = ((GA_VendaResultadoDataTable)(base.Tables["GA_VendaResultado"]));
-            if ((initTable == true)) {
-                if ((this.tableGA_VendaResultado != null)) {
+            if ((initTable == true))
+            {
+                if ((this.tableGA_VendaResultado != null))
+                {
                     this.tableGA_VendaResultado.InitVars();
                 }
             }
             this.tableGA_Clientes = ((GA_ClientesDataTable)(base.Tables["GA_Clientes"]));
-            if ((initTable == true)) {
-                if ((this.tableGA_Clientes != null)) {
+            if ((initTable == true))
+            {
+                if ((this.tableGA_Clientes != null))
+                {
                     this.tableGA_Clientes.InitVars();
                 }
             }
             this.tableGA_Cargos = ((GA_CargosDataTable)(base.Tables["GA_Cargos"]));
-            if ((initTable == true)) {
-                if ((this.tableGA_Cargos != null)) {
+            if ((initTable == true))
+            {
+                if ((this.tableGA_Cargos != null))
+                {
                     this.tableGA_Cargos.InitVars();
                 }
             }
             this.tableGA_Departamentos = ((GA_DepartamentosDataTable)(base.Tables["GA_Departamentos"]));
-            if ((initTable == true)) {
-                if ((this.tableGA_Departamentos != null)) {
+            if ((initTable == true))
+            {
+                if ((this.tableGA_Departamentos != null))
+                {
                     this.tableGA_Departamentos.InitVars();
                 }
             }
@@ -459,7 +555,8 @@ namespace Guri_atacarejo {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void InitClass() {
+        private void InitClass()
+        {
             this.DataSetName = "DataSet";
             this.Prefix = "";
             this.Namespace = "http://tempuri.org/DataSet.xsd";
@@ -505,25 +602,28 @@ namespace Guri_atacarejo {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeGA_Funcionarios() {
+        private bool ShouldSerializeGA_Funcionarios()
+        {
             return false;
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-        private bool ShouldSerializeGA_CompraRelatorio() {
+        private bool ShouldSerializeGA_CompraRelatorio()
+        {
             return false;
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-        private bool ShouldSerializeGA_ItensCompraRelatorio() {
+        private bool ShouldSerializeGA_ItensCompraRelatorio()
+        {
             return false;
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-        
+
         private bool ShouldSerializeGA_Lote()
         {
             return false;
@@ -531,63 +631,74 @@ namespace Guri_atacarejo {
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeGA_Produtos() {
+        private bool ShouldSerializeGA_Produtos()
+        {
             return false;
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeGA_Fornecedor() {
+        private bool ShouldSerializeGA_Fornecedor()
+        {
             return false;
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeGA_Estoque() {
+        private bool ShouldSerializeGA_Estoque()
+        {
             return false;
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeDataTable1() {
+        private bool ShouldSerializeDataTable1()
+        {
             return false;
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeGA_VendaResultado() {
+        private bool ShouldSerializeGA_VendaResultado()
+        {
             return false;
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeGA_Clientes() {
+        private bool ShouldSerializeGA_Clientes()
+        {
             return false;
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeGA_Cargos() {
+        private bool ShouldSerializeGA_Cargos()
+        {
             return false;
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeGA_Departamentos() {
+        private bool ShouldSerializeGA_Departamentos()
+        {
             return false;
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e) {
-            if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove)) {
+        private void SchemaChanged(object sender, global::System.ComponentModel.CollectionChangeEventArgs e)
+        {
+            if ((e.Action == global::System.ComponentModel.CollectionChangeAction.Remove))
+            {
                 this.InitVars();
             }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+        public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs)
+        {
             DataSet ds = new DataSet();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
@@ -596,34 +707,43 @@ namespace Guri_atacarejo {
             sequence.Items.Add(any);
             type.Particle = sequence;
             global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-            if (xs.Contains(dsSchema.TargetNamespace)) {
+            if (xs.Contains(dsSchema.TargetNamespace))
+            {
                 global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
                 global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                try {
+                try
+                {
                     global::System.Xml.Schema.XmlSchema schema = null;
                     dsSchema.Write(s1);
-                    for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                    for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
+                    {
                         schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                         s2.SetLength(0);
                         schema.Write(s2);
-                        if ((s1.Length == s2.Length)) {
+                        if ((s1.Length == s2.Length))
+                        {
                             s1.Position = 0;
                             s2.Position = 0;
                             for (; ((s1.Position != s1.Length)
-                                        && (s1.ReadByte() == s2.ReadByte())); ) {
+                                        && (s1.ReadByte() == s2.ReadByte()));)
+                            {
                                 ;
                             }
-                            if ((s1.Position == s1.Length)) {
+                            if ((s1.Position == s1.Length))
+                            {
                                 return type;
                             }
                         }
                     }
                 }
-                finally {
-                    if ((s1 != null)) {
+                finally
+                {
+                    if ((s1 != null))
+                    {
                         s1.Close();
                     }
-                    if ((s2 != null)) {
+                    if ((s2 != null))
+                    {
                         s2.Close();
                     }
                 }
@@ -634,16 +754,16 @@ namespace Guri_atacarejo {
 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void GA_FuncionariosRowChangeEventHandler(object sender, GA_FuncionariosRowChangeEvent e);
-        
+
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         public delegate void GA_CompraRelatorioRowChangeEventHandler(object sender, GA_CompraRelatorioRowChangeEvent e);
-        
+
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         public delegate void GA_ItensCompraRelatorioRowChangeEventHandler(object sender, GA_ItensCompraRelatorioRowChangeEvent e);
-        
+
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         public delegate void GA_FornecedorRowChangeEventHandler(object sender, GA_FornecedorRowChangeEvent e);
-        
+
 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public delegate void GA_LoteRowChangeEventHandler(object sender, GA_LoteRowChangeEvent e);
@@ -674,11 +794,13 @@ namespace Guri_atacarejo {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class GA_FuncionariosDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
+        public partial class GA_FuncionariosDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable
+        {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_FuncionariosDataTable() {
+            public GA_FuncionariosDataTable()
+            {
                 this.TableName = "GA_Funcionarios";
                 this.BeginInit();
                 this.InitClass();
@@ -687,15 +809,19 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal GA_FuncionariosDataTable(global::System.Data.DataTable table) {
+            internal GA_FuncionariosDataTable(global::System.Data.DataTable table)
+            {
                 this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive))
+                {
                     this.CaseSensitive = table.CaseSensitive;
                 }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString()))
+                {
                     this.Locale = table.Locale;
                 }
-                if ((table.Namespace != table.DataSet.Namespace)) {
+                if ((table.Namespace != table.DataSet.Namespace))
+                {
                     this.Namespace = table.Namespace;
                 }
                 this.Prefix = table.Prefix;
@@ -705,23 +831,28 @@ namespace Guri_atacarejo {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected GA_FuncionariosDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) :
-                    base(info, context) {
+                    base(info, context)
+            {
                 this.InitVars();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
+            public int Count
+            {
+                get
+                {
                     return this.Rows.Count;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_FuncionariosRow this[int index] {
-                get {
+            public GA_FuncionariosRow this[int index]
+            {
+                get
+                {
                     return ((GA_FuncionariosRow)(this.Rows[index]));
                 }
             }
@@ -740,13 +871,15 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddGA_FuncionariosRow(GA_FuncionariosRow row) {
+            public void AddGA_FuncionariosRow(GA_FuncionariosRow row)
+            {
                 this.Rows.Add(row);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_FuncionariosRow AddGA_FuncionariosRow() {
+            public GA_FuncionariosRow AddGA_FuncionariosRow()
+            {
                 GA_FuncionariosRow rowGA_FuncionariosRow = ((GA_FuncionariosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[0];
                 rowGA_FuncionariosRow.ItemArray = columnValuesArray;
@@ -756,13 +889,15 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+            public virtual global::System.Collections.IEnumerator GetEnumerator()
+            {
                 return this.Rows.GetEnumerator();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
+            public override global::System.Data.DataTable Clone()
+            {
                 GA_FuncionariosDataTable cln = ((GA_FuncionariosDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
@@ -770,83 +905,99 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
+            protected override global::System.Data.DataTable CreateInstance()
+            {
                 return new GA_FuncionariosDataTable();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
+            internal void InitVars()
+            {
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
+            private void InitClass()
+            {
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_FuncionariosRow NewGA_FuncionariosRow() {
+            public GA_FuncionariosRow NewGA_FuncionariosRow()
+            {
                 return ((GA_FuncionariosRow)(this.NewRow()));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder)
+            {
                 return new GA_FuncionariosRow(builder);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
+            protected override global::System.Type GetRowType()
+            {
                 return typeof(GA_FuncionariosRow);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanged(e);
-                if ((this.GA_FuncionariosRowChanged != null)) {
+                if ((this.GA_FuncionariosRowChanged != null))
+                {
                     this.GA_FuncionariosRowChanged(this, new GA_FuncionariosRowChangeEvent(((GA_FuncionariosRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanging(e);
-                if ((this.GA_FuncionariosRowChanging != null)) {
+                if ((this.GA_FuncionariosRowChanging != null))
+                {
                     this.GA_FuncionariosRowChanging(this, new GA_FuncionariosRowChangeEvent(((GA_FuncionariosRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleted(e);
-                if ((this.GA_FuncionariosRowDeleted != null)) {
+                if ((this.GA_FuncionariosRowDeleted != null))
+                {
                     this.GA_FuncionariosRowDeleted(this, new GA_FuncionariosRowChangeEvent(((GA_FuncionariosRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleting(e);
-                if ((this.GA_FuncionariosRowDeleting != null)) {
+                if ((this.GA_FuncionariosRowDeleting != null))
+                {
                     this.GA_FuncionariosRowDeleting(this, new GA_FuncionariosRowChangeEvent(((GA_FuncionariosRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveGA_FuncionariosRow(GA_FuncionariosRow row) {
+            public void RemoveGA_FuncionariosRow(GA_FuncionariosRow row)
+            {
                 this.Rows.Remove(row);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs)
+            {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
                 DataSet ds = new DataSet();
@@ -871,34 +1022,43 @@ namespace Guri_atacarejo {
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
+                if (xs.Contains(dsSchema.TargetNamespace))
+                {
                     global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
                     global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
+                    try
+                    {
                         global::System.Xml.Schema.XmlSchema schema = null;
                         dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
+                        {
                             schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                             s2.SetLength(0);
                             schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
+                            if ((s1.Length == s2.Length))
+                            {
                                 s1.Position = 0;
                                 s2.Position = 0;
                                 for (; ((s1.Position != s1.Length)
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                            && (s1.ReadByte() == s2.ReadByte()));)
+                                {
                                     ;
                                 }
-                                if ((s1.Position == s1.Length)) {
+                                if ((s1.Position == s1.Length))
+                                {
                                     return type;
                                 }
                             }
                         }
                     }
-                    finally {
-                        if ((s1 != null)) {
+                    finally
+                    {
+                        if ((s1 != null))
+                        {
                             s1.Close();
                         }
-                        if ((s2 != null)) {
+                        if ((s2 != null))
+                        {
                             s2.Close();
                         }
                     }
@@ -913,7 +1073,8 @@ namespace Guri_atacarejo {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class GA_LoteDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
+        public partial class GA_LoteDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable
+        {
 
             private global::System.Data.DataColumn columnIdLote;
 
@@ -927,7 +1088,8 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_LoteDataTable() {
+            public GA_LoteDataTable()
+            {
                 this.TableName = "GA_Lote";
                 this.BeginInit();
                 this.InitClass();
@@ -936,15 +1098,19 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal GA_LoteDataTable(global::System.Data.DataTable table) {
+            internal GA_LoteDataTable(global::System.Data.DataTable table)
+            {
                 this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive))
+                {
                     this.CaseSensitive = table.CaseSensitive;
                 }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString()))
+                {
                     this.Locale = table.Locale;
                 }
-                if ((table.Namespace != table.DataSet.Namespace)) {
+                if ((table.Namespace != table.DataSet.Namespace))
+                {
                     this.Namespace = table.Namespace;
                 }
                 this.Prefix = table.Prefix;
@@ -954,46 +1120,57 @@ namespace Guri_atacarejo {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected GA_LoteDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) :
-                    base(info, context) {
+                    base(info, context)
+            {
                 this.InitVars();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdLoteColumn {
-                get {
+            public global::System.Data.DataColumn IdLoteColumn
+            {
+                get
+                {
                     return this.columnIdLote;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FKFornecedoresColumn {
-                get {
+            public global::System.Data.DataColumn FKFornecedoresColumn
+            {
+                get
+                {
                     return this.columnFKFornecedores;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FKProdutoColumn {
-                get {
+            public global::System.Data.DataColumn FKProdutoColumn
+            {
+                get
+                {
                     return this.columnFKProduto;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn QuantidadeColumn {
-                get {
+            public global::System.Data.DataColumn QuantidadeColumn
+            {
+                get
+                {
                     return this.columnQuantidade;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DataValidadeColumn {
-                get {
+            public global::System.Data.DataColumn DataValidadeColumn
+            {
+                get
+                {
                     return this.columnDataValidade;
                 }
             }
@@ -1001,16 +1178,20 @@ namespace Guri_atacarejo {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
+            public int Count
+            {
+                get
+                {
                     return this.Rows.Count;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_LoteRow this[int index] {
-                get {
+            public GA_LoteRow this[int index]
+            {
+                get
+                {
                     return ((GA_LoteRow)(this.Rows[index]));
                 }
             }
@@ -1029,13 +1210,15 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddGA_LoteRow(GA_LoteRow row) {
+            public void AddGA_LoteRow(GA_LoteRow row)
+            {
                 this.Rows.Add(row);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_LoteRow AddGA_LoteRow(GA_FornecedorRow parentGA_FornecedorRowByFK_GA_Lote_Fornecedor, GA_ProdutosRow parentGA_ProdutosRowByFK_GA_Lote_Produtos, int Quantidade, System.DateTime DataValidade) {
+            public GA_LoteRow AddGA_LoteRow(GA_FornecedorRow parentGA_FornecedorRowByFK_GA_Lote_Fornecedor, GA_ProdutosRow parentGA_ProdutosRowByFK_GA_Lote_Produtos, int Quantidade, System.DateTime DataValidade)
+            {
                 GA_LoteRow rowGA_LoteRow = ((GA_LoteRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1043,10 +1226,12 @@ namespace Guri_atacarejo {
                         null,
                         Quantidade,
                         DataValidade};
-                if ((parentGA_FornecedorRowByFK_GA_Lote_Fornecedor != null)) {
+                if ((parentGA_FornecedorRowByFK_GA_Lote_Fornecedor != null))
+                {
                     columnValuesArray[1] = parentGA_FornecedorRowByFK_GA_Lote_Fornecedor[0];
                 }
-                if ((parentGA_ProdutosRowByFK_GA_Lote_Produtos != null)) {
+                if ((parentGA_ProdutosRowByFK_GA_Lote_Produtos != null))
+                {
                     columnValuesArray[2] = parentGA_ProdutosRowByFK_GA_Lote_Produtos[0];
                 }
                 rowGA_LoteRow.ItemArray = columnValuesArray;
@@ -1056,20 +1241,23 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_LoteRow FindByIdLote(int IdLote) {
+            public GA_LoteRow FindByIdLote(int IdLote)
+            {
                 return ((GA_LoteRow)(this.Rows.Find(new object[] {
                             IdLote})));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+            public virtual global::System.Collections.IEnumerator GetEnumerator()
+            {
                 return this.Rows.GetEnumerator();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
+            public override global::System.Data.DataTable Clone()
+            {
                 GA_LoteDataTable cln = ((GA_LoteDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
@@ -1077,13 +1265,15 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
+            protected override global::System.Data.DataTable CreateInstance()
+            {
                 return new GA_LoteDataTable();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
+            internal void InitVars()
+            {
                 this.columnIdLote = base.Columns["IdLote"];
                 this.columnFKFornecedores = base.Columns["FKFornecedores"];
                 this.columnFKProduto = base.Columns["FKProduto"];
@@ -1093,7 +1283,8 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
+            private void InitClass()
+            {
                 this.columnIdLote = new global::System.Data.DataColumn("IdLote", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIdLote);
                 this.columnFKFornecedores = new global::System.Data.DataColumn("FKFornecedores", typeof(int), null, global::System.Data.MappingType.Element);
@@ -1120,67 +1311,80 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_LoteRow NewGA_LoteRow() {
+            public GA_LoteRow NewGA_LoteRow()
+            {
                 return ((GA_LoteRow)(this.NewRow()));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder)
+            {
                 return new GA_LoteRow(builder);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
+            protected override global::System.Type GetRowType()
+            {
                 return typeof(GA_LoteRow);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanged(e);
-                if ((this.GA_LoteRowChanged != null)) {
+                if ((this.GA_LoteRowChanged != null))
+                {
                     this.GA_LoteRowChanged(this, new GA_LoteRowChangeEvent(((GA_LoteRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanging(e);
-                if ((this.GA_LoteRowChanging != null)) {
+                if ((this.GA_LoteRowChanging != null))
+                {
                     this.GA_LoteRowChanging(this, new GA_LoteRowChangeEvent(((GA_LoteRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleted(e);
-                if ((this.GA_LoteRowDeleted != null)) {
+                if ((this.GA_LoteRowDeleted != null))
+                {
                     this.GA_LoteRowDeleted(this, new GA_LoteRowChangeEvent(((GA_LoteRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleting(e);
-                if ((this.GA_LoteRowDeleting != null)) {
+                if ((this.GA_LoteRowDeleting != null))
+                {
                     this.GA_LoteRowDeleting(this, new GA_LoteRowChangeEvent(((GA_LoteRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveGA_LoteRow(GA_LoteRow row) {
+            public void RemoveGA_LoteRow(GA_LoteRow row)
+            {
                 this.Rows.Remove(row);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs)
+            {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
                 DataSet ds = new DataSet();
@@ -1205,34 +1409,43 @@ namespace Guri_atacarejo {
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
+                if (xs.Contains(dsSchema.TargetNamespace))
+                {
                     global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
                     global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
+                    try
+                    {
                         global::System.Xml.Schema.XmlSchema schema = null;
                         dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
+                        {
                             schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                             s2.SetLength(0);
                             schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
+                            if ((s1.Length == s2.Length))
+                            {
                                 s1.Position = 0;
                                 s2.Position = 0;
                                 for (; ((s1.Position != s1.Length)
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                            && (s1.ReadByte() == s2.ReadByte()));)
+                                {
                                     ;
                                 }
-                                if ((s1.Position == s1.Length)) {
+                                if ((s1.Position == s1.Length))
+                                {
                                     return type;
                                 }
                             }
                         }
                     }
-                    finally {
-                        if ((s1 != null)) {
+                    finally
+                    {
+                        if ((s1 != null))
+                        {
                             s1.Close();
                         }
-                        if ((s2 != null)) {
+                        if ((s2 != null))
+                        {
                             s2.Close();
                         }
                     }
@@ -1247,7 +1460,8 @@ namespace Guri_atacarejo {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class GA_ProdutosDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
+        public partial class GA_ProdutosDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable
+        {
 
             private global::System.Data.DataColumn columnIdProduto;
 
@@ -1263,7 +1477,8 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_ProdutosDataTable() {
+            public GA_ProdutosDataTable()
+            {
                 this.TableName = "GA_Produtos";
                 this.BeginInit();
                 this.InitClass();
@@ -1272,15 +1487,19 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal GA_ProdutosDataTable(global::System.Data.DataTable table) {
+            internal GA_ProdutosDataTable(global::System.Data.DataTable table)
+            {
                 this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive))
+                {
                     this.CaseSensitive = table.CaseSensitive;
                 }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString()))
+                {
                     this.Locale = table.Locale;
                 }
-                if ((table.Namespace != table.DataSet.Namespace)) {
+                if ((table.Namespace != table.DataSet.Namespace))
+                {
                     this.Namespace = table.Namespace;
                 }
                 this.Prefix = table.Prefix;
@@ -1290,54 +1509,67 @@ namespace Guri_atacarejo {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected GA_ProdutosDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) :
-                    base(info, context) {
+                    base(info, context)
+            {
                 this.InitVars();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdProdutoColumn {
-                get {
+            public global::System.Data.DataColumn IdProdutoColumn
+            {
+                get
+                {
                     return this.columnIdProduto;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FKFornecedorColumn {
-                get {
+            public global::System.Data.DataColumn FKFornecedorColumn
+            {
+                get
+                {
                     return this.columnFKFornecedor;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FKCategoriaColumn {
-                get {
+            public global::System.Data.DataColumn FKCategoriaColumn
+            {
+                get
+                {
                     return this.columnFKCategoria;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NomeColumn {
-                get {
+            public global::System.Data.DataColumn NomeColumn
+            {
+                get
+                {
                     return this.columnNome;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn UnidadeMedidaColumn {
-                get {
+            public global::System.Data.DataColumn UnidadeMedidaColumn
+            {
+                get
+                {
                     return this.columnUnidadeMedida;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PrecoColumn {
-                get {
+            public global::System.Data.DataColumn PrecoColumn
+            {
+                get
+                {
                     return this.columnPreco;
                 }
             }
@@ -1345,16 +1577,20 @@ namespace Guri_atacarejo {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
+            public int Count
+            {
+                get
+                {
                     return this.Rows.Count;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_ProdutosRow this[int index] {
-                get {
+            public GA_ProdutosRow this[int index]
+            {
+                get
+                {
                     return ((GA_ProdutosRow)(this.Rows[index]));
                 }
             }
@@ -1373,13 +1609,15 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddGA_ProdutosRow(GA_ProdutosRow row) {
+            public void AddGA_ProdutosRow(GA_ProdutosRow row)
+            {
                 this.Rows.Add(row);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_ProdutosRow AddGA_ProdutosRow(GA_FornecedorRow parentGA_FornecedorRowByFK_GA_Produtos_Fornecedor, int FKCategoria, string Nome, string UnidadeMedida, decimal Preco) {
+            public GA_ProdutosRow AddGA_ProdutosRow(GA_FornecedorRow parentGA_FornecedorRowByFK_GA_Produtos_Fornecedor, int FKCategoria, string Nome, string UnidadeMedida, decimal Preco)
+            {
                 GA_ProdutosRow rowGA_ProdutosRow = ((GA_ProdutosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1388,7 +1626,8 @@ namespace Guri_atacarejo {
                         Nome,
                         UnidadeMedida,
                         Preco};
-                if ((parentGA_FornecedorRowByFK_GA_Produtos_Fornecedor != null)) {
+                if ((parentGA_FornecedorRowByFK_GA_Produtos_Fornecedor != null))
+                {
                     columnValuesArray[1] = parentGA_FornecedorRowByFK_GA_Produtos_Fornecedor[0];
                 }
                 rowGA_ProdutosRow.ItemArray = columnValuesArray;
@@ -1398,20 +1637,23 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_ProdutosRow FindByIdProduto(int IdProduto) {
+            public GA_ProdutosRow FindByIdProduto(int IdProduto)
+            {
                 return ((GA_ProdutosRow)(this.Rows.Find(new object[] {
                             IdProduto})));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+            public virtual global::System.Collections.IEnumerator GetEnumerator()
+            {
                 return this.Rows.GetEnumerator();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
+            public override global::System.Data.DataTable Clone()
+            {
                 GA_ProdutosDataTable cln = ((GA_ProdutosDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
@@ -1419,13 +1661,15 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
+            protected override global::System.Data.DataTable CreateInstance()
+            {
                 return new GA_ProdutosDataTable();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
+            internal void InitVars()
+            {
                 this.columnIdProduto = base.Columns["IdProduto"];
                 this.columnFKFornecedor = base.Columns["FKFornecedor"];
                 this.columnFKCategoria = base.Columns["FKCategoria"];
@@ -1436,7 +1680,8 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
+            private void InitClass()
+            {
                 this.columnIdProduto = new global::System.Data.DataColumn("IdProduto", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIdProduto);
                 this.columnFKFornecedor = new global::System.Data.DataColumn("FKFornecedor", typeof(int), null, global::System.Data.MappingType.Element);
@@ -1468,67 +1713,80 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_ProdutosRow NewGA_ProdutosRow() {
+            public GA_ProdutosRow NewGA_ProdutosRow()
+            {
                 return ((GA_ProdutosRow)(this.NewRow()));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder)
+            {
                 return new GA_ProdutosRow(builder);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
+            protected override global::System.Type GetRowType()
+            {
                 return typeof(GA_ProdutosRow);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanged(e);
-                if ((this.GA_ProdutosRowChanged != null)) {
+                if ((this.GA_ProdutosRowChanged != null))
+                {
                     this.GA_ProdutosRowChanged(this, new GA_ProdutosRowChangeEvent(((GA_ProdutosRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanging(e);
-                if ((this.GA_ProdutosRowChanging != null)) {
+                if ((this.GA_ProdutosRowChanging != null))
+                {
                     this.GA_ProdutosRowChanging(this, new GA_ProdutosRowChangeEvent(((GA_ProdutosRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleted(e);
-                if ((this.GA_ProdutosRowDeleted != null)) {
+                if ((this.GA_ProdutosRowDeleted != null))
+                {
                     this.GA_ProdutosRowDeleted(this, new GA_ProdutosRowChangeEvent(((GA_ProdutosRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleting(e);
-                if ((this.GA_ProdutosRowDeleting != null)) {
+                if ((this.GA_ProdutosRowDeleting != null))
+                {
                     this.GA_ProdutosRowDeleting(this, new GA_ProdutosRowChangeEvent(((GA_ProdutosRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveGA_ProdutosRow(GA_ProdutosRow row) {
+            public void RemoveGA_ProdutosRow(GA_ProdutosRow row)
+            {
                 this.Rows.Remove(row);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs)
+            {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
                 DataSet ds = new DataSet();
@@ -1553,34 +1811,43 @@ namespace Guri_atacarejo {
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
+                if (xs.Contains(dsSchema.TargetNamespace))
+                {
                     global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
                     global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
+                    try
+                    {
                         global::System.Xml.Schema.XmlSchema schema = null;
                         dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
+                        {
                             schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                             s2.SetLength(0);
                             schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
+                            if ((s1.Length == s2.Length))
+                            {
                                 s1.Position = 0;
                                 s2.Position = 0;
                                 for (; ((s1.Position != s1.Length)
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                            && (s1.ReadByte() == s2.ReadByte()));)
+                                {
                                     ;
                                 }
-                                if ((s1.Position == s1.Length)) {
+                                if ((s1.Position == s1.Length))
+                                {
                                     return type;
                                 }
                             }
                         }
                     }
-                    finally {
-                        if ((s1 != null)) {
+                    finally
+                    {
+                        if ((s1 != null))
+                        {
                             s1.Close();
                         }
-                        if ((s2 != null)) {
+                        if ((s2 != null))
+                        {
                             s2.Close();
                         }
                     }
@@ -1595,7 +1862,8 @@ namespace Guri_atacarejo {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class GA_FornecedorDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
+        public partial class GA_FornecedorDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable
+        {
 
             private global::System.Data.DataColumn columnIdFornecedor;
 
@@ -1611,7 +1879,8 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_FornecedorDataTable() {
+            public GA_FornecedorDataTable()
+            {
                 this.TableName = "GA_Fornecedor";
                 this.BeginInit();
                 this.InitClass();
@@ -1620,15 +1889,19 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal GA_FornecedorDataTable(global::System.Data.DataTable table) {
+            internal GA_FornecedorDataTable(global::System.Data.DataTable table)
+            {
                 this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive))
+                {
                     this.CaseSensitive = table.CaseSensitive;
                 }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString()))
+                {
                     this.Locale = table.Locale;
                 }
-                if ((table.Namespace != table.DataSet.Namespace)) {
+                if ((table.Namespace != table.DataSet.Namespace))
+                {
                     this.Namespace = table.Namespace;
                 }
                 this.Prefix = table.Prefix;
@@ -1638,54 +1911,67 @@ namespace Guri_atacarejo {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected GA_FornecedorDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) :
-                    base(info, context) {
+                    base(info, context)
+            {
                 this.InitVars();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdFornecedorColumn {
-                get {
+            public global::System.Data.DataColumn IdFornecedorColumn
+            {
+                get
+                {
                     return this.columnIdFornecedor;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NomeColumn {
-                get {
+            public global::System.Data.DataColumn NomeColumn
+            {
+                get
+                {
                     return this.columnNome;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CNPJColumn {
-                get {
+            public global::System.Data.DataColumn CNPJColumn
+            {
+                get
+                {
                     return this.columnCNPJ;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn EmailColumn {
-                get {
+            public global::System.Data.DataColumn EmailColumn
+            {
+                get
+                {
                     return this.columnEmail;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TelefoneColumn {
-                get {
+            public global::System.Data.DataColumn TelefoneColumn
+            {
+                get
+                {
                     return this.columnTelefone;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn EnderecoColumn {
-                get {
+            public global::System.Data.DataColumn EnderecoColumn
+            {
+                get
+                {
                     return this.columnEndereco;
                 }
             }
@@ -1693,16 +1979,20 @@ namespace Guri_atacarejo {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
+            public int Count
+            {
+                get
+                {
                     return this.Rows.Count;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_FornecedorRow this[int index] {
-                get {
+            public GA_FornecedorRow this[int index]
+            {
+                get
+                {
                     return ((GA_FornecedorRow)(this.Rows[index]));
                 }
             }
@@ -1721,13 +2011,15 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddGA_FornecedorRow(GA_FornecedorRow row) {
+            public void AddGA_FornecedorRow(GA_FornecedorRow row)
+            {
                 this.Rows.Add(row);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_FornecedorRow AddGA_FornecedorRow(string Nome, string CNPJ, string Email, string Telefone, string Endereco) {
+            public GA_FornecedorRow AddGA_FornecedorRow(string Nome, string CNPJ, string Email, string Telefone, string Endereco)
+            {
                 GA_FornecedorRow rowGA_FornecedorRow = ((GA_FornecedorRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1743,20 +2035,23 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_FornecedorRow FindByIdFornecedor(int IdFornecedor) {
+            public GA_FornecedorRow FindByIdFornecedor(int IdFornecedor)
+            {
                 return ((GA_FornecedorRow)(this.Rows.Find(new object[] {
                             IdFornecedor})));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+            public virtual global::System.Collections.IEnumerator GetEnumerator()
+            {
                 return this.Rows.GetEnumerator();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
+            public override global::System.Data.DataTable Clone()
+            {
                 GA_FornecedorDataTable cln = ((GA_FornecedorDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
@@ -1764,13 +2059,15 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
+            protected override global::System.Data.DataTable CreateInstance()
+            {
                 return new GA_FornecedorDataTable();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
+            internal void InitVars()
+            {
                 this.columnIdFornecedor = base.Columns["IdFornecedor"];
                 this.columnNome = base.Columns["Nome"];
                 this.columnCNPJ = base.Columns["CNPJ"];
@@ -1781,7 +2078,8 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
+            private void InitClass()
+            {
                 this.columnIdFornecedor = new global::System.Data.DataColumn("IdFornecedor", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIdFornecedor);
                 this.columnNome = new global::System.Data.DataColumn("Nome", typeof(string), null, global::System.Data.MappingType.Element);
@@ -1814,67 +2112,80 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_FornecedorRow NewGA_FornecedorRow() {
+            public GA_FornecedorRow NewGA_FornecedorRow()
+            {
                 return ((GA_FornecedorRow)(this.NewRow()));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder)
+            {
                 return new GA_FornecedorRow(builder);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
+            protected override global::System.Type GetRowType()
+            {
                 return typeof(GA_FornecedorRow);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanged(e);
-                if ((this.GA_FornecedorRowChanged != null)) {
+                if ((this.GA_FornecedorRowChanged != null))
+                {
                     this.GA_FornecedorRowChanged(this, new GA_FornecedorRowChangeEvent(((GA_FornecedorRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanging(e);
-                if ((this.GA_FornecedorRowChanging != null)) {
+                if ((this.GA_FornecedorRowChanging != null))
+                {
                     this.GA_FornecedorRowChanging(this, new GA_FornecedorRowChangeEvent(((GA_FornecedorRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleted(e);
-                if ((this.GA_FornecedorRowDeleted != null)) {
+                if ((this.GA_FornecedorRowDeleted != null))
+                {
                     this.GA_FornecedorRowDeleted(this, new GA_FornecedorRowChangeEvent(((GA_FornecedorRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleting(e);
-                if ((this.GA_FornecedorRowDeleting != null)) {
+                if ((this.GA_FornecedorRowDeleting != null))
+                {
                     this.GA_FornecedorRowDeleting(this, new GA_FornecedorRowChangeEvent(((GA_FornecedorRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveGA_FornecedorRow(GA_FornecedorRow row) {
+            public void RemoveGA_FornecedorRow(GA_FornecedorRow row)
+            {
                 this.Rows.Remove(row);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs)
+            {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
                 DataSet ds = new DataSet();
@@ -1899,34 +2210,43 @@ namespace Guri_atacarejo {
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
+                if (xs.Contains(dsSchema.TargetNamespace))
+                {
                     global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
                     global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
+                    try
+                    {
                         global::System.Xml.Schema.XmlSchema schema = null;
                         dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
+                        {
                             schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                             s2.SetLength(0);
                             schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
+                            if ((s1.Length == s2.Length))
+                            {
                                 s1.Position = 0;
                                 s2.Position = 0;
                                 for (; ((s1.Position != s1.Length)
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                            && (s1.ReadByte() == s2.ReadByte()));)
+                                {
                                     ;
                                 }
-                                if ((s1.Position == s1.Length)) {
+                                if ((s1.Position == s1.Length))
+                                {
                                     return type;
                                 }
                             }
                         }
                     }
-                    finally {
-                        if ((s1 != null)) {
+                    finally
+                    {
+                        if ((s1 != null))
+                        {
                             s1.Close();
                         }
-                        if ((s2 != null)) {
+                        if ((s2 != null))
+                        {
                             s2.Close();
                         }
                     }
@@ -1941,7 +2261,8 @@ namespace Guri_atacarejo {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class GA_EstoqueDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
+        public partial class GA_EstoqueDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable
+        {
 
             private global::System.Data.DataColumn columnQuantidadeAtual;
 
@@ -1949,7 +2270,8 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_EstoqueDataTable() {
+            public GA_EstoqueDataTable()
+            {
                 this.TableName = "GA_Estoque";
                 this.BeginInit();
                 this.InitClass();
@@ -1958,15 +2280,19 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal GA_EstoqueDataTable(global::System.Data.DataTable table) {
+            internal GA_EstoqueDataTable(global::System.Data.DataTable table)
+            {
                 this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive))
+                {
                     this.CaseSensitive = table.CaseSensitive;
                 }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString()))
+                {
                     this.Locale = table.Locale;
                 }
-                if ((table.Namespace != table.DataSet.Namespace)) {
+                if ((table.Namespace != table.DataSet.Namespace))
+                {
                     this.Namespace = table.Namespace;
                 }
                 this.Prefix = table.Prefix;
@@ -1976,22 +2302,27 @@ namespace Guri_atacarejo {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected GA_EstoqueDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) :
-                    base(info, context) {
+                    base(info, context)
+            {
                 this.InitVars();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn QuantidadeAtualColumn {
-                get {
+            public global::System.Data.DataColumn QuantidadeAtualColumn
+            {
+                get
+                {
                     return this.columnQuantidadeAtual;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdEstoqueColumn {
-                get {
+            public global::System.Data.DataColumn IdEstoqueColumn
+            {
+                get
+                {
                     return this.columnIdEstoque;
                 }
             }
@@ -1999,16 +2330,20 @@ namespace Guri_atacarejo {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
+            public int Count
+            {
+                get
+                {
                     return this.Rows.Count;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_EstoqueRow this[int index] {
-                get {
+            public GA_EstoqueRow this[int index]
+            {
+                get
+                {
                     return ((GA_EstoqueRow)(this.Rows[index]));
                 }
             }
@@ -2027,13 +2362,15 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddGA_EstoqueRow(GA_EstoqueRow row) {
+            public void AddGA_EstoqueRow(GA_EstoqueRow row)
+            {
                 this.Rows.Add(row);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_EstoqueRow AddGA_EstoqueRow(int QuantidadeAtual) {
+            public GA_EstoqueRow AddGA_EstoqueRow(int QuantidadeAtual)
+            {
                 GA_EstoqueRow rowGA_EstoqueRow = ((GA_EstoqueRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         QuantidadeAtual,
@@ -2045,20 +2382,23 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_EstoqueRow FindByIdEstoque(int IdEstoque) {
+            public GA_EstoqueRow FindByIdEstoque(int IdEstoque)
+            {
                 return ((GA_EstoqueRow)(this.Rows.Find(new object[] {
                             IdEstoque})));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+            public virtual global::System.Collections.IEnumerator GetEnumerator()
+            {
                 return this.Rows.GetEnumerator();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
+            public override global::System.Data.DataTable Clone()
+            {
                 GA_EstoqueDataTable cln = ((GA_EstoqueDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
@@ -2066,20 +2406,23 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
+            protected override global::System.Data.DataTable CreateInstance()
+            {
                 return new GA_EstoqueDataTable();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
+            internal void InitVars()
+            {
                 this.columnQuantidadeAtual = base.Columns["QuantidadeAtual"];
                 this.columnIdEstoque = base.Columns["IdEstoque"];
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
+            private void InitClass()
+            {
                 this.columnQuantidadeAtual = new global::System.Data.DataColumn("QuantidadeAtual", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQuantidadeAtual);
                 this.columnIdEstoque = new global::System.Data.DataColumn("IdEstoque", typeof(int), null, global::System.Data.MappingType.Element);
@@ -2097,67 +2440,80 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_EstoqueRow NewGA_EstoqueRow() {
+            public GA_EstoqueRow NewGA_EstoqueRow()
+            {
                 return ((GA_EstoqueRow)(this.NewRow()));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder)
+            {
                 return new GA_EstoqueRow(builder);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
+            protected override global::System.Type GetRowType()
+            {
                 return typeof(GA_EstoqueRow);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanged(e);
-                if ((this.GA_EstoqueRowChanged != null)) {
+                if ((this.GA_EstoqueRowChanged != null))
+                {
                     this.GA_EstoqueRowChanged(this, new GA_EstoqueRowChangeEvent(((GA_EstoqueRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanging(e);
-                if ((this.GA_EstoqueRowChanging != null)) {
+                if ((this.GA_EstoqueRowChanging != null))
+                {
                     this.GA_EstoqueRowChanging(this, new GA_EstoqueRowChangeEvent(((GA_EstoqueRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleted(e);
-                if ((this.GA_EstoqueRowDeleted != null)) {
+                if ((this.GA_EstoqueRowDeleted != null))
+                {
                     this.GA_EstoqueRowDeleted(this, new GA_EstoqueRowChangeEvent(((GA_EstoqueRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleting(e);
-                if ((this.GA_EstoqueRowDeleting != null)) {
+                if ((this.GA_EstoqueRowDeleting != null))
+                {
                     this.GA_EstoqueRowDeleting(this, new GA_EstoqueRowChangeEvent(((GA_EstoqueRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveGA_EstoqueRow(GA_EstoqueRow row) {
+            public void RemoveGA_EstoqueRow(GA_EstoqueRow row)
+            {
                 this.Rows.Remove(row);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs)
+            {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
                 DataSet ds = new DataSet();
@@ -2182,34 +2538,43 @@ namespace Guri_atacarejo {
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
+                if (xs.Contains(dsSchema.TargetNamespace))
+                {
                     global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
                     global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
+                    try
+                    {
                         global::System.Xml.Schema.XmlSchema schema = null;
                         dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
+                        {
                             schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                             s2.SetLength(0);
                             schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
+                            if ((s1.Length == s2.Length))
+                            {
                                 s1.Position = 0;
                                 s2.Position = 0;
                                 for (; ((s1.Position != s1.Length)
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                            && (s1.ReadByte() == s2.ReadByte()));)
+                                {
                                     ;
                                 }
-                                if ((s1.Position == s1.Length)) {
+                                if ((s1.Position == s1.Length))
+                                {
                                     return type;
                                 }
                             }
                         }
                     }
-                    finally {
-                        if ((s1 != null)) {
+                    finally
+                    {
+                        if ((s1 != null))
+                        {
                             s1.Close();
                         }
-                        if ((s2 != null)) {
+                        if ((s2 != null))
+                        {
                             s2.Close();
                         }
                     }
@@ -2224,7 +2589,8 @@ namespace Guri_atacarejo {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class DataTable1DataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
+        public partial class DataTable1DataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable
+        {
 
             private global::System.Data.DataColumn columnFKProduto;
 
@@ -2238,7 +2604,8 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataTable1DataTable() {
+            public DataTable1DataTable()
+            {
                 this.TableName = "DataTable1";
                 this.BeginInit();
                 this.InitClass();
@@ -2247,15 +2614,19 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal DataTable1DataTable(global::System.Data.DataTable table) {
+            internal DataTable1DataTable(global::System.Data.DataTable table)
+            {
                 this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive))
+                {
                     this.CaseSensitive = table.CaseSensitive;
                 }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString()))
+                {
                     this.Locale = table.Locale;
                 }
-                if ((table.Namespace != table.DataSet.Namespace)) {
+                if ((table.Namespace != table.DataSet.Namespace))
+                {
                     this.Namespace = table.Namespace;
                 }
                 this.Prefix = table.Prefix;
@@ -2265,46 +2636,57 @@ namespace Guri_atacarejo {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected DataTable1DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) :
-                    base(info, context) {
+                    base(info, context)
+            {
                 this.InitVars();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FKProdutoColumn {
-                get {
+            public global::System.Data.DataColumn FKProdutoColumn
+            {
+                get
+                {
                     return this.columnFKProduto;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NomeColumn {
-                get {
+            public global::System.Data.DataColumn NomeColumn
+            {
+                get
+                {
                     return this.columnNome;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PrecoColumn {
-                get {
+            public global::System.Data.DataColumn PrecoColumn
+            {
+                get
+                {
                     return this.columnPreco;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn UnidadeMedidaColumn {
-                get {
+            public global::System.Data.DataColumn UnidadeMedidaColumn
+            {
+                get
+                {
                     return this.columnUnidadeMedida;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DataValidadeColumn {
-                get {
+            public global::System.Data.DataColumn DataValidadeColumn
+            {
+                get
+                {
                     return this.columnDataValidade;
                 }
             }
@@ -2312,16 +2694,20 @@ namespace Guri_atacarejo {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
+            public int Count
+            {
+                get
+                {
                     return this.Rows.Count;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataTable1Row this[int index] {
-                get {
+            public DataTable1Row this[int index]
+            {
+                get
+                {
                     return ((DataTable1Row)(this.Rows[index]));
                 }
             }
@@ -2340,13 +2726,15 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddDataTable1Row(DataTable1Row row) {
+            public void AddDataTable1Row(DataTable1Row row)
+            {
                 this.Rows.Add(row);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataTable1Row AddDataTable1Row(string Nome, decimal Preco, string UnidadeMedida, System.DateTime DataValidade) {
+            public DataTable1Row AddDataTable1Row(string Nome, decimal Preco, string UnidadeMedida, System.DateTime DataValidade)
+            {
                 DataTable1Row rowDataTable1Row = ((DataTable1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2361,20 +2749,23 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataTable1Row FindByFKProduto(int FKProduto) {
+            public DataTable1Row FindByFKProduto(int FKProduto)
+            {
                 return ((DataTable1Row)(this.Rows.Find(new object[] {
                             FKProduto})));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+            public virtual global::System.Collections.IEnumerator GetEnumerator()
+            {
                 return this.Rows.GetEnumerator();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
+            public override global::System.Data.DataTable Clone()
+            {
                 DataTable1DataTable cln = ((DataTable1DataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
@@ -2382,13 +2773,15 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
+            protected override global::System.Data.DataTable CreateInstance()
+            {
                 return new DataTable1DataTable();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
+            internal void InitVars()
+            {
                 this.columnFKProduto = base.Columns["FKProduto"];
                 this.columnNome = base.Columns["Nome"];
                 this.columnPreco = base.Columns["Preco"];
@@ -2398,7 +2791,8 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
+            private void InitClass()
+            {
                 this.columnFKProduto = new global::System.Data.DataColumn("FKProduto", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFKProduto);
                 this.columnNome = new global::System.Data.DataColumn("Nome", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2427,67 +2821,80 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataTable1Row NewDataTable1Row() {
+            public DataTable1Row NewDataTable1Row()
+            {
                 return ((DataTable1Row)(this.NewRow()));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder)
+            {
                 return new DataTable1Row(builder);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
+            protected override global::System.Type GetRowType()
+            {
                 return typeof(DataTable1Row);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanged(e);
-                if ((this.DataTable1RowChanged != null)) {
+                if ((this.DataTable1RowChanged != null))
+                {
                     this.DataTable1RowChanged(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanging(e);
-                if ((this.DataTable1RowChanging != null)) {
+                if ((this.DataTable1RowChanging != null))
+                {
                     this.DataTable1RowChanging(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleted(e);
-                if ((this.DataTable1RowDeleted != null)) {
+                if ((this.DataTable1RowDeleted != null))
+                {
                     this.DataTable1RowDeleted(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleting(e);
-                if ((this.DataTable1RowDeleting != null)) {
+                if ((this.DataTable1RowDeleting != null))
+                {
                     this.DataTable1RowDeleting(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveDataTable1Row(DataTable1Row row) {
+            public void RemoveDataTable1Row(DataTable1Row row)
+            {
                 this.Rows.Remove(row);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs)
+            {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
                 DataSet ds = new DataSet();
@@ -2512,34 +2919,43 @@ namespace Guri_atacarejo {
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
+                if (xs.Contains(dsSchema.TargetNamespace))
+                {
                     global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
                     global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
+                    try
+                    {
                         global::System.Xml.Schema.XmlSchema schema = null;
                         dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
+                        {
                             schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                             s2.SetLength(0);
                             schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
+                            if ((s1.Length == s2.Length))
+                            {
                                 s1.Position = 0;
                                 s2.Position = 0;
                                 for (; ((s1.Position != s1.Length)
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                            && (s1.ReadByte() == s2.ReadByte()));)
+                                {
                                     ;
                                 }
-                                if ((s1.Position == s1.Length)) {
+                                if ((s1.Position == s1.Length))
+                                {
                                     return type;
                                 }
                             }
                         }
                     }
-                    finally {
-                        if ((s1 != null)) {
+                    finally
+                    {
+                        if ((s1 != null))
+                        {
                             s1.Close();
                         }
-                        if ((s2 != null)) {
+                        if ((s2 != null))
+                        {
                             s2.Close();
                         }
                     }
@@ -2554,7 +2970,8 @@ namespace Guri_atacarejo {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class GA_VendaResultadoDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
+        public partial class GA_VendaResultadoDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable
+        {
 
             private global::System.Data.DataColumn columnIdVendaGerada;
 
@@ -2562,7 +2979,8 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_VendaResultadoDataTable() {
+            public GA_VendaResultadoDataTable()
+            {
                 this.TableName = "GA_VendaResultado";
                 this.BeginInit();
                 this.InitClass();
@@ -2571,15 +2989,19 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal GA_VendaResultadoDataTable(global::System.Data.DataTable table) {
+            internal GA_VendaResultadoDataTable(global::System.Data.DataTable table)
+            {
                 this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive))
+                {
                     this.CaseSensitive = table.CaseSensitive;
                 }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString()))
+                {
                     this.Locale = table.Locale;
                 }
-                if ((table.Namespace != table.DataSet.Namespace)) {
+                if ((table.Namespace != table.DataSet.Namespace))
+                {
                     this.Namespace = table.Namespace;
                 }
                 this.Prefix = table.Prefix;
@@ -2589,22 +3011,27 @@ namespace Guri_atacarejo {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected GA_VendaResultadoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) :
-                    base(info, context) {
+                    base(info, context)
+            {
                 this.InitVars();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdVendaGeradaColumn {
-                get {
+            public global::System.Data.DataColumn IdVendaGeradaColumn
+            {
+                get
+                {
                     return this.columnIdVendaGerada;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn MensagemColumn {
-                get {
+            public global::System.Data.DataColumn MensagemColumn
+            {
+                get
+                {
                     return this.columnMensagem;
                 }
             }
@@ -2612,16 +3039,20 @@ namespace Guri_atacarejo {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
+            public int Count
+            {
+                get
+                {
                     return this.Rows.Count;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_VendaResultadoRow this[int index] {
-                get {
+            public GA_VendaResultadoRow this[int index]
+            {
+                get
+                {
                     return ((GA_VendaResultadoRow)(this.Rows[index]));
                 }
             }
@@ -2640,13 +3071,15 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddGA_VendaResultadoRow(GA_VendaResultadoRow row) {
+            public void AddGA_VendaResultadoRow(GA_VendaResultadoRow row)
+            {
                 this.Rows.Add(row);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_VendaResultadoRow AddGA_VendaResultadoRow(int IdVendaGerada, string Mensagem) {
+            public GA_VendaResultadoRow AddGA_VendaResultadoRow(int IdVendaGerada, string Mensagem)
+            {
                 GA_VendaResultadoRow rowGA_VendaResultadoRow = ((GA_VendaResultadoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         IdVendaGerada,
@@ -2658,13 +3091,15 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+            public virtual global::System.Collections.IEnumerator GetEnumerator()
+            {
                 return this.Rows.GetEnumerator();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
+            public override global::System.Data.DataTable Clone()
+            {
                 GA_VendaResultadoDataTable cln = ((GA_VendaResultadoDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
@@ -2672,20 +3107,23 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
+            protected override global::System.Data.DataTable CreateInstance()
+            {
                 return new GA_VendaResultadoDataTable();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
+            internal void InitVars()
+            {
                 this.columnIdVendaGerada = base.Columns["IdVendaGerada"];
                 this.columnMensagem = base.Columns["Mensagem"];
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
+            private void InitClass()
+            {
                 this.columnIdVendaGerada = new global::System.Data.DataColumn("IdVendaGerada", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIdVendaGerada);
                 this.columnMensagem = new global::System.Data.DataColumn("Mensagem", typeof(string), null, global::System.Data.MappingType.Element);
@@ -2696,67 +3134,80 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_VendaResultadoRow NewGA_VendaResultadoRow() {
+            public GA_VendaResultadoRow NewGA_VendaResultadoRow()
+            {
                 return ((GA_VendaResultadoRow)(this.NewRow()));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder)
+            {
                 return new GA_VendaResultadoRow(builder);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
+            protected override global::System.Type GetRowType()
+            {
                 return typeof(GA_VendaResultadoRow);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanged(e);
-                if ((this.GA_VendaResultadoRowChanged != null)) {
+                if ((this.GA_VendaResultadoRowChanged != null))
+                {
                     this.GA_VendaResultadoRowChanged(this, new GA_VendaResultadoRowChangeEvent(((GA_VendaResultadoRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanging(e);
-                if ((this.GA_VendaResultadoRowChanging != null)) {
+                if ((this.GA_VendaResultadoRowChanging != null))
+                {
                     this.GA_VendaResultadoRowChanging(this, new GA_VendaResultadoRowChangeEvent(((GA_VendaResultadoRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleted(e);
-                if ((this.GA_VendaResultadoRowDeleted != null)) {
+                if ((this.GA_VendaResultadoRowDeleted != null))
+                {
                     this.GA_VendaResultadoRowDeleted(this, new GA_VendaResultadoRowChangeEvent(((GA_VendaResultadoRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleting(e);
-                if ((this.GA_VendaResultadoRowDeleting != null)) {
+                if ((this.GA_VendaResultadoRowDeleting != null))
+                {
                     this.GA_VendaResultadoRowDeleting(this, new GA_VendaResultadoRowChangeEvent(((GA_VendaResultadoRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveGA_VendaResultadoRow(GA_VendaResultadoRow row) {
+            public void RemoveGA_VendaResultadoRow(GA_VendaResultadoRow row)
+            {
                 this.Rows.Remove(row);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs)
+            {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
                 DataSet ds = new DataSet();
@@ -2781,34 +3232,43 @@ namespace Guri_atacarejo {
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
+                if (xs.Contains(dsSchema.TargetNamespace))
+                {
                     global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
                     global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
+                    try
+                    {
                         global::System.Xml.Schema.XmlSchema schema = null;
                         dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
+                        {
                             schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                             s2.SetLength(0);
                             schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
+                            if ((s1.Length == s2.Length))
+                            {
                                 s1.Position = 0;
                                 s2.Position = 0;
                                 for (; ((s1.Position != s1.Length)
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                            && (s1.ReadByte() == s2.ReadByte()));)
+                                {
                                     ;
                                 }
-                                if ((s1.Position == s1.Length)) {
+                                if ((s1.Position == s1.Length))
+                                {
                                     return type;
                                 }
                             }
                         }
                     }
-                    finally {
-                        if ((s1 != null)) {
+                    finally
+                    {
+                        if ((s1 != null))
+                        {
                             s1.Close();
                         }
-                        if ((s2 != null)) {
+                        if ((s2 != null))
+                        {
                             s2.Close();
                         }
                     }
@@ -2823,13 +3283,15 @@ namespace Guri_atacarejo {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class GA_ClientesDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
+        public partial class GA_ClientesDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable
+        {
 
             private global::System.Data.DataColumn columnCPF;
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_ClientesDataTable() {
+            public GA_ClientesDataTable()
+            {
                 this.TableName = "GA_Clientes";
                 this.BeginInit();
                 this.InitClass();
@@ -2838,15 +3300,19 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal GA_ClientesDataTable(global::System.Data.DataTable table) {
+            internal GA_ClientesDataTable(global::System.Data.DataTable table)
+            {
                 this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive))
+                {
                     this.CaseSensitive = table.CaseSensitive;
                 }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString()))
+                {
                     this.Locale = table.Locale;
                 }
-                if ((table.Namespace != table.DataSet.Namespace)) {
+                if ((table.Namespace != table.DataSet.Namespace))
+                {
                     this.Namespace = table.Namespace;
                 }
                 this.Prefix = table.Prefix;
@@ -2856,14 +3322,17 @@ namespace Guri_atacarejo {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected GA_ClientesDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) :
-                    base(info, context) {
+                    base(info, context)
+            {
                 this.InitVars();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn CPFColumn {
-                get {
+            public global::System.Data.DataColumn CPFColumn
+            {
+                get
+                {
                     return this.columnCPF;
                 }
             }
@@ -2871,16 +3340,20 @@ namespace Guri_atacarejo {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
+            public int Count
+            {
+                get
+                {
                     return this.Rows.Count;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_ClientesRow this[int index] {
-                get {
+            public GA_ClientesRow this[int index]
+            {
+                get
+                {
                     return ((GA_ClientesRow)(this.Rows[index]));
                 }
             }
@@ -2899,13 +3372,15 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddGA_ClientesRow(GA_ClientesRow row) {
+            public void AddGA_ClientesRow(GA_ClientesRow row)
+            {
                 this.Rows.Add(row);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_ClientesRow AddGA_ClientesRow(string CPF) {
+            public GA_ClientesRow AddGA_ClientesRow(string CPF)
+            {
                 GA_ClientesRow rowGA_ClientesRow = ((GA_ClientesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         CPF};
@@ -2916,13 +3391,15 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+            public virtual global::System.Collections.IEnumerator GetEnumerator()
+            {
                 return this.Rows.GetEnumerator();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
+            public override global::System.Data.DataTable Clone()
+            {
                 GA_ClientesDataTable cln = ((GA_ClientesDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
@@ -2930,19 +3407,22 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
+            protected override global::System.Data.DataTable CreateInstance()
+            {
                 return new GA_ClientesDataTable();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
+            internal void InitVars()
+            {
                 this.columnCPF = base.Columns["CPF"];
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
+            private void InitClass()
+            {
                 this.columnCPF = new global::System.Data.DataColumn("CPF", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCPF);
                 this.columnCPF.AllowDBNull = false;
@@ -2951,67 +3431,80 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_ClientesRow NewGA_ClientesRow() {
+            public GA_ClientesRow NewGA_ClientesRow()
+            {
                 return ((GA_ClientesRow)(this.NewRow()));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder)
+            {
                 return new GA_ClientesRow(builder);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
+            protected override global::System.Type GetRowType()
+            {
                 return typeof(GA_ClientesRow);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanged(e);
-                if ((this.GA_ClientesRowChanged != null)) {
+                if ((this.GA_ClientesRowChanged != null))
+                {
                     this.GA_ClientesRowChanged(this, new GA_ClientesRowChangeEvent(((GA_ClientesRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanging(e);
-                if ((this.GA_ClientesRowChanging != null)) {
+                if ((this.GA_ClientesRowChanging != null))
+                {
                     this.GA_ClientesRowChanging(this, new GA_ClientesRowChangeEvent(((GA_ClientesRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleted(e);
-                if ((this.GA_ClientesRowDeleted != null)) {
+                if ((this.GA_ClientesRowDeleted != null))
+                {
                     this.GA_ClientesRowDeleted(this, new GA_ClientesRowChangeEvent(((GA_ClientesRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleting(e);
-                if ((this.GA_ClientesRowDeleting != null)) {
+                if ((this.GA_ClientesRowDeleting != null))
+                {
                     this.GA_ClientesRowDeleting(this, new GA_ClientesRowChangeEvent(((GA_ClientesRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveGA_ClientesRow(GA_ClientesRow row) {
+            public void RemoveGA_ClientesRow(GA_ClientesRow row)
+            {
                 this.Rows.Remove(row);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs)
+            {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
                 DataSet ds = new DataSet();
@@ -3036,34 +3529,43 @@ namespace Guri_atacarejo {
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
+                if (xs.Contains(dsSchema.TargetNamespace))
+                {
                     global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
                     global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
+                    try
+                    {
                         global::System.Xml.Schema.XmlSchema schema = null;
                         dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
+                        {
                             schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                             s2.SetLength(0);
                             schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
+                            if ((s1.Length == s2.Length))
+                            {
                                 s1.Position = 0;
                                 s2.Position = 0;
                                 for (; ((s1.Position != s1.Length)
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                            && (s1.ReadByte() == s2.ReadByte()));)
+                                {
                                     ;
                                 }
-                                if ((s1.Position == s1.Length)) {
+                                if ((s1.Position == s1.Length))
+                                {
                                     return type;
                                 }
                             }
                         }
                     }
-                    finally {
-                        if ((s1 != null)) {
+                    finally
+                    {
+                        if ((s1 != null))
+                        {
                             s1.Close();
                         }
-                        if ((s2 != null)) {
+                        if ((s2 != null))
+                        {
                             s2.Close();
                         }
                     }
@@ -3078,7 +3580,8 @@ namespace Guri_atacarejo {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class GA_CargosDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
+        public partial class GA_CargosDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable
+        {
 
             private global::System.Data.DataColumn columnIdCargo;
 
@@ -3090,7 +3593,8 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_CargosDataTable() {
+            public GA_CargosDataTable()
+            {
                 this.TableName = "GA_Cargos";
                 this.BeginInit();
                 this.InitClass();
@@ -3099,15 +3603,19 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal GA_CargosDataTable(global::System.Data.DataTable table) {
+            internal GA_CargosDataTable(global::System.Data.DataTable table)
+            {
                 this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive))
+                {
                     this.CaseSensitive = table.CaseSensitive;
                 }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString()))
+                {
                     this.Locale = table.Locale;
                 }
-                if ((table.Namespace != table.DataSet.Namespace)) {
+                if ((table.Namespace != table.DataSet.Namespace))
+                {
                     this.Namespace = table.Namespace;
                 }
                 this.Prefix = table.Prefix;
@@ -3117,38 +3625,47 @@ namespace Guri_atacarejo {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected GA_CargosDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) :
-                    base(info, context) {
+                    base(info, context)
+            {
                 this.InitVars();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdCargoColumn {
-                get {
+            public global::System.Data.DataColumn IdCargoColumn
+            {
+                get
+                {
                     return this.columnIdCargo;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NomeColumn {
-                get {
+            public global::System.Data.DataColumn NomeColumn
+            {
+                get
+                {
                     return this.columnNome;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SalarioBaseColumn {
-                get {
+            public global::System.Data.DataColumn SalarioBaseColumn
+            {
+                get
+                {
                     return this.columnSalarioBase;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NivelColumn {
-                get {
+            public global::System.Data.DataColumn NivelColumn
+            {
+                get
+                {
                     return this.columnNivel;
                 }
             }
@@ -3156,16 +3673,20 @@ namespace Guri_atacarejo {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
+            public int Count
+            {
+                get
+                {
                     return this.Rows.Count;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_CargosRow this[int index] {
-                get {
+            public GA_CargosRow this[int index]
+            {
+                get
+                {
                     return ((GA_CargosRow)(this.Rows[index]));
                 }
             }
@@ -3184,13 +3705,15 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddGA_CargosRow(GA_CargosRow row) {
+            public void AddGA_CargosRow(GA_CargosRow row)
+            {
                 this.Rows.Add(row);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_CargosRow AddGA_CargosRow(string Nome, decimal SalarioBase, string Nivel) {
+            public GA_CargosRow AddGA_CargosRow(string Nome, decimal SalarioBase, string Nivel)
+            {
                 GA_CargosRow rowGA_CargosRow = ((GA_CargosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -3204,20 +3727,23 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_CargosRow FindByIdCargo(int IdCargo) {
+            public GA_CargosRow FindByIdCargo(int IdCargo)
+            {
                 return ((GA_CargosRow)(this.Rows.Find(new object[] {
                             IdCargo})));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+            public virtual global::System.Collections.IEnumerator GetEnumerator()
+            {
                 return this.Rows.GetEnumerator();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
+            public override global::System.Data.DataTable Clone()
+            {
                 GA_CargosDataTable cln = ((GA_CargosDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
@@ -3225,13 +3751,15 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
+            protected override global::System.Data.DataTable CreateInstance()
+            {
                 return new GA_CargosDataTable();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
+            internal void InitVars()
+            {
                 this.columnIdCargo = base.Columns["IdCargo"];
                 this.columnNome = base.Columns["Nome"];
                 this.columnSalarioBase = base.Columns["SalarioBase"];
@@ -3240,7 +3768,8 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
+            private void InitClass()
+            {
                 this.columnIdCargo = new global::System.Data.DataColumn("IdCargo", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIdCargo);
                 this.columnNome = new global::System.Data.DataColumn("Nome", typeof(string), null, global::System.Data.MappingType.Element);
@@ -3265,67 +3794,80 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_CargosRow NewGA_CargosRow() {
+            public GA_CargosRow NewGA_CargosRow()
+            {
                 return ((GA_CargosRow)(this.NewRow()));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder)
+            {
                 return new GA_CargosRow(builder);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
+            protected override global::System.Type GetRowType()
+            {
                 return typeof(GA_CargosRow);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanged(e);
-                if ((this.GA_CargosRowChanged != null)) {
+                if ((this.GA_CargosRowChanged != null))
+                {
                     this.GA_CargosRowChanged(this, new GA_CargosRowChangeEvent(((GA_CargosRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanging(e);
-                if ((this.GA_CargosRowChanging != null)) {
+                if ((this.GA_CargosRowChanging != null))
+                {
                     this.GA_CargosRowChanging(this, new GA_CargosRowChangeEvent(((GA_CargosRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleted(e);
-                if ((this.GA_CargosRowDeleted != null)) {
+                if ((this.GA_CargosRowDeleted != null))
+                {
                     this.GA_CargosRowDeleted(this, new GA_CargosRowChangeEvent(((GA_CargosRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleting(e);
-                if ((this.GA_CargosRowDeleting != null)) {
+                if ((this.GA_CargosRowDeleting != null))
+                {
                     this.GA_CargosRowDeleting(this, new GA_CargosRowChangeEvent(((GA_CargosRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveGA_CargosRow(GA_CargosRow row) {
+            public void RemoveGA_CargosRow(GA_CargosRow row)
+            {
                 this.Rows.Remove(row);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs)
+            {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
                 DataSet ds = new DataSet();
@@ -3350,34 +3892,43 @@ namespace Guri_atacarejo {
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
+                if (xs.Contains(dsSchema.TargetNamespace))
+                {
                     global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
                     global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
+                    try
+                    {
                         global::System.Xml.Schema.XmlSchema schema = null;
                         dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
+                        {
                             schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                             s2.SetLength(0);
                             schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
+                            if ((s1.Length == s2.Length))
+                            {
                                 s1.Position = 0;
                                 s2.Position = 0;
                                 for (; ((s1.Position != s1.Length)
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                            && (s1.ReadByte() == s2.ReadByte()));)
+                                {
                                     ;
                                 }
-                                if ((s1.Position == s1.Length)) {
+                                if ((s1.Position == s1.Length))
+                                {
                                     return type;
                                 }
                             }
                         }
                     }
-                    finally {
-                        if ((s1 != null)) {
+                    finally
+                    {
+                        if ((s1 != null))
+                        {
                             s1.Close();
                         }
-                        if ((s2 != null)) {
+                        if ((s2 != null))
+                        {
                             s2.Close();
                         }
                     }
@@ -3392,7 +3943,8 @@ namespace Guri_atacarejo {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class GA_DepartamentosDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable {
+        public partial class GA_DepartamentosDataTable : global::System.Data.DataTable, global::System.Collections.IEnumerable
+        {
 
             private global::System.Data.DataColumn columnIdDepartamento;
 
@@ -3400,7 +3952,8 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_DepartamentosDataTable() {
+            public GA_DepartamentosDataTable()
+            {
                 this.TableName = "GA_Departamentos";
                 this.BeginInit();
                 this.InitClass();
@@ -3409,15 +3962,19 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal GA_DepartamentosDataTable(global::System.Data.DataTable table) {
+            internal GA_DepartamentosDataTable(global::System.Data.DataTable table)
+            {
                 this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive))
+                {
                     this.CaseSensitive = table.CaseSensitive;
                 }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString()))
+                {
                     this.Locale = table.Locale;
                 }
-                if ((table.Namespace != table.DataSet.Namespace)) {
+                if ((table.Namespace != table.DataSet.Namespace))
+                {
                     this.Namespace = table.Namespace;
                 }
                 this.Prefix = table.Prefix;
@@ -3427,22 +3984,27 @@ namespace Guri_atacarejo {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected GA_DepartamentosDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) :
-                    base(info, context) {
+                    base(info, context)
+            {
                 this.InitVars();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IdDepartamentoColumn {
-                get {
+            public global::System.Data.DataColumn IdDepartamentoColumn
+            {
+                get
+                {
                     return this.columnIdDepartamento;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn NomeColumn {
-                get {
+            public global::System.Data.DataColumn NomeColumn
+            {
+                get
+                {
                     return this.columnNome;
                 }
             }
@@ -3450,16 +4012,20 @@ namespace Guri_atacarejo {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
+            public int Count
+            {
+                get
+                {
                     return this.Rows.Count;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_DepartamentosRow this[int index] {
-                get {
+            public GA_DepartamentosRow this[int index]
+            {
+                get
+                {
                     return ((GA_DepartamentosRow)(this.Rows[index]));
                 }
             }
@@ -3478,13 +4044,15 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddGA_DepartamentosRow(GA_DepartamentosRow row) {
+            public void AddGA_DepartamentosRow(GA_DepartamentosRow row)
+            {
                 this.Rows.Add(row);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_DepartamentosRow AddGA_DepartamentosRow(string Nome) {
+            public GA_DepartamentosRow AddGA_DepartamentosRow(string Nome)
+            {
                 GA_DepartamentosRow rowGA_DepartamentosRow = ((GA_DepartamentosRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -3496,20 +4064,23 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_DepartamentosRow FindByIdDepartamento(int IdDepartamento) {
+            public GA_DepartamentosRow FindByIdDepartamento(int IdDepartamento)
+            {
                 return ((GA_DepartamentosRow)(this.Rows.Find(new object[] {
                             IdDepartamento})));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public virtual global::System.Collections.IEnumerator GetEnumerator() {
+            public virtual global::System.Collections.IEnumerator GetEnumerator()
+            {
                 return this.Rows.GetEnumerator();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
+            public override global::System.Data.DataTable Clone()
+            {
                 GA_DepartamentosDataTable cln = ((GA_DepartamentosDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
@@ -3517,20 +4088,23 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
+            protected override global::System.Data.DataTable CreateInstance()
+            {
                 return new GA_DepartamentosDataTable();
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal void InitVars() {
+            internal void InitVars()
+            {
                 this.columnIdDepartamento = base.Columns["IdDepartamento"];
                 this.columnNome = base.Columns["Nome"];
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            private void InitClass() {
+            private void InitClass()
+            {
                 this.columnIdDepartamento = new global::System.Data.DataColumn("IdDepartamento", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIdDepartamento);
                 this.columnNome = new global::System.Data.DataColumn("Nome", typeof(string), null, global::System.Data.MappingType.Element);
@@ -3549,67 +4123,80 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_DepartamentosRow NewGA_DepartamentosRow() {
+            public GA_DepartamentosRow NewGA_DepartamentosRow()
+            {
                 return ((GA_DepartamentosRow)(this.NewRow()));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder)
+            {
                 return new GA_DepartamentosRow(builder);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override global::System.Type GetRowType() {
+            protected override global::System.Type GetRowType()
+            {
                 return typeof(GA_DepartamentosRow);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanged(e);
-                if ((this.GA_DepartamentosRowChanged != null)) {
+                if ((this.GA_DepartamentosRowChanged != null))
+                {
                     this.GA_DepartamentosRowChanged(this, new GA_DepartamentosRowChangeEvent(((GA_DepartamentosRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanging(e);
-                if ((this.GA_DepartamentosRowChanging != null)) {
+                if ((this.GA_DepartamentosRowChanging != null))
+                {
                     this.GA_DepartamentosRowChanging(this, new GA_DepartamentosRowChangeEvent(((GA_DepartamentosRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleted(e);
-                if ((this.GA_DepartamentosRowDeleted != null)) {
+                if ((this.GA_DepartamentosRowDeleted != null))
+                {
                     this.GA_DepartamentosRowDeleted(this, new GA_DepartamentosRowChangeEvent(((GA_DepartamentosRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleting(e);
-                if ((this.GA_DepartamentosRowDeleting != null)) {
+                if ((this.GA_DepartamentosRowDeleting != null))
+                {
                     this.GA_DepartamentosRowDeleting(this, new GA_DepartamentosRowChangeEvent(((GA_DepartamentosRow)(e.Row)), e.Action));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveGA_DepartamentosRow(GA_DepartamentosRow row) {
+            public void RemoveGA_DepartamentosRow(GA_DepartamentosRow row)
+            {
                 this.Rows.Remove(row);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs)
+            {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
                 DataSet ds = new DataSet();
@@ -3634,34 +4221,43 @@ namespace Guri_atacarejo {
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
+                if (xs.Contains(dsSchema.TargetNamespace))
+                {
                     global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
                     global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
+                    try
+                    {
                         global::System.Xml.Schema.XmlSchema schema = null;
                         dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
+                        {
                             schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                             s2.SetLength(0);
                             schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
+                            if ((s1.Length == s2.Length))
+                            {
                                 s1.Position = 0;
                                 s2.Position = 0;
                                 for (; ((s1.Position != s1.Length)
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                            && (s1.ReadByte() == s2.ReadByte()));)
+                                {
                                     ;
                                 }
-                                if ((s1.Position == s1.Length)) {
+                                if ((s1.Position == s1.Length))
+                                {
                                     return type;
                                 }
                             }
                         }
                     }
-                    finally {
-                        if ((s1 != null)) {
+                    finally
+                    {
+                        if ((s1 != null))
+                        {
                             s1.Close();
                         }
-                        if ((s2 != null)) {
+                        if ((s2 != null))
+                        {
                             s2.Close();
                         }
                     }
@@ -3674,14 +4270,16 @@ namespace Guri_atacarejo {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class GA_FuncionariosRow : global::System.Data.DataRow {
+        public partial class GA_FuncionariosRow : global::System.Data.DataRow
+        {
 
             private GA_FuncionariosDataTable tableGA_Funcionarios;
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal GA_FuncionariosRow(global::System.Data.DataRowBuilder rb) :
-                    base(rb) {
+                    base(rb)
+            {
                 this.tableGA_Funcionarios = ((GA_FuncionariosDataTable)(this.Table));
             }
         }
@@ -3689,90 +4287,113 @@ namespace Guri_atacarejo {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class GA_LoteRow : global::System.Data.DataRow {
+        public partial class GA_LoteRow : global::System.Data.DataRow
+        {
 
             private GA_LoteDataTable tableGA_Lote;
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal GA_LoteRow(global::System.Data.DataRowBuilder rb) :
-                    base(rb) {
+                    base(rb)
+            {
                 this.tableGA_Lote = ((GA_LoteDataTable)(this.Table));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int IdLote {
-                get {
+            public int IdLote
+            {
+                get
+                {
                     return ((int)(this[this.tableGA_Lote.IdLoteColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Lote.IdLoteColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int FKFornecedores {
-                get {
+            public int FKFornecedores
+            {
+                get
+                {
                     return ((int)(this[this.tableGA_Lote.FKFornecedoresColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Lote.FKFornecedoresColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int FKProduto {
-                get {
+            public int FKProduto
+            {
+                get
+                {
                     return ((int)(this[this.tableGA_Lote.FKProdutoColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Lote.FKProdutoColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int Quantidade {
-                get {
+            public int Quantidade
+            {
+                get
+                {
                     return ((int)(this[this.tableGA_Lote.QuantidadeColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Lote.QuantidadeColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime DataValidade {
-                get {
+            public System.DateTime DataValidade
+            {
+                get
+                {
                     return ((global::System.DateTime)(this[this.tableGA_Lote.DataValidadeColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Lote.DataValidadeColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_ProdutosRow GA_ProdutosRow {
-                get {
+            public GA_ProdutosRow GA_ProdutosRow
+            {
+                get
+                {
                     return ((GA_ProdutosRow)(this.GetParentRow(this.Table.ParentRelations["FK_GA_Lote_Produtos"])));
                 }
-                set {
+                set
+                {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_GA_Lote_Produtos"]);
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_FornecedorRow GA_FornecedorRow {
-                get {
+            public GA_FornecedorRow GA_FornecedorRow
+            {
+                get
+                {
                     return ((GA_FornecedorRow)(this.GetParentRow(this.Table.ParentRelations["FK_GA_Lote_Fornecedor"])));
                 }
-                set {
+                set
+                {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_GA_Lote_Fornecedor"]);
                 }
             }
@@ -3781,101 +4402,127 @@ namespace Guri_atacarejo {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class GA_ProdutosRow : global::System.Data.DataRow {
+        public partial class GA_ProdutosRow : global::System.Data.DataRow
+        {
 
             private GA_ProdutosDataTable tableGA_Produtos;
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal GA_ProdutosRow(global::System.Data.DataRowBuilder rb) :
-                    base(rb) {
+                    base(rb)
+            {
                 this.tableGA_Produtos = ((GA_ProdutosDataTable)(this.Table));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int IdProduto {
-                get {
+            public int IdProduto
+            {
+                get
+                {
                     return ((int)(this[this.tableGA_Produtos.IdProdutoColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Produtos.IdProdutoColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int FKFornecedor {
-                get {
+            public int FKFornecedor
+            {
+                get
+                {
                     return ((int)(this[this.tableGA_Produtos.FKFornecedorColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Produtos.FKFornecedorColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int FKCategoria {
-                get {
+            public int FKCategoria
+            {
+                get
+                {
                     return ((int)(this[this.tableGA_Produtos.FKCategoriaColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Produtos.FKCategoriaColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Nome {
-                get {
+            public string Nome
+            {
+                get
+                {
                     return ((string)(this[this.tableGA_Produtos.NomeColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Produtos.NomeColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string UnidadeMedida {
-                get {
+            public string UnidadeMedida
+            {
+                get
+                {
                     return ((string)(this[this.tableGA_Produtos.UnidadeMedidaColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Produtos.UnidadeMedidaColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Preco {
-                get {
+            public decimal Preco
+            {
+                get
+                {
                     return ((decimal)(this[this.tableGA_Produtos.PrecoColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Produtos.PrecoColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_FornecedorRow GA_FornecedorRow {
-                get {
+            public GA_FornecedorRow GA_FornecedorRow
+            {
+                get
+                {
                     return ((GA_FornecedorRow)(this.GetParentRow(this.Table.ParentRelations["FK_GA_Produtos_Fornecedor"])));
                 }
-                set {
+                set
+                {
                     this.SetParentRow(value, this.Table.ParentRelations["FK_GA_Produtos_Fornecedor"]);
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_LoteRow[] GetGA_LoteRows() {
-                if ((this.Table.ChildRelations["FK_GA_Lote_Produtos"] == null)) {
+            public GA_LoteRow[] GetGA_LoteRows()
+            {
+                if ((this.Table.ChildRelations["FK_GA_Lote_Produtos"] == null))
+                {
                     return new GA_LoteRow[0];
                 }
-                else {
+                else
+                {
                     return ((GA_LoteRow[])(base.GetChildRows(this.Table.ChildRelations["FK_GA_Lote_Produtos"])));
                 }
             }
@@ -3884,135 +4531,169 @@ namespace Guri_atacarejo {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class GA_FornecedorRow : global::System.Data.DataRow {
+        public partial class GA_FornecedorRow : global::System.Data.DataRow
+        {
 
             private GA_FornecedorDataTable tableGA_Fornecedor;
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal GA_FornecedorRow(global::System.Data.DataRowBuilder rb) :
-                    base(rb) {
+                    base(rb)
+            {
                 this.tableGA_Fornecedor = ((GA_FornecedorDataTable)(this.Table));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int IdFornecedor {
-                get {
+            public int IdFornecedor
+            {
+                get
+                {
                     return ((int)(this[this.tableGA_Fornecedor.IdFornecedorColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Fornecedor.IdFornecedorColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Nome {
-                get {
+            public string Nome
+            {
+                get
+                {
                     return ((string)(this[this.tableGA_Fornecedor.NomeColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Fornecedor.NomeColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string CNPJ {
-                get {
+            public string CNPJ
+            {
+                get
+                {
                     return ((string)(this[this.tableGA_Fornecedor.CNPJColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Fornecedor.CNPJColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Email {
-                get {
-                    try {
+            public string Email
+            {
+                get
+                {
+                    try
+                    {
                         return ((string)(this[this.tableGA_Fornecedor.EmailColumn]));
                     }
-                    catch (global::System.InvalidCastException e) {
+                    catch (global::System.InvalidCastException e)
+                    {
                         throw new global::System.Data.StrongTypingException("O valor da coluna \'Email\' na tabela \'GA_Fornecedor\' é DBNull.", e);
                     }
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Fornecedor.EmailColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Telefone {
-                get {
-                    try {
+            public string Telefone
+            {
+                get
+                {
+                    try
+                    {
                         return ((string)(this[this.tableGA_Fornecedor.TelefoneColumn]));
                     }
-                    catch (global::System.InvalidCastException e) {
+                    catch (global::System.InvalidCastException e)
+                    {
                         throw new global::System.Data.StrongTypingException("O valor da coluna \'Telefone\' na tabela \'GA_Fornecedor\' é DBNull.", e);
                     }
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Fornecedor.TelefoneColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Endereco {
-                get {
+            public string Endereco
+            {
+                get
+                {
                     return ((string)(this[this.tableGA_Fornecedor.EnderecoColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Fornecedor.EnderecoColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsEmailNull() {
+            public bool IsEmailNull()
+            {
                 return this.IsNull(this.tableGA_Fornecedor.EmailColumn);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetEmailNull() {
+            public void SetEmailNull()
+            {
                 this[this.tableGA_Fornecedor.EmailColumn] = global::System.Convert.DBNull;
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTelefoneNull() {
+            public bool IsTelefoneNull()
+            {
                 return this.IsNull(this.tableGA_Fornecedor.TelefoneColumn);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTelefoneNull() {
+            public void SetTelefoneNull()
+            {
                 this[this.tableGA_Fornecedor.TelefoneColumn] = global::System.Convert.DBNull;
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_LoteRow[] GetGA_LoteRows() {
-                if ((this.Table.ChildRelations["FK_GA_Lote_Fornecedor"] == null)) {
+            public GA_LoteRow[] GetGA_LoteRows()
+            {
+                if ((this.Table.ChildRelations["FK_GA_Lote_Fornecedor"] == null))
+                {
                     return new GA_LoteRow[0];
                 }
-                else {
+                else
+                {
                     return ((GA_LoteRow[])(base.GetChildRows(this.Table.ChildRelations["FK_GA_Lote_Fornecedor"])));
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_ProdutosRow[] GetGA_ProdutosRows() {
-                if ((this.Table.ChildRelations["FK_GA_Produtos_Fornecedor"] == null)) {
+            public GA_ProdutosRow[] GetGA_ProdutosRows()
+            {
+                if ((this.Table.ChildRelations["FK_GA_Produtos_Fornecedor"] == null))
+                {
                     return new GA_ProdutosRow[0];
                 }
-                else {
+                else
+                {
                     return ((GA_ProdutosRow[])(base.GetChildRows(this.Table.ChildRelations["FK_GA_Produtos_Fornecedor"])));
                 }
             }
@@ -4021,35 +4702,43 @@ namespace Guri_atacarejo {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class GA_EstoqueRow : global::System.Data.DataRow {
+        public partial class GA_EstoqueRow : global::System.Data.DataRow
+        {
 
             private GA_EstoqueDataTable tableGA_Estoque;
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal GA_EstoqueRow(global::System.Data.DataRowBuilder rb) :
-                    base(rb) {
+                    base(rb)
+            {
                 this.tableGA_Estoque = ((GA_EstoqueDataTable)(this.Table));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int QuantidadeAtual {
-                get {
+            public int QuantidadeAtual
+            {
+                get
+                {
                     return ((int)(this[this.tableGA_Estoque.QuantidadeAtualColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Estoque.QuantidadeAtualColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int IdEstoque {
-                get {
+            public int IdEstoque
+            {
+                get
+                {
                     return ((int)(this[this.tableGA_Estoque.IdEstoqueColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Estoque.IdEstoqueColumn] = value;
                 }
             }
@@ -4058,68 +4747,85 @@ namespace Guri_atacarejo {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class DataTable1Row : global::System.Data.DataRow {
+        public partial class DataTable1Row : global::System.Data.DataRow
+        {
 
             private DataTable1DataTable tableDataTable1;
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal DataTable1Row(global::System.Data.DataRowBuilder rb) :
-                    base(rb) {
+                    base(rb)
+            {
                 this.tableDataTable1 = ((DataTable1DataTable)(this.Table));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int FKProduto {
-                get {
+            public int FKProduto
+            {
+                get
+                {
                     return ((int)(this[this.tableDataTable1.FKProdutoColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableDataTable1.FKProdutoColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Nome {
-                get {
+            public string Nome
+            {
+                get
+                {
                     return ((string)(this[this.tableDataTable1.NomeColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableDataTable1.NomeColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Preco {
-                get {
+            public decimal Preco
+            {
+                get
+                {
                     return ((decimal)(this[this.tableDataTable1.PrecoColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableDataTable1.PrecoColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string UnidadeMedida {
-                get {
+            public string UnidadeMedida
+            {
+                get
+                {
                     return ((string)(this[this.tableDataTable1.UnidadeMedidaColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableDataTable1.UnidadeMedidaColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public System.DateTime DataValidade {
-                get {
+            public System.DateTime DataValidade
+            {
+                get
+                {
                     return ((global::System.DateTime)(this[this.tableDataTable1.DataValidadeColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableDataTable1.DataValidadeColumn] = value;
                 }
             }
@@ -4128,35 +4834,43 @@ namespace Guri_atacarejo {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class GA_VendaResultadoRow : global::System.Data.DataRow {
+        public partial class GA_VendaResultadoRow : global::System.Data.DataRow
+        {
 
             private GA_VendaResultadoDataTable tableGA_VendaResultado;
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal GA_VendaResultadoRow(global::System.Data.DataRowBuilder rb) :
-                    base(rb) {
+                    base(rb)
+            {
                 this.tableGA_VendaResultado = ((GA_VendaResultadoDataTable)(this.Table));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int IdVendaGerada {
-                get {
+            public int IdVendaGerada
+            {
+                get
+                {
                     return ((int)(this[this.tableGA_VendaResultado.IdVendaGeradaColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_VendaResultado.IdVendaGeradaColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Mensagem {
-                get {
+            public string Mensagem
+            {
+                get
+                {
                     return ((string)(this[this.tableGA_VendaResultado.MensagemColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_VendaResultado.MensagemColumn] = value;
                 }
             }
@@ -4167,179 +4881,212 @@ namespace Guri_atacarejo {
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class GA_CompraRelatorioDataTable : global::System.Data.TypedTableBase<GA_CompraRelatorioRow> {
-            
+        public partial class GA_CompraRelatorioDataTable : global::System.Data.TypedTableBase<GA_CompraRelatorioRow>
+        {
+
             private global::System.Data.DataColumn columnIdCompra;
-            
+
             private global::System.Data.DataColumn columnDataCompra;
-            
+
             private global::System.Data.DataColumn columnStatusCompra;
-            
+
             private global::System.Data.DataColumn columnValorTotal;
-            
+
             private global::System.Data.DataColumn columnFormaPagamento;
-            
+
             private global::System.Data.DataColumn columnDataEntrega;
-            
+
             private global::System.Data.DataColumn columnFKFornecedor;
-            
+
             private global::System.Data.DataColumn columnFKFuncionario;
-            
+
             private global::System.Data.DataColumn columnNomeFornecedor;
-            
+
             private global::System.Data.DataColumn columnNomeFuncionario;
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public GA_CompraRelatorioDataTable() {
+            public GA_CompraRelatorioDataTable()
+            {
                 this.TableName = "GA_CompraRelatorio";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            internal GA_CompraRelatorioDataTable(global::System.Data.DataTable table) {
+            internal GA_CompraRelatorioDataTable(global::System.Data.DataTable table)
+            {
                 this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive))
+                {
                     this.CaseSensitive = table.CaseSensitive;
                 }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString()))
+                {
                     this.Locale = table.Locale;
                 }
-                if ((table.Namespace != table.DataSet.Namespace)) {
+                if ((table.Namespace != table.DataSet.Namespace))
+                {
                     this.Namespace = table.Namespace;
                 }
                 this.Prefix = table.Prefix;
                 this.MinimumCapacity = table.MinimumCapacity;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            protected GA_CompraRelatorioDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
+            protected GA_CompraRelatorioDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) :
+                    base(info, context)
+            {
                 this.InitVars();
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataColumn IdCompraColumn {
-                get {
+            public global::System.Data.DataColumn IdCompraColumn
+            {
+                get
+                {
                     return this.columnIdCompra;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataColumn DataCompraColumn {
-                get {
+            public global::System.Data.DataColumn DataCompraColumn
+            {
+                get
+                {
                     return this.columnDataCompra;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataColumn StatusCompraColumn {
-                get {
+            public global::System.Data.DataColumn StatusCompraColumn
+            {
+                get
+                {
                     return this.columnStatusCompra;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataColumn ValorTotalColumn {
-                get {
+            public global::System.Data.DataColumn ValorTotalColumn
+            {
+                get
+                {
                     return this.columnValorTotal;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataColumn FormaPagamentoColumn {
-                get {
+            public global::System.Data.DataColumn FormaPagamentoColumn
+            {
+                get
+                {
                     return this.columnFormaPagamento;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataColumn DataEntregaColumn {
-                get {
+            public global::System.Data.DataColumn DataEntregaColumn
+            {
+                get
+                {
                     return this.columnDataEntrega;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataColumn FKFornecedorColumn {
-                get {
+            public global::System.Data.DataColumn FKFornecedorColumn
+            {
+                get
+                {
                     return this.columnFKFornecedor;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataColumn FKFuncionarioColumn {
-                get {
+            public global::System.Data.DataColumn FKFuncionarioColumn
+            {
+                get
+                {
                     return this.columnFKFuncionario;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataColumn NomeFornecedorColumn {
-                get {
+            public global::System.Data.DataColumn NomeFornecedorColumn
+            {
+                get
+                {
                     return this.columnNomeFornecedor;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataColumn NomeFuncionarioColumn {
-                get {
+            public global::System.Data.DataColumn NomeFuncionarioColumn
+            {
+                get
+                {
                     return this.columnNomeFuncionario;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
+            public int Count
+            {
+                get
+                {
                     return this.Rows.Count;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public GA_CompraRelatorioRow this[int index] {
-                get {
+            public GA_CompraRelatorioRow this[int index]
+            {
+                get
+                {
                     return ((GA_CompraRelatorioRow)(this.Rows[index]));
                 }
             }
-            
+
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public event GA_CompraRelatorioRowChangeEventHandler GA_CompraRelatorioRowChanging;
-            
+
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public event GA_CompraRelatorioRowChangeEventHandler GA_CompraRelatorioRowChanged;
-            
+
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public event GA_CompraRelatorioRowChangeEventHandler GA_CompraRelatorioRowDeleting;
-            
+
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public event GA_CompraRelatorioRowChangeEventHandler GA_CompraRelatorioRowDeleted;
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public void AddGA_CompraRelatorioRow(GA_CompraRelatorioRow row) {
+            public void AddGA_CompraRelatorioRow(GA_CompraRelatorioRow row)
+            {
                 this.Rows.Add(row);
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public GA_CompraRelatorioRow AddGA_CompraRelatorioRow(int IdCompra, System.DateTime DataCompra, string StatusCompra, decimal ValorTotal, string FormaPagamento, System.DateTime DataEntrega, int FKFornecedor, int FKFuncionario, string NomeFornecedor, string NomeFuncionario) {
+            public GA_CompraRelatorioRow AddGA_CompraRelatorioRow(int IdCompra, System.DateTime DataCompra, string StatusCompra, decimal ValorTotal, string FormaPagamento, System.DateTime DataEntrega, int FKFornecedor, int FKFuncionario, string NomeFornecedor, string NomeFuncionario)
+            {
                 GA_CompraRelatorioRow rowGA_CompraRelatorioRow = ((GA_CompraRelatorioRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         IdCompra,
@@ -4356,31 +5103,35 @@ namespace Guri_atacarejo {
                 this.Rows.Add(rowGA_CompraRelatorioRow);
                 return rowGA_CompraRelatorioRow;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public GA_CompraRelatorioRow FindByIdCompra(int IdCompra) {
+            public GA_CompraRelatorioRow FindByIdCompra(int IdCompra)
+            {
                 return ((GA_CompraRelatorioRow)(this.Rows.Find(new object[] {
                             IdCompra})));
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
+            public override global::System.Data.DataTable Clone()
+            {
                 GA_CompraRelatorioDataTable cln = ((GA_CompraRelatorioDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
+            protected override global::System.Data.DataTable CreateInstance()
+            {
                 return new GA_CompraRelatorioDataTable();
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            internal void InitVars() {
+            internal void InitVars()
+            {
                 this.columnIdCompra = base.Columns["IdCompra"];
                 this.columnDataCompra = base.Columns["DataCompra"];
                 this.columnStatusCompra = base.Columns["StatusCompra"];
@@ -4392,10 +5143,11 @@ namespace Guri_atacarejo {
                 this.columnNomeFornecedor = base.Columns["NomeFornecedor"];
                 this.columnNomeFuncionario = base.Columns["NomeFuncionario"];
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            private void InitClass() {
+            private void InitClass()
+            {
                 this.columnIdCompra = new global::System.Data.DataColumn("IdCompra", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIdCompra);
                 this.columnDataCompra = new global::System.Data.DataColumn("DataCompra", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
@@ -4428,70 +5180,83 @@ namespace Guri_atacarejo {
                 this.columnNomeFornecedor.AllowDBNull = false;
                 this.columnNomeFuncionario.AllowDBNull = false;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public GA_CompraRelatorioRow NewGA_CompraRelatorioRow() {
+            public GA_CompraRelatorioRow NewGA_CompraRelatorioRow()
+            {
                 return ((GA_CompraRelatorioRow)(this.NewRow()));
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder)
+            {
                 return new GA_CompraRelatorioRow(builder);
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            protected override global::System.Type GetRowType() {
+            protected override global::System.Type GetRowType()
+            {
                 return typeof(GA_CompraRelatorioRow);
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanged(e);
-                if ((this.GA_CompraRelatorioRowChanged != null)) {
+                if ((this.GA_CompraRelatorioRowChanged != null))
+                {
                     this.GA_CompraRelatorioRowChanged(this, new GA_CompraRelatorioRowChangeEvent(((GA_CompraRelatorioRow)(e.Row)), e.Action));
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanging(e);
-                if ((this.GA_CompraRelatorioRowChanging != null)) {
+                if ((this.GA_CompraRelatorioRowChanging != null))
+                {
                     this.GA_CompraRelatorioRowChanging(this, new GA_CompraRelatorioRowChangeEvent(((GA_CompraRelatorioRow)(e.Row)), e.Action));
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleted(e);
-                if ((this.GA_CompraRelatorioRowDeleted != null)) {
+                if ((this.GA_CompraRelatorioRowDeleted != null))
+                {
                     this.GA_CompraRelatorioRowDeleted(this, new GA_CompraRelatorioRowChangeEvent(((GA_CompraRelatorioRow)(e.Row)), e.Action));
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleting(e);
-                if ((this.GA_CompraRelatorioRowDeleting != null)) {
+                if ((this.GA_CompraRelatorioRowDeleting != null))
+                {
                     this.GA_CompraRelatorioRowDeleting(this, new GA_CompraRelatorioRowChangeEvent(((GA_CompraRelatorioRow)(e.Row)), e.Action));
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public void RemoveGA_CompraRelatorioRow(GA_CompraRelatorioRow row) {
+            public void RemoveGA_CompraRelatorioRow(GA_CompraRelatorioRow row)
+            {
                 this.Rows.Remove(row);
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs)
+            {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
                 DataSet ds = new DataSet();
@@ -4516,34 +5281,43 @@ namespace Guri_atacarejo {
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
+                if (xs.Contains(dsSchema.TargetNamespace))
+                {
                     global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
                     global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
+                    try
+                    {
                         global::System.Xml.Schema.XmlSchema schema = null;
                         dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
+                        {
                             schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                             s2.SetLength(0);
                             schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
+                            if ((s1.Length == s2.Length))
+                            {
                                 s1.Position = 0;
                                 s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                for (; ((s1.Position != s1.Length)
+                                            && (s1.ReadByte() == s2.ReadByte()));)
+                                {
                                     ;
                                 }
-                                if ((s1.Position == s1.Length)) {
+                                if ((s1.Position == s1.Length))
+                                {
                                     return type;
                                 }
                             }
                         }
                     }
-                    finally {
-                        if ((s1 != null)) {
+                    finally
+                    {
+                        if ((s1 != null))
+                        {
                             s1.Close();
                         }
-                        if ((s2 != null)) {
+                        if ((s2 != null))
+                        {
                             s2.Close();
                         }
                     }
@@ -4552,135 +5326,158 @@ namespace Guri_atacarejo {
                 return type;
             }
         }
-        
+
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class GA_ItensCompraRelatorioDataTable : global::System.Data.TypedTableBase<GA_ItensCompraRelatorioRow> {
-            
+        public partial class GA_ItensCompraRelatorioDataTable : global::System.Data.TypedTableBase<GA_ItensCompraRelatorioRow>
+        {
+
             private global::System.Data.DataColumn columnProduto;
-            
+
             private global::System.Data.DataColumn columnFKLote;
-            
+
             private global::System.Data.DataColumn columnQuantidade;
-            
+
             private global::System.Data.DataColumn columnPrecoUnitario;
-            
+
             private global::System.Data.DataColumn columnSubtotal;
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public GA_ItensCompraRelatorioDataTable() {
+            public GA_ItensCompraRelatorioDataTable()
+            {
                 this.TableName = "GA_ItensCompraRelatorio";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            internal GA_ItensCompraRelatorioDataTable(global::System.Data.DataTable table) {
+            internal GA_ItensCompraRelatorioDataTable(global::System.Data.DataTable table)
+            {
                 this.TableName = table.TableName;
-                if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
+                if ((table.CaseSensitive != table.DataSet.CaseSensitive))
+                {
                     this.CaseSensitive = table.CaseSensitive;
                 }
-                if ((table.Locale.ToString() != table.DataSet.Locale.ToString())) {
+                if ((table.Locale.ToString() != table.DataSet.Locale.ToString()))
+                {
                     this.Locale = table.Locale;
                 }
-                if ((table.Namespace != table.DataSet.Namespace)) {
+                if ((table.Namespace != table.DataSet.Namespace))
+                {
                     this.Namespace = table.Namespace;
                 }
                 this.Prefix = table.Prefix;
                 this.MinimumCapacity = table.MinimumCapacity;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            protected GA_ItensCompraRelatorioDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
-                    base(info, context) {
+            protected GA_ItensCompraRelatorioDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) :
+                    base(info, context)
+            {
                 this.InitVars();
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataColumn ProdutoColumn {
-                get {
+            public global::System.Data.DataColumn ProdutoColumn
+            {
+                get
+                {
                     return this.columnProduto;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataColumn FKLoteColumn {
-                get {
+            public global::System.Data.DataColumn FKLoteColumn
+            {
+                get
+                {
                     return this.columnFKLote;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataColumn QuantidadeColumn {
-                get {
+            public global::System.Data.DataColumn QuantidadeColumn
+            {
+                get
+                {
                     return this.columnQuantidade;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataColumn PrecoUnitarioColumn {
-                get {
+            public global::System.Data.DataColumn PrecoUnitarioColumn
+            {
+                get
+                {
                     return this.columnPrecoUnitario;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataColumn SubtotalColumn {
-                get {
+            public global::System.Data.DataColumn SubtotalColumn
+            {
+                get
+                {
                     return this.columnSubtotal;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
-            public int Count {
-                get {
+            public int Count
+            {
+                get
+                {
                     return this.Rows.Count;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public GA_ItensCompraRelatorioRow this[int index] {
-                get {
+            public GA_ItensCompraRelatorioRow this[int index]
+            {
+                get
+                {
                     return ((GA_ItensCompraRelatorioRow)(this.Rows[index]));
                 }
             }
-            
+
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public event GA_ItensCompraRelatorioRowChangeEventHandler GA_ItensCompraRelatorioRowChanging;
-            
+
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public event GA_ItensCompraRelatorioRowChangeEventHandler GA_ItensCompraRelatorioRowChanged;
-            
+
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public event GA_ItensCompraRelatorioRowChangeEventHandler GA_ItensCompraRelatorioRowDeleting;
-            
+
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             public event GA_ItensCompraRelatorioRowChangeEventHandler GA_ItensCompraRelatorioRowDeleted;
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public void AddGA_ItensCompraRelatorioRow(GA_ItensCompraRelatorioRow row) {
+            public void AddGA_ItensCompraRelatorioRow(GA_ItensCompraRelatorioRow row)
+            {
                 this.Rows.Add(row);
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public GA_ItensCompraRelatorioRow AddGA_ItensCompraRelatorioRow(string Produto, int FKLote, int Quantidade, decimal PrecoUnitario, decimal Subtotal) {
+            public GA_ItensCompraRelatorioRow AddGA_ItensCompraRelatorioRow(string Produto, int FKLote, int Quantidade, decimal PrecoUnitario, decimal Subtotal)
+            {
                 GA_ItensCompraRelatorioRow rowGA_ItensCompraRelatorioRow = ((GA_ItensCompraRelatorioRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Produto,
@@ -4692,34 +5489,38 @@ namespace Guri_atacarejo {
                 this.Rows.Add(rowGA_ItensCompraRelatorioRow);
                 return rowGA_ItensCompraRelatorioRow;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public override global::System.Data.DataTable Clone() {
+            public override global::System.Data.DataTable Clone()
+            {
                 GA_ItensCompraRelatorioDataTable cln = ((GA_ItensCompraRelatorioDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            protected override global::System.Data.DataTable CreateInstance() {
+            protected override global::System.Data.DataTable CreateInstance()
+            {
                 return new GA_ItensCompraRelatorioDataTable();
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            internal void InitVars() {
+            internal void InitVars()
+            {
                 this.columnProduto = base.Columns["Produto"];
                 this.columnFKLote = base.Columns["FKLote"];
                 this.columnQuantidade = base.Columns["Quantidade"];
                 this.columnPrecoUnitario = base.Columns["PrecoUnitario"];
                 this.columnSubtotal = base.Columns["Subtotal"];
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            private void InitClass() {
+            private void InitClass()
+            {
                 this.columnProduto = new global::System.Data.DataColumn("Produto", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnProduto);
                 this.columnFKLote = new global::System.Data.DataColumn("FKLote", typeof(int), null, global::System.Data.MappingType.Element);
@@ -4736,70 +5537,83 @@ namespace Guri_atacarejo {
                 this.columnPrecoUnitario.AllowDBNull = false;
                 this.columnSubtotal.AllowDBNull = false;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public GA_ItensCompraRelatorioRow NewGA_ItensCompraRelatorioRow() {
+            public GA_ItensCompraRelatorioRow NewGA_ItensCompraRelatorioRow()
+            {
                 return ((GA_ItensCompraRelatorioRow)(this.NewRow()));
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
+            protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder)
+            {
                 return new GA_ItensCompraRelatorioRow(builder);
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            protected override global::System.Type GetRowType() {
+            protected override global::System.Type GetRowType()
+            {
                 return typeof(GA_ItensCompraRelatorioRow);
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanged(e);
-                if ((this.GA_ItensCompraRelatorioRowChanged != null)) {
+                if ((this.GA_ItensCompraRelatorioRowChanged != null))
+                {
                     this.GA_ItensCompraRelatorioRowChanged(this, new GA_ItensCompraRelatorioRowChangeEvent(((GA_ItensCompraRelatorioRow)(e.Row)), e.Action));
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowChanging(e);
-                if ((this.GA_ItensCompraRelatorioRowChanging != null)) {
+                if ((this.GA_ItensCompraRelatorioRowChanging != null))
+                {
                     this.GA_ItensCompraRelatorioRowChanging(this, new GA_ItensCompraRelatorioRowChangeEvent(((GA_ItensCompraRelatorioRow)(e.Row)), e.Action));
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleted(e);
-                if ((this.GA_ItensCompraRelatorioRowDeleted != null)) {
+                if ((this.GA_ItensCompraRelatorioRowDeleted != null))
+                {
                     this.GA_ItensCompraRelatorioRowDeleted(this, new GA_ItensCompraRelatorioRowChangeEvent(((GA_ItensCompraRelatorioRow)(e.Row)), e.Action));
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
+            protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e)
+            {
                 base.OnRowDeleting(e);
-                if ((this.GA_ItensCompraRelatorioRowDeleting != null)) {
+                if ((this.GA_ItensCompraRelatorioRowDeleting != null))
+                {
                     this.GA_ItensCompraRelatorioRowDeleting(this, new GA_ItensCompraRelatorioRowChangeEvent(((GA_ItensCompraRelatorioRow)(e.Row)), e.Action));
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public void RemoveGA_ItensCompraRelatorioRow(GA_ItensCompraRelatorioRow row) {
+            public void RemoveGA_ItensCompraRelatorioRow(GA_ItensCompraRelatorioRow row)
+            {
                 this.Rows.Remove(row);
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
+            public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs)
+            {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
                 DataSet ds = new DataSet();
@@ -4824,34 +5638,43 @@ namespace Guri_atacarejo {
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
-                if (xs.Contains(dsSchema.TargetNamespace)) {
+                if (xs.Contains(dsSchema.TargetNamespace))
+                {
                     global::System.IO.MemoryStream s1 = new global::System.IO.MemoryStream();
                     global::System.IO.MemoryStream s2 = new global::System.IO.MemoryStream();
-                    try {
+                    try
+                    {
                         global::System.Xml.Schema.XmlSchema schema = null;
                         dsSchema.Write(s1);
-                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext(); ) {
+                        for (global::System.Collections.IEnumerator schemas = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator(); schemas.MoveNext();)
+                        {
                             schema = ((global::System.Xml.Schema.XmlSchema)(schemas.Current));
                             s2.SetLength(0);
                             schema.Write(s2);
-                            if ((s1.Length == s2.Length)) {
+                            if ((s1.Length == s2.Length))
+                            {
                                 s1.Position = 0;
                                 s2.Position = 0;
-                                for (; ((s1.Position != s1.Length) 
-                                            && (s1.ReadByte() == s2.ReadByte())); ) {
+                                for (; ((s1.Position != s1.Length)
+                                            && (s1.ReadByte() == s2.ReadByte()));)
+                                {
                                     ;
                                 }
-                                if ((s1.Position == s1.Length)) {
+                                if ((s1.Position == s1.Length))
+                                {
                                     return type;
                                 }
                             }
                         }
                     }
-                    finally {
-                        if ((s1 != null)) {
+                    finally
+                    {
+                        if ((s1 != null))
+                        {
                             s1.Close();
                         }
-                        if ((s2 != null)) {
+                        if ((s2 != null))
+                        {
                             s2.Close();
                         }
                     }
@@ -4860,28 +5683,33 @@ namespace Guri_atacarejo {
                 return type;
             }
         }
-        
-/// <summary>
+
+        /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class GA_ClientesRow : global::System.Data.DataRow {
+        public partial class GA_ClientesRow : global::System.Data.DataRow
+        {
 
             private GA_ClientesDataTable tableGA_Clientes;
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal GA_ClientesRow(global::System.Data.DataRowBuilder rb) :
-                    base(rb) {
+                    base(rb)
+            {
                 this.tableGA_Clientes = ((GA_ClientesDataTable)(this.Table));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string CPF {
-                get {
+            public string CPF
+            {
+                get
+                {
                     return ((string)(this[this.tableGA_Clientes.CPFColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Clientes.CPFColumn] = value;
                 }
             }
@@ -4890,75 +5718,93 @@ namespace Guri_atacarejo {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class GA_CargosRow : global::System.Data.DataRow {
+        public partial class GA_CargosRow : global::System.Data.DataRow
+        {
 
             private GA_CargosDataTable tableGA_Cargos;
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal GA_CargosRow(global::System.Data.DataRowBuilder rb) :
-                    base(rb) {
+                    base(rb)
+            {
                 this.tableGA_Cargos = ((GA_CargosDataTable)(this.Table));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int IdCargo {
-                get {
+            public int IdCargo
+            {
+                get
+                {
                     return ((int)(this[this.tableGA_Cargos.IdCargoColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Cargos.IdCargoColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Nome {
-                get {
+            public string Nome
+            {
+                get
+                {
                     return ((string)(this[this.tableGA_Cargos.NomeColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Cargos.NomeColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal SalarioBase {
-                get {
+            public decimal SalarioBase
+            {
+                get
+                {
                     return ((decimal)(this[this.tableGA_Cargos.SalarioBaseColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Cargos.SalarioBaseColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Nivel {
-                get {
-                    try {
+            public string Nivel
+            {
+                get
+                {
+                    try
+                    {
                         return ((string)(this[this.tableGA_Cargos.NivelColumn]));
                     }
-                    catch (global::System.InvalidCastException e) {
+                    catch (global::System.InvalidCastException e)
+                    {
                         throw new global::System.Data.StrongTypingException("O valor da coluna \'Nivel\' na tabela \'GA_Cargos\' é DBNull.", e);
                     }
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Cargos.NivelColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsNivelNull() {
+            public bool IsNivelNull()
+            {
                 return this.IsNull(this.tableGA_Cargos.NivelColumn);
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetNivelNull() {
+            public void SetNivelNull()
+            {
                 this[this.tableGA_Cargos.NivelColumn] = global::System.Convert.DBNull;
             }
         }
@@ -4966,35 +5812,43 @@ namespace Guri_atacarejo {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class GA_DepartamentosRow : global::System.Data.DataRow {
+        public partial class GA_DepartamentosRow : global::System.Data.DataRow
+        {
 
             private GA_DepartamentosDataTable tableGA_Departamentos;
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal GA_DepartamentosRow(global::System.Data.DataRowBuilder rb) :
-                    base(rb) {
+                    base(rb)
+            {
                 this.tableGA_Departamentos = ((GA_DepartamentosDataTable)(this.Table));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int IdDepartamento {
-                get {
+            public int IdDepartamento
+            {
+                get
+                {
                     return ((int)(this[this.tableGA_Departamentos.IdDepartamentoColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Departamentos.IdDepartamentoColumn] = value;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string Nome {
-                get {
+            public string Nome
+            {
+                get
+                {
                     return ((string)(this[this.tableGA_Departamentos.NomeColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_Departamentos.NomeColumn] = value;
                 }
             }
@@ -5003,237 +5857,295 @@ namespace Guri_atacarejo {
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class GA_CompraRelatorioRow : global::System.Data.DataRow {
+        public partial class GA_CompraRelatorioRow : global::System.Data.DataRow
+        {
 
             private GA_CompraRelatorioDataTable tableGA_CompraRelatorio;
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
             internal GA_CompraRelatorioRow(global::System.Data.DataRowBuilder rb) :
-                    base(rb) {
+                    base(rb)
+            {
                 this.tableGA_CompraRelatorio = ((GA_CompraRelatorioDataTable)(this.Table));
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public int IdCompra {
-                get {
+            public int IdCompra
+            {
+                get
+                {
                     return ((int)(this[this.tableGA_CompraRelatorio.IdCompraColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_CompraRelatorio.IdCompraColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public System.DateTime DataCompra {
-                get {
+            public System.DateTime DataCompra
+            {
+                get
+                {
                     return ((global::System.DateTime)(this[this.tableGA_CompraRelatorio.DataCompraColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_CompraRelatorio.DataCompraColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public string StatusCompra {
-                get {
+            public string StatusCompra
+            {
+                get
+                {
                     return ((string)(this[this.tableGA_CompraRelatorio.StatusCompraColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_CompraRelatorio.StatusCompraColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public decimal ValorTotal {
-                get {
+            public decimal ValorTotal
+            {
+                get
+                {
                     return ((decimal)(this[this.tableGA_CompraRelatorio.ValorTotalColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_CompraRelatorio.ValorTotalColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public string FormaPagamento {
-                get {
-                    try {
+            public string FormaPagamento
+            {
+                get
+                {
+                    try
+                    {
                         return ((string)(this[this.tableGA_CompraRelatorio.FormaPagamentoColumn]));
                     }
-                    catch (global::System.InvalidCastException e) {
+                    catch (global::System.InvalidCastException e)
+                    {
                         throw new global::System.Data.StrongTypingException("O valor da coluna \'FormaPagamento\' na tabela \'GA_CompraRelatorio\' é DBNull.", e);
                     }
                 }
-                set {
+                set
+                {
                     this[this.tableGA_CompraRelatorio.FormaPagamentoColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public System.DateTime DataEntrega {
-                get {
-                    try {
+            public System.DateTime DataEntrega
+            {
+                get
+                {
+                    try
+                    {
                         return ((global::System.DateTime)(this[this.tableGA_CompraRelatorio.DataEntregaColumn]));
                     }
-                    catch (global::System.InvalidCastException e) {
+                    catch (global::System.InvalidCastException e)
+                    {
                         throw new global::System.Data.StrongTypingException("O valor da coluna \'DataEntrega\' na tabela \'GA_CompraRelatorio\' é DBNull.", e);
                     }
                 }
-                set {
+                set
+                {
                     this[this.tableGA_CompraRelatorio.DataEntregaColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public int FKFornecedor {
-                get {
+            public int FKFornecedor
+            {
+                get
+                {
                     return ((int)(this[this.tableGA_CompraRelatorio.FKFornecedorColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_CompraRelatorio.FKFornecedorColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public int FKFuncionario {
-                get {
+            public int FKFuncionario
+            {
+                get
+                {
                     return ((int)(this[this.tableGA_CompraRelatorio.FKFuncionarioColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_CompraRelatorio.FKFuncionarioColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public string NomeFornecedor {
-                get {
+            public string NomeFornecedor
+            {
+                get
+                {
                     return ((string)(this[this.tableGA_CompraRelatorio.NomeFornecedorColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_CompraRelatorio.NomeFornecedorColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public string NomeFuncionario {
-                get {
+            public string NomeFuncionario
+            {
+                get
+                {
                     return ((string)(this[this.tableGA_CompraRelatorio.NomeFuncionarioColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_CompraRelatorio.NomeFuncionarioColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public bool IsFormaPagamentoNull() {
+            public bool IsFormaPagamentoNull()
+            {
                 return this.IsNull(this.tableGA_CompraRelatorio.FormaPagamentoColumn);
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public void SetFormaPagamentoNull() {
+            public void SetFormaPagamentoNull()
+            {
                 this[this.tableGA_CompraRelatorio.FormaPagamentoColumn] = global::System.Convert.DBNull;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public bool IsDataEntregaNull() {
+            public bool IsDataEntregaNull()
+            {
                 return this.IsNull(this.tableGA_CompraRelatorio.DataEntregaColumn);
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public void SetDataEntregaNull() {
+            public void SetDataEntregaNull()
+            {
                 this[this.tableGA_CompraRelatorio.DataEntregaColumn] = global::System.Convert.DBNull;
             }
         }
-        
+
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class GA_ItensCompraRelatorioRow : global::System.Data.DataRow {
-            
+        public partial class GA_ItensCompraRelatorioRow : global::System.Data.DataRow
+        {
+
             private GA_ItensCompraRelatorioDataTable tableGA_ItensCompraRelatorio;
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            internal GA_ItensCompraRelatorioRow(global::System.Data.DataRowBuilder rb) : 
-                    base(rb) {
+            internal GA_ItensCompraRelatorioRow(global::System.Data.DataRowBuilder rb) :
+                    base(rb)
+            {
                 this.tableGA_ItensCompraRelatorio = ((GA_ItensCompraRelatorioDataTable)(this.Table));
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public string Produto {
-                get {
+            public string Produto
+            {
+                get
+                {
                     return ((string)(this[this.tableGA_ItensCompraRelatorio.ProdutoColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_ItensCompraRelatorio.ProdutoColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public int FKLote {
-                get {
+            public int FKLote
+            {
+                get
+                {
                     return ((int)(this[this.tableGA_ItensCompraRelatorio.FKLoteColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_ItensCompraRelatorio.FKLoteColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public int Quantidade {
-                get {
+            public int Quantidade
+            {
+                get
+                {
                     return ((int)(this[this.tableGA_ItensCompraRelatorio.QuantidadeColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_ItensCompraRelatorio.QuantidadeColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public decimal PrecoUnitario {
-                get {
+            public decimal PrecoUnitario
+            {
+                get
+                {
                     return ((decimal)(this[this.tableGA_ItensCompraRelatorio.PrecoUnitarioColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_ItensCompraRelatorio.PrecoUnitarioColumn] = value;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public decimal Subtotal {
-                get {
+            public decimal Subtotal
+            {
+                get
+                {
                     return ((decimal)(this[this.tableGA_ItensCompraRelatorio.SubtotalColumn]));
                 }
-                set {
+                set
+                {
                     this[this.tableGA_ItensCompraRelatorio.SubtotalColumn] = value;
                 }
             }
         }
-        
-/// <summary>
+
+        /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class GA_FuncionariosRowChangeEvent : global::System.EventArgs {
+        public class GA_FuncionariosRowChangeEvent : global::System.EventArgs
+        {
 
             private GA_FuncionariosRow eventRow;
 
@@ -5241,23 +6153,28 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_FuncionariosRowChangeEvent(GA_FuncionariosRow row, global::System.Data.DataRowAction action) {
+            public GA_FuncionariosRowChangeEvent(GA_FuncionariosRow row, global::System.Data.DataRowAction action)
+            {
                 this.eventRow = row;
                 this.eventAction = action;
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_FuncionariosRow Row {
-                get {
+            public GA_FuncionariosRow Row
+            {
+                get
+                {
                     return this.eventRow;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
+            public global::System.Data.DataRowAction Action
+            {
+                get
+                {
                     return this.eventAction;
                 }
             }
@@ -5267,7 +6184,8 @@ namespace Guri_atacarejo {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class GA_LoteRowChangeEvent : global::System.EventArgs {
+        public class GA_LoteRowChangeEvent : global::System.EventArgs
+        {
 
             private GA_LoteRow eventRow;
 
@@ -5275,23 +6193,28 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_LoteRowChangeEvent(GA_LoteRow row, global::System.Data.DataRowAction action) {
+            public GA_LoteRowChangeEvent(GA_LoteRow row, global::System.Data.DataRowAction action)
+            {
                 this.eventRow = row;
                 this.eventAction = action;
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_LoteRow Row {
-                get {
+            public GA_LoteRow Row
+            {
+                get
+                {
                     return this.eventRow;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
+            public global::System.Data.DataRowAction Action
+            {
+                get
+                {
                     return this.eventAction;
                 }
             }
@@ -5301,7 +6224,8 @@ namespace Guri_atacarejo {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class GA_ProdutosRowChangeEvent : global::System.EventArgs {
+        public class GA_ProdutosRowChangeEvent : global::System.EventArgs
+        {
 
             private GA_ProdutosRow eventRow;
 
@@ -5309,23 +6233,28 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_ProdutosRowChangeEvent(GA_ProdutosRow row, global::System.Data.DataRowAction action) {
+            public GA_ProdutosRowChangeEvent(GA_ProdutosRow row, global::System.Data.DataRowAction action)
+            {
                 this.eventRow = row;
                 this.eventAction = action;
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_ProdutosRow Row {
-                get {
+            public GA_ProdutosRow Row
+            {
+                get
+                {
                     return this.eventRow;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
+            public global::System.Data.DataRowAction Action
+            {
+                get
+                {
                     return this.eventAction;
                 }
             }
@@ -5335,7 +6264,8 @@ namespace Guri_atacarejo {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class GA_FornecedorRowChangeEvent : global::System.EventArgs {
+        public class GA_FornecedorRowChangeEvent : global::System.EventArgs
+        {
 
             private GA_FornecedorRow eventRow;
 
@@ -5343,23 +6273,28 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_FornecedorRowChangeEvent(GA_FornecedorRow row, global::System.Data.DataRowAction action) {
+            public GA_FornecedorRowChangeEvent(GA_FornecedorRow row, global::System.Data.DataRowAction action)
+            {
                 this.eventRow = row;
                 this.eventAction = action;
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_FornecedorRow Row {
-                get {
+            public GA_FornecedorRow Row
+            {
+                get
+                {
                     return this.eventRow;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
+            public global::System.Data.DataRowAction Action
+            {
+                get
+                {
                     return this.eventAction;
                 }
             }
@@ -5369,7 +6304,8 @@ namespace Guri_atacarejo {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class GA_EstoqueRowChangeEvent : global::System.EventArgs {
+        public class GA_EstoqueRowChangeEvent : global::System.EventArgs
+        {
 
             private GA_EstoqueRow eventRow;
 
@@ -5377,23 +6313,28 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_EstoqueRowChangeEvent(GA_EstoqueRow row, global::System.Data.DataRowAction action) {
+            public GA_EstoqueRowChangeEvent(GA_EstoqueRow row, global::System.Data.DataRowAction action)
+            {
                 this.eventRow = row;
                 this.eventAction = action;
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_EstoqueRow Row {
-                get {
+            public GA_EstoqueRow Row
+            {
+                get
+                {
                     return this.eventRow;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
+            public global::System.Data.DataRowAction Action
+            {
+                get
+                {
                     return this.eventAction;
                 }
             }
@@ -5403,7 +6344,8 @@ namespace Guri_atacarejo {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class DataTable1RowChangeEvent : global::System.EventArgs {
+        public class DataTable1RowChangeEvent : global::System.EventArgs
+        {
 
             private DataTable1Row eventRow;
 
@@ -5411,23 +6353,28 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataTable1RowChangeEvent(DataTable1Row row, global::System.Data.DataRowAction action) {
+            public DataTable1RowChangeEvent(DataTable1Row row, global::System.Data.DataRowAction action)
+            {
                 this.eventRow = row;
                 this.eventAction = action;
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataTable1Row Row {
-                get {
+            public DataTable1Row Row
+            {
+                get
+                {
                     return this.eventRow;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
+            public global::System.Data.DataRowAction Action
+            {
+                get
+                {
                     return this.eventAction;
                 }
             }
@@ -5437,7 +6384,8 @@ namespace Guri_atacarejo {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class GA_VendaResultadoRowChangeEvent : global::System.EventArgs {
+        public class GA_VendaResultadoRowChangeEvent : global::System.EventArgs
+        {
 
             private GA_VendaResultadoRow eventRow;
 
@@ -5445,23 +6393,28 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_VendaResultadoRowChangeEvent(GA_VendaResultadoRow row, global::System.Data.DataRowAction action) {
+            public GA_VendaResultadoRowChangeEvent(GA_VendaResultadoRow row, global::System.Data.DataRowAction action)
+            {
                 this.eventRow = row;
                 this.eventAction = action;
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_VendaResultadoRow Row {
-                get {
+            public GA_VendaResultadoRow Row
+            {
+                get
+                {
                     return this.eventRow;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
+            public global::System.Data.DataRowAction Action
+            {
+                get
+                {
                     return this.eventAction;
                 }
             }
@@ -5471,7 +6424,8 @@ namespace Guri_atacarejo {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class GA_ClientesRowChangeEvent : global::System.EventArgs {
+        public class GA_ClientesRowChangeEvent : global::System.EventArgs
+        {
 
             private GA_ClientesRow eventRow;
 
@@ -5479,23 +6433,28 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_ClientesRowChangeEvent(GA_ClientesRow row, global::System.Data.DataRowAction action) {
+            public GA_ClientesRowChangeEvent(GA_ClientesRow row, global::System.Data.DataRowAction action)
+            {
                 this.eventRow = row;
                 this.eventAction = action;
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_ClientesRow Row {
-                get {
+            public GA_ClientesRow Row
+            {
+                get
+                {
                     return this.eventRow;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
+            public global::System.Data.DataRowAction Action
+            {
+                get
+                {
                     return this.eventAction;
                 }
             }
@@ -5505,7 +6464,8 @@ namespace Guri_atacarejo {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class GA_CargosRowChangeEvent : global::System.EventArgs {
+        public class GA_CargosRowChangeEvent : global::System.EventArgs
+        {
 
             private GA_CargosRow eventRow;
 
@@ -5513,23 +6473,28 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_CargosRowChangeEvent(GA_CargosRow row, global::System.Data.DataRowAction action) {
+            public GA_CargosRowChangeEvent(GA_CargosRow row, global::System.Data.DataRowAction action)
+            {
                 this.eventRow = row;
                 this.eventAction = action;
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_CargosRow Row {
-                get {
+            public GA_CargosRow Row
+            {
+                get
+                {
                     return this.eventRow;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
+            public global::System.Data.DataRowAction Action
+            {
+                get
+                {
                     return this.eventAction;
                 }
             }
@@ -5539,7 +6504,8 @@ namespace Guri_atacarejo {
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class GA_DepartamentosRowChangeEvent : global::System.EventArgs {
+        public class GA_DepartamentosRowChangeEvent : global::System.EventArgs
+        {
 
             private GA_DepartamentosRow eventRow;
 
@@ -5547,97 +6513,114 @@ namespace Guri_atacarejo {
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_DepartamentosRowChangeEvent(GA_DepartamentosRow row, global::System.Data.DataRowAction action) {
+            public GA_DepartamentosRowChangeEvent(GA_DepartamentosRow row, global::System.Data.DataRowAction action)
+            {
                 this.eventRow = row;
                 this.eventAction = action;
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public GA_DepartamentosRow Row {
-                get {
+            public GA_DepartamentosRow Row
+            {
+                get
+                {
                     return this.eventRow;
                 }
             }
 
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
+            public global::System.Data.DataRowAction Action
+            {
+                get
+                {
                     return this.eventAction;
                 }
             }
         }
-        
+
         /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-        public class GA_CompraRelatorioRowChangeEvent : global::System.EventArgs {
-            
+        public class GA_CompraRelatorioRowChangeEvent : global::System.EventArgs
+        {
+
             private GA_CompraRelatorioRow eventRow;
-            
+
             private global::System.Data.DataRowAction eventAction;
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public GA_CompraRelatorioRowChangeEvent(GA_CompraRelatorioRow row, global::System.Data.DataRowAction action) {
+            public GA_CompraRelatorioRowChangeEvent(GA_CompraRelatorioRow row, global::System.Data.DataRowAction action)
+            {
                 this.eventRow = row;
                 this.eventAction = action;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public GA_CompraRelatorioRow Row {
-                get {
+            public GA_CompraRelatorioRow Row
+            {
+                get
+                {
                     return this.eventRow;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
+            public global::System.Data.DataRowAction Action
+            {
+                get
+                {
                     return this.eventAction;
                 }
             }
         }
-        
+
         /// <summary>
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-        public class GA_ItensCompraRelatorioRowChangeEvent : global::System.EventArgs {
-            
+        public class GA_ItensCompraRelatorioRowChangeEvent : global::System.EventArgs
+        {
+
             private GA_ItensCompraRelatorioRow eventRow;
-            
+
             private global::System.Data.DataRowAction eventAction;
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public GA_ItensCompraRelatorioRowChangeEvent(GA_ItensCompraRelatorioRow row, global::System.Data.DataRowAction action) {
+            public GA_ItensCompraRelatorioRowChangeEvent(GA_ItensCompraRelatorioRow row, global::System.Data.DataRowAction action)
+            {
                 this.eventRow = row;
                 this.eventAction = action;
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public GA_ItensCompraRelatorioRow Row {
-                get {
+            public GA_ItensCompraRelatorioRow Row
+            {
+                get
+                {
                     return this.eventRow;
                 }
             }
-            
+
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-            public global::System.Data.DataRowAction Action {
-                get {
+            public global::System.Data.DataRowAction Action
+            {
+                get
+                {
                     return this.eventAction;
                 }
             }
         }
-        
-}
+
+    }
 }
 
 namespace Guri_atacarejo.DataSetTableAdapters
@@ -7286,7 +8269,8 @@ SELECT IdLote, FKFornecedores, FKProduto, Quantidade, DataValidade FROM GA_Lote 
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class GA_ClientesTableAdapter : global::System.ComponentModel.Component {
+    public partial class GA_ClientesTableAdapter : global::System.ComponentModel.Component
+    {
 
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
 
@@ -7300,15 +8284,19 @@ SELECT IdLote, FKFornecedores, FKProduto, Quantidade, DataValidade FROM GA_Lote 
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public GA_ClientesTableAdapter() {
+        public GA_ClientesTableAdapter()
+        {
             this.ClearBeforeFill = true;
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter
+        {
+            get
+            {
+                if ((this._adapter == null))
+                {
                     this.InitAdapter();
                 }
                 return this._adapter;
@@ -7317,26 +8305,35 @@ SELECT IdLote, FKFornecedores, FKProduto, Quantidade, DataValidade FROM GA_Lote 
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
+        internal global::System.Data.SqlClient.SqlConnection Connection
+        {
+            get
+            {
+                if ((this._connection == null))
+                {
                     this.InitConnection();
                 }
                 return this._connection;
             }
-            set {
+            set
+            {
                 this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
+                if ((this.Adapter.InsertCommand != null))
+                {
                     this.Adapter.InsertCommand.Connection = value;
                 }
-                if ((this.Adapter.DeleteCommand != null)) {
+                if ((this.Adapter.DeleteCommand != null))
+                {
                     this.Adapter.DeleteCommand.Connection = value;
                 }
-                if ((this.Adapter.UpdateCommand != null)) {
+                if ((this.Adapter.UpdateCommand != null))
+                {
                     this.Adapter.UpdateCommand.Connection = value;
                 }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1))
+                {
+                    if ((this.CommandCollection[i] != null))
+                    {
                         ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
                     }
                 }
@@ -7345,25 +8342,32 @@ SELECT IdLote, FKFornecedores, FKProduto, Quantidade, DataValidade FROM GA_Lote 
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
+        internal global::System.Data.SqlClient.SqlTransaction Transaction
+        {
+            get
+            {
                 return this._transaction;
             }
-            set {
+            set
+            {
                 this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1))
+                {
                     this.CommandCollection[i].Transaction = this._transaction;
                 }
                 if (((this.Adapter != null)
-                            && (this.Adapter.DeleteCommand != null))) {
+                            && (this.Adapter.DeleteCommand != null)))
+                {
                     this.Adapter.DeleteCommand.Transaction = this._transaction;
                 }
                 if (((this.Adapter != null)
-                            && (this.Adapter.InsertCommand != null))) {
+                            && (this.Adapter.InsertCommand != null)))
+                {
                     this.Adapter.InsertCommand.Transaction = this._transaction;
                 }
                 if (((this.Adapter != null)
-                            && (this.Adapter.UpdateCommand != null))) {
+                            && (this.Adapter.UpdateCommand != null)))
+                {
                     this.Adapter.UpdateCommand.Transaction = this._transaction;
                 }
             }
@@ -7371,9 +8375,12 @@ SELECT IdLote, FKFornecedores, FKProduto, Quantidade, DataValidade FROM GA_Lote 
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection
+        {
+            get
+            {
+                if ((this._commandCollection == null))
+                {
                     this.InitCommandCollection();
                 }
                 return this._commandCollection;
@@ -7382,18 +8389,22 @@ SELECT IdLote, FKFornecedores, FKProduto, Quantidade, DataValidade FROM GA_Lote 
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
+        public bool ClearBeforeFill
+        {
+            get
+            {
                 return this._clearBeforeFill;
             }
-            set {
+            set
+            {
                 this._clearBeforeFill = value;
             }
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitAdapter() {
+        private void InitAdapter()
+        {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
@@ -7404,14 +8415,16 @@ SELECT IdLote, FKFornecedores, FKProduto, Quantidade, DataValidade FROM GA_Lote 
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitConnection() {
+        private void InitConnection()
+        {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
             this._connection.ConnectionString = global::Guri_atacarejo.Properties.Settings.Default.ConnectionString;
         }
 
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-        private void InitCommandCollection() {
+        private void InitCommandCollection()
+        {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
@@ -7438,15 +8451,19 @@ SELECT IdLote, FKFornecedores, FKProduto, Quantidade, DataValidade FROM GA_Lote 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DataSet.GA_ClientesDataTable dataTable, string cpf) {
+        public virtual int Fill(DataSet.GA_ClientesDataTable dataTable, string cpf)
+        {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((cpf == null)) {
+            if ((cpf == null))
+            {
                 throw new global::System.ArgumentNullException("cpf");
             }
-            else {
+            else
+            {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(cpf));
             }
-            if ((this.ClearBeforeFill == true)) {
+            if ((this.ClearBeforeFill == true))
+            {
                 dataTable.Clear();
             }
             int returnValue = this.Adapter.Fill(dataTable);
@@ -7457,12 +8474,15 @@ SELECT IdLote, FKFornecedores, FKProduto, Quantidade, DataValidade FROM GA_Lote 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet.GA_ClientesDataTable verifycpf(string cpf) {
+        public virtual DataSet.GA_ClientesDataTable verifycpf(string cpf)
+        {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((cpf == null)) {
+            if ((cpf == null))
+            {
                 throw new global::System.ArgumentNullException("cpf");
             }
-            else {
+            else
+            {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((string)(cpf));
             }
             DataSet.GA_ClientesDataTable dataTable = new DataSet.GA_ClientesDataTable();
@@ -9220,114 +10240,142 @@ SELECT IdFornecedor, Nome, CNPJ, Email, Telefone, Endereco FROM GA_Fornecedor WH
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class GA_CompraRelatorioTableAdapter : global::System.ComponentModel.Component {
-        
+    public partial class GA_CompraRelatorioTableAdapter : global::System.ComponentModel.Component
+    {
+
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
+
         private global::System.Data.SqlClient.SqlConnection _connection;
-        
+
         private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
+
         private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
+
         private bool _clearBeforeFill;
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-        public GA_CompraRelatorioTableAdapter() {
+        public GA_CompraRelatorioTableAdapter()
+        {
             this.ClearBeforeFill = true;
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter
+        {
+            get
+            {
+                if ((this._adapter == null))
+                {
                     this.InitAdapter();
                 }
                 return this._adapter;
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
+        internal global::System.Data.SqlClient.SqlConnection Connection
+        {
+            get
+            {
+                if ((this._connection == null))
+                {
                     this.InitConnection();
                 }
                 return this._connection;
             }
-            set {
+            set
+            {
                 this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
+                if ((this.Adapter.InsertCommand != null))
+                {
                     this.Adapter.InsertCommand.Connection = value;
                 }
-                if ((this.Adapter.DeleteCommand != null)) {
+                if ((this.Adapter.DeleteCommand != null))
+                {
                     this.Adapter.DeleteCommand.Connection = value;
                 }
-                if ((this.Adapter.UpdateCommand != null)) {
+                if ((this.Adapter.UpdateCommand != null))
+                {
                     this.Adapter.UpdateCommand.Connection = value;
                 }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1))
+                {
+                    if ((this.CommandCollection[i] != null))
+                    {
                         ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
                     }
                 }
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
+        internal global::System.Data.SqlClient.SqlTransaction Transaction
+        {
+            get
+            {
                 return this._transaction;
             }
-            set {
+            set
+            {
                 this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1))
+                {
                     this.CommandCollection[i].Transaction = this._transaction;
                 }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
+                if (((this.Adapter != null)
+                            && (this.Adapter.DeleteCommand != null)))
+                {
                     this.Adapter.DeleteCommand.Transaction = this._transaction;
                 }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
+                if (((this.Adapter != null)
+                            && (this.Adapter.InsertCommand != null)))
+                {
                     this.Adapter.InsertCommand.Transaction = this._transaction;
                 }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
+                if (((this.Adapter != null)
+                            && (this.Adapter.UpdateCommand != null)))
+                {
                     this.Adapter.UpdateCommand.Transaction = this._transaction;
                 }
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection
+        {
+            get
+            {
+                if ((this._commandCollection == null))
+                {
                     this.InitCommandCollection();
                 }
                 return this._commandCollection;
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
+        public bool ClearBeforeFill
+        {
+            get
+            {
                 return this._clearBeforeFill;
             }
-            set {
+            set
+            {
                 this._clearBeforeFill = value;
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-        private void InitAdapter() {
+        private void InitAdapter()
+        {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
@@ -9344,17 +10392,19 @@ SELECT IdFornecedor, Nome, CNPJ, Email, Telefone, Endereco FROM GA_Fornecedor WH
             tableMapping.ColumnMappings.Add("NomeFuncionario", "NomeFuncionario");
             this._adapter.TableMappings.Add(tableMapping);
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-        private void InitConnection() {
+        private void InitConnection()
+        {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
             this._connection.ConnectionString = global::Guri_atacarejo.Properties.Settings.Default.ConnectionString;
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-        private void InitCommandCollection() {
+        private void InitCommandCollection()
+        {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
@@ -9368,48 +10418,59 @@ ORDER BY c.DataCompra DESC";
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@inicio", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@fim", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int FillCompras(DataSet.GA_CompraRelatorioDataTable dataTable, global::System.Nullable<global::System.DateTime> inicio, global::System.Nullable<global::System.DateTime> fim) {
+        public virtual int FillCompras(DataSet.GA_CompraRelatorioDataTable dataTable, global::System.Nullable<global::System.DateTime> inicio, global::System.Nullable<global::System.DateTime> fim)
+        {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((inicio.HasValue == true)) {
+            if ((inicio.HasValue == true))
+            {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(inicio.Value));
             }
-            else {
+            else
+            {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((fim.HasValue == true)) {
+            if ((fim.HasValue == true))
+            {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(fim.Value));
             }
-            else {
+            else
+            {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
-            if ((this.ClearBeforeFill == true)) {
+            if ((this.ClearBeforeFill == true))
+            {
                 dataTable.Clear();
             }
             int returnValue = this.Adapter.Fill(dataTable);
             return returnValue;
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet.GA_CompraRelatorioDataTable GetCompras(global::System.Nullable<global::System.DateTime> inicio, global::System.Nullable<global::System.DateTime> fim) {
+        public virtual DataSet.GA_CompraRelatorioDataTable GetCompras(global::System.Nullable<global::System.DateTime> inicio, global::System.Nullable<global::System.DateTime> fim)
+        {
             this.Adapter.SelectCommand = this.CommandCollection[0];
-            if ((inicio.HasValue == true)) {
+            if ((inicio.HasValue == true))
+            {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((System.DateTime)(inicio.Value));
             }
-            else {
+            else
+            {
                 this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
             }
-            if ((fim.HasValue == true)) {
+            if ((fim.HasValue == true))
+            {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((System.DateTime)(fim.Value));
             }
-            else {
+            else
+            {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             DataSet.GA_CompraRelatorioDataTable dataTable = new DataSet.GA_CompraRelatorioDataTable();
@@ -9417,7 +10478,7 @@ ORDER BY c.DataCompra DESC";
             return dataTable;
         }
     }
-    
+
     /// <summary>
     ///Represents the connection and commands used to retrieve and save data.
     ///</summary>
@@ -9427,114 +10488,142 @@ ORDER BY c.DataCompra DESC";
     [global::System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner" +
         ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
-    public partial class GA_ItensCompraRelatorioTableAdapter : global::System.ComponentModel.Component {
-        
+    public partial class GA_ItensCompraRelatorioTableAdapter : global::System.ComponentModel.Component
+    {
+
         private global::System.Data.SqlClient.SqlDataAdapter _adapter;
-        
+
         private global::System.Data.SqlClient.SqlConnection _connection;
-        
+
         private global::System.Data.SqlClient.SqlTransaction _transaction;
-        
+
         private global::System.Data.SqlClient.SqlCommand[] _commandCollection;
-        
+
         private bool _clearBeforeFill;
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-        public GA_ItensCompraRelatorioTableAdapter() {
+        public GA_ItensCompraRelatorioTableAdapter()
+        {
             this.ClearBeforeFill = true;
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter {
-            get {
-                if ((this._adapter == null)) {
+        protected internal global::System.Data.SqlClient.SqlDataAdapter Adapter
+        {
+            get
+            {
+                if ((this._adapter == null))
+                {
                     this.InitAdapter();
                 }
                 return this._adapter;
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-        internal global::System.Data.SqlClient.SqlConnection Connection {
-            get {
-                if ((this._connection == null)) {
+        internal global::System.Data.SqlClient.SqlConnection Connection
+        {
+            get
+            {
+                if ((this._connection == null))
+                {
                     this.InitConnection();
                 }
                 return this._connection;
             }
-            set {
+            set
+            {
                 this._connection = value;
-                if ((this.Adapter.InsertCommand != null)) {
+                if ((this.Adapter.InsertCommand != null))
+                {
                     this.Adapter.InsertCommand.Connection = value;
                 }
-                if ((this.Adapter.DeleteCommand != null)) {
+                if ((this.Adapter.DeleteCommand != null))
+                {
                     this.Adapter.DeleteCommand.Connection = value;
                 }
-                if ((this.Adapter.UpdateCommand != null)) {
+                if ((this.Adapter.UpdateCommand != null))
+                {
                     this.Adapter.UpdateCommand.Connection = value;
                 }
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
-                    if ((this.CommandCollection[i] != null)) {
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1))
+                {
+                    if ((this.CommandCollection[i] != null))
+                    {
                         ((global::System.Data.SqlClient.SqlCommand)(this.CommandCollection[i])).Connection = value;
                     }
                 }
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-        internal global::System.Data.SqlClient.SqlTransaction Transaction {
-            get {
+        internal global::System.Data.SqlClient.SqlTransaction Transaction
+        {
+            get
+            {
                 return this._transaction;
             }
-            set {
+            set
+            {
                 this._transaction = value;
-                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1)) {
+                for (int i = 0; (i < this.CommandCollection.Length); i = (i + 1))
+                {
                     this.CommandCollection[i].Transaction = this._transaction;
                 }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.DeleteCommand != null))) {
+                if (((this.Adapter != null)
+                            && (this.Adapter.DeleteCommand != null)))
+                {
                     this.Adapter.DeleteCommand.Transaction = this._transaction;
                 }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.InsertCommand != null))) {
+                if (((this.Adapter != null)
+                            && (this.Adapter.InsertCommand != null)))
+                {
                     this.Adapter.InsertCommand.Transaction = this._transaction;
                 }
-                if (((this.Adapter != null) 
-                            && (this.Adapter.UpdateCommand != null))) {
+                if (((this.Adapter != null)
+                            && (this.Adapter.UpdateCommand != null)))
+                {
                     this.Adapter.UpdateCommand.Transaction = this._transaction;
                 }
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection {
-            get {
-                if ((this._commandCollection == null)) {
+        protected global::System.Data.SqlClient.SqlCommand[] CommandCollection
+        {
+            get
+            {
+                if ((this._commandCollection == null))
+                {
                     this.InitCommandCollection();
                 }
                 return this._commandCollection;
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-        public bool ClearBeforeFill {
-            get {
+        public bool ClearBeforeFill
+        {
+            get
+            {
                 return this._clearBeforeFill;
             }
-            set {
+            set
+            {
                 this._clearBeforeFill = value;
             }
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-        private void InitAdapter() {
+        private void InitAdapter()
+        {
             this._adapter = new global::System.Data.SqlClient.SqlDataAdapter();
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
@@ -9546,17 +10635,19 @@ ORDER BY c.DataCompra DESC";
             tableMapping.ColumnMappings.Add("Subtotal", "Subtotal");
             this._adapter.TableMappings.Add(tableMapping);
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-        private void InitConnection() {
+        private void InitConnection()
+        {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
             this._connection.ConnectionString = global::Guri_atacarejo.Properties.Settings.Default.ConnectionString;
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
-        private void InitCommandCollection() {
+        private void InitCommandCollection()
+        {
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
@@ -9567,26 +10658,29 @@ ORDER BY c.DataCompra DESC";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[0].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@idCompra", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int FillItensPorCompra(DataSet.GA_ItensCompraRelatorioDataTable dataTable, int idCompra) {
+        public virtual int FillItensPorCompra(DataSet.GA_ItensCompraRelatorioDataTable dataTable, int idCompra)
+        {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idCompra));
-            if ((this.ClearBeforeFill == true)) {
+            if ((this.ClearBeforeFill == true))
+            {
                 dataTable.Clear();
             }
             int returnValue = this.Adapter.Fill(dataTable);
             return returnValue;
         }
-        
+
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "18.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DataSet.GA_ItensCompraRelatorioDataTable GetItensPorCompra(int idCompra) {
+        public virtual DataSet.GA_ItensCompraRelatorioDataTable GetItensPorCompra(int idCompra)
+        {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(idCompra));
             DataSet.GA_ItensCompraRelatorioDataTable dataTable = new DataSet.GA_ItensCompraRelatorioDataTable();
@@ -9594,8 +10688,8 @@ ORDER BY c.DataCompra DESC";
             return dataTable;
         }
     }
-    
-/// <summary>
+
+    /// <summary>
     ///TableAdapterManager is used to coordinate TableAdapters in the dataset to enable Hierarchical Update scenarios
     ///</summary>
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
