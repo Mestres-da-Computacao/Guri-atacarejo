@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -14,6 +15,8 @@ namespace Guri_atacarejo.forms
     public partial class frmCadastroProduto : Form
     {
         const string PrefixoPreco = "R$ ";
+        const int CategoriaPadrao = 1;   // categoria sempre 1 no INSERT
+        const string UnidadeMedidaPadrao = "UN";  // GA_Produtos.UnidadeMedida é obrigatória
         private readonly string conecta = global::Guri_atacarejo.Properties.Settings.Default.ConnectionString;
         private class Original
         {
@@ -76,26 +79,38 @@ namespace Guri_atacarejo.forms
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNome.Text) ||
-                string.IsNullOrWhiteSpace(txtPreco.Text) ||
-                string.IsNullOrWhiteSpace(txtDescricao.Text) ||
-                string.IsNullOrWhiteSpace(txtQuantidade.Text))
+                string.IsNullOrWhiteSpace(txtPreco.Text))
             {
-                MessageBox.Show("Por favor, preencha todos os dados.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor, preencha o nome e o preço.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            string sql = "INSERT INTO Produtos (Nome, Preco, Descricao, Quantidade, FKCategoria) " +
-                       "VALUES (@Nome, @Preco, @Descricao, @Quantidade, @Categoria)";
+            // O campo de preço tem o prefixo "R$ ", então ele é removido antes de converter.
+            string textoPreco = txtPreco.Text.Replace(PrefixoPreco, "").Trim();
+            if (!decimal.TryParse(textoPreco, NumberStyles.Number, new CultureInfo("pt-BR"), out decimal preco)
+                || preco <= 0)
+            {
+                MessageBox.Show("Informe um preço válido (ex.: 12,50).", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPreco.Focus();
+                return;
+            }
+
+            string sql = "INSERT INTO GA_Produtos (FKCategoria, Nome, UnidadeMedida, Preco) " +
+                       "VALUES (@Categoria, @Nome, @Unidade, @Preco)";
 
             using (SqlConnection conexao = new SqlConnection(conecta))
             {
                 using (SqlCommand comando = new SqlCommand(sql, conexao))
                 {
-                    comando.Parameters.AddWithValue("@Nome", txtNome.Text.Trim());
-                    comando.Parameters.AddWithValue("@Preco", Convert.ToDecimal(txtPreco.Text.Trim()));
-                    comando.Parameters.AddWithValue("@Descricao", txtDescricao.Text.Trim());
-                    comando.Parameters.AddWithValue("@Quantidade", Convert.ToInt32(txtQuantidade.Text));
-                    comando.Parameters.AddWithValue("@Categoria", cmbCategoria.SelectedItem?.ToString() ?? "Geral");
+                    comando.Parameters.Add("@Nome", SqlDbType.VarChar, 100).Value = txtNome.Text.Trim();
+
+                    var pPreco = comando.Parameters.Add("@Preco", SqlDbType.Decimal);
+                    pPreco.Precision = 10;
+                    pPreco.Scale = 2;
+                    pPreco.Value = preco;
+
+                    comando.Parameters.Add("@Categoria", SqlDbType.Int).Value = CategoriaPadrao;
+                    comando.Parameters.Add("@Unidade", SqlDbType.VarChar, 20).Value = UnidadeMedidaPadrao;
 
                     try
                     {
@@ -122,7 +137,6 @@ namespace Guri_atacarejo.forms
             txtPreco.Text = "R$ ";
             txtDescricao.Clear();
             txtQuantidade.Text = "";
-            cmbCategoria.SelectedIndex = -1;
             txtNome.Focus();
         }
 
@@ -131,85 +145,71 @@ namespace Guri_atacarejo.forms
             limpacampos();
             Close();
         }
-        private void txtPreco_KeyPress(object sender, KeyPressEventArgs e) { 
-
-            if (e.KeyChar == (char) Keys.Back)
+        private void txtPreco_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (txtPreco.SelectionStart <= PrefixoPreco.Length && txtPreco.SelectionLength == 0)
-                e.Handled = true;
-            return;
-        }
- 
+
+            if (e.KeyChar == (char)Keys.Back)
+            {
+                if (txtPreco.SelectionStart <= PrefixoPreco.Length && txtPreco.SelectionLength == 0)
+                    e.Handled = true;
+                return;
+            }
+
             if (char.IsDigit(e.KeyChar))
             {
-                if (txtPreco.SelectionStart<PrefixoPreco.Length)
+                if (txtPreco.SelectionStart < PrefixoPreco.Length)
                     txtPreco.SelectionStart = txtPreco.Text.Length;
                 return;
             }
- 
+
             if (e.KeyChar == ',' && !txtPreco.Text.Contains(",") &&
                 txtPreco.Text.Length > PrefixoPreco.Length)
             {
                 return;
             }
 
-        e.Handled = true;
+            e.Handled = true;
         }
- 
+
         private void txtPreco_KeyDown(object sender, KeyEventArgs e)
-{
-    if (e.KeyCode == Keys.Delete && txtPreco.SelectionStart < PrefixoPreco.Length)
-        e.SuppressKeyPress = true;
-}
-
-    private void txtPreco_TextChanged(object sender, EventArgs e)
-    {
-        string atual = txtPreco.Text;
-        string corpo = atual.StartsWith(PrefixoPreco) ? atual.Substring(PrefixoPreco.Length) : atual;
-
-        string limpo = Regex.Replace(corpo, @"[^\d,]", "");
-
-        int i = limpo.IndexOf(',');
-        if (i >= 0)
-            limpo = limpo.Substring(0, i + 1) + limpo.Substring(i + 1).Replace(",", "");
-
-        string novo = PrefixoPreco + limpo;
-        if (atual != novo)
         {
-            txtPreco.Text = novo;
-            txtPreco.SelectionStart = txtPreco.Text.Length;
+            if (e.KeyCode == Keys.Delete && txtPreco.SelectionStart < PrefixoPreco.Length)
+                e.SuppressKeyPress = true;
         }
-    }
 
-    private void txtPreco_Click(object sender, EventArgs e)
-    {
-        if (txtPreco.SelectionStart < PrefixoPreco.Length)
-            txtPreco.SelectionStart = txtPreco.Text.Length;
-    }
-
-
-    private void txtQuantidade_KeyPress(object sender, KeyPressEventArgs e)
-            {
-                if (Char.IsDigit(e.KeyChar) || e.KeyChar == (char)8)
-                {
-                    return;
-                }
-                e.Handled = true;
-            }
-
-        private void cmbCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        private void txtPreco_TextChanged(object sender, EventArgs e)
         {
-            string sql = "SELECT FKCategoria from GA_Produtos";
-            using (SqlConnection conexao = new SqlConnection(conecta))
+            string atual = txtPreco.Text;
+            string corpo = atual.StartsWith(PrefixoPreco) ? atual.Substring(PrefixoPreco.Length) : atual;
+
+            string limpo = Regex.Replace(corpo, @"[^\d,]", "");
+
+            int i = limpo.IndexOf(',');
+            if (i >= 0)
+                limpo = limpo.Substring(0, i + 1) + limpo.Substring(i + 1).Replace(",", "");
+
+            string novo = PrefixoPreco + limpo;
+            if (atual != novo)
             {
-                SqlDataAdapter adaptador = new SqlDataAdapter(sql, conexao);
-                DataTable dt = new DataTable();
-                adaptador.Fill(dt);
-
-                cmbCategoria.DataSource = dt;
-                cmbCategoria.DisplayMember = "FKCategoria";
+                txtPreco.Text = novo;
+                txtPreco.SelectionStart = txtPreco.Text.Length;
             }
+        }
 
+        private void txtPreco_Click(object sender, EventArgs e)
+        {
+            if (txtPreco.SelectionStart < PrefixoPreco.Length)
+                txtPreco.SelectionStart = txtPreco.Text.Length;
+        }
+
+
+        private void txtQuantidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (Char.IsDigit(e.KeyChar) || e.KeyChar == (char)8)
+            {
+                return;
+            }
+            e.Handled = true;
         }
     }
 }
