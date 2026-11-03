@@ -559,9 +559,7 @@ END;
 GO
 
 
--- 2.9. Atualizar o Preço do LOTE (valor TOTAL pelo qual o lote foi comprado)
--- Preço do lote = SUM(Subtotal) dos itens de compra daquele lote.
--- Ex.: 50 unidades a R$ 10,00 => Subtotal 500,00 => Preço do lote = 500,00
+-- 2.9. Atualizar o Preço do LOTE 
 CREATE OR ALTER TRIGGER trg_AtualizarPrecoLote
 ON GA_ItensCompra
 AFTER INSERT, UPDATE
@@ -598,9 +596,7 @@ END;
 GO
 
 
--- Correção dos lotes já existentes (que foram gravados com o preço unitário).
--- Recalcula o Preço de cada lote como a soma dos subtotais dos seus itens de compra.
--- Pode ser executado quantas vezes quiser, o resultado é sempre o mesmo.
+-- Correção dos lotes já existentes
 UPDATE l
 SET l.[Preço] = t.TotalLote
 FROM GA_Lote l
