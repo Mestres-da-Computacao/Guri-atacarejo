@@ -92,8 +92,8 @@ namespace Guri_atacarejo.forms
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.funcionáriosToolStripMenuItem,
             this.clientesToolStripMenuItem,
-            this.maisOpçõesToolStripMenuItem,
-            this.relatóriosToolStripMenuItem1});
+            this.forneceToolStripMenuItem,
+            this.maisOpçõesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -161,12 +161,14 @@ namespace Guri_atacarejo.forms
             this.registroFornecedoresToolStripMenuItem.Name = "registroFornecedoresToolStripMenuItem";
             this.registroFornecedoresToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.registroFornecedoresToolStripMenuItem.Text = "Registro Fornecedores";
+            this.registroFornecedoresToolStripMenuItem.Click += new System.EventHandler(this.registrarFornecedorToolStripMenuItem_Click);
             // 
             // compraLotesToolStripMenuItem
             // 
             this.compraLotesToolStripMenuItem.Name = "compraLotesToolStripMenuItem";
             this.compraLotesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.compraLotesToolStripMenuItem.Text = "Compra Lotes";
+            this.compraLotesToolStripMenuItem.Click += new System.EventHandler(this.compraDeLotesToolStripMenuItem_Click);
             // 
             // maisOpçõesToolStripMenuItem
             // 
@@ -443,7 +445,7 @@ namespace Guri_atacarejo.forms
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
             this.panel5.Controls.Add(this.label3);
-            this.panel5.Controls.Add(this.label5);
+            this.panel5.Controls.Add(this.labelClienteRegistrado);
             this.panel5.Location = new System.Drawing.Point(744, 328);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(174, 30);
@@ -465,16 +467,16 @@ namespace Guri_atacarejo.forms
             // 
             // labelClienteRegistrado
             // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.White;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.label5.Location = new System.Drawing.Point(60, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(113, 20);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Não registrado";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
+            this.labelClienteRegistrado.AutoSize = true;
+            this.labelClienteRegistrado.BackColor = System.Drawing.Color.White;
+            this.labelClienteRegistrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelClienteRegistrado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            this.labelClienteRegistrado.Location = new System.Drawing.Point(60, 0);
+            this.labelClienteRegistrado.Name = "label5";
+            this.labelClienteRegistrado.Size = new System.Drawing.Size(113, 20);
+            this.labelClienteRegistrado.TabIndex = 4;
+            this.labelClienteRegistrado.Text = "Não registrado";
+            this.labelClienteRegistrado.Click += new System.EventHandler(this.label5_Click);
             // 
             // label6
             // 
@@ -745,6 +747,9 @@ namespace Guri_atacarejo.forms
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.ToolStripMenuItem maisOpçõesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem relatóriosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem relatórioFinanceiroToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem relatórioDeEstoqueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registrarProdutosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem registrarFuncionariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lotesToolStripMenuItem;

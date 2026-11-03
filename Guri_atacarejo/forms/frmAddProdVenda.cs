@@ -90,7 +90,7 @@ namespace Guri_atacarejo.forms
 
         private void btnFinalizar_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            Close();
         }
     }
 }

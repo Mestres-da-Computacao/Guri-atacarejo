@@ -158,9 +158,7 @@ namespace Guri_atacarejo.forms
 
         private void button3_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmPainel painel = new frmPainel();
-            painel.ShowDialog();
+            Close();
         }
 
         // devolve o nome do cliente com esse CPF, ou null se não existir
@@ -175,27 +173,20 @@ namespace Guri_atacarejo.forms
             }
         }
 
-        private async Task SeguirParaVenda(string nome, string cpf)
+        private void SeguirParaVenda(int idCliente, string nome, string cpf)
         {
+            SessaoClientes.IdCliente = idCliente;
             SessaoClientes.NomeCliente = nome;
             SessaoClientes.Cpf = cpf;
-
-            await Task.Delay(1000);
-            this.Hide();
-
-            frmPainel painel = new frmPainel();
-            painel.ShowDialog();
-            this.Close();
+            Close();
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            this.Hide();
-            frmPainel painel = new frmPainel();
-            painel.ShowDialog();
+            Close();
         }
 
-        private async void btnRegist_Click(object sender, EventArgs e)
+        private void btnRegist_Click(object sender, EventArgs e)
         {
             string camposVazios = "";
             bool erro = false;
@@ -282,8 +273,9 @@ namespace Guri_atacarejo.forms
                             return;
                         }
 
-                        string query = "INSERT INTO GA_Clientes (Nome, CPF, Genero, Email, Celular) VALUES (@Nome, @CPF, @Gen, @Email, @Celular)";
+                        string query = "INSERT INTO GA_Clientes (Nome, CPF, Genero, Email, Celular) VALUES (@Nome, @CPF, @Gen, @Email, @Celular); SELECT CONVERT(int, SCOPE_IDENTITY());";
 
+                        int idCliente;
                         using (SqlConnection connection = new SqlConnection(ConnectionString))
                         using (SqlCommand command = new SqlCommand(query, connection))
                         {
@@ -294,11 +286,11 @@ namespace Guri_atacarejo.forms
                             command.Parameters.AddWithValue("@Celular", txtTelefone.Text);
 
                             connection.Open();
-                            command.ExecuteNonQuery();
+                            idCliente = Convert.ToInt32(command.ExecuteScalar());
                         }
 
                         MessageBox.Show("Cliente registrado com sucesso!");
-                        await SeguirParaVenda(txtNome.Text.Trim(), txtCPF.Text);
+                        SeguirParaVenda(idCliente, txtNome.Text.Trim(), txtCPF.Text);
                     }
                     catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
                     {

@@ -118,7 +118,7 @@ namespace Guri_atacarejo.forms
         }
         private DataSetTableAdapters.GA_FuncionariosTableAdapter gA_FuncionariosTableAdapter = new DataSetTableAdapters.GA_FuncionariosTableAdapter();
 
-        private async void btnConfirmar_Click(object sender, EventArgs e)
+        private void btnConfirmar_Click(object sender, EventArgs e)
         {
             if (!ValidarCampos()) return;
 
@@ -127,10 +127,6 @@ namespace Guri_atacarejo.forms
             string email = string.IsNullOrWhiteSpace(txtEmail.Text) ? null : txtEmail.Text.Trim();
 
             string nomeFuncionario = txtNome.Text.Trim();
-            DataRowView cargoSelecionado = (DataRowView)cbCargo.SelectedItem;
-            int? nivel = cargoSelecionado["Nivel"] == DBNull.Value
-                ? (int?)null
-                : Convert.ToInt32(cargoSelecionado["Nivel"]);
 
             try
             {
@@ -149,18 +145,8 @@ namespace Guri_atacarejo.forms
                 );
 
                 MessageBox.Show("Funcionário cadastrado com sucesso!");
-
-                Sessao.NivelFuncionario = nivel ?? 0;
-                Sessao.Usuario = nomeFuncionario;
-
                 LimparCampos();
-
-                await Task.Delay(1000);
-                this.Hide();
-
-                frmPainel painel = new frmPainel();
-                painel.ShowDialog();
-                this.Close();
+                Close();
             }
             catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
             {
@@ -174,9 +160,7 @@ namespace Guri_atacarejo.forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmPainel painel = new frmPainel();
-            painel.ShowDialog();
+            Close();
         }
 
         private bool ValidarCampos()
