@@ -39,7 +39,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.Ações = new System.Windows.Forms.GroupBox();
             this.btnreglote = new System.Windows.Forms.Button();
-            this.btnaddforn = new System.Windows.Forms.Button();
             this.btnregforn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.Ações.SuspendLayout();
@@ -59,7 +58,7 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(497, 34);
+            this.btnCancelar.Location = new System.Drawing.Point(477, 34);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(142, 59);
             this.btnCancelar.TabIndex = 2;
@@ -149,7 +148,6 @@
             // Ações
             // 
             this.Ações.Controls.Add(this.btnreglote);
-            this.Ações.Controls.Add(this.btnaddforn);
             this.Ações.Controls.Add(this.btnregforn);
             this.Ações.Controls.Add(this.btnCancelar);
             this.Ações.Controls.Add(this.btnConfirmar);
@@ -168,7 +166,7 @@
             this.btnreglote.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnreglote.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnreglote.ForeColor = System.Drawing.Color.White;
-            this.btnreglote.Location = new System.Drawing.Point(311, 34);
+            this.btnreglote.Location = new System.Drawing.Point(213, 35);
             this.btnreglote.Name = "btnreglote";
             this.btnreglote.Size = new System.Drawing.Size(142, 59);
             this.btnreglote.TabIndex = 7;
@@ -176,27 +174,13 @@
             this.btnreglote.UseVisualStyleBackColor = false;
             this.btnreglote.Click += new System.EventHandler(this.btnreglote_Click);
             // 
-            // btnaddforn
-            // 
-            this.btnaddforn.BackColor = System.Drawing.Color.White;
-            this.btnaddforn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnaddforn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnaddforn.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.btnaddforn.Location = new System.Drawing.Point(15, 34);
-            this.btnaddforn.Name = "btnaddforn";
-            this.btnaddforn.Size = new System.Drawing.Size(142, 59);
-            this.btnaddforn.TabIndex = 6;
-            this.btnaddforn.Text = "Adicionar Fornecedor";
-            this.btnaddforn.UseVisualStyleBackColor = false;
-            this.btnaddforn.Click += new System.EventHandler(this.btnregforn_Click);
-            // 
             // btnregforn
             // 
             this.btnregforn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
             this.btnregforn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnregforn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnregforn.ForeColor = System.Drawing.Color.White;
-            this.btnregforn.Location = new System.Drawing.Point(163, 34);
+            this.btnregforn.Location = new System.Drawing.Point(42, 35);
             this.btnregforn.Name = "btnregforn";
             this.btnregforn.Size = new System.Drawing.Size(142, 59);
             this.btnregforn.TabIndex = 5;
@@ -228,7 +212,6 @@
         private System.Windows.Forms.Button btnConfirmar;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox Ações;
-        private System.Windows.Forms.Button btnaddforn;
         private System.Windows.Forms.Button btnregforn;
         private System.Windows.Forms.Button btnreglote;
         private System.Windows.Forms.TextBox txtTotal;

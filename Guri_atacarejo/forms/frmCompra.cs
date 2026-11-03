@@ -587,16 +587,17 @@ namespace Guri_atacarejo.forms
             if (resposta == DialogResult.Yes)
             {
                 LimparTudo();
+
+                this.Hide();
+                frmPainel painel = new frmPainel();
+                painel.ShowDialog();
             }
         }
 
         private void btnregforn_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(
-                "A tela de cadastro de fornecedores ainda não está disponível.",
-                "Cadastro de fornecedor",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+            frmRegistroFornecedor form = new frmRegistroFornecedor();
+            form.ShowDialog();
         }
 
         private void btnreglote_Click(object sender, EventArgs e)
@@ -606,7 +607,6 @@ namespace Guri_atacarejo.forms
                 form.ShowDialog(this);
             }
         }
-
     }
 
     public class ItemCompra
