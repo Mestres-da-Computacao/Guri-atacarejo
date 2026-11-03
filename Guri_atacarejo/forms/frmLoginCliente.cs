@@ -1,9 +1,11 @@
 using System;
-using System.Linq;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Text.RegularExpressions;
 namespace Guri_atacarejo.forms
 {
     public partial class FrmLoginCliente : Form
@@ -94,6 +96,34 @@ namespace Guri_atacarejo.forms
         {
             DialogResult = DialogResult.Cancel;
             Close();
+        }
+
+        private bool formatandoCpf = false;
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (formatandoCpf) return;   // evita chamar o evento de novo ao mudar o texto
+            formatandoCpf = true;
+
+            string digitos = Regex.Replace(textBox1.Text, @"\D", "");
+            if (digitos.Length > 11)
+                digitos = digitos.Substring(0, 11);
+
+            string formatado = digitos;
+
+            if (digitos.Length > 9)
+                formatado = digitos.Substring(0, 3) + "." + digitos.Substring(3, 3) + "." +
+                            digitos.Substring(6, 3) + "-" + digitos.Substring(9);
+            else if (digitos.Length > 6)
+                formatado = digitos.Substring(0, 3) + "." + digitos.Substring(3, 3) + "." +
+                            digitos.Substring(6);
+            else if (digitos.Length > 3)
+                formatado = digitos.Substring(0, 3) + "." + digitos.Substring(3);
+
+            textBox1.Text = formatado;
+            textBox1.SelectionStart = textBox1.Text.Length;   // cursor sempre no final
+
+            formatandoCpf = false;
         }
     }
 }

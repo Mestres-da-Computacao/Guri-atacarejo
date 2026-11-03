@@ -96,6 +96,7 @@ namespace Guri_atacarejo.forms
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(329, 29);
             this.textBox1.TabIndex = 2;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // pictureBox1
             // 

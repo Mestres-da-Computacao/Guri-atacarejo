@@ -18,10 +18,10 @@ namespace Guri_atacarejo.forms
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.funcionáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,6 +39,7 @@ namespace Guri_atacarejo.forms
             this.lotesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarProdutosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarFuncionariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.funcProdFornToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblRS = new System.Windows.Forms.Label();
             this.txtReciboDinheiro = new System.Windows.Forms.TextBox();
@@ -73,7 +74,6 @@ namespace Guri_atacarejo.forms
             this.panel3 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
-            this.funcProdFornToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -97,8 +97,8 @@ namespace Guri_atacarejo.forms
             this.maisOpçõesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1280, 28);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(960, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -107,13 +107,13 @@ namespace Guri_atacarejo.forms
             this.funcionáriosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.logoutToolStripMenuItem});
             this.funcionáriosToolStripMenuItem.Name = "funcionáriosToolStripMenuItem";
-            this.funcionáriosToolStripMenuItem.Size = new System.Drawing.Size(106, 24);
+            this.funcionáriosToolStripMenuItem.Size = new System.Drawing.Size(87, 20);
             this.funcionáriosToolStripMenuItem.Text = "Funcionários";
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(139, 26);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
             // 
@@ -124,27 +124,27 @@ namespace Guri_atacarejo.forms
             this.loginClienteToolStripMenuItem,
             this.logoutClienteToolStripMenuItem});
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(75, 24);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
             this.clientesToolStripMenuItem.Text = "Clientes";
             // 
             // registrarClientesToolStripMenuItem
             // 
             this.registrarClientesToolStripMenuItem.Name = "registrarClientesToolStripMenuItem";
-            this.registrarClientesToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
+            this.registrarClientesToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.registrarClientesToolStripMenuItem.Text = "Registrar Cliente";
             this.registrarClientesToolStripMenuItem.Click += new System.EventHandler(this.registrarClientesToolStripMenuItem_Click);
             // 
             // loginClienteToolStripMenuItem
             // 
             this.loginClienteToolStripMenuItem.Name = "loginClienteToolStripMenuItem";
-            this.loginClienteToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
+            this.loginClienteToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.loginClienteToolStripMenuItem.Text = "Login Cliente";
             this.loginClienteToolStripMenuItem.Click += new System.EventHandler(this.loginClienteToolStripMenuItem_Click);
             // 
             // logoutClienteToolStripMenuItem
             // 
             this.logoutClienteToolStripMenuItem.Name = "logoutClienteToolStripMenuItem";
-            this.logoutClienteToolStripMenuItem.Size = new System.Drawing.Size(201, 26);
+            this.logoutClienteToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.logoutClienteToolStripMenuItem.Text = "Logout Cliente";
             this.logoutClienteToolStripMenuItem.Click += new System.EventHandler(this.logoutClienteToolStripMenuItem_Click);
             // 
@@ -154,20 +154,20 @@ namespace Guri_atacarejo.forms
             this.registroFornecedoresToolStripMenuItem,
             this.compraLotesToolStripMenuItem});
             this.forneceToolStripMenuItem.Name = "forneceToolStripMenuItem";
-            this.forneceToolStripMenuItem.Size = new System.Drawing.Size(112, 24);
+            this.forneceToolStripMenuItem.Size = new System.Drawing.Size(90, 20);
             this.forneceToolStripMenuItem.Text = "Fornecedores";
             // 
             // registroFornecedoresToolStripMenuItem
             // 
             this.registroFornecedoresToolStripMenuItem.Name = "registroFornecedoresToolStripMenuItem";
-            this.registroFornecedoresToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
+            this.registroFornecedoresToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.registroFornecedoresToolStripMenuItem.Text = "Registro Fornecedores";
             this.registroFornecedoresToolStripMenuItem.Click += new System.EventHandler(this.registrarFornecedorToolStripMenuItem_Click);
             // 
             // compraLotesToolStripMenuItem
             // 
             this.compraLotesToolStripMenuItem.Name = "compraLotesToolStripMenuItem";
-            this.compraLotesToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
+            this.compraLotesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.compraLotesToolStripMenuItem.Text = "Compra Lotes";
             this.compraLotesToolStripMenuItem.Click += new System.EventHandler(this.compraDeLotesToolStripMenuItem_Click);
             // 
@@ -180,7 +180,7 @@ namespace Guri_atacarejo.forms
             this.registrarFuncionariosToolStripMenuItem,
             this.funcProdFornToolStripMenuItem});
             this.maisOpçõesToolStripMenuItem.Name = "maisOpçõesToolStripMenuItem";
-            this.maisOpçõesToolStripMenuItem.Size = new System.Drawing.Size(106, 24);
+            this.maisOpçõesToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
             this.maisOpçõesToolStripMenuItem.Text = "Mais opções";
             // 
             // relatóriosToolStripMenuItem
@@ -189,43 +189,50 @@ namespace Guri_atacarejo.forms
             this.relatórioFinanceiroToolStripMenuItem,
             this.relatórioDeEstoqueToolStripMenuItem});
             this.relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
-            this.relatóriosToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
+            this.relatóriosToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.relatóriosToolStripMenuItem.Text = "Relatórios";
             // 
             // relatórioFinanceiroToolStripMenuItem
             // 
             this.relatórioFinanceiroToolStripMenuItem.Name = "relatórioFinanceiroToolStripMenuItem";
-            this.relatórioFinanceiroToolStripMenuItem.Size = new System.Drawing.Size(325, 26);
+            this.relatórioFinanceiroToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
             this.relatórioFinanceiroToolStripMenuItem.Text = "Relatório movimentação financeira";
             this.relatórioFinanceiroToolStripMenuItem.Click += new System.EventHandler(this.relatórioFinanceiroToolStripMenuItem_Click);
             // 
             // relatórioDeEstoqueToolStripMenuItem
             // 
             this.relatórioDeEstoqueToolStripMenuItem.Name = "relatórioDeEstoqueToolStripMenuItem";
-            this.relatórioDeEstoqueToolStripMenuItem.Size = new System.Drawing.Size(325, 26);
+            this.relatórioDeEstoqueToolStripMenuItem.Size = new System.Drawing.Size(259, 22);
             this.relatórioDeEstoqueToolStripMenuItem.Text = "Relatório fluxo estoque";
             this.relatórioDeEstoqueToolStripMenuItem.Click += new System.EventHandler(this.relatórioDeEstoqueToolStripMenuItem_Click);
             // 
             // lotesToolStripMenuItem
             // 
             this.lotesToolStripMenuItem.Name = "lotesToolStripMenuItem";
-            this.lotesToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
+            this.lotesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.lotesToolStripMenuItem.Text = "Lotes";
             this.lotesToolStripMenuItem.Click += new System.EventHandler(this.lotesToolStripMenuItem_Click);
             // 
             // registrarProdutosToolStripMenuItem1
             // 
             this.registrarProdutosToolStripMenuItem1.Name = "registrarProdutosToolStripMenuItem1";
-            this.registrarProdutosToolStripMenuItem1.Size = new System.Drawing.Size(238, 26);
+            this.registrarProdutosToolStripMenuItem1.Size = new System.Drawing.Size(191, 22);
             this.registrarProdutosToolStripMenuItem1.Text = "Registrar produtos";
             this.registrarProdutosToolStripMenuItem1.Click += new System.EventHandler(this.registrarProdutosToolStripMenuItem1_Click);
             // 
             // registrarFuncionariosToolStripMenuItem
             // 
             this.registrarFuncionariosToolStripMenuItem.Name = "registrarFuncionariosToolStripMenuItem";
-            this.registrarFuncionariosToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
+            this.registrarFuncionariosToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.registrarFuncionariosToolStripMenuItem.Text = "Registrar Funcionários";
             this.registrarFuncionariosToolStripMenuItem.Click += new System.EventHandler(this.registrarFuncionariosToolStripMenuItem_Click);
+            // 
+            // funcProdFornToolStripMenuItem
+            // 
+            this.funcProdFornToolStripMenuItem.Name = "funcProdFornToolStripMenuItem";
+            this.funcProdFornToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.funcProdFornToolStripMenuItem.Text = "Func/Prod/Forn/Clien";
+            this.funcProdFornToolStripMenuItem.Click += new System.EventHandler(this.funcProdFornToolStripMenuItem_Click);
             // 
             // groupBox1
             // 
@@ -241,11 +248,9 @@ namespace Guri_atacarejo.forms
             this.groupBox1.Controls.Add(this.panel3);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(16, 39);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Location = new System.Drawing.Point(12, 32);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Size = new System.Drawing.Size(1248, 615);
+            this.groupBox1.Size = new System.Drawing.Size(936, 500);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "CAIXA LIVRE";
@@ -256,10 +261,9 @@ namespace Guri_atacarejo.forms
             this.lblRS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
             this.lblRS.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRS.ForeColor = System.Drawing.Color.White;
-            this.lblRS.Location = new System.Drawing.Point(608, 463);
-            this.lblRS.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblRS.Location = new System.Drawing.Point(456, 376);
             this.lblRS.Name = "lblRS";
-            this.lblRS.Size = new System.Drawing.Size(55, 29);
+            this.lblRS.Size = new System.Drawing.Size(43, 24);
             this.lblRS.TabIndex = 11;
             this.lblRS.Text = "RS:";
             this.lblRS.Visible = false;
@@ -270,10 +274,9 @@ namespace Guri_atacarejo.forms
             this.txtReciboDinheiro.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtReciboDinheiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtReciboDinheiro.ForeColor = System.Drawing.Color.White;
-            this.txtReciboDinheiro.Location = new System.Drawing.Point(671, 463);
-            this.txtReciboDinheiro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtReciboDinheiro.Location = new System.Drawing.Point(503, 376);
             this.txtReciboDinheiro.Name = "txtReciboDinheiro";
-            this.txtReciboDinheiro.Size = new System.Drawing.Size(311, 27);
+            this.txtReciboDinheiro.Size = new System.Drawing.Size(233, 22);
             this.txtReciboDinheiro.TabIndex = 10;
             this.txtReciboDinheiro.Text = "00,00";
             this.txtReciboDinheiro.Visible = false;
@@ -286,10 +289,9 @@ namespace Guri_atacarejo.forms
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.dataGridView1);
-            this.panel2.Location = new System.Drawing.Point(19, 52);
-            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel2.Location = new System.Drawing.Point(14, 42);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(573, 345);
+            this.panel2.Size = new System.Drawing.Size(430, 280);
             this.panel2.TabIndex = 0;
             // 
             // label2
@@ -297,10 +299,9 @@ namespace Guri_atacarejo.forms
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.label2.Location = new System.Drawing.Point(11, 6);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(8, 5);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(297, 31);
+            this.label2.Size = new System.Drawing.Size(229, 25);
             this.label2.TabIndex = 0;
             this.label2.Text = "LISTA DE PRODUTOS";
             // 
@@ -312,14 +313,14 @@ namespace Guri_atacarejo.forms
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -327,23 +328,22 @@ namespace Guri_atacarejo.forms
             this.qtd,
             this.custo,
             this.total});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(205)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(205)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.GridColor = System.Drawing.Color.Gray;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 44);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Location = new System.Drawing.Point(0, 36);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(573, 300);
+            this.dataGridView1.Size = new System.Drawing.Size(430, 244);
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
@@ -392,10 +392,9 @@ namespace Guri_atacarejo.forms
             this.panel5.BackColor = System.Drawing.Color.White;
             this.panel5.Controls.Add(this.label3);
             this.panel5.Controls.Add(this.labelClienteRegistrado);
-            this.panel5.Location = new System.Drawing.Point(992, 404);
-            this.panel5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel5.Location = new System.Drawing.Point(744, 328);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(232, 37);
+            this.panel5.Size = new System.Drawing.Size(174, 30);
             this.panel5.TabIndex = 3;
             this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
@@ -405,10 +404,9 @@ namespace Guri_atacarejo.forms
             this.label3.BackColor = System.Drawing.Color.White;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.label3.Location = new System.Drawing.Point(4, 0);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(3, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 25);
+            this.label3.Size = new System.Drawing.Size(62, 20);
             this.label3.TabIndex = 0;
             this.label3.Text = "Cliente:";
             this.label3.Click += new System.EventHandler(this.label3_Click);
@@ -419,10 +417,9 @@ namespace Guri_atacarejo.forms
             this.labelClienteRegistrado.BackColor = System.Drawing.Color.White;
             this.labelClienteRegistrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelClienteRegistrado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.labelClienteRegistrado.Location = new System.Drawing.Point(80, 0);
-            this.labelClienteRegistrado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelClienteRegistrado.Location = new System.Drawing.Point(60, 0);
             this.labelClienteRegistrado.Name = "labelClienteRegistrado";
-            this.labelClienteRegistrado.Size = new System.Drawing.Size(139, 25);
+            this.labelClienteRegistrado.Size = new System.Drawing.Size(113, 20);
             this.labelClienteRegistrado.TabIndex = 4;
             this.labelClienteRegistrado.Text = "Não registrado";
             this.labelClienteRegistrado.Click += new System.EventHandler(this.label5_Click);
@@ -432,10 +429,9 @@ namespace Guri_atacarejo.forms
             this.panel6.BackColor = System.Drawing.Color.White;
             this.panel6.Controls.Add(this.label4);
             this.panel6.Controls.Add(this.dataGridView2);
-            this.panel6.Location = new System.Drawing.Point(613, 52);
-            this.panel6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel6.Location = new System.Drawing.Point(460, 42);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(611, 345);
+            this.panel6.Size = new System.Drawing.Size(458, 280);
             this.panel6.TabIndex = 2;
             // 
             // label4
@@ -443,10 +439,9 @@ namespace Guri_atacarejo.forms
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.label4.Location = new System.Drawing.Point(11, 6);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(8, 5);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(409, 31);
+            this.label4.Size = new System.Drawing.Size(314, 25);
             this.label4.TabIndex = 0;
             this.label4.Text = "INFORMAÇÕES DO PRODUTO";
             // 
@@ -458,36 +453,35 @@ namespace Guri_atacarejo.forms
             this.dataGridView2.AllowUserToResizeRows = false;
             this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.item,
             this.preco_uni,
             this.unidade_medi,
             this.Validade});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(205)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridView2.Location = new System.Drawing.Point(0, 44);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(205)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridView2.Location = new System.Drawing.Point(0, 36);
             this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
             this.dataGridView2.RowHeadersWidth = 51;
             this.dataGridView2.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView2.Size = new System.Drawing.Size(611, 300);
+            this.dataGridView2.Size = new System.Drawing.Size(458, 244);
             this.dataGridView2.TabIndex = 1;
             // 
             // item
@@ -527,10 +521,9 @@ namespace Guri_atacarejo.forms
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(609, 406);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(457, 330);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(197, 24);
+            this.label6.Size = new System.Drawing.Size(154, 18);
             this.label6.TabIndex = 5;
             this.label6.Text = "Forma de pagamento:";
             // 
@@ -545,10 +538,9 @@ namespace Guri_atacarejo.forms
             "Débito",
             "Crédito",
             "Pix"});
-            this.cbPag.Location = new System.Drawing.Point(811, 409);
-            this.cbPag.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbPag.Location = new System.Drawing.Point(608, 332);
             this.cbPag.Name = "cbPag";
-            this.cbPag.Size = new System.Drawing.Size(169, 32);
+            this.cbPag.Size = new System.Drawing.Size(128, 26);
             this.cbPag.TabIndex = 6;
             this.cbPag.SelectedIndexChanged += new System.EventHandler(this.cbPag_SelectedIndexChanged);
             // 
@@ -557,10 +549,9 @@ namespace Guri_atacarejo.forms
             this.TrocoContainer.BackColor = System.Drawing.Color.White;
             this.TrocoContainer.Controls.Add(this.label7);
             this.TrocoContainer.Controls.Add(this.labelTroco);
-            this.TrocoContainer.Location = new System.Drawing.Point(992, 463);
-            this.TrocoContainer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TrocoContainer.Location = new System.Drawing.Point(744, 376);
             this.TrocoContainer.Name = "TrocoContainer";
-            this.TrocoContainer.Size = new System.Drawing.Size(232, 34);
+            this.TrocoContainer.Size = new System.Drawing.Size(174, 28);
             this.TrocoContainer.TabIndex = 7;
             this.TrocoContainer.Visible = false;
             // 
@@ -570,10 +561,9 @@ namespace Guri_atacarejo.forms
             this.label7.BackColor = System.Drawing.Color.White;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.label7.Location = new System.Drawing.Point(9, 6);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(7, 5);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(62, 22);
+            this.label7.Size = new System.Drawing.Size(49, 17);
             this.label7.TabIndex = 0;
             this.label7.Text = "Troco:";
             // 
@@ -582,10 +572,9 @@ namespace Guri_atacarejo.forms
             this.labelTroco.AutoSize = true;
             this.labelTroco.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelTroco.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.labelTroco.Location = new System.Drawing.Point(81, 6);
-            this.labelTroco.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelTroco.Location = new System.Drawing.Point(61, 5);
             this.labelTroco.Name = "labelTroco";
-            this.labelTroco.Size = new System.Drawing.Size(80, 22);
+            this.labelTroco.Size = new System.Drawing.Size(65, 17);
             this.labelTroco.TabIndex = 1;
             this.labelTroco.Text = "R$ 0,00";
             // 
@@ -597,11 +586,9 @@ namespace Guri_atacarejo.forms
             this.groupBox2.Controls.Add(this.btnFinalizar);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.White;
-            this.groupBox2.Location = new System.Drawing.Point(19, 431);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Location = new System.Drawing.Point(14, 350);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox2.Size = new System.Drawing.Size(573, 138);
+            this.groupBox2.Size = new System.Drawing.Size(430, 112);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Ações";
@@ -612,10 +599,9 @@ namespace Guri_atacarejo.forms
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.btnCancelar.Location = new System.Drawing.Point(13, 49);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Location = new System.Drawing.Point(10, 40);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(128, 59);
+            this.btnCancelar.Size = new System.Drawing.Size(96, 48);
             this.btnCancelar.TabIndex = 0;
             this.btnCancelar.Text = "Cancelar venda";
             this.btnCancelar.UseVisualStyleBackColor = false;
@@ -627,10 +613,9 @@ namespace Guri_atacarejo.forms
             this.btnAlterar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.btnAlterar.Location = new System.Drawing.Point(149, 49);
-            this.btnAlterar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAlterar.Location = new System.Drawing.Point(112, 40);
             this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(128, 59);
+            this.btnAlterar.Size = new System.Drawing.Size(96, 48);
             this.btnAlterar.TabIndex = 1;
             this.btnAlterar.Text = "Alterar produto";
             this.btnAlterar.UseVisualStyleBackColor = false;
@@ -642,10 +627,9 @@ namespace Guri_atacarejo.forms
             this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdicionar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.btnAdicionar.Location = new System.Drawing.Point(285, 49);
-            this.btnAdicionar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAdicionar.Location = new System.Drawing.Point(214, 40);
             this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(128, 59);
+            this.btnAdicionar.Size = new System.Drawing.Size(96, 48);
             this.btnAdicionar.TabIndex = 2;
             this.btnAdicionar.Text = "Adicionar produto";
             this.btnAdicionar.UseVisualStyleBackColor = false;
@@ -657,10 +641,9 @@ namespace Guri_atacarejo.forms
             this.btnFinalizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFinalizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFinalizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.btnFinalizar.Location = new System.Drawing.Point(421, 49);
-            this.btnFinalizar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFinalizar.Location = new System.Drawing.Point(316, 40);
             this.btnFinalizar.Name = "btnFinalizar";
-            this.btnFinalizar.Size = new System.Drawing.Size(139, 59);
+            this.btnFinalizar.Size = new System.Drawing.Size(104, 48);
             this.btnFinalizar.TabIndex = 3;
             this.btnFinalizar.Text = "Finalizar compra";
             this.btnFinalizar.UseVisualStyleBackColor = false;
@@ -671,10 +654,9 @@ namespace Guri_atacarejo.forms
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Controls.Add(this.label8);
             this.panel3.Controls.Add(this.lblTotal);
-            this.panel3.Location = new System.Drawing.Point(613, 517);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel3.Location = new System.Drawing.Point(460, 420);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(611, 52);
+            this.panel3.Size = new System.Drawing.Size(458, 42);
             this.panel3.TabIndex = 9;
             // 
             // label8
@@ -683,10 +665,9 @@ namespace Guri_atacarejo.forms
             this.label8.BackColor = System.Drawing.Color.White;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.label8.Location = new System.Drawing.Point(11, 6);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(8, 5);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(133, 36);
+            this.label8.Size = new System.Drawing.Size(107, 29);
             this.label8.TabIndex = 0;
             this.label8.Text = "Subtotal:";
             // 
@@ -696,31 +677,22 @@ namespace Guri_atacarejo.forms
             this.lblTotal.BackColor = System.Drawing.Color.White;
             this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.lblTotal.Location = new System.Drawing.Point(444, 6);
-            this.lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTotal.Location = new System.Drawing.Point(333, 5);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(128, 36);
+            this.lblTotal.Size = new System.Drawing.Size(101, 29);
             this.lblTotal.TabIndex = 1;
             this.lblTotal.Text = "R$ 0,00";
             // 
-            // funcProdFornToolStripMenuItem
-            // 
-            this.funcProdFornToolStripMenuItem.Name = "funcProdFornToolStripMenuItem";
-            this.funcProdFornToolStripMenuItem.Size = new System.Drawing.Size(238, 26);
-            this.funcProdFornToolStripMenuItem.Text = "Func/Prod/Forn/Clien";
-            this.funcProdFornToolStripMenuItem.Click += new System.EventHandler(this.funcProdFornToolStripMenuItem_Click);
-            // 
             // frmPainel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.ClientSize = new System.Drawing.Size(1280, 671);
+            this.ClientSize = new System.Drawing.Size(960, 545);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.MinimumSize = new System.Drawing.Size(1294, 707);
+            this.MinimumSize = new System.Drawing.Size(974, 582);
             this.Name = "frmPainel";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Painel de vendas";

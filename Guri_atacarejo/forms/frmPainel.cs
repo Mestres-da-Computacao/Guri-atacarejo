@@ -25,6 +25,8 @@ namespace Guri_atacarejo.forms
             ResponsividadeForm.Aplicar(this);
             txtReciboDinheiro.TextChanged += txtReciboDinheiro_TextChanged;
 
+            dataGridView1.DefaultCellStyle.ForeColor = Color.Black; // texto preto
+
             // Tabelas sem a linha vazia de "nova linha" e sem a coluna de seta
             dataGridView1.AllowUserToAddRows = false;
             dataGridView2.AllowUserToAddRows = false;
