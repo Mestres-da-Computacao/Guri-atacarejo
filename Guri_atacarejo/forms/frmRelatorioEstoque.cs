@@ -22,6 +22,9 @@ namespace Guri_atacarejo.forms
 
             cbTipo.SelectedIndex = 0;     // "Compras e vendas"
             cbPeriodo.SelectedIndex = 0;  // "Dia"
+
+            dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
+            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black;
         }
 
         private void frmRelatorioEstoque_Load(object sender, EventArgs e)
@@ -66,8 +69,10 @@ namespace Guri_atacarejo.forms
         {
             if (e.RowIndex < 0) return; // clicou no cabeçalho
 
-            idProduto = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells["colId"].Value);
-            nomeProduto = dataGridView1.Rows[e.RowIndex].Cells["colProduto"].Value.ToString();
+            DataRow linha = ((DataRowView)dataGridView1.Rows[e.RowIndex].DataBoundItem).Row;
+
+            idProduto = Convert.ToInt32(linha["IdProduto"]);
+            nomeProduto = linha["Nome"].ToString();
 
             CarregarOperacoes();
             MostrarCards();

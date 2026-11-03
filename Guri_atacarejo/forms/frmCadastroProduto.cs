@@ -16,7 +16,6 @@ namespace Guri_atacarejo.forms
     {
         const string PrefixoPreco = "R$ ";
         const int CategoriaPadrao = 1;   // categoria sempre 1 no INSERT
-        const string UnidadeMedidaPadrao = "UN";  // GA_Produtos.UnidadeMedida é obrigatória
         private readonly string conecta = global::Guri_atacarejo.Properties.Settings.Default.ConnectionString;
         private class Original
         {
@@ -31,6 +30,8 @@ namespace Guri_atacarejo.forms
         {
             InitializeComponent();
 
+            ConfigurarUnidadeMedida();
+
             Load += (s, e) =>
             {
                 _tamanhoOriginal = ClientSize;   // 950 x 526 do designer
@@ -39,6 +40,23 @@ namespace Guri_atacarejo.forms
             };
 
             Resize += (s, e) => Redimensionar();
+        }
+
+        private void ConfigurarUnidadeMedida()
+        {
+            // Só dá para escolher um item da lista, não dá para digitar
+            cmbunidademedida.DropDownStyle = ComboBoxStyle.DropDownList;
+
+            // Se você já cadastrou itens no Designer, eles são mantidos
+            if (cmbunidademedida.Items.Count == 0)
+            {
+                cmbunidademedida.Items.AddRange(new object[]
+                {
+                    "UN", "KG", "G", "L", "ML", "CX", "PCT", "FD"
+                });
+            }
+
+            cmbunidademedida.SelectedIndex = -1;
         }
 
         private void GuardarOriginais(Control pai)
@@ -85,6 +103,13 @@ namespace Guri_atacarejo.forms
                 return;
             }
 
+            if (cmbunidademedida.SelectedIndex < 0)
+            {
+                MessageBox.Show("Selecione a unidade de medida.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                cmbunidademedida.Focus();
+                return;
+            }
+
             // O campo de preço tem o prefixo "R$ ", então ele é removido antes de converter.
             string textoPreco = txtPreco.Text.Replace(PrefixoPreco, "").Trim();
             if (!decimal.TryParse(textoPreco, NumberStyles.Number, new CultureInfo("pt-BR"), out decimal preco)
@@ -110,7 +135,7 @@ namespace Guri_atacarejo.forms
                     pPreco.Value = preco;
 
                     comando.Parameters.Add("@Categoria", SqlDbType.Int).Value = CategoriaPadrao;
-                    comando.Parameters.Add("@Unidade", SqlDbType.VarChar, 20).Value = UnidadeMedidaPadrao;
+                    comando.Parameters.Add("@Unidade", SqlDbType.VarChar, 20).Value = cmbunidademedida.SelectedItem.ToString();
 
                     try
                     {
@@ -136,7 +161,7 @@ namespace Guri_atacarejo.forms
             txtNome.Clear();
             txtPreco.Text = "R$ ";
             txtDescricao.Clear();
-            txtQuantidade.Text = "";
+            cmbunidademedida.SelectedIndex = -1;
             txtNome.Focus();
         }
 
@@ -210,6 +235,11 @@ namespace Guri_atacarejo.forms
                 return;
             }
             e.Handled = true;
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

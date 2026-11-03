@@ -30,7 +30,6 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtDescricao = new System.Windows.Forms.TextBox();
-            this.txtQuantidade = new System.Windows.Forms.TextBox();
             this.txtPreco = new System.Windows.Forms.TextBox();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.txtNome = new System.Windows.Forms.TextBox();
@@ -38,18 +37,20 @@
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblNome = new System.Windows.Forms.Label();
+            this.labelUnidadeMedida = new System.Windows.Forms.Label();
+            this.cmbunidademedida = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cmbunidademedida);
+            this.groupBox1.Controls.Add(this.labelUnidadeMedida);
             this.groupBox1.Controls.Add(this.txtDescricao);
-            this.groupBox1.Controls.Add(this.txtQuantidade);
             this.groupBox1.Controls.Add(this.txtPreco);
             this.groupBox1.Controls.Add(this.txtCodigo);
             this.groupBox1.Controls.Add(this.txtNome);
@@ -57,7 +58,6 @@
             this.groupBox1.Controls.Add(this.btnConfirmar);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.pictureBox1);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.lblNome);
@@ -80,22 +80,11 @@
             this.txtDescricao.Size = new System.Drawing.Size(613, 123);
             this.txtDescricao.TabIndex = 21;
             // 
-            // txtQuantidade
-            // 
-            this.txtQuantidade.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtQuantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuantidade.Location = new System.Drawing.Point(484, 177);
-            this.txtQuantidade.Multiline = true;
-            this.txtQuantidade.Name = "txtQuantidade";
-            this.txtQuantidade.Size = new System.Drawing.Size(411, 30);
-            this.txtQuantidade.TabIndex = 20;
-            this.txtQuantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantidade_KeyPress);
-            // 
             // txtPreco
             // 
             this.txtPreco.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPreco.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPreco.Location = new System.Drawing.Point(30, 177);
+            this.txtPreco.Location = new System.Drawing.Point(30, 178);
             this.txtPreco.Multiline = true;
             this.txtPreco.Name = "txtPreco";
             this.txtPreco.Size = new System.Drawing.Size(411, 30);
@@ -175,23 +164,12 @@
             this.pictureBox1.TabIndex = 6;
             this.pictureBox1.TabStop = false;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(480, 150);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(118, 24);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "Quantidade";
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(26, 150);
+            this.label2.Location = new System.Drawing.Point(27, 151);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(65, 24);
             this.label2.TabIndex = 9;
@@ -219,6 +197,33 @@
             this.lblNome.TabIndex = 7;
             this.lblNome.Text = "Nome";
             // 
+            // labelUnidadeMedida
+            // 
+            this.labelUnidadeMedida.AutoSize = true;
+            this.labelUnidadeMedida.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelUnidadeMedida.Location = new System.Drawing.Point(525, 151);
+            this.labelUnidadeMedida.Name = "labelUnidadeMedida";
+            this.labelUnidadeMedida.Size = new System.Drawing.Size(215, 25);
+            this.labelUnidadeMedida.TabIndex = 23;
+            this.labelUnidadeMedida.Text = "Unidade de medida";
+            this.labelUnidadeMedida.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // cmbunidademedida
+            // 
+            this.cmbunidademedida.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbunidademedida.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbunidademedida.FormattingEnabled = true;
+            this.cmbunidademedida.Items.AddRange(new object[] {
+            "Pacote",
+            "Kg",
+            "Unidade",
+            "Grama",
+            "Litro"});
+            this.cmbunidademedida.Location = new System.Drawing.Point(530, 179);
+            this.cmbunidademedida.Name = "cmbunidademedida";
+            this.cmbunidademedida.Size = new System.Drawing.Size(257, 33);
+            this.cmbunidademedida.TabIndex = 24;
+            // 
             // frmCadastroProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -242,13 +247,13 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnConfirmar;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.TextBox txtDescricao;
-        private System.Windows.Forms.TextBox txtQuantidade;
         private System.Windows.Forms.TextBox txtPreco;
+        private System.Windows.Forms.Label labelUnidadeMedida;
+        private System.Windows.Forms.ComboBox cmbunidademedida;
     }
 }
