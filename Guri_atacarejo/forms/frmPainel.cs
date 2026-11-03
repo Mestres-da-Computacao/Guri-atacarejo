@@ -522,7 +522,7 @@ namespace Guri_atacarejo.forms
 
         private void loginClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using (frmLogonCliente loginClienteForm = new frmLogonCliente())
+            using (FrmLoginCliente loginClienteForm = new FrmLoginCliente())
             {
                 if (loginClienteForm.ShowDialog(this) == DialogResult.OK)
                     AtualizarClienteExibido();
