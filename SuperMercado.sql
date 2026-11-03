@@ -113,7 +113,6 @@ END;
 GO
 
 -- 1.8. Lote
--- (precisa ser criada ANTES de Estoque, ItensCompra e ItensVenda, pois elas referenciam GA_Lote)
 IF OBJECT_ID('GA_Lote', 'U') IS NULL
 BEGIN
     CREATE TABLE GA_Lote (
@@ -122,7 +121,7 @@ BEGIN
         FKProduto INT NOT NULL,
         Quantidade INT NOT NULL CHECK (Quantidade >= 0),
         DataValidade DATE NOT NULL,
-        Preço DECIMAL(18,2) NOT NULL,
+        [Preço] DECIMAL(18,2) NOT NULL DEFAULT 0,
         CONSTRAINT FK_GA_Lote_Fornecedor FOREIGN KEY (FKFornecedores) REFERENCES GA_Fornecedor(IdFornecedor),
         CONSTRAINT FK_GA_Lote_Produtos FOREIGN KEY (FKProduto) REFERENCES GA_Produtos(IdProduto)
     );
@@ -212,11 +211,8 @@ END;
 GO
 
 
--- 2. Triggers da resenha
+-- 2. Triggers
 
--- ============================================================
--- SUMÁRIO - TRIGGERS
--- ============================================================
 -- 2.1. trg_UpdateTotalVenda
 --      Atualiza automaticamente o valor total da venda.
 --
@@ -244,22 +240,11 @@ GO
 --
 -- 2.8. trg_AtualizarTotalComprasCliente
 --      Atualiza o total acumulado de compras do cliente.
+--
+-- 2.9. trg_AtualizarPrecoLote
+--      Calcula e grava automaticamente o VALOR TOTAL do LOTE
+--      (GA_Lote.Preço) somando os subtotais dos itens de compra.
 -- ============================================================
-
-
--- Remove as antigas triggers de cálculo de subtotal, caso ainda existam
-IF OBJECT_ID('trg_CalcSubtotal_ItensVenda', 'TR') IS NOT NULL
-BEGIN
-    DROP TRIGGER trg_CalcSubtotal_ItensVenda;
-END;
-GO
-
-IF OBJECT_ID('trg_CalcSubtotal_ItensCompra', 'TR') IS NOT NULL
-BEGIN
-    DROP TRIGGER trg_CalcSubtotal_ItensCompra;
-END;
-GO
-
 
 -- 2.1. Atualizar ValorTotal da Venda
 CREATE OR ALTER TRIGGER trg_UpdateTotalVenda
@@ -574,6 +559,59 @@ END;
 GO
 
 
+-- 2.9. Atualizar o Preço do LOTE 
+CREATE OR ALTER TRIGGER trg_AtualizarPrecoLote
+ON GA_ItensCompra
+AFTER INSERT, UPDATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    ;WITH LotesAfetados AS
+    (
+        SELECT FKLote AS IdLote
+        FROM inserted
+
+        UNION
+
+        SELECT FKLote AS IdLote
+        FROM deleted
+    ),
+    Totais AS
+    (
+        SELECT
+            ic.FKLote,
+            SUM(ic.Subtotal) AS TotalLote
+        FROM GA_ItensCompra ic
+        INNER JOIN LotesAfetados la
+            ON ic.FKLote = la.IdLote
+        GROUP BY ic.FKLote
+    )
+    UPDATE l
+    SET l.[Preço] = t.TotalLote
+    FROM GA_Lote l
+    INNER JOIN Totais t
+        ON t.FKLote = l.IdLote;
+END;
+GO
+
+
+-- Correção dos lotes já existentes
+UPDATE l
+SET l.[Preço] = t.TotalLote
+FROM GA_Lote l
+INNER JOIN
+(
+    SELECT
+        FKLote,
+        SUM(Subtotal) AS TotalLote
+    FROM GA_ItensCompra
+    GROUP BY FKLote
+) t
+    ON t.FKLote = l.IdLote;
+GO
+
+
 -- 3. Procedures do andersonresenhudo
 
 -- SUMÁRIO - PROCEDURES
@@ -585,6 +623,8 @@ GO
 -- 3.2. usp_RegistrarCompra
 --      Registra uma nova compra, cria os lotes comprados, cadastra
 --      o estoque de cada lote e insere os itens da compra.
+--      O preço (valor total) de cada lote é preenchido pela trigger
+--      trg_AtualizarPrecoLote.
 --
 -- 3.3. usp_RelatorioEstoqueCritico
 --      Exibe os lotes que estão abaixo ou no limite
@@ -753,6 +793,8 @@ GO
 -- Para cada item do JSON é criado um novo lote (GA_Lote), o registro
 -- de estoque desse lote (GA_Estoque) e o item da compra (GA_ItensCompra).
 -- A trigger trg_AdicionarEstoqueCompra soma a quantidade ao estoque do lote.
+-- A trigger trg_AtualizarPrecoLote calcula e grava o Preço (valor total) do lote
+-- (o lote nasce com Preço = 0 e a trigger atualiza assim que o item da compra é inserido).
 CREATE OR ALTER PROCEDURE usp_RegistrarCompra
     @FKFornecedor INT,
     @FKFuncionario INT,
@@ -801,6 +843,8 @@ BEGIN
 
         -- Cria um lote para cada item e guarda os IdLote gerados
         -- (MERGE com ON 1 = 0 permite relacionar o IdLote gerado ao item de origem)
+        -- O Preço entra como 0 (provisório); a trigger trg_AtualizarPrecoLote
+        -- preenche o valor total real quando os itens da compra forem inseridos.
         MERGE GA_Lote AS destino
         USING
         (
@@ -809,23 +853,22 @@ BEGIN
                 j.Quantidade,
                 j.DataValidade,
                 j.QuantidadeMinima,
-                j.Preco
+                p.Preco
             FROM OPENJSON(@ItensJson)
             WITH
             (
                 FKProduto INT '$.FKProduto',
                 Quantidade INT '$.Quantidade',
                 DataValidade DATE '$.DataValidade',
-                QuantidadeMinima INT '$.QuantidadeMinima',
-                Preco DECIMAL(18,2) '$.Preco'
+                QuantidadeMinima INT '$.QuantidadeMinima'
             ) j
             INNER JOIN GA_Produtos p
                 ON p.IdProduto = j.FKProduto
         ) AS origem
             ON 1 = 0
         WHEN NOT MATCHED THEN
-            INSERT (FKFornecedores, FKProduto, Quantidade, DataValidade)
-            VALUES (@FKFornecedor, origem.FKProduto, origem.Quantidade, origem.DataValidade)
+            INSERT (FKFornecedores, FKProduto, Quantidade, DataValidade, [Preço])
+            VALUES (@FKFornecedor, origem.FKProduto, origem.Quantidade, origem.DataValidade, 0)
         OUTPUT
             inserted.IdLote,
             origem.Quantidade,
@@ -847,6 +890,7 @@ BEGIN
         FROM @NovosLotes;
 
         -- Insere os itens da compra
+        -- (aqui disparam: total da compra, estoque do lote e PREÇO TOTAL DO LOTE)
         INSERT INTO GA_ItensCompra
         (
             FKCompra,
@@ -1018,6 +1062,7 @@ GO
 -- Registrar uma nova compra.
 -- Cada item cria um novo lote do produto informado (FKProduto), com sua validade
 -- e, opcionalmente, a quantidade mínima de estoque desse lote.
+-- O Preço (valor total) de cada lote é preenchido automaticamente pela trigger.
 -- EXEC usp_RegistrarCompra
 --     @FKFornecedor = 1,
 --     @FKFuncionario = 2,
@@ -1050,6 +1095,7 @@ SELECT
     p.Nome AS Produto,
     l.IdLote,
     l.DataValidade,
+    l.[Preço] AS PrecoTotalLote,
     e.QuantidadeAtual,
     e.QuantidadeMinima,
     (e.QuantidadeMinima - e.QuantidadeAtual) AS FaltamParaMinimo,

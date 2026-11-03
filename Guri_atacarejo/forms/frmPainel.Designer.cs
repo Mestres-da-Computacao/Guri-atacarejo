@@ -57,7 +57,7 @@ namespace Guri_atacarejo.forms
             this.Validade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel5 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.labelClienteRegistrado = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cbPag = new System.Windows.Forms.ComboBox();
             this.TrocoContainer = new System.Windows.Forms.Panel();
@@ -92,8 +92,8 @@ namespace Guri_atacarejo.forms
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.funcionáriosToolStripMenuItem,
             this.clientesToolStripMenuItem,
-            this.forneceToolStripMenuItem,
-            this.maisOpçõesToolStripMenuItem});
+            this.maisOpçõesToolStripMenuItem,
+            this.relatóriosToolStripMenuItem1});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -463,7 +463,7 @@ namespace Guri_atacarejo.forms
             this.label3.Text = "Cliente:";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // label5
+            // labelClienteRegistrado
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.White;
@@ -730,7 +730,7 @@ namespace Guri_atacarejo.forms
         private System.Windows.Forms.DataGridViewTextBoxColumn Validade;
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label labelClienteRegistrado;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cbPag;
         private System.Windows.Forms.Panel TrocoContainer;
@@ -745,9 +745,6 @@ namespace Guri_atacarejo.forms
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.ToolStripMenuItem maisOpçõesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem relatóriosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem relatórioFinanceiroToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem relatórioDeEstoqueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registrarProdutosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem registrarFuncionariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lotesToolStripMenuItem;
