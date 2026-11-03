@@ -13,27 +13,27 @@ namespace Guri_atacarejo.forms
             InitializeComponent();
         }
 
-        private void textBox1_Click(object sender, EventArgs e)
-        {
-            if (!cpfJacolocou)
-            {
-                textBox1.Text = "";
-                cpfJacolocou = true;
-            }
-            else
-            {
-                return;
-            }
-        }
+        //private void textBox1_Click(object sender, EventArgs e)
+        //{
+        //    if (!cpfJacolocou)
+        //    {
+        //        textBox1.Text = "";
+        //        cpfJacolocou = true;
+        //    }
+        //    else
+        //    {
+        //        return;
+        //    }
+        //}
 
-        private void textBox1_Leave(object sender, EventArgs e)
-        {
-            if (textBox1.Text == "")
-            {
-                textBox1.Text = "Digite o cpf";
-                cpfJacolocou = false;
-            }
-        }
+        //private void textBox1_Leave(object sender, EventArgs e)
+        //{
+        //    if (textBox1.Text == "")
+        //    {
+        //        textBox1.Text = "Digite o cpf";
+        //        cpfJacolocou = false;
+        //    }
+        //}
         private void button2_Click(object sender, EventArgs e)
         {
             try
