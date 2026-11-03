@@ -18,6 +18,8 @@ namespace Guri_atacarejo.forms
         {
             InitializeComponent();
 
+            ResponsividadeForm.Aplicar(this);
+
             cbTipo.SelectedIndex = 0;     // "Compras e vendas"
             cbPeriodo.SelectedIndex = 0;  // "Dia"
         }

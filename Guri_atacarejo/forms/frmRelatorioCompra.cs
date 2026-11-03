@@ -13,6 +13,8 @@ namespace Guri_atacarejo.forms
         {
             InitializeComponent();
 
+            ResponsividadeForm.Aplicar(this);
+
             cbtempo.Leave += cbtempo_Leave;
             maskData.TextChanged += maskData_TextChanged;
 
