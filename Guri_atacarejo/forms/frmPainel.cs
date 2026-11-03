@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,26 +23,29 @@ namespace Guri_atacarejo.forms
         {
             InitializeComponent();
             ResponsividadeForm.Aplicar(this);
+            txtReciboDinheiro.TextChanged += txtReciboDinheiro_TextChanged;
 
             // Tabelas sem a linha vazia de "nova linha" e sem a coluna de seta
             dataGridView1.AllowUserToAddRows = false;
             dataGridView2.AllowUserToAddRows = false;
             dataGridView1.RowHeadersVisible = false;
             dataGridView2.RowHeadersVisible = false;
+            labelClienteRegistrado.AutoSize = false;
+            labelClienteRegistrado.Size = new Size(110, 20);
+            labelClienteRegistrado.AutoEllipsis = true;
+            AtualizarClienteExibido();
 
             Console.WriteLine("Nível do funcionário: " + Sessao.NivelFuncionario);
-            Console.WriteLine("Cliente logado: " + SessaoClientes.NomeCliente);
-            Console.WriteLine("CPF do cliente: " + SessaoClientes.Cpf);
 
             if (Sessao.NivelFuncionario <= 1)
             {
                 maisOpçõesToolStripMenuItem.Visible = false;
-                relatóriosToolStripMenuItem1.Visible = false;
+                forneceToolStripMenuItem.Visible = false;
             }
             else if (Sessao.NivelFuncionario > 1)
             {
                 maisOpçõesToolStripMenuItem.Visible = true;
-                relatóriosToolStripMenuItem1.Visible = true;
+                forneceToolStripMenuItem.Visible = true;
             }
         }
 
@@ -196,15 +200,57 @@ namespace Guri_atacarejo.forms
 
         private void AtualizarTotal()
         {
-            decimal total = 0;
+            decimal total = CalcularTotal();
+            lblTotal.Text = total.ToString("C2", CultureInfo.GetCultureInfo("pt-BR"));
+
+            if (cbPag.SelectedIndex == 0)
+                AtualizarTroco();
+        }
+
+        private decimal CalcularTotal()
+        {
+            decimal total = 0m;
             foreach (DataGridViewRow row in dataGridView1.Rows)
             {
                 if (row.Cells[4].Value != null)
                 {
-                    total += Convert.ToDecimal(row.Cells[4].Value);
+                    total += Convert.ToDecimal(row.Cells[4].Value, CultureInfo.CurrentCulture);
                 }
             }
-            lblTotal.Text = $"R$ {total:F2}";
+
+            return total;
+        }
+
+        private bool TentarObterValorRecebido(out decimal recebido)
+        {
+            string valor = txtReciboDinheiro.Text.Trim().Replace('.', ',');
+            return decimal.TryParse(
+                    valor,
+                    NumberStyles.AllowDecimalPoint,
+                    CultureInfo.GetCultureInfo("pt-BR"),
+                    out recebido)
+                && recebido >= 0m;
+        }
+
+        private void AtualizarTroco()
+        {
+            if (!TentarObterValorRecebido(out decimal recebido))
+            {
+                labelTroco.Text = "R$ 0,00";
+                return;
+            }
+
+            decimal troco = recebido - CalcularTotal();
+            labelTroco.Text = troco >= 0m
+                ? troco.ToString("C2", CultureInfo.GetCultureInfo("pt-BR"))
+                : "Insuficiente";
+        }
+
+        private void AtualizarClienteExibido()
+        {
+            labelClienteRegistrado.Text = string.IsNullOrWhiteSpace(SessaoClientes.NomeCliente)
+                ? "Não registrado"
+                : SessaoClientes.NomeCliente;
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -221,20 +267,7 @@ namespace Guri_atacarejo.forms
 
             if (resposta == DialogResult.Yes)
             {
-                for (int i = dataGridView1.Rows.Count - 1; i >= 0; i--) // limita a 0 p so deixar a linha de cima
-                {
-                    if (!dataGridView1.Rows[i].IsNewRow) dataGridView1.Rows.RemoveAt(i);
-                }
-
-                IdLotes = new int[0];
-
-                lblTotal.Text = "R$ 0,00";
-
-                dataGridView2.Rows.Clear();
-
-                //limpa os dados do cliente logado ao cancelar
-                SessaoClientes.NomeCliente = null;
-                SessaoClientes.Cpf = null;
+                LimparVenda();
             }
         }
 
@@ -276,6 +309,31 @@ namespace Guri_atacarejo.forms
                 MessageBox.Show("Escolha um modo de pagamento para continuar.");
                 cbPag.Focus();
                 return;
+            }
+
+            if (Sessao.IdFuncionario <= 0)
+            {
+                MessageBox.Show("Não foi possível identificar o funcionário. Faça login novamente.");
+                return;
+            }
+
+            if (formaPagamento == "Dinheiro")
+            {
+                if (!TentarObterValorRecebido(out decimal recebido))
+                {
+                    MessageBox.Show("Informe um valor recebido válido.");
+                    txtReciboDinheiro.Focus();
+                    return;
+                }
+
+                if (recebido < CalcularTotal())
+                {
+                    MessageBox.Show("O valor recebido é menor que o total da venda.");
+                    txtReciboDinheiro.Focus();
+                    return;
+                }
+
+                AtualizarTroco();
             }
 
             btnFinalizar.Enabled = false;
@@ -349,10 +407,12 @@ namespace Guri_atacarejo.forms
 
                 
 
-                // SUBSTITUIR PELOS IDS REAIS DO CLIENTE E DO FUNCIONARIO
                 DataTable resultadoVenda;
+                int? idCliente = SessaoClientes.IdCliente > 0
+                    ? SessaoClientes.IdCliente
+                    : (int?)null;
                 using (var adapter = new DataSetTableAdapters.GA_VendaTableAdapter())
-                    resultadoVenda = adapter.GetResultadoVenda(SessaoClientes.IdCliente, Sessao.IdFuncionario, formaPagamento, itens.ToString());
+                    resultadoVenda = adapter.GetResultadoVenda(idCliente, Sessao.IdFuncionario, formaPagamento, itens.ToString());
                 if (resultadoVenda.Rows.Count > 0)
                 {
                     string mensagem = Convert.ToString(resultadoVenda.Rows[0]["Mensagem"]);
@@ -384,41 +444,46 @@ namespace Guri_atacarejo.forms
             dataGridView2.Rows.Clear();
 
             IdLotes = new int[0];
-            lblTotal.Text = "R$ 00,00";
+            AtualizarTotal();
+            txtReciboDinheiro.Text = "00,00";
+            labelTroco.Text = "R$ 0,00";
         }
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex >= 0)
+            if (e.RowIndex < 0 ||
+                e.RowIndex >= dataGridView1.Rows.Count ||
+                e.RowIndex >= IdLotes.Length ||
+                !int.TryParse(
+                    Convert.ToString(dataGridView1.Rows[e.RowIndex].Cells[0].Value),
+                    out int id))
             {
-                int id = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[0].Value);
-                int lote = 0;
-                if (e.RowIndex < IdLotes.Length)
+                return;
+            }
+
+            try
+            {
+                qtdProd = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[2].Value);
+                int lote = IdLotes[e.RowIndex];
+                LimparDetalhes();
+
+                DataSet.DataTable1DataTable detalhes;
+                using (var adapter = new DataSetTableAdapters.DataTable1TableAdapter())
+                    detalhes = adapter.GetProdutoOuLote(lote, id);
+
+                if (detalhes.Rows.Count > 0)
                 {
-                    qtdProd = Convert.ToInt32(dataGridView1.Rows[e.RowIndex].Cells[2].Value);
-
-                    lote = IdLotes[e.RowIndex];
-
-                    DataSet.DataTable1DataTable detalhes;
-                    using (var adapter = new DataSetTableAdapters.DataTable1TableAdapter())
-                        detalhes = adapter.GetProdutoOuLote(lote, id);
-                    if (detalhes.Rows.Count > 0)
-                    {
-                        DataSet.DataTable1Row detalhe = detalhes[0];
-                        string nome = detalhe.Nome;
-                        decimal valor = detalhe.Preco;
-                        string unidade = detalhe.UnidadeMedida;
-                        string validade = detalhe.DataValidade.ToString("dd/MM/yyyy");
-
-                        if (dataGridView2.Rows.Count == 0)
-                            dataGridView2.Rows.Add();
-
-                        dataGridView2.Rows[0].Cells[0].Value = nome;
-                        dataGridView2.Rows[0].Cells[1].Value = valor;
-                        dataGridView2.Rows[0].Cells[2].Value = unidade;
-                        dataGridView2.Rows[0].Cells[3].Value = validade;
-                    }
+                    DataSet.DataTable1Row detalhe = detalhes[0];
+                    dataGridView2.Rows.Add(
+                        detalhe.Nome,
+                        detalhe.Preco,
+                        detalhe.UnidadeMedida,
+                        detalhe.DataValidade.ToString("dd/MM/yyyy"));
                 }
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Não foi possível carregar os detalhes do produto: " + ex.Message);
             }
         }
 
@@ -430,21 +495,19 @@ namespace Guri_atacarejo.forms
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            FrmLogon logonForm = new FrmLogon();
-            logonForm.ShowDialog();
-
             Sessao.NivelFuncionario = 0;
             Sessao.IdFuncionario = 0;
             Sessao.Usuario = null;
+            SessaoClientes.NomeCliente = null;
+            SessaoClientes.Cpf = null;
+            SessaoClientes.IdCliente = 0;
+            Close();
         }
 
         private void registrarProdutosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmAdicionar adicionarForm = new frmAdicionar();
-            adicionarForm.ShowDialog();
-            this.Show();
+            using (frmAdicionar adicionarForm = new frmAdicionar())
+                adicionarForm.ShowDialog(this);
         }
 
         private void registrarCompraToolStripMenuItem_Click(object sender, EventArgs e)
@@ -457,92 +520,87 @@ namespace Guri_atacarejo.forms
 
         private void loginClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            FrmLoginCliente loginClienteForm = new FrmLoginCliente();
-            loginClienteForm.ShowDialog();
+            using (frmLogonCliente loginClienteForm = new frmLogonCliente())
+            {
+                if (loginClienteForm.ShowDialog(this) == DialogResult.OK)
+                    AtualizarClienteExibido();
+            }
         }
 
         private void logoutClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SessaoClientes.NomeCliente = null;
             SessaoClientes.Cpf = null;
-
-            Console.WriteLine("Cliente logado: " + SessaoClientes.NomeCliente);
-            Console.WriteLine("CPF do cliente: " + SessaoClientes.Cpf);
+            SessaoClientes.IdCliente = 0;
+            AtualizarClienteExibido();
         }
 
         private void registrarClientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmRegistro_Cliente registroClienteForm = new frmRegistro_Cliente();
-            registroClienteForm.ShowDialog();
+            using (frmRegistro_Cliente registroClienteForm = new frmRegistro_Cliente())
+                registroClienteForm.ShowDialog(this);
+
+            AtualizarClienteExibido();
         }
 
         private void relatórioFinanceiroToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmRelatorioCompra relaCompra = new frmRelatorioCompra();
-            relaCompra.ShowDialog();
+            using (frmRelatorioCompra relaCompra = new frmRelatorioCompra())
+                relaCompra.ShowDialog(this);
         }
 
         private void relatórioDeEstoqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmRelatorioEstoque relaEstoque = new frmRelatorioEstoque();
-            relaEstoque.ShowDialog();
+            using (frmRelatorioEstoque relaEstoque = new frmRelatorioEstoque())
+                relaEstoque.ShowDialog(this);
         }
 
         private void registrarProdutosToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            this.Hide(); frmCadastroProduto cadastroProdutoForm = new frmCadastroProduto();
-            cadastroProdutoForm.ShowDialog();
+            using (frmCadastroProduto cadastroProdutoForm = new frmCadastroProduto())
+                cadastroProdutoForm.ShowDialog(this);
         }
 
         private void registrarFuncionariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmCadastroFuncionario cadastroFuncionarioForm = new frmCadastroFuncionario();
-            cadastroFuncionarioForm.ShowDialog();
+            using (frmCadastroFuncionario cadastroFuncionarioForm = new frmCadastroFuncionario())
+                cadastroFuncionarioForm.ShowDialog(this);
         }
 
         private void lotesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // linkar os lotes aqui também
+            using (frmRegistroLote registroLoteForm = new frmRegistroLote())
+                registroLoteForm.ShowDialog(this);
         }
 
         private void relatórioMovimentaçãoFinanceiraToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmRelatorioCompra relCompra = new frmRelatorioCompra();
-            relCompra.ShowDialog();
+            using (frmRelatorioCompra relCompra = new frmRelatorioCompra())
+                relCompra.ShowDialog(this);
         }
 
         private void relatórioFluxoEstoqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmRelatorioEstoque relEstoque = new frmRelatorioEstoque();
-            relEstoque.ShowDialog();
+            using (frmRelatorioEstoque relEstoque = new frmRelatorioEstoque())
+                relEstoque.ShowDialog(this);
         }
 
         private void registoDeLotesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmRegistroLote registroLoteForm = new frmRegistroLote();
-            registroLoteForm.ShowDialog();
+            using (frmRegistroLote registroLoteForm = new frmRegistroLote())
+                registroLoteForm.ShowDialog(this);
         }
 
         private void registrarFornecedorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmRegistroFornecedor registroFornecedorForm = new frmRegistroFornecedor();
-            registroFornecedorForm.ShowDialog();
+            using (frmRegistroFornecedor registroFornecedorForm = new frmRegistroFornecedor())
+                registroFornecedorForm.ShowDialog(this);
         }
 
         private void compraDeLotesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmCompra_ compraForm = new frmCompra_();
-            compraForm.ShowDialog();
+            using (frmCompra_ compraForm = new frmCompra_())
+                compraForm.ShowDialog(this);
         }
 
         private void cbPag_SelectedIndexChanged(object sender, EventArgs e)
@@ -553,6 +611,7 @@ namespace Guri_atacarejo.forms
                 labelTroco.Visible = true;
                 txtReciboDinheiro.Visible = true;
                 lblRS.Visible = true;
+                AtualizarTroco();
             }
             else
             {
@@ -560,6 +619,7 @@ namespace Guri_atacarejo.forms
                 labelTroco.Visible = false;
                 txtReciboDinheiro.Visible = false;
                 lblRS.Visible = false;
+                labelTroco.Text = "R$ 0,00";
             }
         }
 
@@ -575,7 +635,7 @@ namespace Guri_atacarejo.forms
 
         private void txtReciboDinheiro_Enter(object sender, EventArgs e)
         {
-            if (txtReciboDinheiro.Text == "00,00")
+            if (txtReciboDinheiro.Text == "00,00" || txtReciboDinheiro.Text == "0,00")
             {
                 txtReciboDinheiro.Text = "";
             }
@@ -588,31 +648,37 @@ namespace Guri_atacarejo.forms
             {
                 txtReciboDinheiro.Text = "0,00";
             }
+
+            AtualizarTroco();
+        }
+
+        private void txtReciboDinheiro_TextChanged(object sender, EventArgs e)
+        {
+            if (cbPag.SelectedIndex == 0)
+                AtualizarTroco();
         }
 
         private void txtReciboDinheiro_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!char.IsDigit(e.KeyChar) && e.KeyChar != ',' && e.KeyChar != '.' && e.KeyChar != (char)Keys.Back)
-            {
-                e.Handled = true;
-            }
-
-            if ((e.KeyChar == ',' || e.KeyChar == '.') && txtReciboDinheiro.Text.Contains(',') || txtReciboDinheiro.Text.Contains('.'))
-            {
-                e.Handled = true;
-            }
-
             if (e.KeyChar == (char)Keys.Enter)
             {
-                decimal recebido = decimal.Parse(txtReciboDinheiro.Text);
-
-
-                decimal total =  decimal.Parse(lblTotal.Text.Substring(3));
-
-                labelTroco.Text = (recebido - total).ToString("N2");
+                e.Handled = true;
+                AtualizarTroco();
                 this.ActiveControl = null;
-
+                return;
             }
+
+            if (char.IsControl(e.KeyChar))
+                return;
+
+            if (e.KeyChar == ',' || e.KeyChar == '.')
+            {
+                e.Handled = txtReciboDinheiro.Text.Contains(',')
+                    || txtReciboDinheiro.Text.Contains('.');
+                return;
+            }
+
+            e.Handled = !char.IsDigit(e.KeyChar);
         }
     }
 }

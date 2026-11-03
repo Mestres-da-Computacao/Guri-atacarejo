@@ -75,8 +75,20 @@ namespace Guri_atacarejo.forms
             if (sucesso)
             {
                 this.Hide();
-                frmPainel painel = new frmPainel();
-                painel.ShowDialog();
+                using (frmPainel painel = new frmPainel())
+                    painel.ShowDialog(this);
+
+                Sessao.NivelFuncionario = 0;
+                Sessao.IdFuncionario = 0;
+                Sessao.Usuario = null;
+                SessaoClientes.NomeCliente = null;
+                SessaoClientes.Cpf = null;
+                SessaoClientes.IdCliente = 0;
+                Usertxtbox.Text = "Digite o usuário";
+                Passwordtxtbox.Text = "Digite sua senha";
+                userJacolocou = false;
+                passJacolocou = false;
+                this.Show();
             }
             else
             {

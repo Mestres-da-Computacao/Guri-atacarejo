@@ -18,10 +18,10 @@ namespace Guri_atacarejo.forms
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle29 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle30 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.funcionáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -40,14 +40,14 @@ namespace Guri_atacarejo.forms
             this.registrarProdutosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.registrarFuncionariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblRS = new System.Windows.Forms.Label();
+            this.txtReciboDinheiro = new System.Windows.Forms.TextBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.custo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.labelClienteRegistrado = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -55,9 +55,6 @@ namespace Guri_atacarejo.forms
             this.preco_uni = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unidade_medi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Validade = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.labelClienteRegistrado = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.cbPag = new System.Windows.Forms.ComboBox();
             this.TrocoContainer = new System.Windows.Forms.Panel();
@@ -71,15 +68,18 @@ namespace Guri_atacarejo.forms
             this.panel3 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
-            this.txtReciboDinheiro = new System.Windows.Forms.TextBox();
-            this.lblRS = new System.Windows.Forms.Label();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Produto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.qtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.custo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.panel5.SuspendLayout();
             this.TrocoContainer.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -92,8 +92,8 @@ namespace Guri_atacarejo.forms
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.funcionáriosToolStripMenuItem,
             this.clientesToolStripMenuItem,
-            this.maisOpçõesToolStripMenuItem,
-            this.relatóriosToolStripMenuItem1});
+            this.forneceToolStripMenuItem,
+            this.maisOpçõesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
@@ -161,12 +161,14 @@ namespace Guri_atacarejo.forms
             this.registroFornecedoresToolStripMenuItem.Name = "registroFornecedoresToolStripMenuItem";
             this.registroFornecedoresToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.registroFornecedoresToolStripMenuItem.Text = "Registro Fornecedores";
+            this.registroFornecedoresToolStripMenuItem.Click += new System.EventHandler(this.registrarFornecedorToolStripMenuItem_Click);
             // 
             // compraLotesToolStripMenuItem
             // 
             this.compraLotesToolStripMenuItem.Name = "compraLotesToolStripMenuItem";
             this.compraLotesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.compraLotesToolStripMenuItem.Text = "Compra Lotes";
+            this.compraLotesToolStripMenuItem.Click += new System.EventHandler(this.compraDeLotesToolStripMenuItem_Click);
             // 
             // maisOpçõesToolStripMenuItem
             // 
@@ -244,6 +246,35 @@ namespace Guri_atacarejo.forms
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "CAIXA LIVRE";
             // 
+            // lblRS
+            // 
+            this.lblRS.AutoSize = true;
+            this.lblRS.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            this.lblRS.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRS.ForeColor = System.Drawing.Color.White;
+            this.lblRS.Location = new System.Drawing.Point(456, 376);
+            this.lblRS.Name = "lblRS";
+            this.lblRS.Size = new System.Drawing.Size(43, 24);
+            this.lblRS.TabIndex = 11;
+            this.lblRS.Text = "RS:";
+            this.lblRS.Visible = false;
+            // 
+            // txtReciboDinheiro
+            // 
+            this.txtReciboDinheiro.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            this.txtReciboDinheiro.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtReciboDinheiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtReciboDinheiro.ForeColor = System.Drawing.Color.White;
+            this.txtReciboDinheiro.Location = new System.Drawing.Point(503, 376);
+            this.txtReciboDinheiro.Name = "txtReciboDinheiro";
+            this.txtReciboDinheiro.Size = new System.Drawing.Size(233, 22);
+            this.txtReciboDinheiro.TabIndex = 10;
+            this.txtReciboDinheiro.Text = "00,00";
+            this.txtReciboDinheiro.Visible = false;
+            this.txtReciboDinheiro.Enter += new System.EventHandler(this.txtReciboDinheiro_Enter);
+            this.txtReciboDinheiro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtReciboDinheiro_KeyPress);
+            this.txtReciboDinheiro.Leave += new System.EventHandler(this.txtReciboDinheiro_Leave);
+            // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
@@ -273,14 +304,14 @@ namespace Guri_atacarejo.forms
             this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            dataGridViewCellStyle29.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle29.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle29.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            dataGridViewCellStyle29.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle29.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle29;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Id,
@@ -288,14 +319,14 @@ namespace Guri_atacarejo.forms
             this.qtd,
             this.custo,
             this.total});
-            dataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle30.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle30.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle30.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(205)))));
-            dataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle30;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(205)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.GridColor = System.Drawing.Color.Gray;
             this.dataGridView1.Location = new System.Drawing.Point(0, 36);
             this.dataGridView1.MultiSelect = false;
@@ -307,45 +338,42 @@ namespace Guri_atacarejo.forms
             this.dataGridView1.TabIndex = 1;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // Id
+            // panel5
             // 
-            this.Id.HeaderText = "Id";
-            this.Id.MinimumWidth = 6;
-            this.Id.Name = "Id";
-            this.Id.ReadOnly = true;
-            this.Id.Width = 45;
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.Controls.Add(this.label3);
+            this.panel5.Controls.Add(this.labelClienteRegistrado);
+            this.panel5.Location = new System.Drawing.Point(744, 328);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(174, 30);
+            this.panel5.TabIndex = 3;
+            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
             // 
-            // Produto
+            // label3
             // 
-            this.Produto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Produto.HeaderText = "Produto";
-            this.Produto.MinimumWidth = 6;
-            this.Produto.Name = "Produto";
-            this.Produto.ReadOnly = true;
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.White;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            this.label3.Location = new System.Drawing.Point(3, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(62, 20);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Cliente:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // qtd
+            // labelClienteRegistrado
             // 
-            this.qtd.HeaderText = "Quantidade";
-            this.qtd.MinimumWidth = 6;
-            this.qtd.Name = "qtd";
-            this.qtd.ReadOnly = true;
-            this.qtd.Width = 85;
-            // 
-            // custo
-            // 
-            this.custo.HeaderText = "Preço unitário";
-            this.custo.MinimumWidth = 6;
-            this.custo.Name = "custo";
-            this.custo.ReadOnly = true;
-            this.custo.Width = 95;
-            // 
-            // total
-            // 
-            this.total.HeaderText = "Total";
-            this.total.MinimumWidth = 6;
-            this.total.Name = "total";
-            this.total.ReadOnly = true;
-            this.total.Width = 75;
+            this.labelClienteRegistrado.AutoSize = true;
+            this.labelClienteRegistrado.BackColor = System.Drawing.Color.White;
+            this.labelClienteRegistrado.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelClienteRegistrado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            this.labelClienteRegistrado.Location = new System.Drawing.Point(60, 0);
+            this.labelClienteRegistrado.Name = "labelClienteRegistrado";
+            this.labelClienteRegistrado.Size = new System.Drawing.Size(113, 20);
+            this.labelClienteRegistrado.TabIndex = 4;
+            this.labelClienteRegistrado.Text = "Não registrado";
+            this.labelClienteRegistrado.Click += new System.EventHandler(this.label5_Click);
             // 
             // panel6
             // 
@@ -376,28 +404,28 @@ namespace Guri_atacarejo.forms
             this.dataGridView2.AllowUserToResizeRows = false;
             this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            dataGridViewCellStyle31.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle31.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle31.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            dataGridViewCellStyle31.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle31.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle31;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView2.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.item,
             this.preco_uni,
             this.unidade_medi,
             this.Validade});
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle32.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle32.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(205)))));
-            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(230)))), ((int)(((byte)(205)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView2.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView2.Location = new System.Drawing.Point(0, 36);
             this.dataGridView2.MultiSelect = false;
             this.dataGridView2.Name = "dataGridView2";
@@ -439,43 +467,6 @@ namespace Guri_atacarejo.forms
             this.Validade.ReadOnly = true;
             this.Validade.Width = 95;
             // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Controls.Add(this.label3);
-            this.panel5.Controls.Add(this.label5);
-            this.panel5.Location = new System.Drawing.Point(744, 328);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(174, 30);
-            this.panel5.TabIndex = 3;
-            this.panel5.Paint += new System.Windows.Forms.PaintEventHandler(this.panel5_Paint);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.White;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.label3.Location = new System.Drawing.Point(3, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 20);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Cliente:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
-            // 
-            // labelClienteRegistrado
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.White;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.label5.Location = new System.Drawing.Point(60, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(113, 20);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Não registrado";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -490,6 +481,7 @@ namespace Guri_atacarejo.forms
             // cbPag
             // 
             this.cbPag.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPag.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbPag.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbPag.FormattingEnabled = true;
             this.cbPag.Items.AddRange(new object[] {
@@ -642,31 +634,45 @@ namespace Guri_atacarejo.forms
             this.lblTotal.TabIndex = 1;
             this.lblTotal.Text = "R$ 0,00";
             // 
-            // txtReciboDinheiro
+            // Id
             // 
-            this.txtReciboDinheiro.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.txtReciboDinheiro.Location = new System.Drawing.Point(494, 378);
-            this.txtReciboDinheiro.Name = "txtReciboDinheiro";
-            this.txtReciboDinheiro.Size = new System.Drawing.Size(233, 26);
-            this.txtReciboDinheiro.TabIndex = 10;
-            this.txtReciboDinheiro.Text = "00,00";
-            this.txtReciboDinheiro.Visible = false;
-            this.txtReciboDinheiro.Enter += new System.EventHandler(this.txtReciboDinheiro_Enter);
-            this.txtReciboDinheiro.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtReciboDinheiro_KeyPress);
-            this.txtReciboDinheiro.Leave += new System.EventHandler(this.txtReciboDinheiro_Leave);
+            this.Id.HeaderText = "Id";
+            this.Id.MinimumWidth = 6;
+            this.Id.Name = "Id";
+            this.Id.ReadOnly = true;
+            this.Id.Width = 45;
             // 
-            // lblRS
+            // Produto
             // 
-            this.lblRS.AutoSize = true;
-            this.lblRS.BackColor = System.Drawing.Color.White;
-            this.lblRS.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRS.ForeColor = System.Drawing.SystemColors.ScrollBar;
-            this.lblRS.Location = new System.Drawing.Point(456, 378);
-            this.lblRS.Name = "lblRS";
-            this.lblRS.Size = new System.Drawing.Size(43, 24);
-            this.lblRS.TabIndex = 11;
-            this.lblRS.Text = "RS:";
-            this.lblRS.Visible = false;
+            this.Produto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Produto.HeaderText = "Produto";
+            this.Produto.MinimumWidth = 6;
+            this.Produto.Name = "Produto";
+            this.Produto.ReadOnly = true;
+            // 
+            // qtd
+            // 
+            this.qtd.HeaderText = "Quantidade";
+            this.qtd.MinimumWidth = 6;
+            this.qtd.Name = "qtd";
+            this.qtd.ReadOnly = true;
+            this.qtd.Width = 95;
+            // 
+            // custo
+            // 
+            this.custo.HeaderText = "Preço unitário";
+            this.custo.MinimumWidth = 6;
+            this.custo.Name = "custo";
+            this.custo.ReadOnly = true;
+            this.custo.Width = 95;
+            // 
+            // total
+            // 
+            this.total.HeaderText = "Total";
+            this.total.MinimumWidth = 6;
+            this.total.Name = "total";
+            this.total.ReadOnly = true;
+            this.total.Width = 75;
             // 
             // frmPainel
             // 
@@ -688,11 +694,11 @@ namespace Guri_atacarejo.forms
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.TrocoContainer.ResumeLayout(false);
             this.TrocoContainer.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -716,11 +722,6 @@ namespace Guri_atacarejo.forms
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Produto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn qtd;
-        private System.Windows.Forms.DataGridViewTextBoxColumn custo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn total;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridView dataGridView2;
@@ -745,6 +746,9 @@ namespace Guri_atacarejo.forms
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.ToolStripMenuItem maisOpçõesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem relatóriosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem relatórioFinanceiroToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem relatórioDeEstoqueToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registrarProdutosToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem registrarFuncionariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lotesToolStripMenuItem;
@@ -753,5 +757,10 @@ namespace Guri_atacarejo.forms
         private System.Windows.Forms.ToolStripMenuItem compraLotesToolStripMenuItem;
         private System.Windows.Forms.TextBox txtReciboDinheiro;
         private System.Windows.Forms.Label lblRS;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Produto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn qtd;
+        private System.Windows.Forms.DataGridViewTextBoxColumn custo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn total;
     }
 }

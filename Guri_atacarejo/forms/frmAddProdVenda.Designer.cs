@@ -40,24 +40,25 @@
             // 
             // txtID
             // 
-            this.txtID.Location = new System.Drawing.Point(59, 25);
+            this.txtID.Location = new System.Drawing.Point(59, 55);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(154, 20);
+            this.txtID.Size = new System.Drawing.Size(185, 20);
             this.txtID.TabIndex = 1;
             this.txtID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtID_KeyPress);
             // 
             // txtLote
             // 
-            this.txtLote.Location = new System.Drawing.Point(59, 73);
+            this.txtLote.Location = new System.Drawing.Point(59, 109);
             this.txtLote.Name = "txtLote";
-            this.txtLote.Size = new System.Drawing.Size(154, 20);
+            this.txtLote.Size = new System.Drawing.Size(185, 20);
             this.txtLote.TabIndex = 2;
             this.txtLote.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLote_KeyPress);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(56, 9);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(56, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(18, 13);
             this.label1.TabIndex = 1;
@@ -66,7 +67,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(56, 57);
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(56, 93);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 1;
@@ -74,26 +76,30 @@
             // 
             // btnAdicionar
             // 
-            this.btnAdicionar.Location = new System.Drawing.Point(38, 162);
+            this.btnAdicionar.BackColor = System.Drawing.Color.White;
+            this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAdicionar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            this.btnAdicionar.Location = new System.Drawing.Point(169, 207);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(75, 23);
             this.btnAdicionar.TabIndex = 4;
             this.btnAdicionar.Text = "Adicionar";
-            this.btnAdicionar.UseVisualStyleBackColor = true;
+            this.btnAdicionar.UseVisualStyleBackColor = false;
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
             // txtQuantidade
             // 
-            this.txtQuantidade.Location = new System.Drawing.Point(59, 125);
+            this.txtQuantidade.Location = new System.Drawing.Point(59, 161);
             this.txtQuantidade.Name = "txtQuantidade";
-            this.txtQuantidade.Size = new System.Drawing.Size(154, 20);
+            this.txtQuantidade.Size = new System.Drawing.Size(185, 20);
             this.txtQuantidade.TabIndex = 3;
             this.txtQuantidade.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtQuantidade_KeyPress);
             // 
             // lblQtd
             // 
             this.lblQtd.AutoSize = true;
-            this.lblQtd.Location = new System.Drawing.Point(56, 109);
+            this.lblQtd.ForeColor = System.Drawing.Color.White;
+            this.lblQtd.Location = new System.Drawing.Point(56, 145);
             this.lblQtd.Name = "lblQtd";
             this.lblQtd.Size = new System.Drawing.Size(62, 13);
             this.lblQtd.TabIndex = 1;
@@ -101,11 +107,13 @@
             // 
             // btnFinalizar
             // 
-            this.btnFinalizar.Location = new System.Drawing.Point(163, 162);
+            this.btnFinalizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFinalizar.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.btnFinalizar.Location = new System.Drawing.Point(59, 207);
             this.btnFinalizar.Name = "btnFinalizar";
             this.btnFinalizar.Size = new System.Drawing.Size(75, 23);
             this.btnFinalizar.TabIndex = 5;
-            this.btnFinalizar.Text = "retornar";
+            this.btnFinalizar.Text = "Retornar";
             this.btnFinalizar.UseVisualStyleBackColor = true;
             this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
             // 
@@ -113,8 +121,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.DarkOrange;
-            this.ClientSize = new System.Drawing.Size(278, 197);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            this.ClientSize = new System.Drawing.Size(302, 259);
             this.Controls.Add(this.btnFinalizar);
             this.Controls.Add(this.btnAdicionar);
             this.Controls.Add(this.lblQtd);

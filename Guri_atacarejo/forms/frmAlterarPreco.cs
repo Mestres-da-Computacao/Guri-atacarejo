@@ -49,7 +49,7 @@ namespace Guri_atacarejo.forms
                     return;
                 }
 
-                this.Hide();
+                Close();
             }
             catch (SqlException ex)
             {
@@ -59,13 +59,13 @@ namespace Guri_atacarejo.forms
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            Close();
         }
 
         private void btnRemover_Click(object sender, EventArgs e)
         {
             painel.removerProd(linhaProduto);
-            this.Hide();
+            Close();
         }
     }
 }

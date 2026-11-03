@@ -35,17 +35,5 @@ namespace Guri_atacarejo.Properties {
             }
         }
 
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=lipesPC;Initial Catalog=SuperMercado;Integrated Security=True;Encrypt" +
-            "=True;TrustServerCertificate=True")]
-        public string SuperMercadoConnectionString
-        {
-            get
-            {
-                return ((string)(this["SuperMercadoConnectionString"]));
-            }
-        }
     }
 }

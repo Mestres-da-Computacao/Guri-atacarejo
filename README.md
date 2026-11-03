@@ -9,7 +9,7 @@ O aplicativo usa a instância `(localdb)\MSSQLLocalDB` e o catálogo `db_250405`
 
 1. Instale o SQL Server Express LocalDB.
 2. No SQL Server Management Studio, conecte-se a `(localdb)\MSSQLLocalDB` usando autenticação do Windows.
-3. Abra e execute o arquivo `SuperMercado.sql` deste repositório nessa conexão. O script cria `db_250405` e suas tabelas se ainda não existirem.
+3. Abra e execute o arquivo `db_250405.sql` deste repositório nessa conexão. O script cria `db_250405` e suas tabelas se ainda não existirem.
 
 Se o aplicativo ainda não conseguir abrir o catálogo, confirme que o script foi executado sem erros na mesma instância LocalDB configurada acima.
 
@@ -52,7 +52,7 @@ Relatório de estoque: mostra o estoque de cada produto (somando seus lotes) e, 
 
 ## Banco de dados
 
-O banco do supermercado é criado pelo script `SuperMercado.sql`, na raiz do projeto. As tabelas, todas com o prefixo GA (Guri Atacarejo), são:
+O banco do supermercado é criado pelo script `db_250405.sql`, na raiz do projeto. As tabelas, todas com o prefixo GA (Guri Atacarejo), são:
 GA_Clientes: dados do cliente, nível de fidelidade e total de compras acumuladas;
 GA_Cargos, GA_Departamentos e GA_Funcionarios: estrutura de pessoal, com senha, salário e status (Ativo, Inativo ou Afastado);
 GA_Fornecedor, GA_Categoria e GA_Produtos: fornecedores e catálogo de produtos, com unidade de medida e preço;
@@ -63,6 +63,5 @@ Triggers: cálculo automático do total de vendas e compras; baixa do estoque do
 Procedimentos armazenados: usp_RegistrarVenda, usp_RegistrarCompra, usp_RelatorioEstoqueCritico, usp_CancelarVenda e usp_CancelarItensVenda.
 Como executar
 Instalar o `SQL Server Express LocalDB`;
-No SQL Server Management Studio, conectar em `(localdb)\MSSQLLocalDB` com autenticação do Windows e executar o arquivo `SuperMercado.sql`;
+No SQL Server Management Studio, conectar em `(localdb)\MSSQLLocalDB` com autenticação do Windows e executar o arquivo `db_250405.sql`;
 Abrir a solução `Guri_atacarejo.sln` no Visual Studio e executar o projeto.
-

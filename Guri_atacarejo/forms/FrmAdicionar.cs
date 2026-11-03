@@ -144,18 +144,13 @@ namespace Guri_atacarejo.forms
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmPainel painelForm = new frmPainel();
-            painelForm.ShowDialog();
+            Close();
         }
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            frmPainel painelForm = new frmPainel();
-            painelForm.ShowDialog();
-
             //código para enviar os produtos para o painel principal
+            Close();
         }
 
         private void picLogo_Click(object sender, EventArgs e)

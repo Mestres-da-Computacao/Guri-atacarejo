@@ -108,6 +108,9 @@
     <Compile Include="forms\frmLoginCliente.Designer.cs">
       <DependentUpon>frmLoginCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\frmLogonCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="DataSet.cs">
       <DependentUpon>DataSet.xsd</DependentUpon>
     </Compile>

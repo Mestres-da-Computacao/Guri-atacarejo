@@ -75,7 +75,7 @@
             this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
             this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(88, 24);
+            this.toolStripButton1.Size = new System.Drawing.Size(87, 24);
             this.toolStripButton1.Text = "Tela de Vendas";
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 

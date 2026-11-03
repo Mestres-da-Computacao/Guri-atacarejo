@@ -7,12 +7,12 @@ namespace Guri_atacarejo.forms
 {
     public partial class frmRegistroLote : Form
     {
-        string connString =
-            @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SuperMercado;Integrated Security=True;";
-
         public frmRegistroLote()
         {
             InitializeComponent();
+
+            ResponsividadeForm.Aplicar(this);
+
             button1.Click += button1_Click;
         }
 
@@ -56,7 +56,7 @@ namespace Guri_atacarejo.forms
             {
                 int linhas;
 
-                using (var conn = new SqlConnection(connString))
+                using (var conn = new SqlConnection(Properties.Settings.Default.ConnectionString))
                 using (var cmd = new SqlCommand(sql, conn))
                 {
                     cmd.Parameters.Add("@qtd", SqlDbType.Int).Value = (int)numericUpDown1.Value;
@@ -87,9 +87,7 @@ namespace Guri_atacarejo.forms
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
-            frmPainel painel = new frmPainel();
-            painel.ShowDialog();
+            Close();
         }
 
         private void LimparCampos()
