@@ -57,6 +57,13 @@ namespace Guri_atacarejo.forms
                         "Telefone", "Endereco"
                     });
                     break;
+                case 3:
+                    cbcar.Items.AddRange(new object[]
+                    {
+                        "Tudo", "IdCliente", "Nome", "CPF", "Genero", "Email",
+                        "Celular", "NivelFidelidade", "TotalComprasAcumuladas"
+                    });
+                    break;
                 default:
                     _dadosEntidade = null;
                     dataGridView1.DataSource = null;
@@ -90,6 +97,11 @@ namespace Guri_atacarejo.forms
                 case 2:
                     consulta = "SELECT IdFornecedor, Nome, CNPJ, Email, Telefone, " +
                                "Endereco FROM GA_Fornecedor ORDER BY Nome";
+                    break;
+                case 3:
+                    consulta = "SELECT IdCliente, Nome, CPF, Genero, Email, Celular, " +
+                               "NivelFidelidade, TotalComprasAcumuladas " +
+                               "FROM GA_Clientes ORDER BY Nome";
                     break;
                 default:
                     _dadosEntidade = null;

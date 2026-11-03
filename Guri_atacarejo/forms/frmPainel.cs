@@ -680,5 +680,11 @@ namespace Guri_atacarejo.forms
 
             e.Handled = !char.IsDigit(e.KeyChar);
         }
+
+        private void funcProdFornToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmexibcaoentidades frmexibcaoentidades = new frmexibcaoentidades())
+                frmexibcaoentidades.ShowDialog(this);
+        }
     }
 }

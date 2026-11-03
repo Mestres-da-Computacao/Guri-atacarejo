@@ -144,7 +144,8 @@ namespace Guri_atacarejo.forms
             this.cbent.Items.AddRange(new object[] {
             "Funcionários",
             "Produtos",
-            "Fornecedores"});
+            "Fornecedores",
+            "Clientes"});
             this.cbent.Location = new System.Drawing.Point(114, 39);
             this.cbent.Name = "cbent";
             this.cbent.Size = new System.Drawing.Size(165, 28);
