@@ -60,13 +60,15 @@ namespace Guri_atacarejo.forms
                 return;
             }
 
+            // GA_Produtos não tem coluna de fornecedor; o vínculo é criado em GA_Lote.
             const string sql = @"
                 INSERT INTO GA_Lote (FKFornecedores, FKProduto, Quantidade, DataValidade, [Preço])
-                SELECT f.IdFornecedor, p.IdProduto, @qtd, @validade, @preco
-                FROM GA_Fornecedor f
-                INNER JOIN GA_Produtos p ON p.FKFornecedor = f.IdFornecedor
-                WHERE f.Nome = @forn
-                  AND p.Nome = @prod;";
+                SELECT
+                    (SELECT TOP 1 IdFornecedor FROM GA_Fornecedor WHERE Nome = @forn),
+                    (SELECT TOP 1 IdProduto    FROM GA_Produtos   WHERE Nome = @prod),
+                    @qtd, @validade, @preco
+                WHERE EXISTS (SELECT 1 FROM GA_Fornecedor WHERE Nome = @forn)
+                  AND EXISTS (SELECT 1 FROM GA_Produtos   WHERE Nome = @prod);";
 
             try
             {
@@ -93,7 +95,7 @@ namespace Guri_atacarejo.forms
                 {
                     MessageBox.Show(
                         "Fornecedor ou produto não encontrado.\n" +
-                        "Confira os nomes digitados e se o produto pertence a esse fornecedor.");
+                        "Confira os nomes digitados.");
                     return;
                 }
 
