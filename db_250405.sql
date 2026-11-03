@@ -1,3 +1,10 @@
+--EXECUTAR NO BANCO DA ESCOLA
+ALTER TABLE GA_Produtos DROP CONSTRAINT FK_GA_Produtos_Fornecedor;
+GO
+
+ALTER TABLE GA_Produtos DROP COLUMN FKFornecedor;
+GO
+-------------------------------------------
 IF DB_ID('db_250405') IS NULL
 BEGIN
     CREATE DATABASE db_250405;
