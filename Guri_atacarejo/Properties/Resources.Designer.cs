@@ -121,12 +121,12 @@ namespace Guri_atacarejo.Properties {
         }
         
         /// <summary>
-        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        ///   Consulta um recurso localizado do tipo System.Drawing.Icon semelhante a (Ícone).
         /// </summary>
-        internal static System.Drawing.Bitmap projeto_icone {
+        internal static System.Drawing.Icon projeto_icone {
             get {
-                object obj = ResourceManager.GetObject("projeto_icone", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                object obj = ResourceManager.GetObject("projeto-icone", resourceCulture);
+                return ((System.Drawing.Icon)(obj));
             }
         }
     }
