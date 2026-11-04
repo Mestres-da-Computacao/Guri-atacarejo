@@ -12,7 +12,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Guri_atacarejo.forms
 {
-    public partial class frmCadastroProduto : Form
+    public partial class frmCadastroProduto : Icone
     {
         const string PrefixoPreco = "R$ ";
         const int CategoriaPadrao = 1;   // categoria sempre 1 no INSERT

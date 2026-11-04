@@ -8,7 +8,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 using System.Text.RegularExpressions;
 namespace Guri_atacarejo.forms
 {
-    public partial class FrmLoginCliente : Form
+    public partial class FrmLoginCliente : Icone
     {
         public FrmLoginCliente()
         {

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Guri_atacarejo.forms
 {
-    public partial class frmCompra_ : Form
+    public partial class frmCompra_ : Icone
     {
         private const int MESES_VALIDADE = 10;
         private readonly string _connectionString =
@@ -584,13 +584,12 @@ namespace Guri_atacarejo.forms
                 "Cancelar compra",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
+
             if (resposta == DialogResult.Yes)
             {
                 LimparTudo();
 
                 this.Hide();
-                frmPainel painel = new frmPainel();
-                painel.ShowDialog();
             }
         }
 

@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Guri_atacarejo.forms
 {
-    public partial class frmCadastroFuncionario : Form
+    public partial class frmCadastroFuncionario : Icone
     {
         
         public frmCadastroFuncionario()

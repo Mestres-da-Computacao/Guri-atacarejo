@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace Guri_atacarejo.forms
 {
-    public partial class frmRegistro_Cliente : Form
+    public partial class frmRegistro_Cliente : Icone
     {
         private static readonly string ConnectionString =
             global::Guri_atacarejo.Properties.Settings.Default.ConnectionString;
