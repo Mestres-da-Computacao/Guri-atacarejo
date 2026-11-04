@@ -29,7 +29,6 @@ namespace Guri_atacarejo.forms
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmexibcaoentidades));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.Pesquisa = new System.Windows.Forms.GroupBox();
@@ -39,6 +38,8 @@ namespace Guri_atacarejo.forms
             this.cbent = new System.Windows.Forms.ComboBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnEditar = new System.Windows.Forms.Button();
+            this.btnVoltar = new System.Windows.Forms.Button();
             this.Pesquisa.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -49,7 +50,8 @@ namespace Guri_atacarejo.forms
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1089, 30);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(817, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -62,11 +64,9 @@ namespace Guri_atacarejo.forms
             this.Pesquisa.Controls.Add(this.dataGridView1);
             this.Pesquisa.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
             this.Pesquisa.ForeColor = System.Drawing.Color.White;
-            this.Pesquisa.Location = new System.Drawing.Point(16, 47);
-            this.Pesquisa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Pesquisa.Location = new System.Drawing.Point(12, 38);
             this.Pesquisa.Name = "Pesquisa";
-            this.Pesquisa.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Pesquisa.Size = new System.Drawing.Size(715, 425);
+            this.Pesquisa.Size = new System.Drawing.Size(536, 345);
             this.Pesquisa.TabIndex = 1;
             this.Pesquisa.TabStop = false;
             this.Pesquisa.Text = "Pesquisa";
@@ -77,10 +77,9 @@ namespace Guri_atacarejo.forms
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(380, 49);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(285, 40);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(83, 25);
+            this.label2.Size = new System.Drawing.Size(65, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "O Que:";
             // 
@@ -89,10 +88,9 @@ namespace Guri_atacarejo.forms
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(21, 49);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(16, 40);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(115, 25);
+            this.label1.Size = new System.Drawing.Size(93, 20);
             this.label1.TabIndex = 3;
             this.label1.Text = "Pesquisar:";
             // 
@@ -105,10 +103,9 @@ namespace Guri_atacarejo.forms
             this.cbcar.FormattingEnabled = true;
             this.cbcar.Items.AddRange(new object[] {
             "Nenhuma Entidade Selecionada"});
-            this.cbcar.Location = new System.Drawing.Point(467, 48);
-            this.cbcar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbcar.Location = new System.Drawing.Point(350, 39);
             this.cbcar.Name = "cbcar";
-            this.cbcar.Size = new System.Drawing.Size(219, 33);
+            this.cbcar.Size = new System.Drawing.Size(165, 28);
             this.cbcar.TabIndex = 2;
             // 
             // cbent
@@ -124,55 +121,67 @@ namespace Guri_atacarejo.forms
             "Produtos",
             "Fornecedores",
             "Clientes"});
-            this.cbent.Location = new System.Drawing.Point(152, 48);
-            this.cbent.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbent.Location = new System.Drawing.Point(114, 39);
             this.cbent.Name = "cbent";
-            this.cbent.Size = new System.Drawing.Size(219, 33);
+            this.cbent.Size = new System.Drawing.Size(165, 28);
             this.cbent.TabIndex = 1;
             this.cbent.SelectedIndexChanged += new System.EventHandler(this.cbent_SelectedIndexChanged);
             // 
             // dataGridView1
             // 
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.GridColor = System.Drawing.Color.White;
-            this.dataGridView1.Location = new System.Drawing.Point(25, 95);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dataGridView1.Location = new System.Drawing.Point(19, 77);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(661, 305);
+            this.dataGridView1.Size = new System.Drawing.Size(496, 248);
             this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(739, 64);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Location = new System.Drawing.Point(554, 52);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(332, 407);
+            this.pictureBox1.Size = new System.Drawing.Size(249, 216);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
+            // btnEditar
+            // 
+            this.btnEditar.Enabled = false;
+            this.btnEditar.Location = new System.Drawing.Point(554, 331);
+            this.btnEditar.Name = "btnEditar";
+            this.btnEditar.Size = new System.Drawing.Size(125, 32);
+            this.btnEditar.TabIndex = 6;
+            this.btnEditar.Text = "Editar";
+            this.btnEditar.UseVisualStyleBackColor = true;
+            this.btnEditar.Click += new System.EventHandler(this.btnEditar_Click);
+            // 
+            // btnVoltar
+            // 
+            this.btnVoltar.Location = new System.Drawing.Point(680, 331);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.Size = new System.Drawing.Size(125, 32);
+            this.btnVoltar.TabIndex = 6;
+            this.btnVoltar.Text = "Voltar";
+            this.btnVoltar.UseVisualStyleBackColor = true;
+            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
+            // 
             // frmexibcaoentidades
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.ClientSize = new System.Drawing.Size(1089, 489);
+            this.ClientSize = new System.Drawing.Size(817, 397);
+            this.Controls.Add(this.btnVoltar);
+            this.Controls.Add(this.btnEditar);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.Pesquisa);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmexibcaoentidades";
             this.Text = "frmexibcaoentidades";
             this.Pesquisa.ResumeLayout(false);
@@ -194,5 +203,7 @@ namespace Guri_atacarejo.forms
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnEditar;
+        private System.Windows.Forms.Button btnVoltar;
     }
 }
