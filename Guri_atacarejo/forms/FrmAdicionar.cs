@@ -11,7 +11,7 @@ using Guri_atacarejo;
 
 namespace Guri_atacarejo.forms
 {
-    public partial class frmAdicionar : Form
+    public partial class frmAdicionar : Icone
     {
         private Dictionary<int, CardCarrinho> cardsNoCarrinho = new Dictionary<int, CardCarrinho>();
         private List<(int Id, string Nome, decimal Preco)> produtosDisponiveis;

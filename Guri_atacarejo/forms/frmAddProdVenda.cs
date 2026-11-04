@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace Guri_atacarejo.forms
 {
-    public partial class frmAddProdVenda : Form
+    public partial class frmAddProdVenda : Icone
     {
         public frmPainel painel;
 

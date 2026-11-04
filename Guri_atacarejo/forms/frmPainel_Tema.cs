@@ -8,7 +8,7 @@ namespace Guri_atacarejo.forms
     /// Visual moderno do painel de vendas (cartões, barra lateral).
     /// Chamado pelo construtor de frmPainel: AplicarTemaPainel() e CriarBarraLateral().
     /// </summary>
-    public partial class frmPainel
+    public partial class frmPainel : Icone
     {
         private BarraLateral barraLateral;
 

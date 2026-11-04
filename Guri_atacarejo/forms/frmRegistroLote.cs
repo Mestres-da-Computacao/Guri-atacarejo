@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Guri_atacarejo.forms
 {
-    public partial class frmRegistroLote : Form
+    public partial class frmRegistroLote : Icone
     {
         string connString =
             @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=db_250405;Integrated Security=True;";

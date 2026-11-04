@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Guri_atacarejo.forms
 {
-    public partial class frmRelatorioEstoque : Form
+    public partial class frmRelatorioEstoque : Icone
     {
         string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=db_250405;Integrated Security=True;TrustServerCertificate=True;";
 

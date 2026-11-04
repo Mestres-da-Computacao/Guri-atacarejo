@@ -12,7 +12,7 @@ using System.Windows.Forms;
 namespace Guri_atacarejo.forms
 {
     
-    public partial class frmAlterarPreco : Form
+    public partial class frmAlterarPreco : Icone
     {
         public frmPainel painel;
 

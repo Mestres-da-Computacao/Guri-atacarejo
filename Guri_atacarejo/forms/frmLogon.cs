@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace Guri_atacarejo.forms
 {
-    public partial class FrmLogon : Form
+    public partial class FrmLogon : Icone
     {
         // OBS: não precisa mais de userJacolocou / passJacolocou,
         // o placeholder agora é nativo dentro do CampoTexto.

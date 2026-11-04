@@ -11,13 +11,37 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using System.Runtime.InteropServices;
 
 namespace Guri_atacarejo.forms
 {
-    public partial class frmPainel : Form
+    public partial class frmPainel : Icone
     {
         int[] IdLotes = new int[0];
         public int qtdProd = 0; // quantidade do produto p mandar p pagina de alterar
+
+        [DllImport("dwmapi.dll")]
+        private static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int value, int size);
+        private const int DWMWA_CAPTION_COLOR = 35;
+        private const int DWMWA_TEXT_COLOR = 36;
+
+        private void DefinirCorBarra(Color fundo, Color texto)
+        {
+            // O DWM espera o formato COLORREF: 0x00BBGGRR
+            int corFundo = fundo.R | (fundo.G << 8) | (fundo.B << 16);
+            int corTexto = texto.R | (texto.G << 8) | (texto.B << 16);
+
+            DwmSetWindowAttribute(Handle, DWMWA_CAPTION_COLOR, ref corFundo, sizeof(int));
+            DwmSetWindowAttribute(Handle, DWMWA_TEXT_COLOR, ref corTexto, sizeof(int));
+        }
+
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            base.OnHandleCreated(e);
+
+            // Cor da barra superior do form
+            DefinirCorBarra(Color.FromArgb(19, 83, 46), Color.White);
+        }
 
         public frmPainel()
         {
@@ -34,7 +58,7 @@ namespace Guri_atacarejo.forms
             labelClienteRegistrado.AutoSize = false;
             labelClienteRegistrado.Size = new Size(154, 20);
             labelClienteRegistrado.AutoEllipsis = true;
-            AtualizarClienteExibido();
+            AtualizarClienteExibido("Não registrado");
 
             Console.WriteLine("Nível do funcionário: " + Sessao.NivelFuncionario);
 
@@ -48,6 +72,8 @@ namespace Guri_atacarejo.forms
                 maisOpçõesToolStripMenuItem.Visible = true;
                 forneceToolStripMenuItem.Visible = true;
             }
+
+            this.Text = "frmPainel";
 
             CriarBarraLateral();
         }
@@ -249,11 +275,11 @@ namespace Guri_atacarejo.forms
                 : "Insuficiente";
         }
 
-        private void AtualizarClienteExibido()
+        private void AtualizarClienteExibido(string nomeCliente)
         {
-            labelClienteRegistrado.Text = string.IsNullOrWhiteSpace(SessaoClientes.NomeCliente)
+            labelClienteRegistrado.Text = string.IsNullOrWhiteSpace(nomeCliente)
                 ? "Não registrado"
-                : SessaoClientes.NomeCliente;
+                : nomeCliente;
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -271,6 +297,11 @@ namespace Guri_atacarejo.forms
             if (resposta == DialogResult.Yes)
             {
                 LimparVenda();
+
+                // clientes deslogando após finalizar venda ou cancelar venda
+                AtualizarClienteExibido("Não Registrado");
+                SessaoClientes.NomeCliente = null;
+                SessaoClientes.Cpf = null;
             }
         }
 
@@ -406,10 +437,6 @@ namespace Guri_atacarejo.forms
 
                 itens.Append("]");
 
-
-
-
-
                 DataTable resultadoVenda;
                 int? idCliente = SessaoClientes.IdCliente > 0
                     ? SessaoClientes.IdCliente
@@ -422,7 +449,14 @@ namespace Guri_atacarejo.forms
                     MessageBox.Show(mensagem);
 
                     if (mensagem == "Venda realizada com sucesso!")
+                    {
                         LimparVenda();
+
+                        // clientes deslogando após finalizar venda ou cancelar venda
+                        AtualizarClienteExibido("Não registrado");
+                        SessaoClientes.NomeCliente = null;
+                        SessaoClientes.Cpf = null;
+                    }
                 }
                 else
                 {
@@ -526,7 +560,7 @@ namespace Guri_atacarejo.forms
             using (FrmLoginCliente loginClienteForm = new FrmLoginCliente())
             {
                 if (loginClienteForm.ShowDialog(this) == DialogResult.OK)
-                    AtualizarClienteExibido();
+                    AtualizarClienteExibido(SessaoClientes.NomeCliente);
             }
         }
 
@@ -535,7 +569,7 @@ namespace Guri_atacarejo.forms
             SessaoClientes.NomeCliente = null;
             SessaoClientes.Cpf = null;
             SessaoClientes.IdCliente = 0;
-            AtualizarClienteExibido();
+            AtualizarClienteExibido("Não registrado");
         }
 
         private void registrarClientesToolStripMenuItem_Click(object sender, EventArgs e)
@@ -543,7 +577,7 @@ namespace Guri_atacarejo.forms
             using (frmRegistro_Cliente registroClienteForm = new frmRegistro_Cliente())
                 registroClienteForm.ShowDialog(this);
 
-            AtualizarClienteExibido();
+            AtualizarClienteExibido(SessaoClientes.NomeCliente);
         }
 
         private void relatórioFinanceiroToolStripMenuItem_Click(object sender, EventArgs e)

@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace Guri_atacarejo.forms
 {
-    public partial class frmCompra_ : Form
+    public partial class frmCompra_ : Icone
     {
         private const int MESES_VALIDADE = 10;
         private readonly string _connectionString =
