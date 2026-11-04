@@ -93,6 +93,9 @@
             // Passwordtxtbox
             // 
             this.Passwordtxtbox.BackColor = System.Drawing.Color.Transparent;
+            this.Passwordtxtbox.CorPlaceholder = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(240)))), ((int)(((byte)(215)))));
+            this.Passwordtxtbox.CorTextoFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.Passwordtxtbox.CorTextoNormal = System.Drawing.Color.White;
             this.Passwordtxtbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Passwordtxtbox.ForeColor = System.Drawing.Color.White;
             this.Passwordtxtbox.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
@@ -105,6 +108,9 @@
             // Usertxtbox
             // 
             this.Usertxtbox.BackColor = System.Drawing.Color.Transparent;
+            this.Usertxtbox.CorPlaceholder = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(240)))), ((int)(((byte)(215)))));
+            this.Usertxtbox.CorTextoFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.Usertxtbox.CorTextoNormal = System.Drawing.Color.White;
             this.Usertxtbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Usertxtbox.ForeColor = System.Drawing.Color.White;
             this.Usertxtbox.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));

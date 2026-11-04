@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Guri_atacarejo.forms
 {
-    public partial class frmRelatorioCompra : Form
+    public partial class frmRelatorioCompra : Icone
     {
         public frmRelatorioCompra()
         {

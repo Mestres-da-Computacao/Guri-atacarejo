@@ -14,7 +14,8 @@ using System.Windows.Forms;
 
 namespace Guri_atacarejo
 {
-    public partial class SplashScreen : Form
+    // as classes precisam herdar o ícone para ele aparecer
+    public partial class SplashScreen : Icone
     {
         public SplashScreen()
         {
@@ -32,6 +33,8 @@ namespace Guri_atacarejo
             path.CloseFigure();
 
             this.Region = new Region(path);
+
+            this.Icon = Icon.FromHandle(Properties.Resources.projeto_icone.GetHicon());
         }
 
         private Timer timer;

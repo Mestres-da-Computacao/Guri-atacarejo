@@ -6,7 +6,7 @@ using Guri_atacarejo.DataSetTableAdapters;
 
 namespace Guri_atacarejo.forms
 {
-    public partial class frmRegistroFornecedor : Form
+    public partial class frmRegistroFornecedor : Icone
     {
         public frmRegistroFornecedor()
         {

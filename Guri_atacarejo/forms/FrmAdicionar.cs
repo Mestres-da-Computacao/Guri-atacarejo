@@ -11,7 +11,7 @@ using Guri_atacarejo;
 
 namespace Guri_atacarejo.forms
 {
-    public partial class frmAdicionar : Form
+    public partial class frmAdicionar : Icone
     {
         private Dictionary<int, CardCarrinho> cardsNoCarrinho = new Dictionary<int, CardCarrinho>();
         private List<(int Id, string Nome, decimal Preco)> produtosDisponiveis;
@@ -164,6 +164,16 @@ namespace Guri_atacarejo.forms
         }
 
         private void lblTitulo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void gpbNome_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

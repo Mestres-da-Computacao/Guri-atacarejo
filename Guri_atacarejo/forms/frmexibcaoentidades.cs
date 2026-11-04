@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace Guri_atacarejo.forms
 {
-    public partial class frmexibcaoentidades : Form
+    public partial class frmexibcaoentidades : Icone
     {
         private readonly string _connectionString =
             Guri_atacarejo.Properties.Settings.Default.ConnectionString;

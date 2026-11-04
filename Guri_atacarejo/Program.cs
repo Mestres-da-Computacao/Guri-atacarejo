@@ -15,9 +15,10 @@ namespace Guri_atacarejo
         [STAThread]
         static void Main()
         {
+            SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmPainel());
+            Application.Run(new frmAdicionar());
         }
     }
 }
