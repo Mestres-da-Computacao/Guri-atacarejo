@@ -8,10 +8,14 @@ namespace Guri_atacarejo
 {
     public static class ResponsividadeForm
     {
+        // folga mínima à direita quando o conteúdo do designer é maior que o contêiner
+        private const int Margem = 24;
+
         private class Original
         {
             public Rectangle Bounds;
             public float FontSize;
+            public Control Pai;
 
             // Só para rótulos: o campo que está à direita, na mesma linha,
             // e a distância original entre o rótulo e esse campo.
@@ -24,7 +28,13 @@ namespace Guri_atacarejo
             public readonly Dictionary<Control, Original> Originais =
                 new Dictionary<Control, Original>();
 
-            public Size TamanhoOriginal;
+            // "tamanho de projeto" de cada contêiner: o maior entre o tamanho dele
+            // no Load e o espaço que o conteúdo posicionado no designer realmente ocupa.
+            // Assim, se o conteúdo é maior que o contêiner (ex.: barra lateral tirou
+            // espaço), ele é encolhido para caber em vez de ser cortado.
+            public readonly Dictionary<Control, Size> ProjetoPai =
+                new Dictionary<Control, Size>();
+
             public bool Inicializado;
         }
 
@@ -37,11 +47,13 @@ namespace Guri_atacarejo
                 if (estado.Inicializado)
                     return;
 
-                estado.TamanhoOriginal = form.ClientSize;
+                form.PerformLayout();
 
                 GuardarOriginais(form, estado);
 
                 estado.Inicializado = true;
+
+                Redimensionar(form, estado);
 
                 form.WindowState = FormWindowState.Maximized;
             };
@@ -54,13 +66,29 @@ namespace Guri_atacarejo
 
         private static void GuardarOriginais(Control pai, Estado estado)
         {
+            Size projeto = pai.ClientSize;
+            int maxDireita = 0;
+            int maxBaixo = 0;
+
             foreach (Control c in pai.Controls)
             {
+                // A barra lateral cuida do próprio layout: não escalar nem ela
+                // nem o que há dentro dela (senão o botão e o título se atropelam).
+                if (c is BarraLateral)
+                    continue;
+
                 Original o = new Original
                 {
                     Bounds = c.Bounds,
-                    FontSize = c.Font.Size
+                    FontSize = c.Font.Size,
+                    Pai = pai
                 };
+
+                if (c.Dock == DockStyle.None)
+                {
+                    maxDireita = Math.Max(maxDireita, c.Right);
+                    maxBaixo = Math.Max(maxBaixo, c.Bottom);
+                }
 
                 // Rótulo com um campo ao lado: guarda o vínculo
                 if (c is Label lbl && lbl.AutoSize)
@@ -87,6 +115,17 @@ namespace Guri_atacarejo
 
                 GuardarOriginais(c, estado);
             }
+
+            bool rolagem = pai is ScrollableControl sc && sc.AutoScroll;
+            if (!rolagem)
+            {
+                if (maxDireita > projeto.Width)
+                    projeto.Width = maxDireita + Margem;
+                if (maxBaixo > projeto.Height)
+                    projeto.Height = maxBaixo + Margem;
+            }
+
+            estado.ProjetoPai[pai] = projeto;
         }
 
         private static bool EhCampo(Control c)
@@ -138,9 +177,9 @@ namespace Guri_atacarejo
                 col.FillWeight = Math.Max(1, col.Width);
 
             grid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            grid.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            grid.ColumnHeadersDefaultCellStyle.WrapMode = DataGridViewTriState.False;
             grid.ColumnHeadersHeightSizeMode =
-                DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
         }
 
         private static void AjustarLinhasGrid(DataGridView grid)
@@ -151,24 +190,41 @@ namespace Guri_atacarejo
 
             foreach (DataGridViewRow linha in grid.Rows)
                 linha.Height = altura;
+
+            // cabeçalho sempre alto o bastante para a fonte atual (evita letra cortada)
+            grid.ColumnHeadersHeightSizeMode =
+                DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            grid.ColumnHeadersHeight = grid.Font.Height + 24;
+        }
+
+        // fatores de escala do contêiner onde o controle mora
+        private static void Fatores(Estado estado, Original o, out float fx, out float fy)
+        {
+            fx = 1f;
+            fy = 1f;
+
+            Size projeto;
+            if (o.Pai == null || o.Pai.IsDisposed ||
+                !estado.ProjetoPai.TryGetValue(o.Pai, out projeto) ||
+                projeto.Width <= 0 || projeto.Height <= 0)
+                return;
+
+            Size atual = o.Pai.ClientSize;
+            if (atual.Width <= 0 || atual.Height <= 0)
+                return;
+
+            fx = (float)atual.Width / projeto.Width;
+            fy = (float)atual.Height / projeto.Height;
         }
 
         private static void Redimensionar(Form form, Estado estado)
         {
             if (!estado.Inicializado ||
-                estado.TamanhoOriginal.IsEmpty ||
                 form.ClientSize.Width == 0 ||
                 form.ClientSize.Height == 0)
                 return;
 
-            float sx = (float)form.ClientSize.Width /
-                       estado.TamanhoOriginal.Width;
-
-            float sy = (float)form.ClientSize.Height /
-                       estado.TamanhoOriginal.Height;
-
-            float sFonte = Math.Min(sx, sy);
-
+            form.PerformLayout();
             form.SuspendLayout();
 
             // 1ª passada: posição/tamanho e fonte de todos os controles
@@ -179,6 +235,10 @@ namespace Guri_atacarejo
 
                 if (c.IsDisposed)
                     continue;
+
+                float sx, sy;
+                Fatores(estado, o, out sx, out sy);
+                float sFonte = Math.Min(sx, sy);
 
                 // Rótulos com campo ao lado são posicionados na 2ª passada.
                 // Controles com Dock (ex.: MenuStrip) só têm a fonte escalada.
@@ -216,6 +276,10 @@ namespace Guri_atacarejo
 
                 if (o.Vizinho == null || c.IsDisposed || o.Vizinho.IsDisposed)
                     continue;
+
+                float sx, sy;
+                Fatores(estado, o, out sx, out sy);
+                float sFonte = Math.Min(sx, sy);
 
                 Size tamanho = c.PreferredSize;
                 int folga = (int)(o.Folga * sFonte);

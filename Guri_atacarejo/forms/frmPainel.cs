@@ -22,10 +22,9 @@ namespace Guri_atacarejo.forms
         public frmPainel()
         {
             InitializeComponent();
+            AplicarTemaPainel(); // visual moderno (frmPainel_Tema.cs)
             ResponsividadeForm.Aplicar(this);
             txtReciboDinheiro.TextChanged += txtReciboDinheiro_TextChanged;
-
-            dataGridView1.DefaultCellStyle.ForeColor = Color.Black; // texto preto
 
             // Tabelas sem a linha vazia de "nova linha" e sem a coluna de seta
             dataGridView1.AllowUserToAddRows = false;
@@ -33,7 +32,7 @@ namespace Guri_atacarejo.forms
             dataGridView1.RowHeadersVisible = false;
             dataGridView2.RowHeadersVisible = false;
             labelClienteRegistrado.AutoSize = false;
-            labelClienteRegistrado.Size = new Size(110, 20);
+            labelClienteRegistrado.Size = new Size(154, 20);
             labelClienteRegistrado.AutoEllipsis = true;
             AtualizarClienteExibido();
 
@@ -49,6 +48,8 @@ namespace Guri_atacarejo.forms
                 maisOpçõesToolStripMenuItem.Visible = true;
                 forneceToolStripMenuItem.Visible = true;
             }
+
+            CriarBarraLateral();
         }
 
         private bool TentarObterEstoque(int idLote, out int estoque, out string erro)
@@ -407,7 +408,7 @@ namespace Guri_atacarejo.forms
 
 
 
-                
+
 
                 DataTable resultadoVenda;
                 int? idCliente = SessaoClientes.IdCliente > 0
@@ -641,7 +642,7 @@ namespace Guri_atacarejo.forms
             {
                 txtReciboDinheiro.Text = "";
             }
-            
+
         }
 
         private void txtReciboDinheiro_Leave(object sender, EventArgs e)
@@ -687,6 +688,16 @@ namespace Guri_atacarejo.forms
         {
             using (frmexibcaoentidades frmexibcaoentidades = new frmexibcaoentidades())
                 frmexibcaoentidades.ShowDialog(this);
+        }
+
+        private void btnAdicionar_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnAlterar_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
