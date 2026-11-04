@@ -167,5 +167,15 @@ namespace Guri_atacarejo.forms
         {
 
         }
+
+        private void gpbNome_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
