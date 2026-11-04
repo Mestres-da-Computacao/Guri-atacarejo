@@ -1,5 +1,5 @@
-﻿using Guri_atacarejo.DataSetTableAdapters;
-using Guri_atacarejo;
+﻿using Guri_atacarejo;
+using Guri_atacarejo.DataSetTableAdapters;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -17,6 +18,28 @@ namespace Guri_atacarejo.forms
     {
         // OBS: não precisa mais de userJacolocou / passJacolocou,
         // o placeholder agora é nativo dentro do CampoTexto.
+
+        [DllImport("dwmapi.dll")]
+        private static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int value, int size);
+        private const int DWMWA_CAPTION_COLOR = 35;
+        private const int DWMWA_TEXT_COLOR = 36;
+
+        private void DefinirCorBarra(Color fundo, Color texto)
+        {
+            // O DWM espera o formato COLORREF: 0x00BBGGRR
+            int corFundo = fundo.R | (fundo.G << 8) | (fundo.B << 16);
+            int corTexto = texto.R | (texto.G << 8) | (texto.B << 16);
+
+            DwmSetWindowAttribute(Handle, DWMWA_CAPTION_COLOR, ref corFundo, sizeof(int));
+            DwmSetWindowAttribute(Handle, DWMWA_TEXT_COLOR, ref corTexto, sizeof(int));
+        }
+
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            base.OnHandleCreated(e);
+            DefinirCorBarra(Color.FromArgb(19, 83, 46), Color.White);
+        }
+
 
         public FrmLogon()
         {
@@ -38,8 +61,11 @@ namespace Guri_atacarejo.forms
             };
 
             ResponsividadeForm.Aplicar(this);
+
+            this.Text = "Login";
         }
 
+        
         private void BtnEntrar_Click(object sender, EventArgs e)
         {
             bool sucesso = Login(Usertxtbox.Text, Passwordtxtbox.Text);
