@@ -1,9 +1,11 @@
+using Microsoft.Reporting.WinForms;
 using System;
 using System.Data;
 using System.Drawing;
-using System.Windows.Forms;
 using System.Globalization;
+using System.IO;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Guri_atacarejo.forms
 {
@@ -230,7 +232,17 @@ namespace Guri_atacarejo.forms
             CarregarProdutos();
             textBox2.Clear();
         }
+        private void frmImprimirCompras_Load(object sender, EventArgs e)
+        {
+            DataSet.GA_CompraRelatorioDataTable compras;
+            using (var adapter = new DataSetTableAdapters.GA_CompraRelatorioTableAdapter())
+                compras = adapter.GetCompras(null, null); // ou passe inicio/fim do filtro
 
+            reportViewer1.LocalReport.ReportPath = Path.Combine(Application.StartupPath, "Reports", "rptCompras.rdlc");
+            reportViewer1.LocalReport.DataSources.Clear();
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("Compras", (DataTable)compras));
+            reportViewer1.RefreshReport();
+        }
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             //deslogar o funcionario com a classe sessão que esta na main
