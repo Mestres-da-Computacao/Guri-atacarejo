@@ -34,7 +34,7 @@ namespace Guri_atacarejo
 
             this.Region = new Region(path);
 
-            this.Icon = Icon.FromHandle(Properties.Resources.projeto_icone.GetHicon());
+            this.Icon = Properties.Resources.projeto_icone;
         }
 
         private Timer timer;

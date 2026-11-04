@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Guri_atacarejo.forms
@@ -7,6 +9,27 @@ namespace Guri_atacarejo.forms
     public partial class frmAddProdVenda : Icone
     {
         public frmPainel painel;
+
+        [DllImport("dwmapi.dll")]
+        private static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int value, int size);
+        private const int DWMWA_CAPTION_COLOR = 35;
+        private const int DWMWA_TEXT_COLOR = 36;
+
+        private void DefinirCorBarra(Color fundo, Color texto)
+        {
+            // O DWM espera o formato COLORREF: 0x00BBGGRR
+            int corFundo = fundo.R | (fundo.G << 8) | (fundo.B << 16);
+            int corTexto = texto.R | (texto.G << 8) | (texto.B << 16);
+
+            DwmSetWindowAttribute(Handle, DWMWA_CAPTION_COLOR, ref corFundo, sizeof(int));
+            DwmSetWindowAttribute(Handle, DWMWA_TEXT_COLOR, ref corTexto, sizeof(int));
+        }
+
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            base.OnHandleCreated(e);
+            DefinirCorBarra(Color.FromArgb(19, 83, 46), Color.White);
+        }
 
         public frmAddProdVenda(frmPainel Form)
         {
@@ -20,6 +43,8 @@ namespace Guri_atacarejo.forms
             txtID.KeyPress += txtID_KeyPress;
             txtLote.KeyPress += txtLote_KeyPress;
             txtQuantidade.KeyPress += txtQuantidade_KeyPress;
+
+            this.Text = "Adicionar Produto na Venda";
         }
 
         // Aceitar somente números no campo ID

@@ -584,13 +584,12 @@ namespace Guri_atacarejo.forms
                 "Cancelar compra",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Question);
+
             if (resposta == DialogResult.Yes)
             {
                 LimparTudo();
 
                 this.Hide();
-                frmPainel painel = new frmPainel();
-                painel.ShowDialog();
             }
         }
 

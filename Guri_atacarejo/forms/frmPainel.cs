@@ -73,7 +73,7 @@ namespace Guri_atacarejo.forms
                 forneceToolStripMenuItem.Visible = true;
             }
 
-            this.Text = "frmPainel";
+            this.Text = "Painel de vendas";
 
             CriarBarraLateral();
         }

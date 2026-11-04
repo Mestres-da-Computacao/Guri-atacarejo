@@ -103,7 +103,7 @@
             this.Passwordtxtbox.Name = "Passwordtxtbox";
             this.Passwordtxtbox.PlaceholderText = "Digite sua senha";
             this.Passwordtxtbox.Size = new System.Drawing.Size(535, 40);
-            this.Passwordtxtbox.TabIndex = 6;
+            this.Passwordtxtbox.TabIndex = 2;
             // 
             // Usertxtbox
             // 
@@ -118,7 +118,7 @@
             this.Usertxtbox.Name = "Usertxtbox";
             this.Usertxtbox.PlaceholderText = "Digite o usuário";
             this.Usertxtbox.Size = new System.Drawing.Size(535, 45);
-            this.Usertxtbox.TabIndex = 5;
+            this.Usertxtbox.TabIndex = 1;
             // 
             // FrmLogon
             // 
