@@ -216,7 +216,6 @@
     <Compile Include="forms\frmRelatorioEstoque.Designer.cs">
       <DependentUpon>frmRelatorioEstoque.cs</DependentUpon>
     </Compile>
-    <Compile Include="forms\frmRelatorioEstoqueCritico.cs" />
     <Compile Include="forms\frmRelatorioVendas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -417,6 +416,8 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="Relatorios\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
