@@ -15,7 +15,8 @@ namespace Guri_atacarejo.forms
         int idProduto = 0;          // produto que foi clicado no grid
         string nomeProduto = "";
         DataTable operacoes;        // compras e vendas do produto clicado (vazio até clicarem em um produto)
-
+        
+        private ReportViewer reportViewer1;
         public frmRelatorioEstoque()
         {
             InitializeComponent();

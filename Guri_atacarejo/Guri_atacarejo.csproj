@@ -150,6 +150,18 @@
     <Compile Include="forms\frmAlterarPreco.Designer.cs">
       <DependentUpon>frmAlterarPreco.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\frmImprimirCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmImprimirCompra.Designer.cs">
+      <DependentUpon>frmImprimirCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmImprimirEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmImprimirEstoque.Designer.cs">
+      <DependentUpon>frmImprimirEstoque.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\frmLoginCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -302,6 +314,12 @@
     <EmbeddedResource Include="forms\frmAlterarPreco.resx">
       <DependentUpon>frmAlterarPreco.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmImprimirCompra.resx">
+      <DependentUpon>frmImprimirCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmImprimirEstoque.resx">
+      <DependentUpon>frmImprimirEstoque.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmLoginCliente.resx">
       <DependentUpon>frmLoginCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -345,6 +363,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\rptCompras.rdlc" />
+    <EmbeddedResource Include="Reports\rptEstoque.rdlc" />
     <EmbeddedResource Include="RoundComboBox.resx">
       <DependentUpon>RoundComboBox.cs</DependentUpon>
     </EmbeddedResource>
@@ -414,6 +434,8 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="Relatorios\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
