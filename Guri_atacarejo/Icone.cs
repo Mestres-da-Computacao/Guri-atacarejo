@@ -10,8 +10,7 @@ namespace Guri_atacarejo
 {
     public class Icone : Form
     {
-        private static readonly Icon IconeApp =
-            Icon.FromHandle(Properties.Resources.projeto_icone.GetHicon());
+        private static readonly Icon IconeApp = Properties.Resources.projeto_icone;
 
         public Icone()
         {

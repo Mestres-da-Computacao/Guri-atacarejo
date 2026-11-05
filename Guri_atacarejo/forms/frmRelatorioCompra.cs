@@ -1,9 +1,11 @@
+using Microsoft.Reporting.WinForms;
 using System;
 using System.Data;
 using System.Drawing;
-using System.Windows.Forms;
 using System.Globalization;
+using System.IO;
 using System.Text;
+using System.Windows.Forms;
 
 namespace Guri_atacarejo.forms
 {
@@ -230,7 +232,6 @@ namespace Guri_atacarejo.forms
             CarregarProdutos();
             textBox2.Clear();
         }
-
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             //deslogar o funcionario com a classe sessão que esta na main

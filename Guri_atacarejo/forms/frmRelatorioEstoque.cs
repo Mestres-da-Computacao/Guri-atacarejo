@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Microsoft.Reporting.WinForms;
+using System;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Guri_atacarejo.forms
@@ -13,7 +15,8 @@ namespace Guri_atacarejo.forms
         int idProduto = 0;          // produto que foi clicado no grid
         string nomeProduto = "";
         DataTable operacoes;        // compras e vendas do produto clicado (vazio até clicarem em um produto)
-
+        
+        private ReportViewer reportViewer1;
         public frmRelatorioEstoque()
         {
             InitializeComponent();
@@ -286,6 +289,29 @@ namespace Guri_atacarejo.forms
                 lbl.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular);
 
             destino.Controls.Add(lbl);
+        }
+
+        private void frmImprimirEstoque_Load(object sender, EventArgs e)
+        {
+            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=db_250405;Integrated Security=True;TrustServerCertificate=True;";
+
+            string sql = @"select p.IdProduto, p.Nome, p.Preco,
+            isnull(sum(e.QuantidadeAtual), 0) as QtdEstoque
+            from GA_Produtos p
+            left join GA_Lote l on l.FKProduto = p.IdProduto
+            left join GA_Estoque e on e.FKLote = l.IdLote
+            group by p.IdProduto, p.Nome, p.Preco
+            order by p.Nome";
+
+            var dt = new DataTable();
+            using (var conn = new SqlConnection(connectionString))
+            using (var da = new SqlDataAdapter(sql, conn))
+                da.Fill(dt);
+
+            reportViewer1.LocalReport.ReportPath = Path.Combine(Application.StartupPath, "Reports", "rptEstoque.rdlc");
+            reportViewer1.LocalReport.DataSources.Clear();
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("Estoque", dt));
+            reportViewer1.RefreshReport();
         }
     }
 }

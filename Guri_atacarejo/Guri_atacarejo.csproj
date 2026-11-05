@@ -107,6 +107,12 @@
     <Compile Include="forms\frmCompra.Designer.cs">
       <DependentUpon>frmCompra.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\frmEditEntidade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmEditEntidade.Designer.cs">
+      <DependentUpon>frmEditEntidade.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\frmexibcaoentidades.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -143,6 +149,18 @@
     </Compile>
     <Compile Include="forms\frmAlterarPreco.Designer.cs">
       <DependentUpon>frmAlterarPreco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmImprimirCompra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmImprimirCompra.Designer.cs">
+      <DependentUpon>frmImprimirCompra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="forms\frmImprimirEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmImprimirEstoque.Designer.cs">
+      <DependentUpon>frmImprimirEstoque.cs</DependentUpon>
     </Compile>
     <Compile Include="forms\frmLoginCliente.cs">
       <SubType>Form</SubType>
@@ -283,6 +301,9 @@
     <EmbeddedResource Include="forms\frmCompra.resx">
       <DependentUpon>frmCompra.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmEditEntidade.resx">
+      <DependentUpon>frmEditEntidade.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="forms\frmexibcaoentidades.resx">
       <DependentUpon>frmexibcaoentidades.cs</DependentUpon>
     </EmbeddedResource>
@@ -300,6 +321,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmAlterarPreco.resx">
       <DependentUpon>frmAlterarPreco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmImprimirCompra.resx">
+      <DependentUpon>frmImprimirCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmImprimirEstoque.resx">
+      <DependentUpon>frmImprimirEstoque.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmLoginCliente.resx">
       <DependentUpon>frmLoginCliente.cs</DependentUpon>
@@ -347,6 +374,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Reports\rptCompras.rdlc" />
+    <EmbeddedResource Include="Reports\rptEstoque.rdlc" />
     <EmbeddedResource Include="RoundComboBox.resx">
       <DependentUpon>RoundComboBox.cs</DependentUpon>
     </EmbeddedResource>
