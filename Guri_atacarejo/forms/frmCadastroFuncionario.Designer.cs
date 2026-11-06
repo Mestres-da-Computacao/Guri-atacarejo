@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadastroFuncionario));
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
             this.maskedtxtTelefone = new System.Windows.Forms.MaskedTextBox();
             this.maskedtxtCpf = new System.Windows.Forms.MaskedTextBox();
@@ -37,7 +36,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.numericUpDownSalario = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.cbCargo = new System.Windows.Forms.ComboBox();
             this.cbDepartamento = new System.Windows.Forms.ComboBox();
@@ -52,10 +50,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.campoTexto1 = new Guri_atacarejo.CampoTexto();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtNome = new Guri_atacarejo.CampoTexto();
+            this.campoTexto2 = new Guri_atacarejo.CampoTexto();
+            this.campoTexto3 = new Guri_atacarejo.CampoTexto();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownSalario)).BeginInit();
             this.groupBoxGeneros.SuspendLayout();
@@ -64,10 +63,10 @@
             // 
             // pictureBoxLogo
             // 
-            this.pictureBoxLogo.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxLogo.Image")));
-            this.pictureBoxLogo.Location = new System.Drawing.Point(1051, 59);
+            this.pictureBoxLogo.Image = global::Guri_atacarejo.Properties.Resources.Logótipo_Guri_Atacarejo_Branco;
+            this.pictureBoxLogo.Location = new System.Drawing.Point(1034, 12);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(201, 406);
+            this.pictureBoxLogo.Size = new System.Drawing.Size(218, 657);
             this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxLogo.TabIndex = 24;
             this.pictureBoxLogo.TabStop = false;
@@ -166,23 +165,13 @@
             this.label8.TabIndex = 40;
             this.label8.Text = "telefone:";
             // 
-            // txtEmail
-            // 
-            this.txtEmail.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(169, 260);
-            this.txtEmail.Multiline = true;
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(261, 23);
-            this.txtEmail.TabIndex = 39;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(105, 260);
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(34, 95);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(58, 20);
+            this.label7.Size = new System.Drawing.Size(77, 25);
             this.label7.TabIndex = 38;
             this.label7.Text = "Email:";
             // 
@@ -328,50 +317,30 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(97, 302);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(25, 151);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 20);
+            this.label2.Size = new System.Drawing.Size(86, 25);
             this.label2.TabIndex = 28;
             this.label2.Text = "Senha:";
-            // 
-            // txtNome
-            // 
-            this.txtNome.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNome.Location = new System.Drawing.Point(169, 219);
-            this.txtNome.Multiline = true;
-            this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(522, 23);
-            this.txtNome.TabIndex = 27;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(35, 31);
+            this.label1.Location = new System.Drawing.Point(32, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 25);
             this.label1.TabIndex = 26;
             this.label1.Text = "Nome:";
             // 
-            // campoTexto1
-            // 
-            this.campoTexto1.BackColor = System.Drawing.Color.Transparent;
-            this.campoTexto1.CorPlaceholder = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(240)))), ((int)(((byte)(215)))));
-            this.campoTexto1.CorTextoFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.campoTexto1.CorTextoNormal = System.Drawing.Color.White;
-            this.campoTexto1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.campoTexto1.Location = new System.Drawing.Point(206, 67);
-            this.campoTexto1.Name = "campoTexto1";
-            this.campoTexto1.Size = new System.Drawing.Size(250, 40);
-            this.campoTexto1.TabIndex = 47;
-            this.campoTexto1.Text = "campoTexto1";
-            // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.campoTexto1);
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(141)))), ((int)(((byte)(60)))));
+            this.panel1.Controls.Add(this.campoTexto3);
+            this.panel1.Controls.Add(this.campoTexto2);
+            this.panel1.Controls.Add(this.txtNome);
             this.panel1.Controls.Add(this.maskedtxtTelefone);
             this.panel1.Controls.Add(this.maskedtxtCpf);
             this.panel1.Controls.Add(this.btnConfirmar);
@@ -379,7 +348,6 @@
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.numericUpDownSalario);
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.txtEmail);
             this.panel1.Controls.Add(this.label7);
             this.panel1.Controls.Add(this.cbCargo);
             this.panel1.Controls.Add(this.cbDepartamento);
@@ -391,18 +359,56 @@
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.txtSenha);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.txtNome);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1016, 657);
             this.panel1.TabIndex = 48;
             // 
+            // txtNome
+            // 
+            this.txtNome.BackColor = System.Drawing.Color.Transparent;
+            this.txtNome.CorPlaceholder = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(240)))), ((int)(((byte)(215)))));
+            this.txtNome.CorTextoFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.txtNome.CorTextoNormal = System.Drawing.Color.White;
+            this.txtNome.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.txtNome.Location = new System.Drawing.Point(119, 52);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(716, 37);
+            this.txtNome.TabIndex = 47;
+            this.txtNome.Text = "campoTexto1";
+            // 
+            // campoTexto2
+            // 
+            this.campoTexto2.BackColor = System.Drawing.Color.Transparent;
+            this.campoTexto2.CorPlaceholder = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(240)))), ((int)(((byte)(215)))));
+            this.campoTexto2.CorTextoFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.campoTexto2.CorTextoNormal = System.Drawing.Color.White;
+            this.campoTexto2.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.campoTexto2.Location = new System.Drawing.Point(120, 95);
+            this.campoTexto2.Name = "campoTexto2";
+            this.campoTexto2.Size = new System.Drawing.Size(715, 37);
+            this.campoTexto2.TabIndex = 48;
+            this.campoTexto2.Text = "campoTexto2";
+            // 
+            // campoTexto3
+            // 
+            this.campoTexto3.BackColor = System.Drawing.Color.Transparent;
+            this.campoTexto3.CorPlaceholder = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(240)))), ((int)(((byte)(215)))));
+            this.campoTexto3.CorTextoFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.campoTexto3.CorTextoNormal = System.Drawing.Color.White;
+            this.campoTexto3.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.campoTexto3.Location = new System.Drawing.Point(120, 151);
+            this.campoTexto3.Name = "campoTexto3";
+            this.campoTexto3.Size = new System.Drawing.Size(715, 37);
+            this.campoTexto3.TabIndex = 49;
+            this.campoTexto3.Text = "campoTexto3";
+            // 
             // frmCadastroFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(83)))), ((int)(((byte)(46)))));
             this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBoxLogo);
@@ -427,7 +433,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.NumericUpDown numericUpDownSalario;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox cbCargo;
         private System.Windows.Forms.ComboBox cbDepartamento;
@@ -442,9 +447,10 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtSenha;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label1;
-        private CampoTexto campoTexto1;
         private System.Windows.Forms.Panel panel1;
+        private CampoTexto txtNome;
+        private CampoTexto campoTexto3;
+        private CampoTexto campoTexto2;
     }
 }

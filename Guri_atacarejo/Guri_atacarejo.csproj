@@ -85,6 +85,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="forms\CampoBase.cs" />
+    <Compile Include="forms\CampoCombo.cs" />
+    <Compile Include="forms\CampoData.cs" />
+    <Compile Include="forms\CampoMascara.cs" />
+    <Compile Include="forms\CampoNumero.cs" />
     <Compile Include="CardCompraProduto.cs">
       <SubType>UserControl</SubType>
     </Compile>
