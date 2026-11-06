@@ -42,7 +42,7 @@
             this.lblQuantidade.AutoSize = true;
             this.lblQuantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblQuantidade.ForeColor = System.Drawing.Color.White;
-            this.lblQuantidade.Location = new System.Drawing.Point(38, 31);
+            this.lblQuantidade.Location = new System.Drawing.Point(38, 30);
             this.lblQuantidade.Name = "lblQuantidade";
             this.lblQuantidade.Size = new System.Drawing.Size(205, 39);
             this.lblQuantidade.TabIndex = 1;
@@ -111,7 +111,7 @@
             this.txtQtd.CorTextoNormal = System.Drawing.Color.White;
             this.txtQtd.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQtd.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.txtQtd.Location = new System.Drawing.Point(45, 105);
+            this.txtQtd.Location = new System.Drawing.Point(45, 85);
             this.txtQtd.Name = "txtQtd";
             this.txtQtd.Size = new System.Drawing.Size(509, 40);
             this.txtQtd.TabIndex = 5;
