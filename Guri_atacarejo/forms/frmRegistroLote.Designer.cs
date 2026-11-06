@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.ComboBoxProduto = new System.Windows.Forms.ComboBox();
+            this.comboBoxFornecedores = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.nupdDinheiro = new System.Windows.Forms.NumericUpDown();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -39,9 +41,7 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nupdDinheiro)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -50,6 +50,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.ComboBoxProduto);
+            this.groupBox1.Controls.Add(this.comboBoxFornecedores);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.nupdDinheiro);
             this.groupBox1.Controls.Add(this.groupBox2);
@@ -58,9 +60,7 @@
             this.groupBox1.Controls.Add(this.numericUpDown1);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
@@ -70,10 +70,28 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registro de Lote";
             // 
+            // ComboBoxProduto
+            // 
+            this.ComboBoxProduto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ComboBoxProduto.FormattingEnabled = true;
+            this.ComboBoxProduto.Location = new System.Drawing.Point(204, 70);
+            this.ComboBoxProduto.Name = "ComboBoxProduto";
+            this.ComboBoxProduto.Size = new System.Drawing.Size(411, 32);
+            this.ComboBoxProduto.TabIndex = 19;
+            // 
+            // comboBoxFornecedores
+            // 
+            this.comboBoxFornecedores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxFornecedores.FormattingEnabled = true;
+            this.comboBoxFornecedores.Location = new System.Drawing.Point(204, 32);
+            this.comboBoxFornecedores.Name = "comboBoxFornecedores";
+            this.comboBoxFornecedores.Size = new System.Drawing.Size(411, 32);
+            this.comboBoxFornecedores.TabIndex = 18;
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(122, 183);
+            this.label5.Location = new System.Drawing.Point(123, 178);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 24);
             this.label5.TabIndex = 17;
@@ -152,7 +170,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(103, 148);
+            this.label4.Location = new System.Drawing.Point(104, 143);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(94, 24);
             this.label4.TabIndex = 11;
@@ -188,7 +206,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 113);
+            this.label3.Location = new System.Drawing.Point(17, 109);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(181, 24);
             this.label3.TabIndex = 8;
@@ -197,34 +215,20 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(103, 79);
+            this.label2.Location = new System.Drawing.Point(103, 73);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(95, 24);
             this.label2.TabIndex = 6;
             this.label2.Text = "Produto :";
             // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(204, 38);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(411, 29);
-            this.textBox2.TabIndex = 5;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(66, 43);
+            this.label1.Location = new System.Drawing.Point(66, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(132, 24);
             this.label1.TabIndex = 4;
             this.label1.Text = "Fornecedor :";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(204, 74);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(411, 29);
-            this.textBox1.TabIndex = 0;
             // 
             // frmRegistroLote
             // 
@@ -247,10 +251,8 @@
         #endregion
 
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Button button1;
@@ -260,5 +262,7 @@
         private System.Windows.Forms.NumericUpDown nupdDinheiro;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.ComboBox ComboBoxProduto;
+        private System.Windows.Forms.ComboBox comboBoxFornecedores;
     }
 }
