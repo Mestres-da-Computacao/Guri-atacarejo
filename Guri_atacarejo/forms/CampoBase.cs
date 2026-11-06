@@ -28,6 +28,7 @@ namespace Guri_atacarejo
         private bool hoverIcone;
         private string placeholder = "";
         private ToolStripDropDown dropAtual;
+        private ToolStripControlHost dropHost;
         private DateTime fechouEm = DateTime.MinValue;
 
         // ---------- Cores ----------
@@ -174,7 +175,7 @@ namespace Guri_atacarejo
 
         protected ToolStripDropDown CriarDropDown(Control conteudo)
         {
-            var host = new ToolStripControlHost(conteudo)
+            dropHost = new ToolStripControlHost(conteudo)
             {
                 Margin = Padding.Empty,
                 Padding = Padding.Empty,
@@ -182,13 +183,22 @@ namespace Guri_atacarejo
             };
 
             dropAtual = new ToolStripDropDown { Padding = Padding.Empty };
-            dropAtual.Items.Add(host);
+            dropAtual.Items.Add(dropHost);
             dropAtual.Closed += (s, e) =>
             {
                 fechouEm = DateTime.Now;
                 AplicarFoco(txt != null ? txt.Focused : Focused);
             };
             return dropAtual;
+        }
+
+        // Para conteúdo que não calcula o próprio tamanho direito (ex.: ListBox):
+        // o dropdown passa a ter exatamente este tamanho.
+        protected void FixarTamanhoDrop(Size tamanho)
+        {
+            if (dropHost == null) return;
+            dropHost.AutoSize = false;
+            dropHost.Size = tamanho;
         }
 
         protected void FocarCampo()

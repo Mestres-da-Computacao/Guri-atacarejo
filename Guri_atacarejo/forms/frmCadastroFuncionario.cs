@@ -33,12 +33,21 @@ namespace Guri_atacarejo.forms
 
             this.Load += FormFuncionarios_Load;
 
+            txtNome.MaxLength = 100;
+            txtEmail.MaxLength = 100;
+            txtSenha.MaxLength = 255;
+
+            // SENHA COM BOLINHAS E BOTÃO DE OLHO
+            txtSenha.IsPassword = true;
+            txtSenha.MostrarSenha = false;
 
             maskedtxtCpf.Mask = "000.000.000-00";
             maskedtxtTelefone.Mask = "(00) 00000-0000";
 
-            cbDepartamento.ForeColor = Color.Black;
-            cbCargo.ForeColor = Color.Black;
+            // Data de nascimento não pode ser no futuro
+            dateTimePickerDataNasc.MaxDate = DateTime.Today;
+
+            // (as cores dos combos agora vêm do próprio CampoCombo)
         }
 
         private void FormFuncionarios_Load(object sender, EventArgs e)
@@ -91,9 +100,179 @@ namespace Guri_atacarejo.forms
             }
         }
 
-        private void maskedtxtCpf_TextChanged(object sender, EventArgs e)
+        private void btnConfirmar_Click(object sender, EventArgs e)
         {
+            if (!ValidarCampos())
+                return;
 
+            string genero =
+                radioButtonHomem.Checked ? "M" :
+                radioButtonMulher.Checked ? "F" : "O";
+
+            string telefone = maskedtxtTelefone.MaskCompleted
+                ? maskedtxtTelefone.Text
+                : null;
+
+            string email = string.IsNullOrWhiteSpace(txtEmail.Text)
+                ? null
+                : txtEmail.Text.Trim();
+
+            string nomeFuncionario = txtNome.Text.Trim();
+
+            try
+            {
+                gA_FuncionariosTableAdapter.InsertQueryFuncionarios(
+                    Convert.ToInt32(cbCargo.SelectedValue),
+                    Convert.ToInt32(cbDepartamento.SelectedValue),
+                    nomeFuncionario,
+                    maskedtxtCpf.Text,
+                    dateTimePickerDataNasc.Value.Date,
+                    genero,
+                    telefone,
+                    email,
+                    txtSenha.Text,
+                    DateTime.Today,
+                    numericUpDownSalario.Value
+                );
+
+                MessageBox.Show(
+                    "Funcionário cadastrado com sucesso!",
+                    "Sucesso",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information
+                );
+
+                LimparCampos();
+                Close();
+            }
+            catch (SqlException ex)
+                when (ex.Number == 2627 || ex.Number == 2601)
+            {
+                MessageBox.Show("Já existe um funcionário com esse CPF.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao cadastrar: " + ex.Message);
+            }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private bool ValidarCampos()
+        {
+            if (txtNome.Text.Trim().Length < 3)
+                return Erro(
+                    "Digite o nome (mínimo 3 caracteres).",
+                    txtNome
+                );
+
+            if (!maskedtxtCpf.MaskCompleted)
+                return Erro("CPF incompleto.", maskedtxtCpf);
+
+            ValidadorCPF validador = new ValidadorCPF();
+
+            if (!validador.ValidarCPF(maskedtxtCpf.Text))
+                return Erro("CPF inválido.", maskedtxtCpf);
+
+            if (!dateTimePickerDataNasc.DataValida)
+                return Erro(
+                    "Data de nascimento inválida.\nEx: 25/12/1990",
+                    dateTimePickerDataNasc
+                );
+
+            if (maskedtxtTelefone.Text.Any(char.IsDigit)
+                && !maskedtxtTelefone.MaskCompleted)
+            {
+                return Erro("Telefone incompleto.", maskedtxtTelefone);
+            }
+
+            if (txtEmail.Text.Trim() != ""
+                && !EmailValido(txtEmail.Text))
+            {
+                return Erro(
+                    "E-mail inválido ou incompleto.\nEx: nome@dominio.com",
+                    txtEmail
+                );
+            }
+
+            if (txtSenha.Text.Length < 6)
+                return Erro(
+                    "A senha deve ter pelo menos 6 caracteres.",
+                    txtSenha
+                );
+
+            if (cbDepartamento.SelectedIndex < 0
+                || cbCargo.SelectedIndex < 0)
+            {
+                return Erro(
+                    "Selecione o departamento e o cargo.",
+                    cbDepartamento
+                );
+            }
+
+            if (numericUpDownSalario.Value <= 0)
+                return Erro(
+                    "Informe um salário maior que zero.",
+                    numericUpDownSalario
+                );
+
+            if (!radioButtonHomem.Checked
+                && !radioButtonMulher.Checked
+                && !radioButtonOutro.Checked)
+            {
+                return Erro("Selecione o gênero.", radioButtonHomem);
+            }
+
+            return true;
+        }
+
+        private bool Erro(string mensagem, Control campo)
+        {
+            MessageBox.Show(
+                mensagem,
+                "Campo inválido",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Warning
+            );
+
+            campo.Focus();
+            return false;
+        }
+
+        private void LimparCampos()
+        {
+            txtNome.Text = "";
+            txtEmail.Text = "";
+            txtSenha.Text = "";
+
+            // Sempre voltar a esconder a senha
+            txtSenha.MostrarSenha = false;
+
+            maskedtxtCpf.Text = "";
+            maskedtxtTelefone.Text = "";
+
+            numericUpDownSalario.Value =
+                numericUpDownSalario.Minimum;
+
+            dateTimePickerDataNasc.Limpar();
+
+            cbDepartamento.SelectedIndex = -1;
+            cbCargo.SelectedIndex = -1;
+
+            radioButtonHomem.Checked = false;
+            radioButtonMulher.Checked = false;
+            radioButtonOutro.Checked = false;
+
+            txtNome.Focus();
+        }
+        private void maskedtxtCpf_MaskInputRejected(
+            object sender,
+            MaskInputRejectedEventArgs e)
+        { }
+
+        private void campoTexto1_TextChanged(object sender, EventArgs e) { }
     }
 }

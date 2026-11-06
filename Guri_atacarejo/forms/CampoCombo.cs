@@ -232,6 +232,7 @@ namespace Guri_atacarejo
 
             lista.ItemHeight = Math.Max(22, (int)(Height * 0.8));
             lista.Size = new Size(Width, Math.Min(itens.Count, MaxLinhas) * lista.ItemHeight);
+            FixarTamanhoDrop(lista.Size);
             hover = -1;
 
             drop.Show(this, new Point(0, Height));
