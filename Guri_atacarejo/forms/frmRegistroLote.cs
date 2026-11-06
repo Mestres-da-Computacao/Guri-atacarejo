@@ -7,9 +7,6 @@ namespace Guri_atacarejo.forms
 {
     public partial class frmRegistroLote : Icone
     {
-        string connString =
-            @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=db_250405;Integrated Security=True;";
-
         public frmRegistroLote()
         {
             InitializeComponent();
@@ -24,23 +21,55 @@ namespace Guri_atacarejo.forms
             nupdDinheiro.ThousandsSeparator = true;
 
             button1.Click += button1_Click;
+            Load += frmRegistroLote_Load;
+        }
+
+        private void frmRegistroLote_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                CarregarCombo(comboBoxFornecedores,
+                    "SELECT IdFornecedor, Nome FROM GA_Fornecedor ORDER BY Nome",
+                    "IdFornecedor");
+
+                CarregarCombo(ComboBoxProduto,
+                    "SELECT IdProduto, Nome FROM GA_Produtos ORDER BY Nome",
+                    "IdProduto");
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Erro ao carregar dados: " + ex.Message);
+            }
+        }
+
+        private void CarregarCombo(ComboBox combo, string sql, string colunaId)
+        {
+            var tabela = new DataTable();
+
+            using (var conn = new SqlConnection(Properties.Settings.Default.ConnectionString))
+            using (var da = new SqlDataAdapter(sql, conn))
+            {
+                da.Fill(tabela);
+            }
+
+            combo.DisplayMember = "Nome";
+            combo.ValueMember = colunaId;
+            combo.DataSource = tabela;
+            combo.SelectedIndex = -1; // começa sem nada selecionado
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string fornecedor = textBox2.Text.Trim();
-            string produto = textBox1.Text.Trim();
-
-            if (fornecedor.Length == 0)
+            if (comboBoxFornecedores.SelectedValue == null)
             {
-                MessageBox.Show("Informe o fornecedor.");
-                textBox2.Focus();
+                MessageBox.Show("Selecione o fornecedor.");
+                comboBoxFornecedores.Focus();
                 return;
             }
-            if (produto.Length == 0)
+            if (ComboBoxProduto.SelectedValue == null)
             {
-                MessageBox.Show("Informe o produto.");
-                textBox1.Focus();
+                MessageBox.Show("Selecione o produto.");
+                ComboBoxProduto.Focus();
                 return;
             }
             if (numericUpDown1.Value <= 0)
@@ -60,27 +89,19 @@ namespace Guri_atacarejo.forms
                 return;
             }
 
-            // GA_Produtos não tem coluna de fornecedor; o vínculo é criado em GA_Lote.
             const string sql = @"
                 INSERT INTO GA_Lote (FKFornecedores, FKProduto, Quantidade, DataValidade, [Preço])
-                SELECT
-                    (SELECT TOP 1 IdFornecedor FROM GA_Fornecedor WHERE Nome = @forn),
-                    (SELECT TOP 1 IdProduto    FROM GA_Produtos   WHERE Nome = @prod),
-                    @qtd, @validade, @preco
-                WHERE EXISTS (SELECT 1 FROM GA_Fornecedor WHERE Nome = @forn)
-                  AND EXISTS (SELECT 1 FROM GA_Produtos   WHERE Nome = @prod);";
+                VALUES (@forn, @prod, @qtd, @validade, @preco);";
 
             try
             {
-                int linhas;
-
                 using (var conn = new SqlConnection(Properties.Settings.Default.ConnectionString))
                 using (var cmd = new SqlCommand(sql, conn))
                 {
+                    cmd.Parameters.Add("@forn", SqlDbType.Int).Value = Convert.ToInt32(comboBoxFornecedores.SelectedValue);
+                    cmd.Parameters.Add("@prod", SqlDbType.Int).Value = Convert.ToInt32(ComboBoxProduto.SelectedValue);
                     cmd.Parameters.Add("@qtd", SqlDbType.Int).Value = (int)numericUpDown1.Value;
                     cmd.Parameters.Add("@validade", SqlDbType.Date).Value = dateTimePicker1.Value.Date;
-                    cmd.Parameters.Add("@forn", SqlDbType.VarChar, 100).Value = fornecedor;
-                    cmd.Parameters.Add("@prod", SqlDbType.VarChar, 100).Value = produto;
 
                     var pPreco = cmd.Parameters.Add("@preco", SqlDbType.Decimal);
                     pPreco.Precision = 10;
@@ -88,15 +109,7 @@ namespace Guri_atacarejo.forms
                     pPreco.Value = nupdDinheiro.Value;
 
                     conn.Open();
-                    linhas = cmd.ExecuteNonQuery();
-                }
-
-                if (linhas == 0)
-                {
-                    MessageBox.Show(
-                        "Fornecedor ou produto não encontrado.\n" +
-                        "Confira os nomes digitados.");
-                    return;
+                    cmd.ExecuteNonQuery();
                 }
 
                 MessageBox.Show("Lote cadastrado com sucesso!");
@@ -115,12 +128,12 @@ namespace Guri_atacarejo.forms
 
         private void LimparCampos()
         {
-            textBox2.Text = "";
-            textBox1.Text = "";
+            comboBoxFornecedores.SelectedIndex = -1;
+            ComboBoxProduto.SelectedIndex = -1;
             numericUpDown1.Value = 1;
             nupdDinheiro.Value = 0;
             dateTimePicker1.Value = DateTime.Today;
-            textBox2.Focus();
+            comboBoxFornecedores.Focus();
         }
     }
 }
