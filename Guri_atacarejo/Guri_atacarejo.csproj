@@ -238,6 +238,12 @@
     <Compile Include="forms\frmRelatorioEstoque.Designer.cs">
       <DependentUpon>frmRelatorioEstoque.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\frmRelatorioEstoqueQtd.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\frmRelatorioEstoqueQtd.Designer.cs">
+      <DependentUpon>frmRelatorioEstoqueQtd.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\frmRelatorioVendas.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -358,6 +364,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmRelatorioCompra.resx">
       <DependentUpon>frmRelatorioCompra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\frmRelatorioEstoqueQtd.resx">
+      <DependentUpon>frmRelatorioEstoqueQtd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\frmRelatorioVendas.resx">
       <DependentUpon>frmRelatorioVendas.cs</DependentUpon>
