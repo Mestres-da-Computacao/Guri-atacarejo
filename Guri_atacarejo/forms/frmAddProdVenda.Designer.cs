@@ -58,9 +58,9 @@
             this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdicionar.ForeColor = System.Drawing.Color.White;
-            this.btnAdicionar.Location = new System.Drawing.Point(313, 239);
+            this.btnAdicionar.Location = new System.Drawing.Point(302, 251);
             this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(101, 44);
+            this.btnAdicionar.Size = new System.Drawing.Size(95, 31);
             this.btnAdicionar.TabIndex = 4;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.UseVisualStyleBackColor = false;
@@ -83,9 +83,9 @@
             this.btnFinalizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFinalizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFinalizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(141)))), ((int)(((byte)(60)))));
-            this.btnFinalizar.Location = new System.Drawing.Point(179, 239);
+            this.btnFinalizar.Location = new System.Drawing.Point(201, 251);
             this.btnFinalizar.Name = "btnFinalizar";
-            this.btnFinalizar.Size = new System.Drawing.Size(101, 44);
+            this.btnFinalizar.Size = new System.Drawing.Size(95, 31);
             this.btnFinalizar.TabIndex = 5;
             this.btnFinalizar.Text = "Retornar";
             this.btnFinalizar.UseVisualStyleBackColor = false;

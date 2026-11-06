@@ -36,9 +36,9 @@
             this.lblCodigo = new System.Windows.Forms.Label();
             this.flpProdutos = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new Guri_atacarejo.CampoTexto();
             this.txtPesquisar = new Guri_atacarejo.CampoTexto();
+            this.textBox1 = new Guri_atacarejo.CampoTexto();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -55,11 +55,11 @@
             // 
             // btnConfirmar
             // 
-            this.btnConfirmar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(141)))), ((int)(((byte)(60)))));
+            this.btnConfirmar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(151)))), ((int)(((byte)(44)))));
             this.btnConfirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmar.ForeColor = System.Drawing.Color.White;
-            this.btnConfirmar.Location = new System.Drawing.Point(1139, 623);
+            this.btnConfirmar.Location = new System.Drawing.Point(1164, 623);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(143, 58);
             this.btnConfirmar.TabIndex = 16;
@@ -71,8 +71,8 @@
             this.btnCancelar.BackColor = System.Drawing.Color.White;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(141)))), ((int)(((byte)(60)))));
-            this.btnCancelar.Location = new System.Drawing.Point(990, 623);
+            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(151)))), ((int)(((byte)(44)))));
+            this.btnCancelar.Location = new System.Drawing.Point(964, 623);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(143, 58);
             this.btnCancelar.TabIndex = 15;
@@ -110,7 +110,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(151)))), ((int)(((byte)(44)))));
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(141)))), ((int)(((byte)(60)))));
             this.panel1.Controls.Add(this.txtPesquisar);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.picLogo);
@@ -125,16 +125,18 @@
             this.panel1.Size = new System.Drawing.Size(1326, 705);
             this.panel1.TabIndex = 19;
             // 
-            // label1
+            // txtPesquisar
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(15, 623);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(168, 24);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "Código do produto";
+            this.txtPesquisar.BackColor = System.Drawing.Color.Transparent;
+            this.txtPesquisar.CorPlaceholder = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(240)))), ((int)(((byte)(215)))));
+            this.txtPesquisar.CorTextoFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.txtPesquisar.CorTextoNormal = System.Drawing.Color.White;
+            this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPesquisar.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.txtPesquisar.Location = new System.Drawing.Point(552, 17);
+            this.txtPesquisar.Name = "txtPesquisar";
+            this.txtPesquisar.Size = new System.Drawing.Size(392, 40);
+            this.txtPesquisar.TabIndex = 20;
             // 
             // textBox1
             // 
@@ -150,18 +152,16 @@
             this.textBox1.TabIndex = 19;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
-            // txtPesquisar
+            // label1
             // 
-            this.txtPesquisar.BackColor = System.Drawing.Color.Transparent;
-            this.txtPesquisar.CorPlaceholder = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(240)))), ((int)(((byte)(215)))));
-            this.txtPesquisar.CorTextoFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.txtPesquisar.CorTextoNormal = System.Drawing.Color.White;
-            this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPesquisar.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.txtPesquisar.Location = new System.Drawing.Point(552, 17);
-            this.txtPesquisar.Name = "txtPesquisar";
-            this.txtPesquisar.Size = new System.Drawing.Size(392, 40);
-            this.txtPesquisar.TabIndex = 20;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(15, 623);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(168, 24);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "Código do produto";
             // 
             // frmAdicionar
             // 

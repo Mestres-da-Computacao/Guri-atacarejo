@@ -85,6 +85,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="forms\CampoBase.cs" />
+    <Compile Include="forms\CampoCombo.cs" />
+    <Compile Include="forms\CampoData.cs" />
+    <Compile Include="forms\CampoMascara.cs" />
+    <Compile Include="forms\CampoNumero.cs" />
     <Compile Include="CardCompraProduto.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -189,9 +194,6 @@
     </Compile>
     <Compile Include="forms\FrmLogon.Designer.cs">
       <DependentUpon>FrmLogon.cs</DependentUpon>
-    </Compile>
-    <Compile Include="forms\frmPainel_Tema.cs">
-      <SubType>Form</SubType>
     </Compile>
     <Compile Include="forms\frmPreviaImpressao.cs" />
     <Compile Include="forms\frmRegistroFornecedor.cs">

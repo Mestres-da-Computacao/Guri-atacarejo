@@ -30,26 +30,26 @@ namespace Guri_atacarejo.forms
         private void InitializeComponent()
         {
             this.tlpRaiz = new System.Windows.Forms.TableLayoutPanel();
+            this.pnlFiltros = new System.Windows.Forms.Panel();
+            this.cbProduto = new Guri_atacarejo.RoundComboBox();
+            this.btnAplicar = new System.Windows.Forms.Button();
+            this.btnLimpar = new System.Windows.Forms.Button();
+            this.lblProduto = new System.Windows.Forms.Label();
+            this.lblFiltros = new System.Windows.Forms.Label();
+            this.pnlRelatorio = new System.Windows.Forms.Panel();
+            this.lblAreaRelatorio = new System.Windows.Forms.Label();
             this.pnlCabecalho = new System.Windows.Forms.Panel();
-            this.lblTitulo = new System.Windows.Forms.Label();
-            this.lblSubtitulo = new System.Windows.Forms.Label();
             this.flwBotoes = new System.Windows.Forms.FlowLayoutPanel();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.btnPrevia = new System.Windows.Forms.Button();
             this.btnFechar = new System.Windows.Forms.Button();
-            this.pnlFiltros = new System.Windows.Forms.Panel();
-            this.lblFiltros = new System.Windows.Forms.Label();
-            this.lblProduto = new System.Windows.Forms.Label();
-            this.btnLimpar = new System.Windows.Forms.Button();
-            this.btnAplicar = new System.Windows.Forms.Button();
-            this.pnlRelatorio = new System.Windows.Forms.Panel();
-            this.lblAreaRelatorio = new System.Windows.Forms.Label();
-            this.cbProduto = new Guri_atacarejo.RoundComboBox();
+            this.lblSubtitulo = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.tlpRaiz.SuspendLayout();
-            this.pnlCabecalho.SuspendLayout();
-            this.flwBotoes.SuspendLayout();
             this.pnlFiltros.SuspendLayout();
             this.pnlRelatorio.SuspendLayout();
+            this.pnlCabecalho.SuspendLayout();
+            this.flwBotoes.SuspendLayout();
             this.SuspendLayout();
             // 
             // tlpRaiz
@@ -71,36 +71,105 @@ namespace Guri_atacarejo.forms
             this.tlpRaiz.TabIndex = 0;
             this.tlpRaiz.Paint += new System.Windows.Forms.PaintEventHandler(this.tlpRaiz_Paint);
             // 
+            // pnlFiltros
+            // 
+            this.pnlFiltros.Controls.Add(this.cbProduto);
+            this.pnlFiltros.Controls.Add(this.btnAplicar);
+            this.pnlFiltros.Controls.Add(this.btnLimpar);
+            this.pnlFiltros.Controls.Add(this.lblProduto);
+            this.pnlFiltros.Controls.Add(this.lblFiltros);
+            this.pnlFiltros.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlFiltros.Location = new System.Drawing.Point(24, 136);
+            this.pnlFiltros.Margin = new System.Windows.Forms.Padding(0, 0, 0, 16);
+            this.pnlFiltros.Name = "pnlFiltros";
+            this.pnlFiltros.Size = new System.Drawing.Size(1216, 100);
+            this.pnlFiltros.TabIndex = 1;
+            // 
+            // cbProduto
+            // 
+            this.cbProduto.BackColor = System.Drawing.Color.Transparent;
+            this.cbProduto.BackgroundColor = System.Drawing.Color.Transparent;
+            this.cbProduto.BorderColor = System.Drawing.Color.Silver;
+            this.cbProduto.BorderWidth = 1F;
+            this.cbProduto.Location = new System.Drawing.Point(68, 28);
+            this.cbProduto.Margin = new System.Windows.Forms.Padding(1);
+            this.cbProduto.Name = "cbProduto";
+            this.cbProduto.Radius = 10;
+            this.cbProduto.Size = new System.Drawing.Size(195, 59);
+            this.cbProduto.TabIndex = 5;
+            // 
+            // btnAplicar
+            // 
+            this.btnAplicar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAplicar.Location = new System.Drawing.Point(1047, 40);
+            this.btnAplicar.Name = "btnAplicar";
+            this.btnAplicar.Size = new System.Drawing.Size(150, 40);
+            this.btnAplicar.TabIndex = 4;
+            this.btnAplicar.Text = "Aplicar filtro";
+            this.btnAplicar.UseVisualStyleBackColor = true;
+            // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnLimpar.Location = new System.Drawing.Point(941, 40);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(100, 40);
+            this.btnLimpar.TabIndex = 3;
+            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            // 
+            // lblProduto
+            // 
+            this.lblProduto.AutoSize = true;
+            this.lblProduto.Location = new System.Drawing.Point(20, 54);
+            this.lblProduto.Name = "lblProduto";
+            this.lblProduto.Size = new System.Drawing.Size(44, 13);
+            this.lblProduto.TabIndex = 1;
+            this.lblProduto.Text = "Produto";
+            // 
+            // lblFiltros
+            // 
+            this.lblFiltros.AutoSize = true;
+            this.lblFiltros.Location = new System.Drawing.Point(20, 14);
+            this.lblFiltros.Name = "lblFiltros";
+            this.lblFiltros.Size = new System.Drawing.Size(52, 13);
+            this.lblFiltros.TabIndex = 0;
+            this.lblFiltros.Text = "FILTROS";
+            // 
+            // pnlRelatorio
+            // 
+            this.pnlRelatorio.Controls.Add(this.lblAreaRelatorio);
+            this.pnlRelatorio.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlRelatorio.Location = new System.Drawing.Point(24, 252);
+            this.pnlRelatorio.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlRelatorio.Name = "pnlRelatorio";
+            this.pnlRelatorio.Padding = new System.Windows.Forms.Padding(2);
+            this.pnlRelatorio.Size = new System.Drawing.Size(1216, 405);
+            this.pnlRelatorio.TabIndex = 2;
+            // 
+            // lblAreaRelatorio
+            // 
+            this.lblAreaRelatorio.AutoSize = true;
+            this.lblAreaRelatorio.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblAreaRelatorio.Location = new System.Drawing.Point(2, 2);
+            this.lblAreaRelatorio.Name = "lblAreaRelatorio";
+            this.lblAreaRelatorio.Size = new System.Drawing.Size(120, 13);
+            this.lblAreaRelatorio.TabIndex = 0;
+            this.lblAreaRelatorio.Text = "O relatório aparece aqui";
+            this.lblAreaRelatorio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // pnlCabecalho
             // 
             this.pnlCabecalho.Controls.Add(this.flwBotoes);
             this.pnlCabecalho.Controls.Add(this.lblSubtitulo);
             this.pnlCabecalho.Controls.Add(this.lblTitulo);
             this.pnlCabecalho.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlCabecalho.Location = new System.Drawing.Point(32, 38);
+            this.pnlCabecalho.Location = new System.Drawing.Point(24, 38);
             this.pnlCabecalho.Margin = new System.Windows.Forms.Padding(0, 22, 0, 16);
             this.pnlCabecalho.Name = "pnlCabecalho";
             this.pnlCabecalho.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
-            this.pnlCabecalho.Size = new System.Drawing.Size(1208, 82);
+            this.pnlCabecalho.Size = new System.Drawing.Size(1216, 82);
             this.pnlCabecalho.TabIndex = 0;
-            // 
-            // lblTitulo
-            // 
-            this.lblTitulo.AutoSize = true;
-            this.lblTitulo.Location = new System.Drawing.Point(20, 12);
-            this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(105, 13);
-            this.lblTitulo.TabIndex = 0;
-            this.lblTitulo.Text = "Relatório de estoque";
-            // 
-            // lblSubtitulo
-            // 
-            this.lblSubtitulo.AutoSize = true;
-            this.lblSubtitulo.Location = new System.Drawing.Point(22, 54);
-            this.lblSubtitulo.Name = "lblSubtitulo";
-            this.lblSubtitulo.Size = new System.Drawing.Size(256, 13);
-            this.lblSubtitulo.TabIndex = 1;
-            this.lblSubtitulo.Text = "Quantidade em estoque por produto • Guri Atacarejo";
             // 
             // flwBotoes
             // 
@@ -109,7 +178,7 @@ namespace Guri_atacarejo.forms
             this.flwBotoes.Controls.Add(this.btnFechar);
             this.flwBotoes.Dock = System.Windows.Forms.DockStyle.Right;
             this.flwBotoes.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flwBotoes.Location = new System.Drawing.Point(768, 0);
+            this.flwBotoes.Location = new System.Drawing.Point(776, 0);
             this.flwBotoes.Name = "flwBotoes";
             this.flwBotoes.Size = new System.Drawing.Size(420, 82);
             this.flwBotoes.TabIndex = 2;
@@ -145,92 +214,23 @@ namespace Guri_atacarejo.forms
             this.btnFechar.Text = "Fechar";
             this.btnFechar.UseVisualStyleBackColor = true;
             // 
-            // pnlFiltros
+            // lblSubtitulo
             // 
-            this.pnlFiltros.Controls.Add(this.cbProduto);
-            this.pnlFiltros.Controls.Add(this.btnAplicar);
-            this.pnlFiltros.Controls.Add(this.btnLimpar);
-            this.pnlFiltros.Controls.Add(this.lblProduto);
-            this.pnlFiltros.Controls.Add(this.lblFiltros);
-            this.pnlFiltros.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlFiltros.Location = new System.Drawing.Point(24, 120);
-            this.pnlFiltros.Margin = new System.Windows.Forms.Padding(0, 0, 0, 16);
-            this.pnlFiltros.Name = "pnlFiltros";
-            this.pnlFiltros.Size = new System.Drawing.Size(1216, 100);
-            this.pnlFiltros.TabIndex = 1;
+            this.lblSubtitulo.AutoSize = true;
+            this.lblSubtitulo.Location = new System.Drawing.Point(22, 54);
+            this.lblSubtitulo.Name = "lblSubtitulo";
+            this.lblSubtitulo.Size = new System.Drawing.Size(256, 13);
+            this.lblSubtitulo.TabIndex = 1;
+            this.lblSubtitulo.Text = "Quantidade em estoque por produto • Guri Atacarejo";
             // 
-            // lblFiltros
+            // lblTitulo
             // 
-            this.lblFiltros.AutoSize = true;
-            this.lblFiltros.Location = new System.Drawing.Point(20, 14);
-            this.lblFiltros.Name = "lblFiltros";
-            this.lblFiltros.Size = new System.Drawing.Size(52, 13);
-            this.lblFiltros.TabIndex = 0;
-            this.lblFiltros.Text = "FILTROS";
-            // 
-            // lblProduto
-            // 
-            this.lblProduto.AutoSize = true;
-            this.lblProduto.Location = new System.Drawing.Point(20, 54);
-            this.lblProduto.Name = "lblProduto";
-            this.lblProduto.Size = new System.Drawing.Size(44, 13);
-            this.lblProduto.TabIndex = 1;
-            this.lblProduto.Text = "Produto";
-            // 
-            // btnLimpar
-            // 
-            this.btnLimpar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnLimpar.Location = new System.Drawing.Point(941, 40);
-            this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(100, 40);
-            this.btnLimpar.TabIndex = 3;
-            this.btnLimpar.Text = "Limpar";
-            this.btnLimpar.UseVisualStyleBackColor = true;
-            // 
-            // btnAplicar
-            // 
-            this.btnAplicar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAplicar.Location = new System.Drawing.Point(1047, 40);
-            this.btnAplicar.Name = "btnAplicar";
-            this.btnAplicar.Size = new System.Drawing.Size(150, 40);
-            this.btnAplicar.TabIndex = 4;
-            this.btnAplicar.Text = "Aplicar filtro";
-            this.btnAplicar.UseVisualStyleBackColor = true;
-            // 
-            // pnlRelatorio
-            // 
-            this.pnlRelatorio.Controls.Add(this.lblAreaRelatorio);
-            this.pnlRelatorio.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlRelatorio.Location = new System.Drawing.Point(24, 236);
-            this.pnlRelatorio.Margin = new System.Windows.Forms.Padding(0);
-            this.pnlRelatorio.Name = "pnlRelatorio";
-            this.pnlRelatorio.Padding = new System.Windows.Forms.Padding(2);
-            this.pnlRelatorio.Size = new System.Drawing.Size(1216, 421);
-            this.pnlRelatorio.TabIndex = 2;
-            // 
-            // lblAreaRelatorio
-            // 
-            this.lblAreaRelatorio.AutoSize = true;
-            this.lblAreaRelatorio.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblAreaRelatorio.Location = new System.Drawing.Point(2, 2);
-            this.lblAreaRelatorio.Name = "lblAreaRelatorio";
-            this.lblAreaRelatorio.Size = new System.Drawing.Size(120, 13);
-            this.lblAreaRelatorio.TabIndex = 0;
-            this.lblAreaRelatorio.Text = "O relatório aparece aqui";
-            this.lblAreaRelatorio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // cbProduto
-            // 
-            this.cbProduto.BackColor = System.Drawing.Color.Transparent;
-            this.cbProduto.BackgroundColor = System.Drawing.Color.Transparent;
-            this.cbProduto.BorderColor = System.Drawing.Color.Silver;
-            this.cbProduto.BorderWidth = 1F;
-            this.cbProduto.Location = new System.Drawing.Point(68, 28);
-            this.cbProduto.Margin = new System.Windows.Forms.Padding(1);
-            this.cbProduto.Name = "cbProduto";
-            this.cbProduto.Radius = 10;
-            this.cbProduto.Size = new System.Drawing.Size(195, 59);
-            this.cbProduto.TabIndex = 5;
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Location = new System.Drawing.Point(20, 12);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(105, 13);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "Relatório de estoque";
             // 
             // frmRelatorioEstoqueQtd
             // 
@@ -244,13 +244,13 @@ namespace Guri_atacarejo.forms
             this.Text = "Relatorio de Estoque";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.tlpRaiz.ResumeLayout(false);
-            this.pnlCabecalho.ResumeLayout(false);
-            this.pnlCabecalho.PerformLayout();
-            this.flwBotoes.ResumeLayout(false);
             this.pnlFiltros.ResumeLayout(false);
             this.pnlFiltros.PerformLayout();
             this.pnlRelatorio.ResumeLayout(false);
             this.pnlRelatorio.PerformLayout();
+            this.pnlCabecalho.ResumeLayout(false);
+            this.pnlCabecalho.PerformLayout();
+            this.flwBotoes.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
