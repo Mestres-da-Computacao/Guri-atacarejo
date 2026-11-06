@@ -31,26 +31,26 @@ namespace Guri_atacarejo.forms
         {
             this.tlpRaiz = new System.Windows.Forms.TableLayoutPanel();
             this.pnlCabecalho = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.flwBotoes = new System.Windows.Forms.FlowLayoutPanel();
             this.btnFechar = new System.Windows.Forms.Button();
             this.btnPrevia = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
             this.lblSubtitulo = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.pnlFiltros = new System.Windows.Forms.Panel();
-            this.lblFiltros = new System.Windows.Forms.Label();
-            this.cbPeriodo = new System.Windows.Forms.ComboBox();
-            this.mskData = new System.Windows.Forms.MaskedTextBox();
-            this.lblLote = new System.Windows.Forms.Label();
-            this.lblProduto = new System.Windows.Forms.Label();
-            this.btnAplicar = new System.Windows.Forms.Button();
-            this.btnLimpar = new System.Windows.Forms.Button();
-            this.lblPeriodo = new System.Windows.Forms.Label();
-            this.lblData = new System.Windows.Forms.Label();
-            this.pnlRelatorio = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.lblData = new System.Windows.Forms.Label();
+            this.lblPeriodo = new System.Windows.Forms.Label();
+            this.btnLimpar = new System.Windows.Forms.Button();
+            this.btnAplicar = new System.Windows.Forms.Button();
+            this.lblProduto = new System.Windows.Forms.Label();
+            this.mskData = new System.Windows.Forms.MaskedTextBox();
+            this.cbPeriodo = new System.Windows.Forms.ComboBox();
+            this.lblLote = new System.Windows.Forms.Label();
+            this.lblFiltros = new System.Windows.Forms.Label();
+            this.pnlRelatorio = new System.Windows.Forms.Panel();
             this.tlpRaiz.SuspendLayout();
             this.pnlCabecalho.SuspendLayout();
             this.flwBotoes.SuspendLayout();
@@ -89,6 +89,13 @@ namespace Guri_atacarejo.forms
             this.pnlCabecalho.Padding = new System.Windows.Forms.Padding(20, 0, 20, 0);
             this.pnlCabecalho.Size = new System.Drawing.Size(1100, 88);
             this.pnlCabecalho.TabIndex = 0;
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(3, 84);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1094, 66);
+            this.panel1.TabIndex = 1;
             // 
             // flwBotoes
             // 
@@ -153,13 +160,6 @@ namespace Guri_atacarejo.forms
             this.lblTitulo.TabIndex = 0;
             this.lblTitulo.Text = "Relatório de Vendas";
             // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(3, 84);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1094, 66);
-            this.panel1.TabIndex = 1;
-            // 
             // pnlFiltros
             // 
             this.pnlFiltros.Controls.Add(this.comboBox2);
@@ -180,107 +180,20 @@ namespace Guri_atacarejo.forms
             this.pnlFiltros.Size = new System.Drawing.Size(1100, 92);
             this.pnlFiltros.TabIndex = 1;
             // 
-            // lblFiltros
+            // comboBox2
             // 
-            this.lblFiltros.AutoSize = true;
-            this.lblFiltros.Location = new System.Drawing.Point(20, 14);
-            this.lblFiltros.Name = "lblFiltros";
-            this.lblFiltros.Size = new System.Drawing.Size(54, 17);
-            this.lblFiltros.TabIndex = 1;
-            this.lblFiltros.Text = "FILTROS";
-            // 
-            // cbPeriodo
-            // 
-            this.cbPeriodo.BackColor = System.Drawing.SystemColors.Control;
-            this.cbPeriodo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbPeriodo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbPeriodo.FormattingEnabled = true;
-            this.cbPeriodo.Items.AddRange(new object[] {
+            this.comboBox2.BackColor = System.Drawing.SystemColors.Control;
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Items.AddRange(new object[] {
             "Dia",
             "Mês",
             "Ano"});
-            this.cbPeriodo.Location = new System.Drawing.Point(98, 53);
-            this.cbPeriodo.Name = "cbPeriodo";
-            this.cbPeriodo.Size = new System.Drawing.Size(121, 25);
-            this.cbPeriodo.TabIndex = 2;
-            // 
-            // mskData
-            // 
-            this.mskData.BackColor = System.Drawing.SystemColors.Control;
-            this.mskData.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.mskData.Location = new System.Drawing.Point(279, 53);
-            this.mskData.Mask = "00/00/0000";
-            this.mskData.Name = "mskData";
-            this.mskData.Size = new System.Drawing.Size(79, 18);
-            this.mskData.TabIndex = 3;
-            // 
-            // lblLote
-            // 
-            this.lblLote.AutoSize = true;
-            this.lblLote.Location = new System.Drawing.Point(364, 61);
-            this.lblLote.Name = "lblLote";
-            this.lblLote.Size = new System.Drawing.Size(40, 17);
-            this.lblLote.TabIndex = 2;
-            this.lblLote.Text = "Lote :";
-            // 
-            // lblProduto
-            // 
-            this.lblProduto.AutoSize = true;
-            this.lblProduto.Location = new System.Drawing.Point(548, 61);
-            this.lblProduto.Name = "lblProduto";
-            this.lblProduto.Size = new System.Drawing.Size(62, 17);
-            this.lblProduto.TabIndex = 6;
-            this.lblProduto.Text = "Produto :";
-            // 
-            // btnAplicar
-            // 
-            this.btnAplicar.Location = new System.Drawing.Point(765, 37);
-            this.btnAplicar.Name = "btnAplicar";
-            this.btnAplicar.Padding = new System.Windows.Forms.Padding(8, 8, 0, 0);
-            this.btnAplicar.Size = new System.Drawing.Size(130, 44);
-            this.btnAplicar.TabIndex = 7;
-            this.btnAplicar.Text = "Aplicar";
-            this.btnAplicar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnAplicar.UseVisualStyleBackColor = true;
-            // 
-            // btnLimpar
-            // 
-            this.btnLimpar.Location = new System.Drawing.Point(901, 37);
-            this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Padding = new System.Windows.Forms.Padding(8, 8, 0, 0);
-            this.btnLimpar.Size = new System.Drawing.Size(130, 44);
-            this.btnLimpar.TabIndex = 8;
-            this.btnLimpar.Text = "Limpar";
-            this.btnLimpar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnLimpar.UseVisualStyleBackColor = true;
-            // 
-            // lblPeriodo
-            // 
-            this.lblPeriodo.AutoSize = true;
-            this.lblPeriodo.Location = new System.Drawing.Point(20, 59);
-            this.lblPeriodo.Name = "lblPeriodo";
-            this.lblPeriodo.Size = new System.Drawing.Size(72, 17);
-            this.lblPeriodo.TabIndex = 9;
-            this.lblPeriodo.Text = "Filtrar Por :";
-            // 
-            // lblData
-            // 
-            this.lblData.AutoSize = true;
-            this.lblData.Location = new System.Drawing.Point(228, 59);
-            this.lblData.Name = "lblData";
-            this.lblData.Size = new System.Drawing.Size(45, 17);
-            this.lblData.TabIndex = 10;
-            this.lblData.Text = "Valor :";
-            // 
-            // pnlRelatorio
-            // 
-            this.pnlRelatorio.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlRelatorio.Location = new System.Drawing.Point(24, 228);
-            this.pnlRelatorio.Margin = new System.Windows.Forms.Padding(0);
-            this.pnlRelatorio.Name = "pnlRelatorio";
-            this.pnlRelatorio.Padding = new System.Windows.Forms.Padding(2);
-            this.pnlRelatorio.Size = new System.Drawing.Size(1100, 497);
-            this.pnlRelatorio.TabIndex = 2;
+            this.comboBox2.Location = new System.Drawing.Point(616, 53);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(128, 25);
+            this.comboBox2.TabIndex = 14;
             // 
             // comboBox1
             // 
@@ -297,20 +210,107 @@ namespace Guri_atacarejo.forms
             this.comboBox1.Size = new System.Drawing.Size(132, 25);
             this.comboBox1.TabIndex = 13;
             // 
-            // comboBox2
+            // lblData
             // 
-            this.comboBox2.BackColor = System.Drawing.SystemColors.Control;
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Items.AddRange(new object[] {
+            this.lblData.AutoSize = true;
+            this.lblData.Location = new System.Drawing.Point(228, 59);
+            this.lblData.Name = "lblData";
+            this.lblData.Size = new System.Drawing.Size(45, 17);
+            this.lblData.TabIndex = 10;
+            this.lblData.Text = "Valor :";
+            // 
+            // lblPeriodo
+            // 
+            this.lblPeriodo.AutoSize = true;
+            this.lblPeriodo.Location = new System.Drawing.Point(20, 59);
+            this.lblPeriodo.Name = "lblPeriodo";
+            this.lblPeriodo.Size = new System.Drawing.Size(72, 17);
+            this.lblPeriodo.TabIndex = 9;
+            this.lblPeriodo.Text = "Filtrar Por :";
+            // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Location = new System.Drawing.Point(901, 37);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Padding = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.btnLimpar.Size = new System.Drawing.Size(130, 44);
+            this.btnLimpar.TabIndex = 8;
+            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            // 
+            // btnAplicar
+            // 
+            this.btnAplicar.Location = new System.Drawing.Point(765, 37);
+            this.btnAplicar.Name = "btnAplicar";
+            this.btnAplicar.Padding = new System.Windows.Forms.Padding(8, 8, 0, 0);
+            this.btnAplicar.Size = new System.Drawing.Size(130, 44);
+            this.btnAplicar.TabIndex = 7;
+            this.btnAplicar.Text = "Aplicar";
+            this.btnAplicar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnAplicar.UseVisualStyleBackColor = true;
+            // 
+            // lblProduto
+            // 
+            this.lblProduto.AutoSize = true;
+            this.lblProduto.Location = new System.Drawing.Point(548, 61);
+            this.lblProduto.Name = "lblProduto";
+            this.lblProduto.Size = new System.Drawing.Size(62, 17);
+            this.lblProduto.TabIndex = 6;
+            this.lblProduto.Text = "Produto :";
+            // 
+            // mskData
+            // 
+            this.mskData.BackColor = System.Drawing.SystemColors.Control;
+            this.mskData.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.mskData.Location = new System.Drawing.Point(279, 53);
+            this.mskData.Mask = "00/00/0000";
+            this.mskData.Name = "mskData";
+            this.mskData.Size = new System.Drawing.Size(79, 18);
+            this.mskData.TabIndex = 3;
+            // 
+            // cbPeriodo
+            // 
+            this.cbPeriodo.BackColor = System.Drawing.SystemColors.Control;
+            this.cbPeriodo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPeriodo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbPeriodo.FormattingEnabled = true;
+            this.cbPeriodo.Items.AddRange(new object[] {
             "Dia",
             "Mês",
             "Ano"});
-            this.comboBox2.Location = new System.Drawing.Point(616, 53);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(128, 25);
-            this.comboBox2.TabIndex = 14;
+            this.cbPeriodo.Location = new System.Drawing.Point(98, 53);
+            this.cbPeriodo.Name = "cbPeriodo";
+            this.cbPeriodo.Size = new System.Drawing.Size(121, 25);
+            this.cbPeriodo.TabIndex = 2;
+            // 
+            // lblLote
+            // 
+            this.lblLote.AutoSize = true;
+            this.lblLote.Location = new System.Drawing.Point(364, 61);
+            this.lblLote.Name = "lblLote";
+            this.lblLote.Size = new System.Drawing.Size(40, 17);
+            this.lblLote.TabIndex = 2;
+            this.lblLote.Text = "Lote :";
+            // 
+            // lblFiltros
+            // 
+            this.lblFiltros.AutoSize = true;
+            this.lblFiltros.Location = new System.Drawing.Point(20, 14);
+            this.lblFiltros.Name = "lblFiltros";
+            this.lblFiltros.Size = new System.Drawing.Size(54, 17);
+            this.lblFiltros.TabIndex = 1;
+            this.lblFiltros.Text = "FILTROS";
+            // 
+            // pnlRelatorio
+            // 
+            this.pnlRelatorio.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlRelatorio.Location = new System.Drawing.Point(24, 228);
+            this.pnlRelatorio.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlRelatorio.Name = "pnlRelatorio";
+            this.pnlRelatorio.Padding = new System.Windows.Forms.Padding(2);
+            this.pnlRelatorio.Size = new System.Drawing.Size(1100, 497);
+            this.pnlRelatorio.TabIndex = 2;
             // 
             // frmRelatorioVendas
             // 
