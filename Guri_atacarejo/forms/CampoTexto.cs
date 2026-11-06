@@ -279,7 +279,8 @@ namespace Guri_atacarejo
             float w = r.Width;
             float off = r.Height * 0.65f;
 
-            Color cor = hoverOlho ? lineColor : Color.FromArgb(120, lineColor);
+            Color corBase = focado ? corTextoFoco : corTextoNormal;
+            Color cor = hoverOlho ? corBase : Color.FromArgb(170, corBase);
 
             using (var pen = new Pen(cor, 1.8f) { StartCap = LineCap.Round, EndCap = LineCap.Round })
             using (var path = new GraphicsPath())

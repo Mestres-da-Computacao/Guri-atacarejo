@@ -91,6 +91,9 @@ namespace Guri_atacarejo.forms
             }
         }
 
-        
+        private void maskedtxtCpf_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
