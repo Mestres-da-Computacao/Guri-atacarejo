@@ -1,32 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Guri_atacarejo.forms
 {
     public partial class frmexibcaoentidades : Icone
     {
-        string tipo = "";
-        private readonly string _connectionString =
-            Guri_atacarejo.Properties.Settings.Default.ConnectionString;
-        private DataTable _dadosEntidade;
-
-        // id -> nome, usados só para exibir nas colunas FK
-        private Dictionary<string, string> _nomesCargos = new Dictionary<string, string>();
-        private Dictionary<string, string> _nomesDepartamentos = new Dictionary<string, string>();
-        private Dictionary<string, string> _nomesCategorias = new Dictionary<string, string>();
-
-        [DllImport("dwmapi.dll")]
+        // ---- Barra de título colorida (Windows 11) ----
+        [System.Runtime.InteropServices.DllImport("dwmapi.dll")]
         private static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int value, int size);
         private const int DWMWA_CAPTION_COLOR = 35;
         private const int DWMWA_TEXT_COLOR = 36;
 
-        private void DefinirCorBarra(Color fundo, Color texto)
+        private void DefinirCorBarra(System.Drawing.Color fundo, System.Drawing.Color texto)
         {
             // O DWM espera o formato COLORREF: 0x00BBGGRR
             int corFundo = fundo.R | (fundo.G << 8) | (fundo.B << 16);
@@ -40,9 +29,16 @@ namespace Guri_atacarejo.forms
         {
             base.OnHandleCreated(e);
 
-            // Cor da barra superior do form
-            DefinirCorBarra(Color.FromArgb(19, 83, 46), Color.White);
+            // Barra do form com a mesma cor do fundo; texto branco (ou preto se o fundo for claro)
+            System.Drawing.Color fundo = BackColor;
+            bool escuro = fundo.GetBrightness() < 0.6f;
+            DefinirCorBarra(fundo, escuro ? System.Drawing.Color.White : System.Drawing.Color.Black);
         }
+
+        string tipo = "";
+        private readonly string _connectionString =
+            Guri_atacarejo.Properties.Settings.Default.ConnectionString;
+        private DataTable _dadosEntidade;
 
         public frmexibcaoentidades()
         {
@@ -57,11 +53,8 @@ namespace Guri_atacarejo.forms
             dataGridView1.AutoGenerateColumns = true;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.MultiSelect = false;
-            dataGridView1.CellFormatting += dataGridView1_CellFormatting;
 
             cbent.SelectedIndex = 0;
-
-            this.Text = "Exibição de Entidades";
         }
 
         private void cbent_SelectedIndexChanged(object sender, EventArgs e)
@@ -73,24 +66,24 @@ namespace Guri_atacarejo.forms
                 case 0:
                     cbcar.Items.AddRange(new object[]
                     {
-                        "Tudo", "Id", "Cargo", "Departamento",
-                        "Nome", "CPF", "Data de Nascimento", "Genero", "Telefone",
-                        "Email", "Data de emissao", "Salario", "Status de Funcionamento"
+                        "Tudo", "IdFuncionario", "FKCargo", "FKDepartamento",
+                        "Nome", "CPF", "DataNascimento", "Genero", "Telefone",
+                        "Email", "DataEmissao", "Salario", "StatusFuncionamento"
                     });
                     break;
 
                 case 1:
                     cbcar.Items.AddRange(new object[]
                     {
-                        "Tudo", "Id", "Categoria",
-                        "Nome", "Unidade de Medida", "Preço"
+                        "Tudo", "IdProduto", "FKCategoria",
+                        "Nome", "UnidadeMedida", "Preco"
                     });
                     break;
 
                 case 2:
                     cbcar.Items.AddRange(new object[]
                     {
-                        "Tudo", "Id", "Nome", "CNPJ",
+                        "Tudo", "IdFornecedor", "Nome", "CNPJ",
                         "Email", "Telefone", "Endereco"
                     });
                     break;
@@ -98,9 +91,9 @@ namespace Guri_atacarejo.forms
                 case 3:
                     cbcar.Items.AddRange(new object[]
                     {
-                        "Tudo", "Id", "Nome", "CPF", "Gênero",
-                        "Email", "Celular", "Nivel de Fidelidade",
-                        "Total de Compras Acumuladas"
+                        "Tudo", "IdCliente", "Nome", "CPF", "Genero",
+                        "Email", "Celular", "NivelFidelidade",
+                        "TotalComprasAcumuladas"
                     });
                     break;
 
@@ -119,89 +112,6 @@ namespace Guri_atacarejo.forms
         private void cbcar_SelectedIndexChanged(object sender, EventArgs e)
         {
             AtualizarColunasVisiveis();
-        }
-
-        // Lê as tabelas de apoio da entidade selecionada e monta os dicionários id -> nome.
-        // Retorna false se der erro (já mostra a mensagem).
-        private bool CarregarNomesFK()
-        {
-            var cargos = new Dictionary<string, string>();
-            var departamentos = new Dictionary<string, string>();
-            var categorias = new Dictionary<string, string>();
-
-            try
-            {
-                using (var conexao = new SqlConnection(_connectionString))
-                {
-                    conexao.Open();
-
-                    if (cbent.SelectedIndex == 0)   // Funcionários
-                    {
-                        PreencherDicionario(conexao,
-                            "SELECT IdCargo, Nome FROM GA_Cargos", cargos);
-                        PreencherDicionario(conexao,
-                            "SELECT IdDepartamento, Nome FROM GA_Departamentos", departamentos);
-                    }
-                    else if (cbent.SelectedIndex == 1)   // Produtos
-                    {
-                        PreencherDicionario(conexao,
-                            "SELECT IdCategoria, Nome FROM GA_Categoria", categorias);
-                    }
-                }
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(
-                    "Não foi possível carregar os nomes de apoio: " + ex.Message,
-                    "Erro ao carregar dados",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-                return false;
-            }
-
-            _nomesCargos = cargos;
-            _nomesDepartamentos = departamentos;
-            _nomesCategorias = categorias;
-            return true;
-        }
-
-        private static void PreencherDicionario(SqlConnection conexao, string sql,
-            Dictionary<string, string> destino)
-        {
-            using (var cmd = new SqlCommand(sql, conexao))
-            using (var leitor = cmd.ExecuteReader())
-            {
-                while (leitor.Read())
-                    destino[leitor[0].ToString()] = leitor[1].ToString();
-            }
-        }
-
-        // Troca, só na exibição, o ID pelo nome nas colunas FK.
-        // O valor real da célula (o ID) continua intacto no DataTable.
-        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
-        {
-            if (e.RowIndex < 0 || e.Value == null || e.Value == DBNull.Value)
-                return;
-
-            string coluna = dataGridView1.Columns[e.ColumnIndex].DataPropertyName;
-            string id = e.Value.ToString();
-            string nome;
-
-            if (coluna == "FKCargo" && _nomesCargos.TryGetValue(id, out nome))
-            {
-                e.Value = nome;
-                e.FormattingApplied = true;
-            }
-            else if (coluna == "FKDepartamento" && _nomesDepartamentos.TryGetValue(id, out nome))
-            {
-                e.Value = nome;
-                e.FormattingApplied = true;
-            }
-            else if (coluna == "FKCategoria" && _nomesCategorias.TryGetValue(id, out nome))
-            {
-                e.Value = nome;
-                e.FormattingApplied = true;
-            }
         }
 
         private void CarregarEntidade()
@@ -237,14 +147,6 @@ namespace Guri_atacarejo.forms
                     _dadosEntidade = null;
                     dataGridView1.DataSource = null;
                     return;
-            }
-
-            // funcionários e produtos: carrega os nomes de apoio antes de preencher a grade
-            if ((cbent.SelectedIndex == 0 || cbent.SelectedIndex == 1) && !CarregarNomesFK())
-            {
-                _dadosEntidade = null;
-                dataGridView1.DataSource = null;
-                return;
             }
 
             var dados = new DataTable();
@@ -284,89 +186,17 @@ namespace Guri_atacarejo.forms
                 return;
             }
 
-            AjustarCabecalhos();   // antes do loop: o filtro compara com o HeaderText
-
             string atributoSelecionado = cbcar.SelectedItem as string;
             bool mostrarTudo = cbcar.SelectedIndex <= 0;
 
-            // restaura a ordem original das colunas (caso o Nome tenha sido movido antes)
-            foreach (DataGridViewColumn coluna in dataGridView1.Columns)
-                coluna.DisplayIndex = coluna.Index;
-
             foreach (DataGridViewColumn coluna in dataGridView1.Columns)
             {
-                bool ehNome = Igual(coluna.DataPropertyName, "Nome");
-
                 coluna.Visible = mostrarTudo ||
-                                 ehNome ||   // o Nome sempre aparece, para identificar cada registro
-                                 Igual(coluna.HeaderText, atributoSelecionado) ||
-                                 Igual(coluna.DataPropertyName, atributoSelecionado) ||
-                                 Igual(coluna.Name, atributoSelecionado);
-            }
-
-            // com filtro, o Nome vai para a primeira posição
-            if (!mostrarTudo)
-            {
-                foreach (DataGridViewColumn coluna in dataGridView1.Columns)
-                {
-                    if (Igual(coluna.DataPropertyName, "Nome"))
-                    {
-                        coluna.DisplayIndex = 0;
-                        break;
-                    }
-                }
+                                 coluna.DataPropertyName == atributoSelecionado ||
+                                 coluna.Name == atributoSelecionado;
             }
 
             AjustarColunas();
-        }
-
-        // comparação sem diferenciar maiúsculas/minúsculas ("Id" == "ID")
-        private static bool Igual(string a, string b)
-        {
-            return string.Equals(a, b, StringComparison.OrdinalIgnoreCase);
-        }
-
-        // Títulos exibidos acima das colunas. Cada título é igual ao texto
-        // do item correspondente no combo "O Que".
-        private void AjustarCabecalhos()
-        {
-            DataGridView g = dataGridView1;
-
-            switch (cbent.SelectedIndex)
-            {
-                case 0:   // Funcionários
-                    DefinirCabecalho(g, "IdFuncionario", "ID");
-                    DefinirCabecalho(g, "FKCargo", "Cargo");
-                    DefinirCabecalho(g, "FKDepartamento", "Departamento");
-                    DefinirCabecalho(g, "DataNascimento", "Data de Nascimento");
-                    DefinirCabecalho(g, "DataEmissao", "Data de emissao");
-                    DefinirCabecalho(g, "StatusFuncionamento", "Status de Funcionamento");
-                    break;
-
-                case 1:   // Produtos
-                    DefinirCabecalho(g, "IdProduto", "ID");
-                    DefinirCabecalho(g, "FKCategoria", "Categoria");
-                    DefinirCabecalho(g, "UnidadeMedida", "Unidade de Medida");
-                    DefinirCabecalho(g, "Preco", "Preço");
-                    break;
-
-                case 2:   // Fornecedores
-                    DefinirCabecalho(g, "IdFornecedor", "ID");
-                    break;
-
-                case 3:   // Clientes
-                    DefinirCabecalho(g, "IdCliente", "ID");
-                    DefinirCabecalho(g, "Genero", "Gênero");
-                    DefinirCabecalho(g, "NivelFidelidade", "Nivel de Fidelidade");
-                    DefinirCabecalho(g, "TotalComprasAcumuladas", "Total de Compras Acumuladas");
-                    break;
-            }
-        }
-
-        private static void DefinirCabecalho(DataGridView g, string coluna, string titulo)
-        {
-            if (g.Columns.Contains(coluna))
-                g.Columns[coluna].HeaderText = titulo;
         }
 
         // Colunas do tamanho do conteúdo (sem "..."); se sobrar espaço, esticam para
