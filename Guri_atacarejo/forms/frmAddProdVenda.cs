@@ -35,8 +35,6 @@ namespace Guri_atacarejo.forms
         {
             InitializeComponent();
 
-            ResponsividadeForm.Aplicar(this);
-
             painel = Form;
 
             // Conectar os eventos de teclado
