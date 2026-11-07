@@ -7,6 +7,10 @@ namespace Guri_atacarejo.forms
 {
     public partial class frmRegistroLote : Icone
     {
+        // ATENCAO: troque "campoData1" pelo nome real do controle CampoData
+        // no designer (clique nele e veja a propriedade (Name)).
+        // Ele substitui o antigo dateTimePicker1.
+
         public frmRegistroLote()
         {
             InitializeComponent();
@@ -14,11 +18,11 @@ namespace Guri_atacarejo.forms
             ResponsividadeForm.Aplicar(this);
 
             // Configuração do campo de custo
+            // Increment e ThousandsSeparator removidos: CampoNumero nao tem essas propriedades.
+            // (Se quiser, veja o final da resposta para expor na classe.)
             nupdDinheiro.DecimalPlaces = 2;
             nupdDinheiro.Minimum = 0;
             nupdDinheiro.Maximum = 99999999.99M;
-            nupdDinheiro.Increment = 0.50M;
-            nupdDinheiro.ThousandsSeparator = true;
 
             button1.Click += button1_Click;
             Load += frmRegistroLote_Load;
@@ -42,7 +46,8 @@ namespace Guri_atacarejo.forms
             }
         }
 
-        private void CarregarCombo(ComboBox combo, string sql, string colunaId)
+        // Parametro trocado de ComboBox para CampoCombo (era o erro CS1503)
+        private void CarregarCombo(CampoCombo combo, string sql, string colunaId)
         {
             var tabela = new DataTable();
 
@@ -83,7 +88,7 @@ namespace Guri_atacarejo.forms
                 nupdDinheiro.Focus();
                 return;
             }
-            if (dateTimePicker1.Value.Date < DateTime.Today)
+            if (campoData1.Value.Date < DateTime.Today)
             {
                 MessageBox.Show("A data de validade não pode ser anterior a hoje.");
                 return;
@@ -101,7 +106,7 @@ namespace Guri_atacarejo.forms
                     cmd.Parameters.Add("@forn", SqlDbType.Int).Value = Convert.ToInt32(comboBoxFornecedores.SelectedValue);
                     cmd.Parameters.Add("@prod", SqlDbType.Int).Value = Convert.ToInt32(ComboBoxProduto.SelectedValue);
                     cmd.Parameters.Add("@qtd", SqlDbType.Int).Value = (int)numericUpDown1.Value;
-                    cmd.Parameters.Add("@validade", SqlDbType.Date).Value = dateTimePicker1.Value.Date;
+                    cmd.Parameters.Add("@validade", SqlDbType.Date).Value = campoData1.Value.Date;
 
                     var pPreco = cmd.Parameters.Add("@preco", SqlDbType.Decimal);
                     pPreco.Precision = 10;
@@ -132,7 +137,7 @@ namespace Guri_atacarejo.forms
             ComboBoxProduto.SelectedIndex = -1;
             numericUpDown1.Value = 1;
             nupdDinheiro.Value = 0;
-            dateTimePicker1.Value = DateTime.Today;
+            campoData1.Value = DateTime.Today;
             comboBoxFornecedores.Focus();
         }
     }

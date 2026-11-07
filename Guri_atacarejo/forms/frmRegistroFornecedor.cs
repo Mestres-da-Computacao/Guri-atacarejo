@@ -18,13 +18,13 @@ namespace Guri_atacarejo.forms
             textBox1.KeyPress += textBox1_KeyPress;
             textBox1.TextChanged += textBox1_TextChanged;
 
+            // PromptChar removido: CampoMascara nao expoe essa propriedade.
+            // Se quiser '_', defina dentro da classe CampoMascara.
             maskedTextBox1.Mask = "00.000.000/0000-00";
-            maskedTextBox1.PromptChar = '_';
 
             textBox2.MaxLength = 100;
 
             maskedTextBox2.Mask = "(00) 00000-0000";
-            maskedTextBox2.PromptChar = '_';
 
             textBox3.MaxLength = 200;
         }
@@ -37,11 +37,12 @@ namespace Guri_atacarejo.forms
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+            // Remove digitos colados (ex.: Ctrl+V). SelectionStart removido,
+            // pois CampoTexto nao expoe essa propriedade.
             if (!textBox1.Text.Any(char.IsDigit))
                 return;
 
             textBox1.Text = new string(textBox1.Text.Where(caractere => !char.IsDigit(caractere)).ToArray());
-            textBox1.SelectionStart = textBox1.Text.Length;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -92,9 +93,10 @@ namespace Guri_atacarejo.forms
 
             if (!maskedTextBox1.MaskCompleted)
                 return Erro("Informe um CNPJ completo.", maskedTextBox1);
-            ValidadorCPF validador = new ValidadorCPF();
-            if (!validador.ValidarCPF(maskedTextBox1.Text))
+
+            if (!ValidarCNPJ(maskedTextBox1.Text))
                 return Erro("Informe um CNPJ válido.", maskedTextBox1);
+
             if (string.IsNullOrWhiteSpace(textBox3.Text))
                 return Erro("Informe o endereço do fornecedor.", textBox3);
 
@@ -108,13 +110,47 @@ namespace Guri_atacarejo.forms
             return emailValido || Erro("Digite um e-mail válido com @ e domínio .com.", textBox2);
         }
 
+        // Validador de CNPJ (o ValidadorCPF nao serve: CPF tem 11 digitos, CNPJ tem 14)
+        private static bool ValidarCNPJ(string cnpj)
+        {
+            string digitos = new string((cnpj ?? "").Where(char.IsDigit).ToArray());
+
+            if (digitos.Length != 14)
+                return false;
+
+            // Rejeita sequencias repetidas (00000000000000, 11111111111111, ...)
+            if (digitos.Distinct().Count() == 1)
+                return false;
+
+            int[] peso1 = { 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+            int[] peso2 = { 6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2 };
+
+            int d1 = CalcularDigitoCNPJ(digitos, peso1);
+            int d2 = CalcularDigitoCNPJ(digitos, peso2);
+
+            return digitos[12] - '0' == d1 && digitos[13] - '0' == d2;
+        }
+
+        private static int CalcularDigitoCNPJ(string digitos, int[] pesos)
+        {
+            int soma = 0;
+            for (int i = 0; i < pesos.Length; i++)
+                soma += (digitos[i] - '0') * pesos[i];
+
+            int resto = soma % 11;
+            return resto < 2 ? 0 : 11 - resto;
+        }
+
         private void clear()
         {
-            textBox1.Clear();
-            maskedTextBox1.Clear();
-            textBox2.Clear();
-            maskedTextBox2.Clear();
-            textBox3.Clear();
+            // Clear() nao existe nos controles customizados; usa-se Text = "".
+            // Se algum campo mascarado nao limpar, adicione um metodo Clear()
+            // em CampoMascara que chame o Clear() do MaskedTextBox interno.
+            textBox1.Text = "";
+            maskedTextBox1.Text = "";
+            textBox2.Text = "";
+            maskedTextBox2.Text = "";
+            textBox3.Text = "";
         }
 
         private bool Erro(string mensagem, Control campo)

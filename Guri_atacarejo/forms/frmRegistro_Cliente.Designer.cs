@@ -44,8 +44,8 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txtTelefone = new Guri_atacarejo.CampoMascara();
             this.txtEmail = new Guri_atacarejo.CampoTexto();
-            this.txtCPF = new Guri_atacarejo.CampoTexto();
             this.txtNome = new Guri_atacarejo.CampoTexto();
+            this.txtCPF = new Guri_atacarejo.CampoMascara();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -186,10 +186,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(141)))), ((int)(((byte)(60)))));
+            this.panel1.Controls.Add(this.txtCPF);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtTelefone);
             this.panel1.Controls.Add(this.txtEmail);
-            this.panel1.Controls.Add(this.txtCPF);
             this.panel1.Controls.Add(this.txtNome);
             this.panel1.Controls.Add(this.button3);
             this.panel1.Controls.Add(this.btnRegist);
@@ -245,20 +245,6 @@
             this.txtEmail.Size = new System.Drawing.Size(926, 37);
             this.txtEmail.TabIndex = 34;
             // 
-            // txtCPF
-            // 
-            this.txtCPF.BackColor = System.Drawing.Color.Transparent;
-            this.txtCPF.CorPlaceholder = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(240)))), ((int)(((byte)(215)))));
-            this.txtCPF.CorTextoFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.txtCPF.CorTextoNormal = System.Drawing.Color.White;
-            this.txtCPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCPF.ForeColor = System.Drawing.Color.White;
-            this.txtCPF.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.txtCPF.Location = new System.Drawing.Point(53, 391);
-            this.txtCPF.Name = "txtCPF";
-            this.txtCPF.Size = new System.Drawing.Size(439, 37);
-            this.txtCPF.TabIndex = 33;
-            // 
             // txtNome
             // 
             this.txtNome.BackColor = System.Drawing.Color.Transparent;
@@ -272,6 +258,22 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(926, 37);
             this.txtNome.TabIndex = 32;
+            // 
+            // txtCPF
+            // 
+            this.txtCPF.BackColor = System.Drawing.Color.Transparent;
+            this.txtCPF.CorIcone = System.Drawing.Color.Empty;
+            this.txtCPF.CorIconeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.txtCPF.CorPlaceholder = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(240)))), ((int)(((byte)(215)))));
+            this.txtCPF.CorTextoFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.txtCPF.CorTextoNormal = System.Drawing.Color.White;
+            this.txtCPF.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCPF.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.txtCPF.Location = new System.Drawing.Point(53, 391);
+            this.txtCPF.Mask = "000.000.000-00";
+            this.txtCPF.Name = "txtCPF";
+            this.txtCPF.Size = new System.Drawing.Size(439, 37);
+            this.txtCPF.TabIndex = 37;
             // 
             // frmRegistro_Cliente
             // 
@@ -306,9 +308,9 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private CampoTexto txtEmail;
-        private CampoTexto txtCPF;
         private CampoTexto txtNome;
         private CampoMascara txtTelefone;
         private System.Windows.Forms.Label label6;
+        private CampoMascara txtCPF;
     }
 }

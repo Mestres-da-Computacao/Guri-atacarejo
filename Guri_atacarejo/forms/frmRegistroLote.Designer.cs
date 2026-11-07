@@ -28,241 +28,257 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.ComboBoxProduto = new System.Windows.Forms.ComboBox();
-            this.comboBoxFornecedores = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.nupdDinheiro = new System.Windows.Forms.NumericUpDown();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nupdDinheiro)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboBoxFornecedores = new Guri_atacarejo.CampoCombo();
+            this.ComboBoxProduto = new Guri_atacarejo.CampoCombo();
+            this.campoData1 = new Guri_atacarejo.CampoData();
+            this.numericUpDown1 = new Guri_atacarejo.CampoNumero();
+            this.nupdDinheiro = new Guri_atacarejo.CampoNumero();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.ComboBoxProduto);
-            this.groupBox1.Controls.Add(this.comboBoxFornecedores);
-            this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.nupdDinheiro);
-            this.groupBox1.Controls.Add(this.groupBox2);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.numericUpDown1);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.ForeColor = System.Drawing.Color.White;
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(645, 332);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Registro de Lote";
-            // 
-            // ComboBoxProduto
-            // 
-            this.ComboBoxProduto.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ComboBoxProduto.FormattingEnabled = true;
-            this.ComboBoxProduto.Location = new System.Drawing.Point(204, 70);
-            this.ComboBoxProduto.Name = "ComboBoxProduto";
-            this.ComboBoxProduto.Size = new System.Drawing.Size(411, 32);
-            this.ComboBoxProduto.TabIndex = 19;
-            // 
-            // comboBoxFornecedores
-            // 
-            this.comboBoxFornecedores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxFornecedores.FormattingEnabled = true;
-            this.comboBoxFornecedores.Location = new System.Drawing.Point(204, 32);
-            this.comboBoxFornecedores.Name = "comboBoxFornecedores";
-            this.comboBoxFornecedores.Size = new System.Drawing.Size(411, 32);
-            this.comboBoxFornecedores.TabIndex = 18;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(123, 178);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(534, 277);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(75, 24);
-            this.label5.TabIndex = 17;
+            this.label5.Size = new System.Drawing.Size(87, 25);
+            this.label5.TabIndex = 28;
             this.label5.Text = "Custo :";
-            // 
-            // nupdDinheiro
-            // 
-            this.nupdDinheiro.DecimalPlaces = 2;
-            this.nupdDinheiro.Increment = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.nupdDinheiro.Location = new System.Drawing.Point(204, 178);
-            this.nupdDinheiro.Maximum = new decimal(new int[] {
-            1410065407,
-            2,
-            0,
-            131072});
-            this.nupdDinheiro.Minimum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.nupdDinheiro.Name = "nupdDinheiro";
-            this.nupdDinheiro.Size = new System.Drawing.Size(213, 29);
-            this.nupdDinheiro.TabIndex = 16;
-            this.nupdDinheiro.Value = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.button1);
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Location = new System.Drawing.Point(171, 224);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(292, 93);
-            this.groupBox2.TabIndex = 15;
-            this.groupBox2.TabStop = false;
             // 
             // button1
             // 
+            this.button1.BackColor = System.Drawing.Color.White;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(15, 28);
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(151)))), ((int)(((byte)(44)))));
+            this.button1.Location = new System.Drawing.Point(693, 565);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 47);
+            this.button1.Size = new System.Drawing.Size(124, 54);
             this.button1.TabIndex = 13;
             this.button1.Text = "Cancelar";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.UseVisualStyleBackColor = false;
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.Color.White;
+            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(151)))), ((int)(((byte)(44)))));
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.button2.Location = new System.Drawing.Point(154, 28);
+            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.ForeColor = System.Drawing.Color.White;
+            this.button2.Location = new System.Drawing.Point(823, 565);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(117, 47);
+            this.button2.Size = new System.Drawing.Size(124, 54);
             this.button2.TabIndex = 14;
             this.button2.Text = "Cadastrar";
             this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.CustomFormat = "00/00/0000";
-            this.dateTimePicker1.Location = new System.Drawing.Point(204, 109);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(411, 29);
-            this.dateTimePicker1.TabIndex = 12;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(104, 143);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.White;
+            this.label4.Location = new System.Drawing.Point(64, 277);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 24);
-            this.label4.TabIndex = 11;
+            this.label4.Size = new System.Drawing.Size(108, 25);
+            this.label4.TabIndex = 24;
             this.label4.Text = "Quantia :";
-            // 
-            // numericUpDown1
-            // 
-            this.numericUpDown1.Increment = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Location = new System.Drawing.Point(204, 143);
-            this.numericUpDown1.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(213, 29);
-            this.numericUpDown1.TabIndex = 9;
-            this.numericUpDown1.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(17, 109);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(64, 430);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(181, 24);
-            this.label3.TabIndex = 8;
+            this.label3.Size = new System.Drawing.Size(207, 25);
+            this.label3.TabIndex = 22;
             this.label3.Text = "Data de Validade :";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(103, 73);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(534, 125);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(95, 24);
-            this.label2.TabIndex = 6;
+            this.label2.Size = new System.Drawing.Size(108, 25);
+            this.label2.TabIndex = 21;
             this.label2.Text = "Produto :";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(66, 35);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(64, 125);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(132, 24);
-            this.label1.TabIndex = 4;
+            this.label1.Size = new System.Drawing.Size(146, 25);
+            this.label1.TabIndex = 20;
             this.label1.Text = "Fornecedor :";
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(141)))), ((int)(((byte)(60)))));
+            this.panel1.Controls.Add(this.nupdDinheiro);
+            this.panel1.Controls.Add(this.numericUpDown1);
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.campoData1);
+            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.ComboBoxProduto);
+            this.panel1.Controls.Add(this.comboBoxFornecedores);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1012, 657);
+            this.panel1.TabIndex = 31;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Guri_atacarejo.Properties.Resources.Logótipo_Guri_Atacarejo_Branco;
+            this.pictureBox2.Location = new System.Drawing.Point(1045, 12);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(196, 657);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 32;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(63, 37);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(220, 31);
+            this.label6.TabIndex = 31;
+            this.label6.Text = "Registro de lote";
+            // 
+            // comboBoxFornecedores
+            // 
+            this.comboBoxFornecedores.BackColor = System.Drawing.Color.Transparent;
+            this.comboBoxFornecedores.CorIcone = System.Drawing.Color.Empty;
+            this.comboBoxFornecedores.CorIconeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.comboBoxFornecedores.CorPlaceholder = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(240)))), ((int)(((byte)(215)))));
+            this.comboBoxFornecedores.CorTextoFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.comboBoxFornecedores.CorTextoNormal = System.Drawing.Color.White;
+            this.comboBoxFornecedores.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxFornecedores.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.comboBoxFornecedores.Location = new System.Drawing.Point(69, 164);
+            this.comboBoxFornecedores.Name = "comboBoxFornecedores";
+            this.comboBoxFornecedores.Size = new System.Drawing.Size(408, 40);
+            this.comboBoxFornecedores.TabIndex = 32;
+            // 
+            // ComboBoxProduto
+            // 
+            this.ComboBoxProduto.BackColor = System.Drawing.Color.Transparent;
+            this.ComboBoxProduto.CorIcone = System.Drawing.Color.Empty;
+            this.ComboBoxProduto.CorIconeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.ComboBoxProduto.CorPlaceholder = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(240)))), ((int)(((byte)(215)))));
+            this.ComboBoxProduto.CorTextoFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.ComboBoxProduto.CorTextoNormal = System.Drawing.Color.White;
+            this.ComboBoxProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ComboBoxProduto.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.ComboBoxProduto.Location = new System.Drawing.Point(539, 164);
+            this.ComboBoxProduto.Name = "ComboBoxProduto";
+            this.ComboBoxProduto.Size = new System.Drawing.Size(408, 40);
+            this.ComboBoxProduto.TabIndex = 33;
+            // 
+            // campoData1
+            // 
+            this.campoData1.BackColor = System.Drawing.Color.Transparent;
+            this.campoData1.CorIcone = System.Drawing.Color.Empty;
+            this.campoData1.CorIconeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.campoData1.CorPlaceholder = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(240)))), ((int)(((byte)(215)))));
+            this.campoData1.CorTextoFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.campoData1.CorTextoNormal = System.Drawing.Color.White;
+            this.campoData1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.campoData1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.campoData1.Location = new System.Drawing.Point(69, 483);
+            this.campoData1.Mask = "00/00/0000";
+            this.campoData1.Name = "campoData1";
+            this.campoData1.PlaceholderText = "dd/mm/aaaa";
+            this.campoData1.Size = new System.Drawing.Size(180, 40);
+            this.campoData1.TabIndex = 34;
+            // 
+            // numericUpDown1
+            // 
+            this.numericUpDown1.BackColor = System.Drawing.Color.Transparent;
+            this.numericUpDown1.CorIcone = System.Drawing.Color.Empty;
+            this.numericUpDown1.CorIconeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.numericUpDown1.CorPlaceholder = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(240)))), ((int)(((byte)(215)))));
+            this.numericUpDown1.CorTextoFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.numericUpDown1.CorTextoNormal = System.Drawing.Color.White;
+            this.numericUpDown1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numericUpDown1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.numericUpDown1.Location = new System.Drawing.Point(69, 327);
+            this.numericUpDown1.Name = "numericUpDown1";
+            this.numericUpDown1.Size = new System.Drawing.Size(408, 40);
+            this.numericUpDown1.TabIndex = 35;
+            // 
+            // nupdDinheiro
+            // 
+            this.nupdDinheiro.BackColor = System.Drawing.Color.Transparent;
+            this.nupdDinheiro.CorIcone = System.Drawing.Color.Empty;
+            this.nupdDinheiro.CorIconeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.nupdDinheiro.CorPlaceholder = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(240)))), ((int)(((byte)(215)))));
+            this.nupdDinheiro.CorTextoFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.nupdDinheiro.CorTextoNormal = System.Drawing.Color.White;
+            this.nupdDinheiro.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nupdDinheiro.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.nupdDinheiro.Location = new System.Drawing.Point(539, 327);
+            this.nupdDinheiro.Name = "nupdDinheiro";
+            this.nupdDinheiro.Size = new System.Drawing.Size(408, 40);
+            this.nupdDinheiro.TabIndex = 36;
             // 
             // frmRegistroLote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(119)))), ((int)(((byte)(27)))));
-            this.ClientSize = new System.Drawing.Size(669, 356);
-            this.Controls.Add(this.groupBox1);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(83)))), ((int)(((byte)(46)))));
+            this.ClientSize = new System.Drawing.Size(1264, 681);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.panel1);
             this.Name = "frmRegistroLote";
             this.Text = "frmRegistroLote";
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nupdDinheiro)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.NumericUpDown nupdDinheiro;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
-        private System.Windows.Forms.ComboBox ComboBoxProduto;
-        private System.Windows.Forms.ComboBox comboBoxFornecedores;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private CampoCombo ComboBoxProduto;
+        private CampoCombo comboBoxFornecedores;
+        private System.Windows.Forms.Label label6;
+        private CampoData campoData1;
+        private CampoNumero nupdDinheiro;
+        private CampoNumero numericUpDown1;
     }
 }
