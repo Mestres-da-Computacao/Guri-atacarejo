@@ -54,6 +54,7 @@
             this.txtEmail = new Guri_atacarejo.CampoTexto();
             this.txtNome = new Guri_atacarejo.CampoTexto();
             this.label5 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.groupBoxGeneros.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -102,7 +103,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(659, 287);
+            this.label9.Location = new System.Drawing.Point(659, 324);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(93, 25);
             this.label9.TabIndex = 42;
@@ -113,7 +114,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(333, 287);
+            this.label8.Location = new System.Drawing.Point(333, 324);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(111, 25);
             this.label8.TabIndex = 40;
@@ -124,7 +125,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.White;
-            this.label7.Location = new System.Drawing.Point(45, 127);
+            this.label7.Location = new System.Drawing.Point(45, 164);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 25);
             this.label7.TabIndex = 38;
@@ -135,7 +136,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(645, 439);
+            this.label6.Location = new System.Drawing.Point(645, 476);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(82, 25);
             this.label6.TabIndex = 35;
@@ -148,7 +149,7 @@
             this.groupBoxGeneros.Controls.Add(this.radioButtonHomem);
             this.groupBoxGeneros.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBoxGeneros.ForeColor = System.Drawing.Color.White;
-            this.groupBoxGeneros.Location = new System.Drawing.Point(39, 456);
+            this.groupBoxGeneros.Location = new System.Drawing.Point(39, 473);
             this.groupBoxGeneros.Name = "groupBoxGeneros";
             this.groupBoxGeneros.Size = new System.Drawing.Size(308, 138);
             this.groupBoxGeneros.TabIndex = 9;
@@ -193,7 +194,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(34, 367);
+            this.label4.Location = new System.Drawing.Point(34, 404);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(231, 25);
             this.label4.TabIndex = 33;
@@ -204,7 +205,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(59, 287);
+            this.label3.Location = new System.Drawing.Point(59, 324);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 25);
             this.label3.TabIndex = 31;
@@ -215,7 +216,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(37, 205);
+            this.label2.Location = new System.Drawing.Point(37, 242);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(86, 25);
             this.label2.TabIndex = 28;
@@ -226,7 +227,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(43, 52);
+            this.label1.Location = new System.Drawing.Point(43, 89);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 25);
             this.label1.TabIndex = 26;
@@ -235,6 +236,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(141)))), ((int)(((byte)(60)))));
+            this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.cbCargo);
             this.panel1.Controls.Add(this.cbDepartamento);
             this.panel1.Controls.Add(this.dateTimePickerDataNasc);
@@ -271,7 +273,7 @@
             this.cbCargo.CorTextoNormal = System.Drawing.Color.White;
             this.cbCargo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbCargo.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.cbCargo.Location = new System.Drawing.Point(733, 436);
+            this.cbCargo.Location = new System.Drawing.Point(733, 473);
             this.cbCargo.Name = "cbCargo";
             this.cbCargo.Size = new System.Drawing.Size(239, 32);
             this.cbCargo.TabIndex = 8;
@@ -286,7 +288,7 @@
             this.cbDepartamento.CorTextoNormal = System.Drawing.Color.White;
             this.cbDepartamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbDepartamento.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.cbDepartamento.Location = new System.Drawing.Point(733, 361);
+            this.cbDepartamento.Location = new System.Drawing.Point(733, 398);
             this.cbDepartamento.Name = "cbDepartamento";
             this.cbDepartamento.Size = new System.Drawing.Size(239, 32);
             this.cbDepartamento.TabIndex = 7;
@@ -301,7 +303,7 @@
             this.dateTimePickerDataNasc.CorTextoNormal = System.Drawing.Color.White;
             this.dateTimePickerDataNasc.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePickerDataNasc.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.dateTimePickerDataNasc.Location = new System.Drawing.Point(271, 361);
+            this.dateTimePickerDataNasc.Location = new System.Drawing.Point(271, 398);
             this.dateTimePickerDataNasc.Mask = "00/00/0000";
             this.dateTimePickerDataNasc.Name = "dateTimePickerDataNasc";
             this.dateTimePickerDataNasc.PlaceholderText = "dd/mm/aaaa";
@@ -318,7 +320,7 @@
             this.numericUpDownSalario.CorTextoNormal = System.Drawing.Color.White;
             this.numericUpDownSalario.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numericUpDownSalario.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.numericUpDownSalario.Location = new System.Drawing.Point(758, 280);
+            this.numericUpDownSalario.Location = new System.Drawing.Point(758, 317);
             this.numericUpDownSalario.Name = "numericUpDownSalario";
             this.numericUpDownSalario.Size = new System.Drawing.Size(214, 32);
             this.numericUpDownSalario.TabIndex = 5;
@@ -333,7 +335,7 @@
             this.maskedtxtTelefone.CorTextoNormal = System.Drawing.Color.White;
             this.maskedtxtTelefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.maskedtxtTelefone.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.maskedtxtTelefone.Location = new System.Drawing.Point(450, 280);
+            this.maskedtxtTelefone.Location = new System.Drawing.Point(450, 317);
             this.maskedtxtTelefone.Mask = "\\(00\\) 00000\\-0000";
             this.maskedtxtTelefone.Name = "maskedtxtTelefone";
             this.maskedtxtTelefone.Size = new System.Drawing.Size(171, 32);
@@ -350,7 +352,7 @@
             this.maskedtxtCpf.CorTextoNormal = System.Drawing.Color.White;
             this.maskedtxtCpf.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.maskedtxtCpf.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.maskedtxtCpf.Location = new System.Drawing.Point(129, 280);
+            this.maskedtxtCpf.Location = new System.Drawing.Point(129, 317);
             this.maskedtxtCpf.Mask = "000.000.000-00";
             this.maskedtxtCpf.Name = "maskedtxtCpf";
             this.maskedtxtCpf.Size = new System.Drawing.Size(174, 32);
@@ -365,7 +367,7 @@
             this.txtSenha.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSenha.IsPassword = true;
             this.txtSenha.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.txtSenha.Location = new System.Drawing.Point(129, 193);
+            this.txtSenha.Location = new System.Drawing.Point(129, 230);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.Size = new System.Drawing.Size(843, 37);
             this.txtSenha.TabIndex = 2;
@@ -378,7 +380,7 @@
             this.txtEmail.CorTextoNormal = System.Drawing.Color.White;
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.txtEmail.Location = new System.Drawing.Point(128, 115);
+            this.txtEmail.Location = new System.Drawing.Point(128, 152);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(844, 37);
             this.txtEmail.TabIndex = 1;
@@ -391,7 +393,7 @@
             this.txtNome.CorTextoNormal = System.Drawing.Color.White;
             this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNome.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.txtNome.Location = new System.Drawing.Point(128, 40);
+            this.txtNome.Location = new System.Drawing.Point(128, 77);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(844, 37);
             this.txtNome.TabIndex = 0;
@@ -401,11 +403,22 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(561, 367);
+            this.label5.Location = new System.Drawing.Point(561, 404);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(166, 25);
             this.label5.TabIndex = 34;
             this.label5.Text = "Departamento:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(44, 33);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(325, 31);
+            this.label10.TabIndex = 43;
+            this.label10.Text = "Cadastro de funcionário";
             // 
             // frmCadastroFuncionario
             // 
@@ -453,5 +466,6 @@
         private CampoData dateTimePickerDataNasc;
         private CampoCombo cbCargo;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label10;
     }
 }

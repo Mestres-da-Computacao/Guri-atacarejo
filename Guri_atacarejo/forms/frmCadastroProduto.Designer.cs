@@ -42,6 +42,7 @@
             this.txtPreco = new Guri_atacarejo.CampoNumero();
             this.txtCodigo = new Guri_atacarejo.CampoTexto();
             this.txtNome = new Guri_atacarejo.CampoTexto();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -51,7 +52,7 @@
             this.labelUnidadeMedida.AutoSize = true;
             this.labelUnidadeMedida.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUnidadeMedida.ForeColor = System.Drawing.Color.White;
-            this.labelUnidadeMedida.Location = new System.Drawing.Point(582, 191);
+            this.labelUnidadeMedida.Location = new System.Drawing.Point(583, 201);
             this.labelUnidadeMedida.Name = "labelUnidadeMedida";
             this.labelUnidadeMedida.Size = new System.Drawing.Size(215, 25);
             this.labelUnidadeMedida.TabIndex = 36;
@@ -103,7 +104,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(45, 191);
+            this.label2.Location = new System.Drawing.Point(46, 201);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(73, 25);
             this.label2.TabIndex = 28;
@@ -115,7 +116,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(583, 58);
+            this.label1.Location = new System.Drawing.Point(583, 95);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(86, 25);
             this.label1.TabIndex = 27;
@@ -127,7 +128,7 @@
             this.lblNome.BackColor = System.Drawing.Color.Transparent;
             this.lblNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNome.ForeColor = System.Drawing.Color.White;
-            this.lblNome.Location = new System.Drawing.Point(45, 56);
+            this.lblNome.Location = new System.Drawing.Point(45, 93);
             this.lblNome.Name = "lblNome";
             this.lblNome.Size = new System.Drawing.Size(72, 25);
             this.lblNome.TabIndex = 26;
@@ -146,6 +147,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(141)))), ((int)(((byte)(60)))));
+            this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.txtDescricao);
             this.panel1.Controls.Add(this.cmbunidademedida);
             this.panel1.Controls.Add(this.txtPreco);
@@ -189,7 +191,7 @@
             this.cmbunidademedida.CorTextoNormal = System.Drawing.Color.White;
             this.cmbunidademedida.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbunidademedida.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.cmbunidademedida.Location = new System.Drawing.Point(545, 218);
+            this.cmbunidademedida.Location = new System.Drawing.Point(546, 228);
             this.cmbunidademedida.Name = "cmbunidademedida";
             this.cmbunidademedida.Size = new System.Drawing.Size(431, 47);
             this.cmbunidademedida.TabIndex = 3;
@@ -204,7 +206,7 @@
             this.txtPreco.CorTextoNormal = System.Drawing.Color.White;
             this.txtPreco.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPreco.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.txtPreco.Location = new System.Drawing.Point(50, 218);
+            this.txtPreco.Location = new System.Drawing.Point(51, 228);
             this.txtPreco.Name = "txtPreco";
             this.txtPreco.Prefixo = "R$";
             this.txtPreco.Size = new System.Drawing.Size(432, 47);
@@ -218,7 +220,7 @@
             this.txtCodigo.CorTextoNormal = System.Drawing.Color.White;
             this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.txtCodigo.Location = new System.Drawing.Point(545, 86);
+            this.txtCodigo.Location = new System.Drawing.Point(545, 123);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(431, 47);
             this.txtCodigo.TabIndex = 1;
@@ -231,10 +233,21 @@
             this.txtNome.CorTextoNormal = System.Drawing.Color.White;
             this.txtNome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNome.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.txtNome.Location = new System.Drawing.Point(50, 85);
+            this.txtNome.Location = new System.Drawing.Point(50, 122);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(432, 47);
             this.txtNome.TabIndex = 0;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.White;
+            this.label3.Location = new System.Drawing.Point(45, 34);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(280, 31);
+            this.label3.TabIndex = 37;
+            this.label3.Text = "Cadastro de produto";
             // 
             // frmCadastroProduto
             // 
@@ -268,5 +281,6 @@
         private CampoTexto txtNome;
         private CampoCombo cmbunidademedida;
         private CampoTextoGrande txtDescricao;
+        private System.Windows.Forms.Label label3;
     }
 }
