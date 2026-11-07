@@ -36,6 +36,7 @@
             this.lblCodigo = new System.Windows.Forms.Label();
             this.flpProdutos = new System.Windows.Forms.FlowLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
             this.txtPesquisar = new Guri_atacarejo.CampoTexto();
             this.textBox1 = new Guri_atacarejo.CampoTexto();
             this.label1 = new System.Windows.Forms.Label();
@@ -111,6 +112,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(141)))), ((int)(((byte)(60)))));
+            this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.txtPesquisar);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.picLogo);
@@ -125,6 +127,17 @@
             this.panel1.Size = new System.Drawing.Size(1326, 705);
             this.panel1.TabIndex = 19;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(22, 26);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(243, 31);
+            this.label2.TabIndex = 21;
+            this.label2.Text = "Adicionar produto";
+            // 
             // txtPesquisar
             // 
             this.txtPesquisar.BackColor = System.Drawing.Color.Transparent;
@@ -134,7 +147,9 @@
             this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPesquisar.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
             this.txtPesquisar.Location = new System.Drawing.Point(552, 17);
+            this.txtPesquisar.MostrarLupa = true;
             this.txtPesquisar.Name = "txtPesquisar";
+            this.txtPesquisar.PlaceholderText = "Pesquisar";
             this.txtPesquisar.Size = new System.Drawing.Size(392, 40);
             this.txtPesquisar.TabIndex = 20;
             // 
@@ -191,5 +206,6 @@
         private System.Windows.Forms.Label label1;
         private CampoTexto textBox1;
         private CampoTexto txtPesquisar;
+        private System.Windows.Forms.Label label2;
     }
 }

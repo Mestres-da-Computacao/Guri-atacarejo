@@ -11,6 +11,7 @@ namespace Guri_atacarejo
     /// Ao focar, vira uma caixa branca de bordas arredondadas (texto verde).
     /// Ao sair do campo, volta pra barrinha (texto branco).
     /// Com IsPassword = true, mostra o botão de olho (senha oculta por padrão).
+    /// Com MostrarLupa = true, mostra uma lupa à esquerda (barra de pesquisa).
     /// </summary>
     [DefaultEvent("TextChanged")]
     public class CampoTexto : Control
@@ -22,6 +23,7 @@ namespace Guri_atacarejo
         private int Raio => Math.Max(3, Height / 4);
         private int OlhoH => Math.Max(6, (int)Math.Round(Height * 0.35));
         private int OlhoW => OlhoH * 11 / 7;
+        private int LupaLado => Math.Max(10, (int)Math.Round(Height * 0.45));
 
         // ---------- Controles internos ----------
         private readonly TextBox txt = new TextBox();
@@ -32,6 +34,8 @@ namespace Guri_atacarejo
         private bool isPassword;
         private bool senhaVisivel;
         private bool hoverOlho;
+        private bool mostrarLupa;
+        private bool hoverLupa;
         private string placeholder = "";
 
         // ---------- Cores ----------
@@ -39,6 +43,9 @@ namespace Guri_atacarejo
         private Color corTextoFoco = Color.FromArgb(5, 87, 40);        // texto enquanto digita (fundo branco)
         private Color corTextoNormal = Color.White;                     // texto quando sai do campo (fundo do form)
         private Color corPlaceholder = Color.FromArgb(215, 240, 215);   // preview quando o campo está vazio
+
+        // Disparado ao clicar na lupa (ex.: executar a pesquisa)
+        public event EventHandler LupaClick;
 
         public CampoTexto()
         {
@@ -121,25 +128,37 @@ namespace Guri_atacarejo
             }
         }
 
-        [Category("Guri"), Description("Cor da barrinha, da borda ao focar e do ícone do olho.")]
+        [Category("Guri"), DefaultValue(false), Description("Mostra uma lupa à esquerda do texto (barra de pesquisa).")]
+        public bool MostrarLupa
+        {
+            get => mostrarLupa;
+            set
+            {
+                mostrarLupa = value;
+                AjustarLayout();
+                Invalidate();
+            }
+        }
+
+        [Category("Guri"), Description("Cor da barrinha e da borda ao focar.")]
         public Color LineColor
         {
             get => lineColor;
             set { lineColor = value; Invalidate(); }
         }
 
-        [Category("Guri"), Description("Cor do texto enquanto o campo está focado (caixa branca).")]
+        [Category("Guri"), Description("Cor do texto enquanto o campo está focado (caixa branca). O olho e a lupa usam a mesma cor.")]
         public Color CorTextoFoco
         {
             get => corTextoFoco;
-            set { corTextoFoco = value; AtualizarCores(); }
+            set { corTextoFoco = value; AtualizarCores(); Invalidate(); }
         }
 
-        [Category("Guri"), Description("Cor do texto quando o campo NÃO está focado.")]
+        [Category("Guri"), Description("Cor do texto quando o campo NÃO está focado. O olho e a lupa usam a mesma cor.")]
         public Color CorTextoNormal
         {
             get => corTextoNormal;
-            set { corTextoNormal = value; AtualizarCores(); }
+            set { corTextoNormal = value; AtualizarCores(); Invalidate(); }
         }
 
         [Category("Guri"), Description("Cor do texto de preview (placeholder).")]
@@ -208,8 +227,10 @@ namespace Guri_atacarejo
         private void AjustarLayout()
         {
             int direita = isPassword ? OlhoW + 6 : 0;
-            txt.Left = PadH;
-            txt.Width = Math.Max(10, Width - PadH * 2 - direita);
+            int esquerda = mostrarLupa ? LupaLado + 8 : 0;
+
+            txt.Left = PadH + esquerda;
+            txt.Width = Math.Max(10, Width - PadH * 2 - direita - esquerda);
             txt.Top = Math.Max(0, (Height - 2 - txt.Height) / 2);
 
             // O Label usa a altura toda do campo (menos a barrinha), e não a do
@@ -223,6 +244,14 @@ namespace Guri_atacarejo
         private Rectangle AreaCliqueOlho
         {
             get { var r = AreaOlho; r.Inflate(4, 8); return r; }
+        }
+
+        private Rectangle AreaLupa =>
+            new Rectangle(PadH, (Height - 2 - LupaLado) / 2, LupaLado, LupaLado);
+
+        private Rectangle AreaCliqueLupa
+        {
+            get { var r = AreaLupa; r.Inflate(4, 8); return r; }
         }
 
         private static GraphicsPath RetanguloArredondado(Rectangle r, int raio)
@@ -268,6 +297,9 @@ namespace Guri_atacarejo
 
             if (isPassword)
                 DesenharOlho(g);
+
+            if (mostrarLupa)
+                DesenharLupa(g);
         }
 
         private void DesenharOlho(Graphics g)
@@ -279,6 +311,7 @@ namespace Guri_atacarejo
             float w = r.Width;
             float off = r.Height * 0.65f;
 
+            // Mesma cor do texto: branco sem foco, verde escuro com foco
             Color corBase = focado ? corTextoFoco : corTextoNormal;
             Color cor = hoverOlho ? corBase : Color.FromArgb(170, corBase);
 
@@ -299,18 +332,44 @@ namespace Guri_atacarejo
             }
         }
 
+        private void DesenharLupa(Graphics g)
+        {
+            var r = AreaLupa;
+
+            // Mesma cor do texto: branco sem foco, verde escuro com foco
+            Color corBase = focado ? corTextoFoco : corTextoNormal;
+            Color cor = hoverLupa ? corBase : Color.FromArgb(200, corBase);
+
+            using (var pen = new Pen(cor, 1.8f) { StartCap = LineCap.Round, EndCap = LineCap.Round })
+            {
+                // lente (círculo)
+                float d = r.Width * 0.68f;
+                float rad = d / 2f;
+                g.DrawEllipse(pen, r.X, r.Y, d, d);
+
+                // cabo (sai da borda da lente a 45° até o canto)
+                float cx = r.X + rad;
+                float cy = r.Y + rad;
+                g.DrawLine(pen, cx + rad * 0.7071f, cy + rad * 0.7071f, r.Right, r.Bottom);
+            }
+        }
+
         // =====================================================
-        //  MOUSE
+        //  MOUSE / FOCO
         // =====================================================
 
         protected override void OnMouseMove(MouseEventArgs e)
         {
             base.OnMouseMove(e);
-            bool sobre = isPassword && AreaCliqueOlho.Contains(e.Location);
-            if (sobre != hoverOlho)
+
+            bool sobreOlho = isPassword && AreaCliqueOlho.Contains(e.Location);
+            bool sobreLupa = mostrarLupa && LupaClick != null && AreaCliqueLupa.Contains(e.Location);
+
+            if (sobreOlho != hoverOlho || sobreLupa != hoverLupa)
             {
-                hoverOlho = sobre;
-                Cursor = sobre ? Cursors.Hand : Cursors.Default;
+                hoverOlho = sobreOlho;
+                hoverLupa = sobreLupa;
+                Cursor = (sobreOlho || sobreLupa) ? Cursors.Hand : Cursors.Default;
                 Invalidate();
             }
         }
@@ -318,9 +377,10 @@ namespace Guri_atacarejo
         protected override void OnMouseLeave(EventArgs e)
         {
             base.OnMouseLeave(e);
-            if (hoverOlho)
+            if (hoverOlho || hoverLupa)
             {
                 hoverOlho = false;
+                hoverLupa = false;
                 Cursor = Cursors.Default;
                 Invalidate();
             }
@@ -333,8 +393,19 @@ namespace Guri_atacarejo
             if (isPassword && AreaCliqueOlho.Contains(e.Location))
                 MostrarSenha = !senhaVisivel;
 
+            if (mostrarLupa && AreaCliqueLupa.Contains(e.Location))
+                LupaClick?.Invoke(this, EventArgs.Empty);
+
             txt.Focus();
             txt.SelectionStart = txt.TextLength;
+        }
+
+        // Quem chamar campo.Focus() como "Control" (ex.: o método Erro do form)
+        // acaba aqui: repassa o foco pro TextBox interno.
+        protected override void OnGotFocus(EventArgs e)
+        {
+            base.OnGotFocus(e);
+            txt.Focus();
         }
 
         // =====================================================

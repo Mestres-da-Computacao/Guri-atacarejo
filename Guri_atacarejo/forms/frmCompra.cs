@@ -26,10 +26,30 @@ namespace Guri_atacarejo.forms
 
         private void frmCompra__Load(object sender, EventArgs e)
         {
+            // os cards acompanham a largura do painel (ex.: ao maximizar a janela)
+            flowLayoutPanel1.ClientSizeChanged += (s, a) => AjustarLarguraCards();
+
             CriarPainelInformacoes();
             CarregarFornecedores();
             CarregarCards();
             AtualizarTotal();
+        }
+
+        // largura do card = área útil do painel menos as margens (10 + 10) do card
+        private int LarguraCard()
+        {
+            return Math.Max(480, flowLayoutPanel1.ClientSize.Width - 20);
+        }
+
+        private void AjustarLarguraCards()
+        {
+            flowLayoutPanel1.SuspendLayout();
+            int largura = LarguraCard();
+            foreach (Control card in flowLayoutPanel1.Controls)
+            {
+                card.Width = largura;
+            }
+            flowLayoutPanel1.ResumeLayout();
         }
 
         private void CriarPainelInformacoes()
@@ -164,6 +184,7 @@ namespace Guri_atacarejo.forms
             }
 
             flowLayoutPanel1.ResumeLayout();
+            AjustarLarguraCards();
 
             if (produtos.Rows.Count == 0)
             {
@@ -176,7 +197,7 @@ namespace Guri_atacarejo.forms
             // Cada card guarda os controles usados para calcular e registrar esse produto.
             var card = new Panel
             {
-                Size = new Size(765, 120),
+                Size = new Size(LarguraCard(), 120),
                 BorderStyle = BorderStyle.FixedSingle,
                 Margin = new Padding(10),
                 BackColor = Color.White
@@ -266,6 +287,32 @@ namespace Guri_atacarejo.forms
             card.Controls.Add(dtpValidade);
             card.Controls.Add(lblFornecedor);
             card.Controls.Add(cmbFornecedor);
+
+            // Reorganiza os campos de acordo com a largura atual do card.
+            Action organizar = () =>
+            {
+                int w = card.ClientSize.Width;
+                const int margem = 14;
+
+                // linha de cima: nome à esquerda, preço colado na direita
+                nudPreco.Location = new Point(w - margem - nudPreco.Width, 12);
+                lblPreco.Location = new Point(nudPreco.Left - 10 - lblPreco.Width, 16);
+                lblNome.Location = new Point(margem, 12);
+                lblNome.Width = Math.Max(80, lblPreco.Left - 20 - margem);
+
+                // linha de baixo: campos em sequência; o fornecedor ocupa o que sobrar
+                int y = 70;
+                lblQuantidade.Location = new Point(margem, y + 4);
+                nudQuantidade.Location = new Point(lblQuantidade.Right + 6, y);
+                lblValidade.Location = new Point(nudQuantidade.Right + 28, y + 4);
+                dtpValidade.Location = new Point(lblValidade.Right + 6, y);
+                lblFornecedor.Location = new Point(dtpValidade.Right + 28, y + 4);
+                cmbFornecedor.Location = new Point(lblFornecedor.Right + 6, y);
+                cmbFornecedor.Width = Math.Max(120, w - margem - cmbFornecedor.Left);
+            };
+            card.SizeChanged += (s, a) => organizar();
+            organizar();
+
             return card;
         }
 
@@ -439,12 +486,12 @@ namespace Guri_atacarejo.forms
             if (Sessao.IdFuncionario <= 0)
             {
                 MessageBox.Show(
-                    "Entre novamente com um funcionário para registrar a compra.","Funcionário não identificado",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                    "Entre novamente com um funcionário para registrar a compra.", "Funcionário não identificado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             var resposta = MessageBox.Show(
-                "Total da compra: " + txtTotal.Text + "\n\nDeseja confirmar a compra?","Confirmar compra",MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+                "Total da compra: " + txtTotal.Text + "\n\nDeseja confirmar a compra?", "Confirmar compra", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (resposta != DialogResult.Yes)
             {
                 return;
@@ -605,6 +652,16 @@ namespace Guri_atacarejo.forms
             {
                 form.ShowDialog(this);
             }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void flowLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 
