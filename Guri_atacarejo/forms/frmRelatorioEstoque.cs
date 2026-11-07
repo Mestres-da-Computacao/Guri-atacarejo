@@ -15,25 +15,176 @@ namespace Guri_atacarejo.forms
         int idProduto = 0;          // produto que foi clicado no grid
         string nomeProduto = "";
         DataTable operacoes;        // compras e vendas do produto clicado (vazio até clicarem em um produto)
-        
+
         private ReportViewer reportViewer1;
         public frmRelatorioEstoque()
         {
             InitializeComponent();
 
+            AplicarTema();   // visual igual ao do frmPainel (TemaModerno)
             ResponsividadeForm.Aplicar(this);
 
             cbTipo.SelectedIndex = 0;     // "Compras e vendas"
             cbPeriodo.SelectedIndex = 0;  // "Dia"
 
-            dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
-            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black;
+            PadraoTela.AdicionarBarraLateral(this);   // barra lateral fixa
         }
 
         private void frmRelatorioEstoque_Load(object sender, EventArgs e)
         {
             CarregarProdutos();
             MostrarMensagem("Clique em um produto para ver as compras e vendas.");
+        }
+
+        // ------------------------------------------------------
+        // VISUAL (cartão, barra lateral)
+        // ------------------------------------------------------
+
+        // Reorganiza os controles do designer num cartão, dentro de um painel
+        // "host" que preenche a área ao lado da barra lateral.
+        private void AplicarTema()
+        {
+            SuspendLayout();
+
+            ClientSize = new Size(1180, 640);
+            BackColor = TemaModerno.Fundo;
+            Text = "Relat\u00F3rio de estoque";
+
+            const int m = 24;
+            int W = ClientSize.Width - BarraLateral.LarguraAberta;
+            int H = ClientSize.Height;
+
+            int topo = 96;
+            int cartaoW = W - 2 * m;
+            int cartaoH = H - topo - m;
+
+            var host = new Panel
+            {
+                Name = "pnlConteudo",
+                Dock = DockStyle.Fill,
+                BackColor = TemaModerno.Fundo
+            };
+
+            // ---- título da tela ----
+            host.Controls.Add(NovoRotulo("Estoque", 22f, FontStyle.Bold,
+                TemaModerno.Texto, TemaModerno.Fundo, new Point(m, 14)));
+            host.Controls.Add(NovoRotulo("Relat\u00F3rio de estoque  \u2022  Guri Atacarejo", 10.5f,
+                FontStyle.Regular, TemaModerno.Verde2, TemaModerno.Fundo, new Point(m, 58)));
+
+            // ---- cartão ----
+            var cartao = new Panel { Bounds = new Rectangle(m, topo, cartaoW, cartaoH) };
+            TemaModerno.Cartao(cartao);
+
+            cartao.Controls.Add(NovoRotulo("Produtos e movimenta\u00E7\u00F5es", 12f, FontStyle.Bold,
+                TemaModerno.Texto, TemaModerno.Card, new Point(20, 14)));
+
+            int areaY = 108;
+            int areaH = cartaoH - areaY - 20;
+            int gridW = (cartaoW - 40 - 16) * 40 / 100;
+            int detX = 20 + gridW + 16;
+            int detW = cartaoW - 20 - detX;
+
+            // filtros (ficam acima dos cards, porque é neles que eles atuam)
+            TemaModerno.Combo(cbTipo);
+            TemaModerno.Combo(cbPeriodo);
+            PadraoTela.AjustarAlturaCombo(cbTipo, cbPeriodo);
+
+            cbTipo.Location = new Point(detX, 56);
+            cbTipo.Width = 210;
+            cartao.Controls.Add(cbTipo);
+
+            cbPeriodo.Location = new Point(detX + 226, 56);
+            cbPeriodo.Width = 110;
+            cartao.Controls.Add(cbPeriodo);
+
+            maskData.BorderStyle = BorderStyle.FixedSingle;
+            maskData.Font = TemaModerno.Fonte(11f);
+            maskData.BackColor = TemaModerno.Campo;
+            maskData.ForeColor = TemaModerno.Texto;
+            maskData.Location = new Point(detX + 352, 58);
+            maskData.Width = 140;
+            cartao.Controls.Add(maskData);
+
+            PadraoTela.AlinharNoEixo(cbTipo, cbPeriodo, maskData);
+
+            // tabela de produtos (esquerda)
+            cartao.Controls.Add(dataGridView1);
+            dataGridView1.Bounds = new Rectangle(20, areaY, gridW, areaH);
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.AllowUserToAddRows = false;
+            TemaModerno.Grid(dataGridView1);
+            dataGridView1.DefaultCellStyle.ForeColor = TemaModerno.Texto;
+            dataGridView1.DefaultCellStyle.SelectionForeColor = TemaModerno.Texto;
+
+            // cards das operações (direita)
+            cartao.Controls.Add(flowCards);
+            flowCards.BackColor = TemaModerno.Card;
+            flowCards.BorderStyle = BorderStyle.None;
+            flowCards.Bounds = new Rectangle(detX, areaY, detW, areaH);
+
+            host.Controls.Add(cartao);
+
+            // esconde a caixa laranja do designer
+            groupBox1.Visible = false;
+
+            // ---- host por último: Fill precisa ser o último a ser "docado" ----
+            Controls.Add(host);
+            host.BringToFront();
+
+            ResumeLayout(true);
+        }
+
+        private static Label NovoRotulo(string texto, float tamanho, FontStyle estilo,
+            Color cor, Color fundo, Point local)
+        {
+            return new Label
+            {
+                AutoSize = true,
+                Text = texto,
+                Font = TemaModerno.Fonte(tamanho, estilo),
+                ForeColor = cor,
+                BackColor = fundo,
+                Location = local
+            };
+        }
+
+        // títulos, alinhamento e formato das colunas da tabela de produtos
+        private void FormatarColunasProdutos()
+        {
+            DataGridView g = dataGridView1;
+
+            ConfigurarColuna(g, "IdProduto", "Id", 60, false, null);
+            ConfigurarColuna(g, "Nome", "Produto", 0, false, null);
+            ConfigurarColuna(g, "Preco", "Pre\u00E7o", 0, true, "C2");
+            ConfigurarColuna(g, "QtdEstoque", "Estoque", 0, true, null);
+        }
+
+        private static void ConfigurarColuna(DataGridView g, string nome, string titulo,
+            int largura, bool direita, string formato)
+        {
+            if (!g.Columns.Contains(nome)) return;
+
+            DataGridViewColumn c = g.Columns[nome];
+            c.HeaderText = titulo;
+
+            if (largura > 0)
+            {
+                c.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                c.Width = largura;
+            }
+            else if (nome == "Nome")
+                c.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            else
+                c.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            if (direita)
+            {
+                c.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                c.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
+
+            if (formato != null)
+                c.DefaultCellStyle.Format = formato;
         }
 
         // ------------------------------------------------------
@@ -60,6 +211,7 @@ namespace Guri_atacarejo.forms
                     DataTable tabela = new DataTable();
                     da.Fill(tabela);
                     dataGridView1.DataSource = tabela;
+                    FormatarColunasProdutos();
                 }
             }
             catch (SqlException ex)
@@ -232,8 +384,8 @@ namespace Guri_atacarejo.forms
             Panel card = new Panel();
             card.Width = flowCards.ClientSize.Width - 25;
             card.Height = 152;
-            card.BorderStyle = BorderStyle.FixedSingle;
-            card.BackColor = Color.White;
+            card.BorderStyle = BorderStyle.None;
+            card.BackColor = TemaModerno.Campo;
 
             // título
             string titulo = tipo.ToUpper() + " Nº " + linha["IdOperacao"];
@@ -281,12 +433,8 @@ namespace Guri_atacarejo.forms
             lbl.Text = texto;
             lbl.AutoSize = true;
             lbl.Location = new Point(x, y);
-            lbl.ForeColor = Color.Black;
-
-            if (negrito)
-                lbl.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
-            else
-                lbl.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular);
+            lbl.ForeColor = TemaModerno.Texto;
+            lbl.Font = TemaModerno.Fonte(9.5f, negrito ? FontStyle.Bold : FontStyle.Regular);
 
             destino.Controls.Add(lbl);
         }

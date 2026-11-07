@@ -10,46 +10,53 @@ using System.Windows.Forms;
 
 namespace Guri_atacarejo.forms
 {
-    public partial class frmRelatorioEstoqueQtd : Form
+    public partial class frmRelatorioEstoqueQtd : Icone
     {
-        // cor de fundo da tela: 72, 151, 44
-        private static readonly Color Fundo = Color.FromArgb(72, 151, 44);
-
         public frmRelatorioEstoqueQtd()
         {
             InitializeComponent();
             AplicarTema();
 
-            btnFechar.Click += (s, e) => Close();   // só para facilitar o teste
+            btnFechar.Click += (s, e) => Close();
+
+            PadraoTela.AdicionarBarraLateral(this);   // barra lateral fixa
         }
 
         private void AplicarTema()
         {
-            // fundo da tela
-            BackColor = Fundo;
-            tlpRaiz.BackColor = Fundo;
+            // fundo claro, igual ao do painel
+            BackColor = TemaModerno.Fundo;
+            tlpRaiz.BackColor = TemaModerno.Fundo;
 
-            // cabeçalho: cartão escuro arredondado, sem contorno
-            TemaModerno.Cartao(pnlCabecalho, 12, false);
-            pnlCabecalho.BackColor = TemaModerno.Floresta;
-            flwBotoes.BackColor = TemaModerno.Floresta;
-            Rotulo(lblTitulo, 22f, FontStyle.Bold, TemaModerno.Menta2, TemaModerno.Floresta);
-            Rotulo(lblSubtitulo, 10.5f, FontStyle.Regular, TemaModerno.Oliva1, TemaModerno.Floresta);
+            // ---- cabecalho: sem cartao, so titulo + subtitulo + botoes ----
+            pnlCabecalho.Padding = Padding.Empty;
+            pnlCabecalho.BackColor = TemaModerno.Fundo;
 
-            // botões do cabeçalho
+            flwBotoes.BackColor = TemaModerno.Fundo;
+            flwBotoes.Dock = DockStyle.Right;
+            foreach (Button b in new[] { btnImprimir, btnPrevia, btnFechar })
+                b.Margin = new Padding(8, 22, 0, 0);
+
+            Rotulo(lblTitulo, 22f, FontStyle.Bold, TemaModerno.Texto, TemaModerno.Fundo);
+            Rotulo(lblSubtitulo, 10.5f, FontStyle.Regular, TemaModerno.Verde2, TemaModerno.Fundo);
+            lblTitulo.Location = new Point(0, 6);
+            lblSubtitulo.Location = new Point(2, 52);
+
+            // ---- botoes do cabecalho ----
             TemaModerno.Botao(btnImprimir, TemaModerno.Accent, Color.White, TemaModerno.Verde2);
             TemaModerno.Botao(btnPrevia, Color.White, TemaModerno.Texto, TemaModerno.Cabecalho);
             TemaModerno.Botao(btnFechar, Color.White, TemaModerno.Texto, TemaModerno.Cabecalho);
 
-            // cartão de filtro
+            // ---- cartao de filtro ----
             TemaModerno.Cartao(pnlFiltros);
             Rotulo(lblFiltros, 9.5f, FontStyle.Bold, TemaModerno.Verde4, TemaModerno.Card);
             Rotulo(lblProduto, 9f, FontStyle.Regular, TemaModerno.TextoSuave, TemaModerno.Card);
 
             TemaModerno.Botao(btnAplicar, TemaModerno.Accent, Color.White, TemaModerno.Verde2);
             TemaModerno.Botao(btnLimpar, TemaModerno.Campo, TemaModerno.Texto, TemaModerno.Cabecalho);
+            PadraoTela.CentralizarTexto(btnImprimir, btnPrevia, btnFechar, btnAplicar, btnLimpar);
 
-            // cartão do relatório
+            // ---- cartao do relatorio ----
             TemaModerno.Cartao(pnlRelatorio);
             Rotulo(lblAreaRelatorio, 11f, FontStyle.Regular, TemaModerno.TextoSuave, TemaModerno.Card);
         }

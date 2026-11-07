@@ -125,7 +125,7 @@ namespace Guri_atacarejo.forms
             Controls.Add(topo);
 
             // filete lima na borda direita: separa a barra do conteúdo claro
-            Controls.Add(new Panel { Dock = DockStyle.Right, Width = 3, BackColor = TemaModerno.Lima1 });
+            Controls.Add(new Panel { Dock = DockStyle.Right, Width = 3, BackColor = Color.FromArgb(56, 141, 60) });
 
             foreach (ToolStripItem ti in menu.Items)
             {

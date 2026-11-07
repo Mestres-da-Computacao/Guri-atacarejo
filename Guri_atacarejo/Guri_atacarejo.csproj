@@ -263,6 +263,7 @@
     <Compile Include="forms\frmAddProdVenda.Designer.cs">
       <DependentUpon>frmAddProdVenda.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\PadraoTela.cs" />
     <Compile Include="forms\Produto.cs" />
     <Compile Include="forms\RelatorioImpressao.cs" />
     <Compile Include="forms\TemaModerno.cs" />
