@@ -11,10 +11,13 @@ namespace Guri_atacarejo.forms
 {
     public partial class frmRelatorioCompra : Icone
     {
+        private BarraLateral barraLateral;
+
         public frmRelatorioCompra()
         {
             InitializeComponent();
 
+            AplicarTema();          // visual igual ao do frmPainel (TemaModerno)
             ResponsividadeForm.Aplicar(this);
 
             cbtempo.Leave += cbtempo_Leave;
@@ -23,6 +26,8 @@ namespace Guri_atacarejo.forms
             dataGridView1.CellMouseEnter += dataGridView1_CellMouseEnter;
 
             cbtempo.SelectedIndex = 0;
+
+            CriarBarraLateral();    // a barrinha de cima virou a barra lateral
         }
 
         private void frmRelatorio_Load(object sender, EventArgs e)
@@ -64,19 +69,30 @@ namespace Guri_atacarejo.forms
                 {
                     DataPropertyName = "DataCompra",
                     HeaderText = "Data",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
                     DefaultCellStyle = new DataGridViewCellStyle { Format = "dd/MM/yyyy" }
                 });
                 dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
                 {
                     DataPropertyName = "StatusCompra",
-                    HeaderText = "Tipo"
+                    HeaderText = "Tipo",
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill
                 });
                 dataGridView1.Columns.Add(new DataGridViewTextBoxColumn
                 {
                     DataPropertyName = "ValorTotal",
                     HeaderText = "Valor",
-                    DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" }
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill,
+                    DefaultCellStyle = new DataGridViewCellStyle
+                    {
+                        Format = "C2",
+                        Alignment = DataGridViewContentAlignment.MiddleRight
+                    }
                 });
+
+                // título da coluna "Valor" alinhado com os valores (direita)
+                dataGridView1.Columns[2].HeaderCell.Style.Alignment =
+                    DataGridViewContentAlignment.MiddleRight;
 
                 dataGridView1.DataSource = compras;
             }
@@ -223,7 +239,7 @@ namespace Guri_atacarejo.forms
         {
             MostrarDetalhes(e.RowIndex);
         }
-        
+
         // reseta o filtro
         private void btnResetarFiltro_Click(object sender, EventArgs e)
         {
@@ -248,5 +264,227 @@ namespace Guri_atacarejo.forms
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
         }
+
+        #region Visual moderno (cartão, barra lateral)
+
+        // ------------------------------------------------------------------
+        // Reorganiza os controles do designer num cartão, dentro de um painel
+        // "host" que preenche a área ao lado da barra lateral.
+        // ------------------------------------------------------------------
+        private void AplicarTema()
+        {
+            SuspendLayout();
+
+            ClientSize = new Size(1180, 640);
+            BackColor = TemaModerno.Fundo;
+            Text = "Relat\u00F3rio de compras";
+
+            const int m = 24;
+            int W = ClientSize.Width - BarraLateral.LarguraAberta;
+            int H = ClientSize.Height;
+
+            int topo = 96;
+            int cartaoW = W - 2 * m;
+            int cartaoH = H - topo - m;
+
+            // o GroupBox laranja do designer (pai da tabela) vai ser escondido no fim
+            Control caixaAntiga = dataGridView1.Parent;
+
+            var host = new Panel
+            {
+                Name = "pnlConteudo",
+                Dock = DockStyle.Fill,
+                BackColor = TemaModerno.Fundo
+            };
+
+            // ---- título da tela ----
+            host.Controls.Add(NovoRotulo("Movimento financeiro", 22f, FontStyle.Bold,
+                TemaModerno.Texto, TemaModerno.Fundo, new Point(m, 14)));
+            host.Controls.Add(NovoRotulo("Relat\u00F3rio de compras  \u2022  Guri Atacarejo", 10.5f,
+                FontStyle.Regular, TemaModerno.Verde2, TemaModerno.Fundo, new Point(m, 58)));
+
+            // ---- cartão: REGISTRO DO MOVIMENTO FINANCEIRO ----
+            var cartao = new Panel { Bounds = new Rectangle(m, topo, cartaoW, cartaoH) };
+            TemaModerno.Cartao(cartao);
+
+            cartao.Controls.Add(NovoRotulo("Registro do movimento financeiro", 12f, FontStyle.Bold,
+                TemaModerno.Texto, TemaModerno.Card, new Point(20, 14)));
+
+            // filtros (tudo alinhado pelo centro vertical do botão)
+            TemaModerno.Combo(cbtempo);
+            AjustarAlturaCombo(cbtempo);   // sem isso o texto do combo fica cortado
+            cbtempo.Location = new Point(20, 56);
+            cbtempo.Width = 170;
+            cartao.Controls.Add(cbtempo);
+
+            maskData.Font = TemaModerno.Fonte(11f);
+            maskData.BackColor = TemaModerno.Campo;
+            maskData.ForeColor = TemaModerno.Texto;
+            maskData.Location = new Point(206, 56);
+            maskData.Width = 150;
+            cartao.Controls.Add(maskData);
+
+            TemaModerno.Botao(btnResetarFiltro, TemaModerno.Campo, TemaModerno.Texto, TemaModerno.Cabecalho);
+            btnResetarFiltro.Padding = Padding.Empty;
+            btnResetarFiltro.TextAlign = ContentAlignment.MiddleCenter;
+            btnResetarFiltro.Bounds = new Rectangle(372, 52, 140, 40);
+            cartao.Controls.Add(btnResetarFiltro);
+
+            // mantém combo, data e botão no mesmo eixo, mesmo depois do redimensionamento
+            Action alinhar = AlinharFiltros;
+            btnResetarFiltro.SizeChanged += (s, e) => alinhar();
+            btnResetarFiltro.LocationChanged += (s, e) => alinhar();
+            cbtempo.SizeChanged += (s, e) => alinhar();
+            maskData.SizeChanged += (s, e) => alinhar();
+            alinhar();
+
+            // tabela (esquerda) + detalhes (direita)
+            int areaY = 108;
+            int areaH = cartaoH - areaY - 20;
+            int gridW = (cartaoW - 40 - 16) * 45 / 100;
+            int detX = 20 + gridW + 16;
+            int detW = cartaoW - 20 - detX;
+
+            cartao.Controls.Add(dataGridView1);
+            dataGridView1.Bounds = new Rectangle(20, areaY, gridW, areaH);
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.AllowUserToAddRows = false;
+            TemaModerno.Grid(dataGridView1);
+
+            cartao.Controls.Add(textBox2);
+            textBox2.Font = TemaModerno.Fonte(10f);
+            textBox2.BackColor = TemaModerno.Campo;
+            textBox2.ForeColor = TemaModerno.Texto;
+            textBox2.Bounds = new Rectangle(detX, areaY, detW, areaH);
+
+            host.Controls.Add(cartao);
+
+            // a navegação agora é a barra lateral: esconde a barra de cima e a caixa antiga
+            toolStrip1.Visible = false;
+            if (caixaAntiga != null && caixaAntiga != this && caixaAntiga != cartao)
+                caixaAntiga.Visible = false;
+
+            // ---- host por último: Fill precisa ser o último a ser "docado" ----
+            Controls.Add(host);
+            host.BringToFront();
+
+            ResumeLayout(true);
+        }
+
+        // ------------------------------------------------------------------
+        // Barra lateral montada a partir dos itens da barra de cima (toolStrip1).
+        // Cada clique é repassado com PerformClick, então os eventos já existentes
+        // (toolStripButton1_Click etc.) continuam funcionando.
+        // ------------------------------------------------------------------
+        private void CriarBarraLateral()
+        {
+            var menu = new MenuStrip();
+
+            foreach (ToolStripItem item in toolStrip1.Items)
+            {
+                if (item is ToolStripSeparator)
+                    continue;
+
+                // o botão de sair só tem imagem, então ganha um nome
+                string texto =
+                    item.DisplayStyle == ToolStripItemDisplayStyle.Image ||
+                    string.IsNullOrWhiteSpace(item.Text)
+                        ? "Logout"
+                        : item.Text.Trim();
+
+                ToolStripItem origem = item;
+                Action acao = AcaoDoItem(texto, origem);
+                var novo = new ToolStripMenuItem(texto);
+                novo.Click += (s, e) => acao();
+                menu.Items.Add(novo);
+            }
+
+            barraLateral = new BarraLateral(menu);
+            Controls.Add(barraLateral);
+            barraLateral.SendToBack();   // docka antes do conteúdo (que é Fill)
+        }
+
+        // Define o que cada item da barra lateral faz, pelo texto do item.
+        // Itens desconhecidos continuam chamando o clique original do botão.
+        private Action AcaoDoItem(string texto, ToolStripItem origem)
+        {
+            string t = texto.ToLowerInvariant();
+
+            if (t.Contains("venda"))
+                return Close;                         // volta para o painel de vendas
+
+            if (t.Contains("produto"))
+                return () =>
+                {
+                    using (var f = new frmCadastroProduto())
+                        f.ShowDialog(this);
+                };
+
+            if (t.Contains("funcion"))
+                return () =>
+                {
+                    using (var f = new frmCadastroFuncionario())
+                        f.ShowDialog(this);
+                };
+
+            if (t.Contains("logout"))
+                return Deslogar;
+
+            return () => origem.PerformClick();
+        }
+
+        // Mesmo logout do painel: limpa as sessões e fecha as telas (volta ao login).
+        private void Deslogar()
+        {
+            Sessao.NivelFuncionario = 0;
+            Sessao.IdFuncionario = 0;
+            Sessao.Usuario = null;
+            SessaoClientes.NomeCliente = null;
+            SessaoClientes.Cpf = null;
+            SessaoClientes.IdCliente = 0;
+
+            // este form foi aberto com ShowDialog(painel): fecha o painel também
+            Form painel = Owner;
+            Close();
+            if (painel != null && !painel.IsDisposed)
+                painel.BeginInvoke(new Action(painel.Close));
+        }
+
+        // centraliza combo e campo de data na altura do botão "Resetar filtro"
+        private void AlinharFiltros()
+        {
+            int centro = btnResetarFiltro.Top + btnResetarFiltro.Height / 2;
+            cbtempo.Top = centro - cbtempo.Height / 2;
+            maskData.Top = centro - maskData.Height / 2;
+        }
+
+        // Combo com owner-draw tem altura fixa (ItemHeight): sem isto o texto fica
+        // cortado quando a fonte cresce ao maximizar a janela.
+        private static void AjustarAlturaCombo(ComboBox c)
+        {
+            Action ajustar = () =>
+            {
+                if (c.DrawMode != DrawMode.Normal)
+                    c.ItemHeight = c.Font.Height + 10;
+            };
+            c.FontChanged += (s, e) => ajustar();
+            ajustar();
+        }
+
+        private static Label NovoRotulo(string texto, float tamanho, FontStyle estilo,
+            Color cor, Color fundo, Point local)
+        {
+            return new Label
+            {
+                AutoSize = true,
+                Text = texto,
+                Font = TemaModerno.Fonte(tamanho, estilo),
+                ForeColor = cor,
+                BackColor = fundo,
+                Location = local
+            };
+        }
+
+        #endregion
     }
 }

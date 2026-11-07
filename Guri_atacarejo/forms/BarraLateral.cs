@@ -275,6 +275,9 @@ namespace Guri_atacarejo.forms
             if (t.Contains("funcion")) return "\U0001F464";   // 👤
             if (t.Contains("client")) return "\U0001F465";    // 👥
             if (t.Contains("fornec")) return "\U0001F69A";    // 🚚
+            if (t.Contains("venda")) return "\U0001F6D2";     // 🛒
+            if (t.Contains("produto")) return "\U0001F4E6";   // 📦
+            if (t.Contains("logout")) return "\U0001F6AA";    // 🚪
             if (t.Contains("mais")) return "\u2699";          // ⚙
             return "\u2022";
         }
