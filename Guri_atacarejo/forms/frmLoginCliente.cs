@@ -3,9 +3,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-using System.Text.RegularExpressions;
+
 namespace Guri_atacarejo.forms
 {
     public partial class FrmLoginCliente : Icone
@@ -13,29 +11,9 @@ namespace Guri_atacarejo.forms
         public FrmLoginCliente()
         {
             InitializeComponent();
+            ResponsividadeForm.Aplicar(this);
         }
 
-        //private void textBox1_Click(object sender, EventArgs e)
-        //{
-        //    if (!cpfJacolocou)
-        //    {
-        //        textBox1.Text = "";
-        //        cpfJacolocou = true;
-        //    }
-        //    else
-        //    {
-        //        return;
-        //    }
-        //}
-
-        //private void textBox1_Leave(object sender, EventArgs e)
-        //{
-        //    if (textBox1.Text == "")
-        //    {
-        //        textBox1.Text = "Digite o cpf";
-        //        cpfJacolocou = false;
-        //    }
-        //}
         private void button2_Click(object sender, EventArgs e)
         {
             try
@@ -88,7 +66,7 @@ namespace Guri_atacarejo.forms
                     {
                         MessageBox.Show("CPF não encontrado.");
                         textBox1.Focus();
-                        textBox1.SelectAll();
+                        SelecionarTudoCpf();
                         return false;
                     }
 
@@ -99,6 +77,7 @@ namespace Guri_atacarejo.forms
                 }
             }
         }
+
         private void button1_Click(object sender, EventArgs e)
         {
             DialogResult = DialogResult.Cancel;
@@ -127,10 +106,52 @@ namespace Guri_atacarejo.forms
             else if (digitos.Length > 3)
                 formatado = digitos.Substring(0, 3) + "." + digitos.Substring(3);
 
-            textBox1.Text = formatado;
-            textBox1.SelectionStart = textBox1.Text.Length;   // cursor sempre no final
+            // só reescreve se mudou (evita o cursor pular sem necessidade)
+            if (textBox1.Text != formatado)
+                textBox1.Text = formatado;
+
+            ColocarCursorNoFimCpf();   // cursor sempre no final
 
             formatandoCpf = false;
+        }
+
+        // ------------------------------------------------------------------
+        // O CampoTexto não tem SelectAll nem SelectionStart (isso é do TextBox).
+        // Por isso procuramos a caixa de texto que fica dentro dele e usamos ela.
+        // ------------------------------------------------------------------
+        private TextBox CaixaDoCpf()
+        {
+            return AcharTextBox(textBox1);
+        }
+
+        private static TextBox AcharTextBox(Control pai)
+        {
+            foreach (Control filho in pai.Controls)
+            {
+                TextBox caixa = filho as TextBox;
+                if (caixa != null) return caixa;
+
+                caixa = AcharTextBox(filho);
+                if (caixa != null) return caixa;
+            }
+            return null;
+        }
+
+        private void SelecionarTudoCpf()
+        {
+            TextBox caixa = CaixaDoCpf();
+            if (caixa != null) caixa.SelectAll();
+        }
+
+        private void ColocarCursorNoFimCpf()
+        {
+            TextBox caixa = CaixaDoCpf();
+            if (caixa != null) caixa.SelectionStart = caixa.Text.Length;
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

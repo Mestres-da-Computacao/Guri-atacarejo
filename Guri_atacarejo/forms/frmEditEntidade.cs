@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
@@ -12,6 +13,13 @@ namespace Guri_atacarejo.forms
     public partial class frmEditEntidade : Form
     {
         enum Tipo { Texto, Email, Telefone, Documento, Inteiro, Decimal, Data, Lista, Chave }
+
+        enum EstiloBotao { Principal, Secundario, Perigo }
+
+        // medidas padrão da tela: todo campo tem o mesmo tamanho e toda linha a mesma altura
+        const int LarguraCampo = 280;
+        const int AlturaCampo = 32;
+        const int AlturaLinha = 44;
 
         // Uma coluna da tabela. Extra:
         //   Lista     -> opções separadas por vírgula ("M,F,O")
@@ -23,7 +31,8 @@ namespace Guri_atacarejo.forms
             public Tipo Tipo;
             public int Tamanho;
             public bool Obrigatorio, SomenteLeitura;
-            public Control Controle;
+            public Control Controle;   // o controle que tem o valor (TextBox, ComboBox, CampoData)
+            public Control Caixa;      // o "envelope" que vai na tela (quando o controle vem dentro de um)
 
             public Campo(string coluna, string rotulo, Tipo tipo, int tamanho, bool obrigatorio, string extra = null)
             {
@@ -39,6 +48,89 @@ namespace Guri_atacarejo.forms
             public string Nome;
             public Opcao(int id, string nome) { Id = id; Nome = nome; }
             public override string ToString() { return Nome; }
+        }
+
+        // Campo de data no mesmo estilo dos outros campos (fundo verde-claro, sem borda):
+        // digita dd/mm/aaaa ou clica na setinha para abrir o calendário.
+        class CampoData : Panel
+        {
+            readonly MaskedTextBox _caixa = new MaskedTextBox();
+
+            public CampoData(DateTime? inicial)
+            {
+                Size = new Size(LarguraCampo, AlturaCampo);
+                BackColor = TemaModerno.Campo;
+
+                _caixa.Culture = CultureInfo.InvariantCulture;
+                _caixa.Mask = "00/00/0000";
+                _caixa.BorderStyle = BorderStyle.None;
+                _caixa.BackColor = TemaModerno.Campo;
+                _caixa.ForeColor = TemaModerno.Texto;
+                _caixa.Font = TemaModerno.Fonte(10f);
+                _caixa.Width = 120;
+                _caixa.Location = new Point(10, (AlturaCampo - _caixa.Height) / 2);
+                if (inicial.HasValue)
+                    _caixa.Text = inicial.Value.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+                Controls.Add(_caixa);
+
+                Label seta = new Label();
+                seta.Text = "\u25BE";
+                seta.Font = TemaModerno.Fonte(11f);
+                seta.ForeColor = TemaModerno.TextoSuave;
+                seta.BackColor = TemaModerno.Campo;
+                seta.TextAlign = ContentAlignment.MiddleCenter;
+                seta.Dock = DockStyle.Right;
+                seta.Width = 36;
+                seta.Cursor = Cursors.Hand;
+                seta.Click += (s, e) => AbrirCalendario();
+                Controls.Add(seta);
+
+                Click += (s, e) => _caixa.Focus();
+            }
+
+            // nada digitado
+            public bool Vazio
+            {
+                get { return Regex.Replace(_caixa.Text, @"\D", "").Length == 0; }
+            }
+
+            public bool TentarObter(out DateTime data)
+            {
+                data = DateTime.MinValue;
+                if (!_caixa.MaskCompleted) return false;
+                return DateTime.TryParseExact(_caixa.Text, "dd/MM/yyyy",
+                    CultureInfo.InvariantCulture, DateTimeStyles.None, out data);
+            }
+
+            public void Focar()
+            {
+                _caixa.Focus();
+            }
+
+            private void AbrirCalendario()
+            {
+                MonthCalendar calendario = new MonthCalendar();
+                calendario.MaxSelectionCount = 1;
+
+                DateTime atual;
+                if (TentarObter(out atual)) calendario.SetDate(atual);
+
+                ToolStripControlHost conteudo = new ToolStripControlHost(calendario);
+                conteudo.Margin = Padding.Empty;
+                conteudo.Padding = Padding.Empty;
+
+                ToolStripDropDown popup = new ToolStripDropDown();
+                popup.Padding = Padding.Empty;
+                popup.Items.Add(conteudo);
+
+                calendario.DateSelected += (s, e) =>
+                {
+                    _caixa.Text = e.Start.ToString("dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    popup.Close();
+                };
+
+                popup.Show(this, new Point(0, Height));
+            }
         }
 
         readonly string _conexao = Guri_atacarejo.Properties.Settings.Default.ConnectionString;
@@ -115,8 +207,10 @@ namespace Guri_atacarejo.forms
         // ---------- tela (mesmo visual do frmPainel, via TemaModerno) ----------
         private void MontarTela()
         {
-            const int m = 24;
-            const int largura = 560;
+            const int m = 24;                       // margem da tela
+            const int largura = 560;                // largura da área útil da tela
+            const int pad = 24;                     // margem interna do cartão
+            int larguraCartao = largura - 2 * m;    // 512
 
             Text = "Editar " + _nome;
             BackColor = TemaModerno.Fundo;
@@ -126,16 +220,23 @@ namespace Guri_atacarejo.forms
             host.AutoScroll = true;
             host.BackColor = TemaModerno.Fundo;
 
+            // pequeno recuo negativo: compensa a "folga" interna das letras grandes,
+            // para o texto ficar alinhado com a borda esquerda do cartão
             host.Controls.Add(NovoRotulo("Editar " + _nome.ToLower(), 22f, FontStyle.Bold,
-                TemaModerno.Texto, TemaModerno.Fundo, new Point(m, 14)));
+                TemaModerno.Texto, TemaModerno.Fundo, new Point(m - 3, 14)));
             host.Controls.Add(NovoRotulo("Altere os dados e clique em Editar  \u2022  Guri Atacarejo", 10.5f,
-                FontStyle.Regular, TemaModerno.Verde2, TemaModerno.Fundo, new Point(m, 58)));
+                FontStyle.Regular, TemaModerno.Verde2, TemaModerno.Fundo, new Point(m - 1, 58)));
 
-            // cartão com um rótulo + um campo por coluna
+            // cartão: uma linha por coluna, todas com a mesma altura;
+            // rótulo e campo ficam centralizados na vertical dentro da linha
             TableLayoutPanel tabela = new TableLayoutPanel();
-            tabela.AutoSize = true;
+            tabela.AutoSize = false;
             tabela.ColumnCount = 2;
-            tabela.Location = new Point(20, 16);
+            tabela.RowCount = _campos.Count;
+            tabela.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, larguraCartao - 2 * pad - LarguraCampo));
+            tabela.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, LarguraCampo));
+            tabela.Location = new Point(pad, 16);
+            tabela.Size = new Size(larguraCartao - 2 * pad, _campos.Count * AlturaLinha);
             tabela.BackColor = TemaModerno.Card;
 
             int linha = 0;
@@ -144,28 +245,31 @@ namespace Guri_atacarejo.forms
                 string texto = c.Rotulo + (c.Obrigatorio ? " *" : "");
                 Label lbl = NovoRotulo(texto, 9.5f, FontStyle.Regular, TemaModerno.TextoSuave, TemaModerno.Card, Point.Empty);
                 lbl.Anchor = AnchorStyles.Left;
-                lbl.Margin = new Padding(0, 8, 16, 8);
+                lbl.Margin = Padding.Empty;
 
                 c.Controle = CriarControle(c);
-                c.Controle.Margin = new Padding(0, 4, 0, 4);
+                Control celula = c.Caixa ?? c.Controle;
+                celula.Anchor = AnchorStyles.Left;
+                celula.Margin = Padding.Empty;
 
+                tabela.RowStyles.Add(new RowStyle(SizeType.Absolute, AlturaLinha));
                 tabela.Controls.Add(lbl, 0, linha);
-                tabela.Controls.Add(c.Controle, 1, linha);
+                tabela.Controls.Add(celula, 1, linha);
                 linha++;
             }
 
             Panel cartao = new Panel();
             cartao.Controls.Add(tabela);
-            cartao.Bounds = new Rectangle(m, 96, largura - 2 * m, tabela.PreferredSize.Height + 32);
+            cartao.Bounds = new Rectangle(m, 96, larguraCartao, _campos.Count * AlturaLinha + 32);
             TemaModerno.Cartao(cartao);
             host.Controls.Add(cartao);
 
-            // botões
+            // botões: Editar e Cancelar à esquerda, Excluir encostado na borda direita do cartão
             int y = cartao.Bottom + 16;
-            Button btnEditar = NovoBotao("Editar", TemaModerno.Accent, Color.White, TemaModerno.Verde2, m, y, 130);
-            Button btnCancelar = NovoBotao("Cancelar", TemaModerno.Campo, TemaModerno.Texto, TemaModerno.Cabecalho, m + 142, y, 130);
-            Button btnExcluir = NovoBotao("Excluir " + _nome, Color.FromArgb(250, 228, 230), TemaModerno.Perigo,
-                Color.FromArgb(244, 206, 210), m + 284, y, 190);
+            int direita = m + larguraCartao;
+            Button btnEditar = NovoBotao("Editar", EstiloBotao.Principal, m, y, 130);
+            Button btnCancelar = NovoBotao("Cancelar", EstiloBotao.Secundario, m + 142, y, 130);
+            Button btnExcluir = NovoBotao("Excluir " + _nome, EstiloBotao.Perigo, direita - 190, y, 190);
 
             btnEditar.Click += btnEditar_Click;
             btnExcluir.Click += btnExcluir_Click;
@@ -192,13 +296,88 @@ namespace Guri_atacarejo.forms
             return l;
         }
 
-        private static Button NovoBotao(string texto, Color fundo, Color letra, Color hover, int x, int y, int largura)
+        private static Button NovoBotao(string texto, EstiloBotao estilo, int x, int y, int largura)
         {
             Button b = new Button();
             b.Text = texto;
             b.Bounds = new Rectangle(x, y, largura, 44);
-            TemaModerno.Botao(b, fundo, letra, hover);
+            EstilizarBotao(b, estilo);
             return b;
+        }
+
+        // Botões no padrão do resto do projeto: verde #48972C com texto branco (principal),
+        // branco com borda verde (secundário) e branco com borda vermelha (excluir).
+        // Cantos arredondados; a borda é desenhada no Paint para ficar lisa.
+        private static void EstilizarBotao(Button b, EstiloBotao estilo)
+        {
+            const int raio = 10;
+            Color verde = Color.FromArgb(72, 151, 44);
+            Color corFundo, corTexto, corBorda, hover, clique;
+
+            switch (estilo)
+            {
+                case EstiloBotao.Principal:
+                    corFundo = verde; corTexto = Color.White; corBorda = verde;
+                    hover = Color.FromArgb(58, 124, 35); clique = Color.FromArgb(46, 104, 28);
+                    break;
+                case EstiloBotao.Perigo:
+                    corFundo = Color.White; corTexto = TemaModerno.Perigo; corBorda = TemaModerno.Perigo;
+                    hover = Color.FromArgb(250, 228, 230); clique = Color.FromArgb(244, 206, 210);
+                    break;
+                default:
+                    corFundo = Color.White; corTexto = verde; corBorda = verde;
+                    hover = Color.FromArgb(232, 243, 229); clique = Color.FromArgb(214, 232, 209);
+                    break;
+            }
+
+            b.UseVisualStyleBackColor = false;
+            b.FlatStyle = FlatStyle.Flat;
+            b.FlatAppearance.BorderSize = 0;
+            b.FlatAppearance.MouseOverBackColor = hover;
+            b.FlatAppearance.MouseDownBackColor = clique;
+            b.BackColor = corFundo;
+            b.ForeColor = corTexto;
+            b.Font = TemaModerno.Fonte(10.5f, FontStyle.Bold);
+            b.Cursor = Cursors.Hand;
+
+            b.Paint += (s, e) =>
+            {
+                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                using (GraphicsPath caminho = CaminhoArredondado(
+                    new RectangleF(0.5f, 0.5f, b.Width - 2f, b.Height - 2f), raio))
+                using (Pen caneta = new Pen(corBorda, 1.5f))
+                {
+                    e.Graphics.DrawPath(caneta, caminho);
+                }
+            };
+
+            TemaModerno.Arredondar(b, raio);
+        }
+
+        private static GraphicsPath CaminhoArredondado(RectangleF r, float raio)
+        {
+            float d = raio * 2;
+            GraphicsPath p = new GraphicsPath();
+            p.AddArc(r.X, r.Y, d, d, 180, 90);
+            p.AddArc(r.Right - d, r.Y, d, d, 270, 90);
+            p.AddArc(r.Right - d, r.Bottom - d, d, d, 0, 90);
+            p.AddArc(r.X, r.Bottom - d, d, d, 90, 90);
+            p.CloseFigure();
+            return p;
+        }
+
+        // Caixa de texto sem borda dentro de um painel do tamanho padrão do campo
+        private static Panel EnvolverCampo(TextBox texto, Color fundo)
+        {
+            Panel caixa = new Panel();
+            caixa.Size = new Size(LarguraCampo, AlturaCampo);
+            caixa.BackColor = fundo;
+
+            texto.Width = LarguraCampo - 20;
+            texto.Location = new Point(10, (AlturaCampo - texto.Height) / 2);
+            caixa.Controls.Add(texto);
+            caixa.Click += (s, e) => texto.Focus();
+            return caixa;
         }
 
         private Control CriarControle(Campo c)
@@ -206,14 +385,11 @@ namespace Guri_atacarejo.forms
             object valor = _linha[c.Coluna];
             bool nulo = valor == DBNull.Value;
 
-            // DATE -> seletor de data
+            // DATE -> campo de data (digitar ou calendário)
             if (c.Tipo == Tipo.Data)
             {
-                DateTimePicker data = new DateTimePicker();
-                data.Format = DateTimePickerFormat.Short;
-                data.Font = TemaModerno.Fonte(10f);
-                data.Width = 280;
-                if (!nulo) data.Value = Convert.ToDateTime(valor);
+                CampoData data = new CampoData(nulo ? (DateTime?)null : Convert.ToDateTime(valor));
+                c.Caixa = data;
                 return data;
             }
 
@@ -222,8 +398,11 @@ namespace Guri_atacarejo.forms
             {
                 ComboBox combo = new ComboBox();
                 combo.DropDownStyle = ComboBoxStyle.DropDownList;
-                combo.Width = 280;
+                combo.Width = LarguraCampo;
                 TemaModerno.Combo(combo);
+                // combo desenhado à mão tem altura = ItemHeight + borda: iguala ao dos outros campos
+                if (combo.DrawMode != DrawMode.Normal)
+                    combo.ItemHeight = AlturaCampo - 6;
 
                 if (c.Tipo == Tipo.Lista)
                 {
@@ -239,11 +418,12 @@ namespace Guri_atacarejo.forms
             }
 
             // demais -> caixa de texto que só aceita os caracteres do tipo
+            Color fundo = c.SomenteLeitura ? TemaModerno.Cabecalho : TemaModerno.Campo;
+
             TextBox texto = new TextBox();
-            texto.Width = 280;
             texto.Font = TemaModerno.Fonte(10f);
-            texto.BorderStyle = BorderStyle.FixedSingle;
-            texto.BackColor = c.SomenteLeitura ? TemaModerno.Cabecalho : TemaModerno.Campo;
+            texto.BorderStyle = BorderStyle.None;
+            texto.BackColor = fundo;
             texto.ForeColor = TemaModerno.Texto;
             texto.ReadOnly = c.SomenteLeitura;
             texto.Tag = c;
@@ -259,6 +439,8 @@ namespace Guri_atacarejo.forms
                     ? Convert.ToDecimal(valor).ToString("F2", _pt)
                     : valor.ToString().Trim();
             }
+
+            c.Caixa = EnvolverCampo(texto, fundo);
             return texto;
         }
 
@@ -335,6 +517,27 @@ namespace Guri_atacarejo.forms
             {
                 if (c.SomenteLeitura) continue;
 
+                // data: vazia só é aceita se o campo não for obrigatório
+                if (c.Tipo == Tipo.Data)
+                {
+                    CampoData campoData = (CampoData)c.Controle;
+                    DateTime dataLida;
+
+                    if (campoData.Vazio)
+                    {
+                        if (!c.Obrigatorio) continue;
+                        campoData.Focar();
+                        return "O campo \"" + c.Rotulo + "\" é obrigatório.";
+                    }
+
+                    if (!campoData.TentarObter(out dataLida) || dataLida.Year < 1900)
+                    {
+                        campoData.Focar();
+                        return c.Rotulo + " inválida. Use o formato dd/mm/aaaa.";
+                    }
+                    continue;
+                }
+
                 string texto = c.Controle.Text.Trim();
                 if (texto == "")
                 {
@@ -377,7 +580,13 @@ namespace Guri_atacarejo.forms
         // Valor que vai para o banco (DBNull quando vazio)
         private object ObterValor(Campo c)
         {
-            if (c.Tipo == Tipo.Data) return ((DateTimePicker)c.Controle).Value.Date;
+            if (c.Tipo == Tipo.Data)
+            {
+                DateTime dataLida;
+                return ((CampoData)c.Controle).TentarObter(out dataLida)
+                    ? (object)dataLida.Date
+                    : DBNull.Value;
+            }
 
             if (c.Tipo == Tipo.Chave)
             {

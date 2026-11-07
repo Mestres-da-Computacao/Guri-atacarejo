@@ -22,6 +22,7 @@ namespace Guri_atacarejo.forms
         public frmCompra_()
         {
             InitializeComponent();
+            ResponsividadeForm.Aplicar(this);
         }
 
         private void frmCompra__Load(object sender, EventArgs e)
