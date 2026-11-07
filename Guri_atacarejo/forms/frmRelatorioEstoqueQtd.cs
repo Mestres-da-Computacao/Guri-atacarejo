@@ -98,5 +98,10 @@ namespace Guri_atacarejo.forms
         {
 
         }
+
+        private void pnlRelatorio_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

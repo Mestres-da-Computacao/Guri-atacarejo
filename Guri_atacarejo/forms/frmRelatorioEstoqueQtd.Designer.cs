@@ -146,6 +146,7 @@ namespace Guri_atacarejo.forms
             this.pnlRelatorio.Padding = new System.Windows.Forms.Padding(2);
             this.pnlRelatorio.Size = new System.Drawing.Size(1216, 405);
             this.pnlRelatorio.TabIndex = 2;
+            this.pnlRelatorio.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlRelatorio_Paint);
             // 
             // lblAreaRelatorio
             // 
