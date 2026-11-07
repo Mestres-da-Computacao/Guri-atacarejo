@@ -274,5 +274,10 @@ namespace Guri_atacarejo.forms
         { }
 
         private void campoTexto1_TextChanged(object sender, EventArgs e) { }
+
+        private void maskedtxtTelefone_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

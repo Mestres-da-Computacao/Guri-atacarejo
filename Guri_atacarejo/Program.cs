@@ -18,7 +18,7 @@ namespace Guri_atacarejo
             SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmLoginCliente());
+            Application.Run(new frmRegistro_Cliente());
         }
     }
 }

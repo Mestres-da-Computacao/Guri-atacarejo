@@ -17,6 +17,11 @@ namespace Guri_atacarejo.forms
         private static readonly string ConnectionString =
             global::Guri_atacarejo.Properties.Settings.Default.ConnectionString;
 
+        private static readonly Color CorErro = Color.FromArgb(255, 146, 146);
+
+        // cor original de cada campo (para voltar ao normal depois de marcar como erro)
+        private readonly Dictionary<Control, Color> _coresOriginais = new Dictionary<Control, Color>();
+
         string lastTecla;
         long i = 0;
         string cpformatado;
@@ -25,7 +30,46 @@ namespace Guri_atacarejo.forms
         {
             InitializeComponent();
 
+            foreach (Control campo in new Control[] { txtNome, txtCPF, txtEmail, txtTelefone })
+                _coresOriginais[campo] = campo.BackColor;
+
             ResponsividadeForm.Aplicar(this);
+        }
+
+        // ------------------------------------------------------------------
+        // CampoTexto e CampoMascara não têm SelectionStart nem SelectAll
+        // (isso é do TextBox). Procuramos a caixa de texto que fica dentro deles.
+        // ------------------------------------------------------------------
+        private static TextBoxBase CaixaInterna(Control campo)
+        {
+            foreach (Control filho in campo.Controls)
+            {
+                TextBoxBase caixa = filho as TextBoxBase;
+                if (caixa != null) return caixa;
+
+                caixa = CaixaInterna(filho);
+                if (caixa != null) return caixa;
+            }
+            return campo as TextBoxBase;
+        }
+
+        private static void CursorNoFim(Control campo)
+        {
+            TextBoxBase caixa = CaixaInterna(campo);
+            if (caixa != null) caixa.SelectionStart = caixa.TextLength;
+        }
+
+        private static void SelecionarTudo(Control campo)
+        {
+            TextBoxBase caixa = CaixaInterna(campo);
+            if (caixa != null) caixa.SelectAll();
+        }
+
+        private void RestaurarCor(Control campo)
+        {
+            Color original;
+            if (_coresOriginais.TryGetValue(campo, out original))
+                campo.BackColor = original;
         }
 
         private void txtCPF_KeyPress(object sender, KeyPressEventArgs e)
@@ -91,7 +135,7 @@ namespace Guri_atacarejo.forms
                 {
                     txtCPF.Text = valor;
                 }
-                txtCPF.SelectionStart = txtCPF.Text.Length;
+                CursorNoFim(txtCPF);
             }
 
             formatando = false;
@@ -140,7 +184,7 @@ namespace Guri_atacarejo.forms
                     txtTelefone.Text = valor;
                 }
 
-                txtTelefone.SelectionStart = txtTelefone.Text.Length;
+                CursorNoFim(txtTelefone);
             }
 
             formatando = false;
@@ -190,40 +234,26 @@ namespace Guri_atacarejo.forms
         {
             string camposVazios = "";
             bool erro = false;
+
             if (!rbHomem.Checked && !rbMulher.Checked && !rbOutro.Checked)
             {
                 camposVazios += "Gênero\n";
                 erro = true;
             }
-            else
-            {
-                erro = false;
-            }
 
-            foreach (Control controle in groupBox1.Controls)
+            // o groupBox1 não existe mais: os campos são conferidos direto pelo nome
+            Control[] campos = { txtNome, txtCPF, txtEmail, txtTelefone };
+            foreach (Control controle in campos)
             {
-                if (controle is TextBox textBox && string.IsNullOrWhiteSpace(textBox.Text))
+                if (string.IsNullOrWhiteSpace(controle.Text))
                 {
                     erro = true;
-                    camposVazios += controle.Name.ToString().Remove(0, 3) + "\n";
-                    Console.WriteLine(camposVazios);
-                    controle.BackColor = Color.FromArgb(255, 146, 146);
-
-                    if (controle is GroupBox)
-                    {
-                        //mudar p mudar a cor da groupbox Genero
-                    }
+                    camposVazios += controle.Name.Remove(0, 3) + "\n";   // "txtNome" -> "Nome"
+                    controle.BackColor = CorErro;
                 }
                 else
                 {
-                    if (controle is TextBox)
-                    {
-                        controle.BackColor = Color.White;
-                    }
-                    else if (controle is GroupBox)
-                    {
-                        //mudar p mudar a cor da groupbox Genero
-                    }
+                    RestaurarCor(controle);
                 }
             }
 
@@ -237,26 +267,26 @@ namespace Guri_atacarejo.forms
                 if (txtCPF.Text.Length != 14)
                 {
                     MessageBox.Show("CPF digitado incorretamente\n\nCPF deve conter 14 caracteres \n\nEx: 123.456.789-00");
-                    txtCPF.BackColor = Color.FromArgb(255, 146, 146);
+                    txtCPF.BackColor = CorErro;
                     erro = true;
                 }
                 ValidadorCPF validador = new ValidadorCPF();
-                if(validador.ValidarCPF(txtCPF.Text) == false)
+                if (validador.ValidarCPF(txtCPF.Text) == false)
                 {
                     MessageBox.Show("CPF digitado incorretamente\n\nCPF inválido");
-                    txtCPF.BackColor = Color.FromArgb(255, 146, 146);
+                    txtCPF.BackColor = CorErro;
                     erro = true;
                 }
                 if (!txtEmail.Text.Contains("@") || !txtEmail.Text.Contains(".com"))
                 {
                     MessageBox.Show("Email digitado incorretamente\n Email deve conter @ e .com");
-                    txtEmail.BackColor = Color.FromArgb(255, 146, 146);
+                    txtEmail.BackColor = CorErro;
                     erro = true;
                 }
                 if (txtTelefone.Text.Length < 14)
                 {
                     MessageBox.Show("Telefone digitado incorretamente\n\n Ex: (12) 34567-8901 ou (12) 3456-7890");
-                    txtTelefone.BackColor = Color.FromArgb(255, 146, 146);
+                    txtTelefone.BackColor = CorErro;
                     erro = true;
                 }
                 if (!erro)
@@ -274,9 +304,9 @@ namespace Guri_atacarejo.forms
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Warning);
 
-                            txtCPF.BackColor = Color.FromArgb(255, 146, 146);
+                            txtCPF.BackColor = CorErro;
                             txtCPF.Focus();
-                            txtCPF.SelectAll();
+                            SelecionarTudo(txtCPF);
                             return;
                         }
 
@@ -302,7 +332,7 @@ namespace Guri_atacarejo.forms
                     catch (SqlException ex) when (ex.Number == 2627 || ex.Number == 2601)
                     {
                         MessageBox.Show("Já existe um cliente com esses dados (CPF ou e-mail). Confira e tente novamente.");
-                        txtCPF.BackColor = Color.FromArgb(255, 146, 146);
+                        txtCPF.BackColor = CorErro;
                         txtCPF.Focus();
                     }
                     catch (SqlException ex)
@@ -311,6 +341,11 @@ namespace Guri_atacarejo.forms
                     }
                 }
             }
+        }
+
+        private void button3_Click_2(object sender, EventArgs e)
+        {
+
         }
     }
 }

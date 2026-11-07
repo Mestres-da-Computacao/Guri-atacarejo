@@ -51,7 +51,7 @@
             this.labelUnidadeMedida.AutoSize = true;
             this.labelUnidadeMedida.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelUnidadeMedida.ForeColor = System.Drawing.Color.White;
-            this.labelUnidadeMedida.Location = new System.Drawing.Point(512, 191);
+            this.labelUnidadeMedida.Location = new System.Drawing.Point(582, 191);
             this.labelUnidadeMedida.Name = "labelUnidadeMedida";
             this.labelUnidadeMedida.Size = new System.Drawing.Size(215, 25);
             this.labelUnidadeMedida.TabIndex = 36;
@@ -63,7 +63,7 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(151)))), ((int)(((byte)(44)))));
-            this.btnCancelar.Location = new System.Drawing.Point(578, 502);
+            this.btnCancelar.Location = new System.Drawing.Point(668, 580);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(140, 51);
             this.btnCancelar.TabIndex = 5;
@@ -77,7 +77,7 @@
             this.btnConfirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmar.ForeColor = System.Drawing.Color.White;
-            this.btnConfirmar.Location = new System.Drawing.Point(735, 502);
+            this.btnConfirmar.Location = new System.Drawing.Point(825, 580);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(140, 51);
             this.btnConfirmar.TabIndex = 6;
@@ -115,7 +115,7 @@
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(513, 58);
+            this.label1.Location = new System.Drawing.Point(583, 58);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(86, 25);
             this.label1.TabIndex = 27;
@@ -136,9 +136,9 @@
             // pictureBoxLogo
             // 
             this.pictureBoxLogo.Image = global::Guri_atacarejo.Properties.Resources.Logótipo_Guri_Atacarejo_Branco;
-            this.pictureBoxLogo.Location = new System.Drawing.Point(970, 12);
+            this.pictureBoxLogo.Location = new System.Drawing.Point(1053, 12);
             this.pictureBoxLogo.Name = "pictureBoxLogo";
-            this.pictureBoxLogo.Size = new System.Drawing.Size(189, 582);
+            this.pictureBoxLogo.Size = new System.Drawing.Size(189, 657);
             this.pictureBoxLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBoxLogo.TabIndex = 38;
             this.pictureBoxLogo.TabStop = false;
@@ -160,7 +160,7 @@
             this.panel1.Controls.Add(this.lblNome);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(952, 582);
+            this.panel1.Size = new System.Drawing.Size(1026, 657);
             this.panel1.TabIndex = 39;
             // 
             // txtDescricao
@@ -176,7 +176,7 @@
             this.txtDescricao.Location = new System.Drawing.Point(50, 334);
             this.txtDescricao.Name = "txtDescricao";
             this.txtDescricao.PlaceholderText = "Descreva o produto (opcional)";
-            this.txtDescricao.Size = new System.Drawing.Size(856, 133);
+            this.txtDescricao.Size = new System.Drawing.Size(926, 215);
             this.txtDescricao.TabIndex = 4;
             // 
             // cmbunidademedida
@@ -189,9 +189,9 @@
             this.cmbunidademedida.CorTextoNormal = System.Drawing.Color.White;
             this.cmbunidademedida.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbunidademedida.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.cmbunidademedida.Location = new System.Drawing.Point(517, 218);
+            this.cmbunidademedida.Location = new System.Drawing.Point(545, 218);
             this.cmbunidademedida.Name = "cmbunidademedida";
-            this.cmbunidademedida.Size = new System.Drawing.Size(389, 47);
+            this.cmbunidademedida.Size = new System.Drawing.Size(431, 47);
             this.cmbunidademedida.TabIndex = 3;
             // 
             // txtPreco
@@ -207,7 +207,7 @@
             this.txtPreco.Location = new System.Drawing.Point(50, 218);
             this.txtPreco.Name = "txtPreco";
             this.txtPreco.Prefixo = "R$";
-            this.txtPreco.Size = new System.Drawing.Size(389, 47);
+            this.txtPreco.Size = new System.Drawing.Size(432, 47);
             this.txtPreco.TabIndex = 2;
             // 
             // txtCodigo
@@ -218,9 +218,9 @@
             this.txtCodigo.CorTextoNormal = System.Drawing.Color.White;
             this.txtCodigo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigo.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.txtCodigo.Location = new System.Drawing.Point(517, 85);
+            this.txtCodigo.Location = new System.Drawing.Point(545, 86);
             this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(389, 47);
+            this.txtCodigo.Size = new System.Drawing.Size(431, 47);
             this.txtCodigo.TabIndex = 1;
             // 
             // txtNome
@@ -233,7 +233,7 @@
             this.txtNome.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
             this.txtNome.Location = new System.Drawing.Point(50, 85);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(389, 47);
+            this.txtNome.Size = new System.Drawing.Size(432, 47);
             this.txtNome.TabIndex = 0;
             // 
             // frmCadastroProduto
@@ -241,7 +241,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(83)))), ((int)(((byte)(46)))));
-            this.ClientSize = new System.Drawing.Size(1171, 606);
+            this.ClientSize = new System.Drawing.Size(1264, 681);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBoxLogo);
             this.Name = "frmCadastroProduto";

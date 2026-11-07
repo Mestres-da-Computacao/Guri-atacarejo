@@ -338,6 +338,7 @@
             this.maskedtxtTelefone.Name = "maskedtxtTelefone";
             this.maskedtxtTelefone.Size = new System.Drawing.Size(171, 32);
             this.maskedtxtTelefone.TabIndex = 4;
+            this.maskedtxtTelefone.TextChanged += new System.EventHandler(this.maskedtxtTelefone_TextChanged);
             // 
             // maskedtxtCpf
             // 
