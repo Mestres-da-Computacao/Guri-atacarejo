@@ -427,6 +427,7 @@
   <ItemGroup>
     <Content Include="forms\Texte_pra_envio.txt" />
     <Content Include="projeto-icone.ico" />
+    <None Include="Resources\Logótipo GURI Atacarejo em Verde.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

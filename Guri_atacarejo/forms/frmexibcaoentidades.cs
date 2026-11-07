@@ -2,6 +2,7 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace Guri_atacarejo.forms
@@ -168,6 +169,29 @@ namespace Guri_atacarejo.forms
                                  coluna.DataPropertyName == atributoSelecionado ||
                                  coluna.Name == atributoSelecionado;
             }
+
+            AjustarColunas();
+        }
+
+        // Colunas do tamanho do conteúdo (sem "..."); se sobrar espaço, esticam para
+        // preencher a tabela; se não couberem, aparece a barra de rolagem horizontal.
+        private void AjustarColunas()
+        {
+            DataGridView g = dataGridView1;
+            if (g.Columns.Count == 0) return;
+
+            g.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+
+            int total = 0;
+            foreach (DataGridViewColumn c in g.Columns)
+                if (c.Visible) total += c.Width;
+
+            if (total < g.ClientSize.Width)
+            {
+                foreach (DataGridViewColumn c in g.Columns)
+                    c.FillWeight = Math.Max(1, c.Width);
+                g.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -210,11 +234,10 @@ namespace Guri_atacarejo.forms
             BackColor = TemaModerno.Fundo;
             Text = "Entidades";
             menuStrip1.Visible = false;   // não tem itens
-            pictureBox1.Visible = false;  // a imagem laranja não combina com o tema
 
             const int m = 24;
             int largura = ClientSize.Width - 2 * m;
-            int acoesH = 72;
+            int acoesH = 108;
             int acoesY = ClientSize.Height - m - acoesH;
 
             Panel host = new Panel();
@@ -226,6 +249,15 @@ namespace Guri_atacarejo.forms
             host.Controls.Add(NovoRotulo("Consulta e edi\u00E7\u00E3o  \u2022  Guri Atacarejo", 10.5f,
                 FontStyle.Regular, TemaModerno.Verde2, TemaModerno.Fundo, new Point(m, 58)));
 
+            // ---- logo da firma (canto superior direito) ----
+            PrepararLogo();
+            pictureBox1.Visible = true;
+            pictureBox1.BackColor = TemaModerno.Fundo;   // fundo igual ao da tela (sem o laranja)
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            // tamanho da área do logo: se o seu logo for mais largo que alto, aumente a largura (80)
+            pictureBox1.Bounds = new Rectangle(ClientSize.Width - m - 80, 10, 80, 78);
+            host.Controls.Add(pictureBox1);
+
             // ---- cartão: PESQUISA (o GroupBox vira um Panel) ----
             Panel pesquisa = TemaModerno.GroupBoxParaPainel(Pesquisa, TemaModerno.Card);
             pesquisa.Bounds = new Rectangle(m, 96, largura, acoesY - 16 - 96);
@@ -234,20 +266,30 @@ namespace Guri_atacarejo.forms
             pesquisa.Controls.Add(NovoRotulo("Pesquisa", 12f, FontStyle.Bold,
                 TemaModerno.Texto, TemaModerno.Card, new Point(20, 14)));
 
-            Estilizar(label1, new Point(20, 58));
+            // rótulos com tamanho fixo (alinhados ao título do cartão e aos combos)
+            Estilizar(label1, new Point(20, 52));
+            label1.AutoSize = false;
+            label1.Bounds = new Rectangle(20, 52, 85, 30);
+            label1.TextAlign = ContentAlignment.MiddleLeft;
             TemaModerno.Combo(cbent);
-            cbent.Location = new Point(110, 54);
+            AjustarAlturaCombo(cbent);
+            cbent.Location = new Point(110, 52);
             cbent.Width = 200;
 
-            Estilizar(label2, new Point(340, 58));
+            Estilizar(label2, new Point(340, 52));
+            label2.AutoSize = false;
+            label2.Bounds = new Rectangle(340, 52, 65, 30);
+            label2.TextAlign = ContentAlignment.MiddleLeft;
             TemaModerno.Combo(cbcar);
-            cbcar.Location = new Point(410, 54);
+            AjustarAlturaCombo(cbcar);
+            cbcar.Location = new Point(410, 52);
             cbcar.Width = 220;
 
             pesquisa.Controls.Add(dataGridView1);
             dataGridView1.Location = new Point(1, 100);
             dataGridView1.Size = new Size(pesquisa.Width - 2, pesquisa.Height - 101);
             TemaModerno.Grid(dataGridView1);
+            dataGridView1.SizeChanged += (s, e) => AjustarColunas();   // ao maximizar a janela
             host.Controls.Add(pesquisa);
 
             // ---- cartão: AÇÕES ----
@@ -255,12 +297,12 @@ namespace Guri_atacarejo.forms
             acoes.Bounds = new Rectangle(m, acoesY, largura, acoesH);
             TemaModerno.Cartao(acoes);
             acoes.Controls.Add(NovoRotulo("A\u00C7\u00D5ES", 9.5f, FontStyle.Bold,
-                TemaModerno.Verde4, TemaModerno.Card, new Point(20, 10)));
+                TemaModerno.Verde4, TemaModerno.Card, new Point(20, 16)));
 
-            TemaModerno.Botao(btnEditar, TemaModerno.Accent, Color.White, TemaModerno.Verde2);
-            btnEditar.Bounds = new Rectangle(20, 30, 150, 34);
-            TemaModerno.Botao(btnVoltar, TemaModerno.Campo, TemaModerno.Texto, TemaModerno.Cabecalho);
-            btnVoltar.Bounds = new Rectangle(182, 30, 150, 34);
+            EstilizarBotao(btnEditar, true);
+            btnEditar.Bounds = new Rectangle(20, 46, 170, 46);
+            EstilizarBotao(btnVoltar, false);
+            btnVoltar.Bounds = new Rectangle(210, 46, 170, 46);
             acoes.Controls.Add(btnEditar);
             acoes.Controls.Add(btnVoltar);
             host.Controls.Add(acoes);
@@ -290,6 +332,112 @@ namespace Guri_atacarejo.forms
             l.ForeColor = TemaModerno.TextoSuave;
             l.BackColor = TemaModerno.Card;
             l.Location = local;
+        }
+
+        // ------------------------------------------------------------------
+        // Botões no mesmo padrão do resto do projeto (Compra, Registrar Lote...):
+        // verde #48972C com texto branco; o secundário é branco com texto e borda verdes.
+        // Cantos arredondados.
+        // ------------------------------------------------------------------
+        private static readonly Color VerdeBotao = Color.FromArgb(72, 151, 44);
+
+        private static void EstilizarBotao(Button b, bool principal)
+        {
+            const int raio = 10;
+            Color corBorda = VerdeBotao;
+
+            b.UseVisualStyleBackColor = false;
+            b.FlatStyle = FlatStyle.Flat;
+            b.Cursor = Cursors.Hand;
+            b.Font = TemaModerno.Fonte(10.5f, FontStyle.Bold);
+            b.FlatAppearance.BorderSize = 0;   // a borda é desenhada no Paint, arredondada
+
+            if (principal)
+            {
+                b.FlatAppearance.MouseOverBackColor = Color.FromArgb(58, 124, 35);
+                b.FlatAppearance.MouseDownBackColor = Color.FromArgb(46, 104, 28);
+            }
+            else
+            {
+                b.FlatAppearance.MouseOverBackColor = Color.FromArgb(232, 243, 229);
+                b.FlatAppearance.MouseDownBackColor = Color.FromArgb(214, 232, 209);
+            }
+
+            // cores normais e cores de "desabilitado" (o Editar começa desabilitado)
+            Action pintar = () =>
+            {
+                if (!b.Enabled)
+                {
+                    b.BackColor = Color.FromArgb(226, 232, 224);
+                    b.ForeColor = Color.FromArgb(140, 150, 138);
+                    corBorda = Color.FromArgb(206, 214, 204);
+                }
+                else
+                {
+                    b.BackColor = principal ? VerdeBotao : Color.White;
+                    b.ForeColor = principal ? Color.White : VerdeBotao;
+                    corBorda = VerdeBotao;
+                }
+                b.Invalidate();
+            };
+
+            b.Paint += (s, e) =>
+            {
+                e.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
+                using (GraphicsPath caminho = CaminhoArredondado(
+                    new RectangleF(0.5f, 0.5f, b.Width - 2f, b.Height - 2f), raio))
+                using (Pen caneta = new Pen(corBorda, 1.5f))
+                {
+                    e.Graphics.DrawPath(caneta, caminho);
+                }
+            };
+
+            b.EnabledChanged += (s, e) => pintar();
+            pintar();
+            TemaModerno.Arredondar(b, raio);
+        }
+
+        private static GraphicsPath CaminhoArredondado(RectangleF r, float raio)
+        {
+            float d = raio * 2;
+            GraphicsPath p = new GraphicsPath();
+            p.AddArc(r.X, r.Y, d, d, 180, 90);
+            p.AddArc(r.Right - d, r.Y, d, d, 270, 90);
+            p.AddArc(r.Right - d, r.Bottom - d, d, d, 0, 90);
+            p.AddArc(r.X, r.Bottom - d, d, d, 90, 90);
+            p.CloseFigure();
+            return p;
+        }
+
+        // Combo com owner-draw tem altura fixa (ItemHeight): sem isto o texto fica
+        // cortado quando a fonte cresce ao maximizar a janela.
+        private static void AjustarAlturaCombo(ComboBox c)
+        {
+            Action ajustar = () =>
+            {
+                if (c.DrawMode != DrawMode.Normal)
+                    c.ItemHeight = c.Font.Height + 10;
+            };
+            c.FontChanged += (s, e) => ajustar();
+            ajustar();
+        }
+
+        // O logo (imagem do pictureBox1) vem num fundo laranja enorme, com o desenho
+        // pequeno no meio. Recorta só a área do desenho para ele aparecer em tamanho útil.
+        private void PrepararLogo()
+        {
+            Image original = pictureBox1.Image;
+            if (original == null || original.Width != 1280 || original.Height != 1024)
+                return;
+
+            Rectangle area = new Rectangle(332, 187, 629, 614);
+            Bitmap recorte = new Bitmap(area.Width, area.Height);
+            using (Graphics g = Graphics.FromImage(recorte))
+            {
+                g.DrawImage(original, new Rectangle(0, 0, area.Width, area.Height),
+                    area, GraphicsUnit.Pixel);
+            }
+            pictureBox1.Image = recorte;
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)

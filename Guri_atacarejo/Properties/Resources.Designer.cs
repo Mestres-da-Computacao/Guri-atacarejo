@@ -123,6 +123,16 @@ namespace Guri_atacarejo.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Logótipo_GURI_Atacarejo_em_Verde {
+            get {
+                object obj = ResourceManager.GetObject("Logótipo GURI Atacarejo em Verde", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap minilogo {
             get {
                 object obj = ResourceManager.GetObject("minilogo", resourceCulture);
