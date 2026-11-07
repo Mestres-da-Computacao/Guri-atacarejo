@@ -44,15 +44,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.cbCargo = new Guri_atacarejo.CampoCombo();
+            this.cbDepartamento = new Guri_atacarejo.CampoCombo();
+            this.dateTimePickerDataNasc = new Guri_atacarejo.CampoData();
             this.numericUpDownSalario = new Guri_atacarejo.CampoNumero();
             this.maskedtxtTelefone = new Guri_atacarejo.CampoMascara();
             this.maskedtxtCpf = new Guri_atacarejo.CampoMascara();
             this.txtSenha = new Guri_atacarejo.CampoTexto();
             this.txtEmail = new Guri_atacarejo.CampoTexto();
             this.txtNome = new Guri_atacarejo.CampoTexto();
-            this.dateTimePickerDataNasc = new Guri_atacarejo.CampoData();
-            this.cbDepartamento = new Guri_atacarejo.CampoCombo();
-            this.cbCargo = new Guri_atacarejo.CampoCombo();
             this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.groupBoxGeneros.SuspendLayout();
@@ -71,7 +71,7 @@
             // 
             // btnConfirmar
             // 
-            this.btnConfirmar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(56)))), ((int)(((byte)(141)))), ((int)(((byte)(60)))));
+            this.btnConfirmar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(151)))), ((int)(((byte)(44)))));
             this.btnConfirmar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirmar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmar.ForeColor = System.Drawing.Color.White;
@@ -88,7 +88,7 @@
             this.btnCancelar.BackColor = System.Drawing.Color.White;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(19)))), ((int)(((byte)(83)))), ((int)(((byte)(46)))));
+            this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(151)))), ((int)(((byte)(44)))));
             this.btnCancelar.Location = new System.Drawing.Point(687, 575);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(128, 52);
@@ -261,6 +261,53 @@
             this.panel1.Size = new System.Drawing.Size(1016, 657);
             this.panel1.TabIndex = 48;
             // 
+            // cbCargo
+            // 
+            this.cbCargo.BackColor = System.Drawing.Color.Transparent;
+            this.cbCargo.CorIcone = System.Drawing.Color.White;
+            this.cbCargo.CorIconeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.cbCargo.CorPlaceholder = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(240)))), ((int)(((byte)(215)))));
+            this.cbCargo.CorTextoFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.cbCargo.CorTextoNormal = System.Drawing.Color.White;
+            this.cbCargo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbCargo.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.cbCargo.Location = new System.Drawing.Point(733, 436);
+            this.cbCargo.Name = "cbCargo";
+            this.cbCargo.Size = new System.Drawing.Size(239, 32);
+            this.cbCargo.TabIndex = 8;
+            // 
+            // cbDepartamento
+            // 
+            this.cbDepartamento.BackColor = System.Drawing.Color.Transparent;
+            this.cbDepartamento.CorIcone = System.Drawing.Color.White;
+            this.cbDepartamento.CorIconeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.cbDepartamento.CorPlaceholder = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(240)))), ((int)(((byte)(215)))));
+            this.cbDepartamento.CorTextoFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.cbDepartamento.CorTextoNormal = System.Drawing.Color.White;
+            this.cbDepartamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbDepartamento.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.cbDepartamento.Location = new System.Drawing.Point(733, 361);
+            this.cbDepartamento.Name = "cbDepartamento";
+            this.cbDepartamento.Size = new System.Drawing.Size(239, 32);
+            this.cbDepartamento.TabIndex = 7;
+            // 
+            // dateTimePickerDataNasc
+            // 
+            this.dateTimePickerDataNasc.BackColor = System.Drawing.Color.Transparent;
+            this.dateTimePickerDataNasc.CorIcone = System.Drawing.Color.White;
+            this.dateTimePickerDataNasc.CorIconeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.dateTimePickerDataNasc.CorPlaceholder = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(240)))), ((int)(((byte)(215)))));
+            this.dateTimePickerDataNasc.CorTextoFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.dateTimePickerDataNasc.CorTextoNormal = System.Drawing.Color.White;
+            this.dateTimePickerDataNasc.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePickerDataNasc.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
+            this.dateTimePickerDataNasc.Location = new System.Drawing.Point(271, 361);
+            this.dateTimePickerDataNasc.Mask = "00/00/0000";
+            this.dateTimePickerDataNasc.Name = "dateTimePickerDataNasc";
+            this.dateTimePickerDataNasc.PlaceholderText = "dd/mm/aaaa";
+            this.dateTimePickerDataNasc.Size = new System.Drawing.Size(172, 32);
+            this.dateTimePickerDataNasc.TabIndex = 6;
+            // 
             // numericUpDownSalario
             // 
             this.numericUpDownSalario.BackColor = System.Drawing.Color.Transparent;
@@ -347,53 +394,6 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(844, 37);
             this.txtNome.TabIndex = 0;
-            // 
-            // dateTimePickerDataNasc
-            // 
-            this.dateTimePickerDataNasc.BackColor = System.Drawing.Color.Transparent;
-            this.dateTimePickerDataNasc.CorIcone = System.Drawing.Color.White;
-            this.dateTimePickerDataNasc.CorIconeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.dateTimePickerDataNasc.CorPlaceholder = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(240)))), ((int)(((byte)(215)))));
-            this.dateTimePickerDataNasc.CorTextoFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.dateTimePickerDataNasc.CorTextoNormal = System.Drawing.Color.White;
-            this.dateTimePickerDataNasc.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePickerDataNasc.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.dateTimePickerDataNasc.Location = new System.Drawing.Point(271, 361);
-            this.dateTimePickerDataNasc.Mask = "00/00/0000";
-            this.dateTimePickerDataNasc.Name = "dateTimePickerDataNasc";
-            this.dateTimePickerDataNasc.PlaceholderText = "dd/mm/aaaa";
-            this.dateTimePickerDataNasc.Size = new System.Drawing.Size(172, 32);
-            this.dateTimePickerDataNasc.TabIndex = 6;
-            // 
-            // cbDepartamento
-            // 
-            this.cbDepartamento.BackColor = System.Drawing.Color.Transparent;
-            this.cbDepartamento.CorIcone = System.Drawing.Color.White;
-            this.cbDepartamento.CorIconeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.cbDepartamento.CorPlaceholder = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(240)))), ((int)(((byte)(215)))));
-            this.cbDepartamento.CorTextoFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.cbDepartamento.CorTextoNormal = System.Drawing.Color.White;
-            this.cbDepartamento.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbDepartamento.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.cbDepartamento.Location = new System.Drawing.Point(733, 361);
-            this.cbDepartamento.Name = "cbDepartamento";
-            this.cbDepartamento.Size = new System.Drawing.Size(239, 32);
-            this.cbDepartamento.TabIndex = 7;
-            // 
-            // cbCargo
-            // 
-            this.cbCargo.BackColor = System.Drawing.Color.Transparent;
-            this.cbCargo.CorIcone = System.Drawing.Color.White;
-            this.cbCargo.CorIconeFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.cbCargo.CorPlaceholder = System.Drawing.Color.FromArgb(((int)(((byte)(215)))), ((int)(((byte)(240)))), ((int)(((byte)(215)))));
-            this.cbCargo.CorTextoFoco = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.cbCargo.CorTextoNormal = System.Drawing.Color.White;
-            this.cbCargo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbCargo.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(5)))), ((int)(((byte)(87)))), ((int)(((byte)(40)))));
-            this.cbCargo.Location = new System.Drawing.Point(733, 436);
-            this.cbCargo.Name = "cbCargo";
-            this.cbCargo.Size = new System.Drawing.Size(239, 32);
-            this.cbCargo.TabIndex = 8;
             // 
             // label5
             // 
