@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Globalization;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 
 namespace Guri_atacarejo.forms
 {
     public partial class frmCadastroProduto : Icone
     {
-        const string PrefixoPreco = "R$ ";
         const int CategoriaPadrao = 1;   // categoria sempre 1 no INSERT
         private readonly string conecta = global::Guri_atacarejo.Properties.Settings.Default.ConnectionString;
         private class Original
@@ -45,16 +40,10 @@ namespace Guri_atacarejo.forms
         private void ConfigurarUnidadeMedida()
         {
             // Só dá para escolher um item da lista, não dá para digitar
-            cmbunidademedida.DropDownStyle = ComboBoxStyle.DropDownList;
-
-            // Se você já cadastrou itens no Designer, eles são mantidos
-            if (cmbunidademedida.Items.Count == 0)
+            cmbunidademedida.DataSource = new[]
             {
-                cmbunidademedida.Items.AddRange(new object[]
-                {
-                    "UN", "KG", "G", "L", "ML", "CX", "PCT", "FD"
-                });
-            }
+                "UN", "KG", "G", "L", "ML", "CX", "PCT", "FD"
+            };
 
             cmbunidademedida.SelectedIndex = -1;
         }
@@ -64,6 +53,11 @@ namespace Guri_atacarejo.forms
             foreach (Control c in pai.Controls)
             {
                 _originais[c] = new Original { Bounds = c.Bounds, FontSize = c.Font.Size };
+
+                // Os campos Guri se ajustam sozinhos por dentro: não mexe nos controles internos deles
+                if (c is CampoBase || c is CampoTexto)
+                    continue;
+
                 GuardarOriginais(c);
             }
         }
@@ -96,10 +90,19 @@ namespace Guri_atacarejo.forms
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtNome.Text) ||
-                string.IsNullOrWhiteSpace(txtPreco.Text))
+            if (string.IsNullOrWhiteSpace(txtNome.Text))
             {
-                MessageBox.Show("Por favor, preencha o nome e o preço.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor, preencha o nome.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtNome.Focus();
+                return;
+            }
+
+            // O CampoNumero já só aceita número; vazio = 0
+            decimal preco = txtPreco.Value;
+            if (preco <= 0)
+            {
+                MessageBox.Show("Informe um preço válido (ex.: 12,50).", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtPreco.Focus();
                 return;
             }
 
@@ -107,16 +110,6 @@ namespace Guri_atacarejo.forms
             {
                 MessageBox.Show("Selecione a unidade de medida.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 cmbunidademedida.Focus();
-                return;
-            }
-
-            // O campo de preço tem o prefixo "R$ ", então ele é removido antes de converter.
-            string textoPreco = txtPreco.Text.Replace(PrefixoPreco, "").Trim();
-            if (!decimal.TryParse(textoPreco, NumberStyles.Number, new CultureInfo("pt-BR"), out decimal preco)
-                || preco <= 0)
-            {
-                MessageBox.Show("Informe um preço válido (ex.: 12,50).", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtPreco.Focus();
                 return;
             }
 
@@ -158,8 +151,8 @@ namespace Guri_atacarejo.forms
 
         private void limpacampos()
         {
-            txtNome.Clear();
-            txtPreco.Text = "R$ ";
+            txtNome.Text = "";
+            txtPreco.Value = txtPreco.Minimum;
             txtDescricao.Clear();
             cmbunidademedida.SelectedIndex = -1;
             txtNome.Focus();
@@ -170,76 +163,23 @@ namespace Guri_atacarejo.forms
             limpacampos();
             Close();
         }
-        private void txtPreco_KeyPress(object sender, KeyPressEventArgs e)
-        {
 
-            if (e.KeyChar == (char)Keys.Back)
-            {
-                if (txtPreco.SelectionStart <= PrefixoPreco.Length && txtPreco.SelectionLength == 0)
-                    e.Handled = true;
-                return;
-            }
+        // ---------------------------------------------------------------
+        // Métodos vazios mantidos só para o Designer não reclamar caso ainda
+        // existam ligações antigas a eles. O CampoNumero já faz o trabalho
+        // (aceita só número e vírgula, e mostra o "R$" fixo).
+        // Pode apagar estes métodos junto com as ligações no Designer.cs.
+        // ---------------------------------------------------------------
+        private void txtPreco_KeyPress(object sender, KeyPressEventArgs e) { }
 
-            if (char.IsDigit(e.KeyChar))
-            {
-                if (txtPreco.SelectionStart < PrefixoPreco.Length)
-                    txtPreco.SelectionStart = txtPreco.Text.Length;
-                return;
-            }
+        private void txtPreco_KeyDown(object sender, KeyEventArgs e) { }
 
-            if (e.KeyChar == ',' && !txtPreco.Text.Contains(",") &&
-                txtPreco.Text.Length > PrefixoPreco.Length)
-            {
-                return;
-            }
+        private void txtPreco_TextChanged(object sender, EventArgs e) { }
 
-            e.Handled = true;
-        }
+        private void txtPreco_Click(object sender, EventArgs e) { }
 
-        private void txtPreco_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Delete && txtPreco.SelectionStart < PrefixoPreco.Length)
-                e.SuppressKeyPress = true;
-        }
+        private void txtQuantidade_KeyPress(object sender, KeyPressEventArgs e) { }
 
-        private void txtPreco_TextChanged(object sender, EventArgs e)
-        {
-            string atual = txtPreco.Text;
-            string corpo = atual.StartsWith(PrefixoPreco) ? atual.Substring(PrefixoPreco.Length) : atual;
-
-            string limpo = Regex.Replace(corpo, @"[^\d,]", "");
-
-            int i = limpo.IndexOf(',');
-            if (i >= 0)
-                limpo = limpo.Substring(0, i + 1) + limpo.Substring(i + 1).Replace(",", "");
-
-            string novo = PrefixoPreco + limpo;
-            if (atual != novo)
-            {
-                txtPreco.Text = novo;
-                txtPreco.SelectionStart = txtPreco.Text.Length;
-            }
-        }
-
-        private void txtPreco_Click(object sender, EventArgs e)
-        {
-            if (txtPreco.SelectionStart < PrefixoPreco.Length)
-                txtPreco.SelectionStart = txtPreco.Text.Length;
-        }
-
-
-        private void txtQuantidade_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (Char.IsDigit(e.KeyChar) || e.KeyChar == (char)8)
-            {
-                return;
-            }
-            e.Handled = true;
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void label3_Click(object sender, EventArgs e) { }
     }
 }

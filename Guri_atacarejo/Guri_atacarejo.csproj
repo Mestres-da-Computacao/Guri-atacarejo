@@ -108,6 +108,7 @@
     <Compile Include="forms\CampoTexto.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="forms\CampoTextoGrande.cs" />
     <Compile Include="forms\frmCompra.cs">
       <SubType>Form</SubType>
     </Compile>

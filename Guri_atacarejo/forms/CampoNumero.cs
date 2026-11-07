@@ -1,5 +1,6 @@
 using System;
 using System.ComponentModel;
+using System.Drawing;
 using System.Globalization;
 using System.Windows.Forms;
 
@@ -19,6 +20,7 @@ namespace Guri_atacarejo
         private decimal maximum = 999999999m;
         private decimal ultimo = 0m;
         private int casas = 2;
+        private string prefixo = "";
 
         public event EventHandler ValueChanged;
 
@@ -80,6 +82,39 @@ namespace Guri_atacarejo
             string.IsNullOrEmpty(PlaceholderText)
                 ? 0m.ToString("F" + casas, CultureInfo.CurrentCulture)
                 : PlaceholderText;
+
+        // Texto fixo à esquerda do número (ex.: "R$"), que o usuário não consegue apagar
+        [Category("Guri"), DefaultValue(""), Description("Texto fixo antes do número, ex.: R$")]
+        public string Prefixo
+        {
+            get => prefixo;
+            set
+            {
+                prefixo = value ?? "";
+                AjustarLayout();
+                Invalidate();
+            }
+        }
+
+        private const TextFormatFlags FlagsPrefixo =
+            TextFormatFlags.Left | TextFormatFlags.VerticalCenter |
+            TextFormatFlags.NoPrefix | TextFormatFlags.NoPadding | TextFormatFlags.SingleLine;
+
+        protected override int EspacoEsquerda =>
+            prefixo.Length == 0
+                ? 0
+                : TextRenderer.MeasureText(prefixo, Font, new Size(int.MaxValue, int.MaxValue), FlagsPrefixo).Width + 6;
+
+        protected override void OnPaint(PaintEventArgs e)
+        {
+            base.OnPaint(e);
+
+            if (prefixo.Length == 0) return;
+
+            var area = new Rectangle(PadH, tb.Top, EspacoEsquerda, tb.Height);
+            TextRenderer.DrawText(e.Graphics, prefixo, Font, area,
+                focado ? corTextoFoco : corTextoNormal, FlagsPrefixo);
+        }
 
         // =====================================================
         //  LÓGICA

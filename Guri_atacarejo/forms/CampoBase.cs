@@ -15,8 +15,8 @@ namespace Guri_atacarejo
     public abstract class CampoBase : Control
     {
         // ---------- Layout (proporcional à altura, igual ao CampoTexto) ----------
-        protected int PadH => Math.Max(4, (int)Math.Round(Height * 0.30));
-        protected int Raio => Math.Max(3, Height / 4);
+        protected virtual int PadH => Math.Max(4, (int)Math.Round(Height * 0.30));
+        protected virtual int Raio => Math.Max(3, Height / 4);
         protected int IconeLado => Math.Max(10, (int)Math.Round(Height * 0.42));
 
         // ---------- Controles internos ----------
@@ -119,6 +119,12 @@ namespace Guri_atacarejo
         // =====================================================
 
         protected virtual bool TemIcone => false;
+
+        // Espaço extra à esquerda do texto (ex.: prefixo "R$")
+        protected virtual int EspacoEsquerda => 0;
+
+        // true = o campo é sempre uma caixa branca arredondada (não só quando focado)
+        protected virtual bool CaixaSempreBranca => false;
         protected virtual void DesenharIcone(Graphics g, Rectangle area, Color cor) { }
         protected virtual void ClicouIcone() { }
 
@@ -247,13 +253,15 @@ namespace Guri_atacarejo
         {
             Color fundo = CorFundoReal();
 
+            bool caixa = focado || CaixaSempreBranca;
+
             if (txt != null)
             {
-                txt.BackColor = focado ? Color.White : fundo;
-                txt.ForeColor = focado ? corTextoFoco : corTextoNormal;
+                txt.BackColor = caixa ? Color.White : fundo;
+                txt.ForeColor = caixa ? corTextoFoco : corTextoNormal;
             }
 
-            lblPlaceholder.BackColor = fundo;
+            lblPlaceholder.BackColor = caixa ? Color.White : fundo;
             lblPlaceholder.ForeColor = corPlaceholder;
         }
 
@@ -273,9 +281,21 @@ namespace Guri_atacarejo
         {
             if (txt == null) return;
 
+            // Caixa grande (multilinha): o TextBox preenche tudo, com margem
+            if (txt.Multiline)
+            {
+                int m = PadH;
+                txt.SetBounds(m, m, Math.Max(10, Width - m * 2), Math.Max(10, Height - m * 2));
+                lblPlaceholder.TextAlign = ContentAlignment.TopLeft;
+                lblPlaceholder.Bounds = new Rectangle(txt.Left, txt.Top, txt.Width,
+                                                      Math.Min(txt.Height, Font.Height + 8));
+                return;
+            }
+
             int direita = TemIcone ? IconeLado + 6 : 0;
-            txt.Left = PadH;
-            txt.Width = Math.Max(10, Width - PadH * 2 - direita);
+            int esquerda = PadH + EspacoEsquerda;
+            txt.Left = esquerda;
+            txt.Width = Math.Max(10, Width - esquerda - PadH - direita);
             txt.Top = Math.Max(0, (Height - 2 - txt.Height) / 2);
 
             lblPlaceholder.Bounds = new Rectangle(txt.Left, 0, txt.Width, Math.Max(1, Height - 2));
@@ -290,7 +310,7 @@ namespace Guri_atacarejo
             }
         }
 
-        private static GraphicsPath RetanguloArredondado(Rectangle r, int raio)
+        protected static GraphicsPath RetanguloArredondado(Rectangle r, int raio)
         {
             int d = raio * 2;
             var p = new GraphicsPath();
@@ -312,6 +332,15 @@ namespace Guri_atacarejo
             var g = e.Graphics;
             g.SmoothingMode = SmoothingMode.AntiAlias;
 
+            DesenharFundo(g);
+
+            if (TemIcone)
+                DesenharIcone(g, AreaIcone, CorIconeAtual);
+        }
+
+        // Barrinha embaixo (sem foco) ou caixa branca arredondada (com foco)
+        protected virtual void DesenharFundo(Graphics g)
+        {
             if (focado)
             {
                 var r = new Rectangle(1, 1, Width - 3, Height - 3);
@@ -328,9 +357,6 @@ namespace Guri_atacarejo
                 using (var pen = new Pen(lineColor, 2f))
                     g.DrawLine(pen, 0, Height - 2, Width, Height - 2);
             }
-
-            if (TemIcone)
-                DesenharIcone(g, AreaIcone, CorIconeAtual);
         }
 
         // =====================================================
