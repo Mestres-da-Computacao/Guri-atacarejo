@@ -14,6 +14,7 @@ namespace Guri_atacarejo.forms
         public frmRegistroLote()
         {
             InitializeComponent();
+            button2.Click += button2_Click;
 
             ResponsividadeForm.Aplicar(this);
 

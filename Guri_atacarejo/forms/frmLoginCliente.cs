@@ -11,6 +11,9 @@ namespace Guri_atacarejo.forms
         public FrmLoginCliente()
         {
             InitializeComponent();
+            button1.Click += button1_Click;
+            button2.Click += button2_Click;
+            textBox1.TextChanged += textBox1_TextChanged;
             ResponsividadeForm.Aplicar(this);
         }
 

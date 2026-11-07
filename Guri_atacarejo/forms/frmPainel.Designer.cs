@@ -593,7 +593,7 @@ namespace Guri_atacarejo.forms
             this.btnAlterar.TabIndex = 1;
             this.btnAlterar.Text = "Alterar produto";
             this.btnAlterar.UseVisualStyleBackColor = false;
-            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click_1);
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnAdicionar
             // 
@@ -607,7 +607,7 @@ namespace Guri_atacarejo.forms
             this.btnAdicionar.TabIndex = 2;
             this.btnAdicionar.Text = "Adicionar produto";
             this.btnAdicionar.UseVisualStyleBackColor = false;
-            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click_1);
+            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
             // btnFinalizar
             // 

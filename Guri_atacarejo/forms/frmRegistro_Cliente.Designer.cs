@@ -73,8 +73,7 @@
             this.button3.TabIndex = 31;
             this.button3.Text = "Cancelar";
             this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click_2);
-            // 
+                        // 
             // btnRegist
             // 
             this.btnRegist.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(72)))), ((int)(((byte)(151)))), ((int)(((byte)(44)))));

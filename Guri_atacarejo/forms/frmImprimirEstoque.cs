@@ -10,7 +10,7 @@ namespace Guri_atacarejo.forms
 {
     public partial class frmImprimirEstoque : Icone
     {
-        string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=db_250405;Integrated Security=True;TrustServerCertificate=True;";
+        string connectionString = Properties.Settings.Default.ConnectionString;
 
         int idProduto = 0;          // produto que foi clicado no grid
         string nomeProduto = "";

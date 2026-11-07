@@ -126,6 +126,11 @@ namespace Guri_atacarejo.forms
                         Convert.ToInt32(tabela.Rows[0]["IdFuncionario"]);
                     Sessao.Usuario = username;
                 }
+                else
+                {
+                    MessageBox.Show("Não foi possível identificar o cargo do funcionário.");
+                    return false;
+                }
 
                 return true;
             }

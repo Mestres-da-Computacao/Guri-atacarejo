@@ -139,7 +139,7 @@ namespace Guri_atacarejo.forms
 
             if (quantidadeSolicitada > estoque)
             {
-                erro = $"Estoque insuficiente. Disponível: {estoque}; ";
+                erro = $"Estoque insuficiente. Disponível: {estoque}.";
                 return false;
             }
 
@@ -298,9 +298,10 @@ namespace Guri_atacarejo.forms
                 LimparVenda();
 
                 // clientes deslogando após finalizar venda ou cancelar venda
-                AtualizarClienteExibido("Não Registrado");
+                AtualizarClienteExibido("Não registrado");
                 SessaoClientes.NomeCliente = null;
                 SessaoClientes.Cpf = null;
+                SessaoClientes.IdCliente = 0;
             }
         }
 
@@ -447,7 +448,7 @@ namespace Guri_atacarejo.forms
                     string mensagem = Convert.ToString(resultadoVenda.Rows[0]["Mensagem"]);
                     MessageBox.Show(mensagem);
 
-                    if (mensagem == "Venda realizada com sucesso!")
+                    if (mensagem.IndexOf("sucesso", StringComparison.OrdinalIgnoreCase) >= 0)
                     {
                         LimparVenda();
 
@@ -455,6 +456,7 @@ namespace Guri_atacarejo.forms
                         AtualizarClienteExibido("Não registrado");
                         SessaoClientes.NomeCliente = null;
                         SessaoClientes.Cpf = null;
+                        SessaoClientes.IdCliente = 0;
                     }
                 }
                 else
@@ -710,16 +712,6 @@ namespace Guri_atacarejo.forms
         {
             using (frmexibcaoentidades frmexibcaoentidades = new frmexibcaoentidades())
                 frmexibcaoentidades.ShowDialog(this);
-        }
-
-        private void btnAdicionar_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnAlterar_Click_1(object sender, EventArgs e)
-        {
-
         }
 
         #region Visual moderno (cartões, barra lateral)

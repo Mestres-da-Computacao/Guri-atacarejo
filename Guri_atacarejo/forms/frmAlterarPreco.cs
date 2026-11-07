@@ -23,6 +23,7 @@ namespace Guri_atacarejo.forms
             painel = Form;
             linhaProduto = linha;
             InitializeComponent();
+            txtQtd.KeyPress += txtQtd_KeyPress;
             txtQtd.Text = painel.qtdProd.ToString();
         }
 

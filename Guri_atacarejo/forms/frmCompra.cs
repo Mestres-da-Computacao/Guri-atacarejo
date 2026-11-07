@@ -22,6 +22,10 @@ namespace Guri_atacarejo.forms
         public frmCompra_()
         {
             InitializeComponent();
+            btnConfirmar.Click += btnConfirmar_Click;
+            btnCancelar.Click += btnCancelar_Click;
+            btnregforn.Click += btnregforn_Click;
+            btnreglote.Click += btnreglote_Click;
             ResponsividadeForm.Aplicar(this);
         }
 
@@ -637,14 +641,15 @@ namespace Guri_atacarejo.forms
             {
                 LimparTudo();
 
-                this.Hide();
+                DialogResult = DialogResult.Cancel;
+                Close();
             }
         }
 
         private void btnregforn_Click(object sender, EventArgs e)
         {
-            frmRegistroFornecedor form = new frmRegistroFornecedor();
-            form.ShowDialog();
+            using (var form = new frmRegistroFornecedor())
+                form.ShowDialog(this);
         }
 
         private void btnreglote_Click(object sender, EventArgs e)

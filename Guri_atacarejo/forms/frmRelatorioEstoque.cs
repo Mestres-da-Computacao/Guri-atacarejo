@@ -10,7 +10,7 @@ namespace Guri_atacarejo.forms
 {
     public partial class frmRelatorioEstoque : Icone
     {
-        string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=db_250405;Integrated Security=True;TrustServerCertificate=True;";
+        string connectionString = Properties.Settings.Default.ConnectionString;
 
         int idProduto = 0;          // produto que foi clicado no grid
         string nomeProduto = "";
@@ -441,7 +441,7 @@ namespace Guri_atacarejo.forms
 
         private void frmImprimirEstoque_Load(object sender, EventArgs e)
         {
-            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=db_250405;Integrated Security=True;TrustServerCertificate=True;";
+            string connectionString = Properties.Settings.Default.ConnectionString;
 
             string sql = @"select p.IdProduto, p.Nome, p.Preco,
             isnull(sum(e.QuantidadeAtual), 0) as QtdEstoque

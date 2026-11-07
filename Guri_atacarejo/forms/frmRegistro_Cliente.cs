@@ -29,6 +29,9 @@ namespace Guri_atacarejo.forms
         public frmRegistro_Cliente()
         {
             InitializeComponent();
+            btnRegist.Click += btnRegist_Click;
+            button3.Click += button3_Click;
+            txtNome.KeyPress += txtNome_KeyPress;
 
             foreach (Control campo in new Control[] { txtNome, txtCPF, txtEmail, txtTelefone })
                 _coresOriginais[campo] = campo.BackColor;
@@ -277,9 +280,9 @@ namespace Guri_atacarejo.forms
                     txtCPF.BackColor = CorErro;
                     erro = true;
                 }
-                if (!txtEmail.Text.Contains("@") || !txtEmail.Text.Contains(".com"))
+                if (!EmailOk(txtEmail.Text))
                 {
-                    MessageBox.Show("Email digitado incorretamente\n Email deve conter @ e .com");
+                    MessageBox.Show("Email digitado incorretamente\n Ex: nome@dominio.com");
                     txtEmail.BackColor = CorErro;
                     erro = true;
                 }
@@ -343,9 +346,16 @@ namespace Guri_atacarejo.forms
             }
         }
 
-        private void button3_Click_2(object sender, EventArgs e)
+        private static bool EmailOk(string email)
         {
-
+            email = (email ?? "").Trim();
+            try
+            {
+                var m = new System.Net.Mail.MailAddress(email);
+                string h = m.Host;
+                return m.Address == email && h.Contains(".") && !h.StartsWith(".") && !h.EndsWith(".");
+            }
+            catch (FormatException) { return false; }
         }
     }
 }

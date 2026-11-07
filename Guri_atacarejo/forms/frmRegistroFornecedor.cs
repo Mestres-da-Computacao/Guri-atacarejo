@@ -11,6 +11,8 @@ namespace Guri_atacarejo.forms
         public frmRegistroFornecedor()
         {
             InitializeComponent();
+            button2.Click += button2_Click;
+            button1.Click += button1_Click;
 
             ResponsividadeForm.Aplicar(this);
 
@@ -104,10 +106,10 @@ namespace Guri_atacarejo.forms
             bool emailValido = arroba > 0
                 && arroba == email.LastIndexOf('@')
                 && email.IndexOf(' ') < 0
-                && email.EndsWith(".com", StringComparison.OrdinalIgnoreCase)
-                && email.Length > arroba + 5;
+                && email.IndexOf('.', arroba) > arroba + 1
+                && !email.EndsWith(".");
 
-            return emailValido || Erro("Digite um e-mail válido com @ e domínio .com.", textBox2);
+            return emailValido || Erro("Digite um e-mail válido. Ex: nome@dominio.com", textBox2);
         }
 
         // Validador de CNPJ (o ValidadorCPF nao serve: CPF tem 11 digitos, CNPJ tem 14)
