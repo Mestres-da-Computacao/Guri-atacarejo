@@ -63,6 +63,8 @@ namespace Guri_atacarejo.forms
                 _coresOriginais[campo] = campo.BackColor;
 
             ResponsividadeForm.Aplicar(this);
+
+            this.Text = "Registro de Cliente";
         }
 
         // ------------------------------------------------------------------

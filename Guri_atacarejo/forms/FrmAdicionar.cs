@@ -57,6 +57,8 @@ namespace Guri_atacarejo.forms
             // Layout dispara também quando a barra de rolagem aparece/some
             flpProdutos.Layout += (s, e) => AjustarLarguraCards(flpProdutos);
             flpCarrinho.Layout += (s, e) => AjustarLarguraCards(flpCarrinho);
+
+            this.Text = "Adicionar produto";
         }
 
         private void AjustarLarguraCards(FlowLayoutPanel flp)

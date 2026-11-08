@@ -35,6 +35,8 @@ namespace Guri_atacarejo
             this.Region = new Region(path);
 
             this.Icon = Properties.Resources.projeto_icone;
+
+            this.Text = "Guri Atacarejo";
         }
 
         private Timer timer;

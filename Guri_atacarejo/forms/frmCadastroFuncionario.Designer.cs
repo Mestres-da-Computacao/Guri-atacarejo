@@ -44,6 +44,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
             this.cbCargo = new Guri_atacarejo.CampoCombo();
             this.cbDepartamento = new Guri_atacarejo.CampoCombo();
             this.dateTimePickerDataNasc = new Guri_atacarejo.CampoData();
@@ -54,7 +55,6 @@
             this.txtEmail = new Guri_atacarejo.CampoTexto();
             this.txtNome = new Guri_atacarejo.CampoTexto();
             this.label5 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.groupBoxGeneros.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -263,6 +263,17 @@
             this.panel1.Size = new System.Drawing.Size(1016, 657);
             this.panel1.TabIndex = 48;
             // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(44, 33);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(325, 31);
+            this.label10.TabIndex = 43;
+            this.label10.Text = "Cadastro de funcionário";
+            // 
             // cbCargo
             // 
             this.cbCargo.BackColor = System.Drawing.Color.Transparent;
@@ -409,17 +420,6 @@
             this.label5.TabIndex = 34;
             this.label5.Text = "Departamento:";
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(44, 33);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(325, 31);
-            this.label10.TabIndex = 43;
-            this.label10.Text = "Cadastro de funcionário";
-            // 
             // frmCadastroFuncionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -429,6 +429,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pictureBoxLogo);
             this.Name = "frmCadastroFuncionario";
+            this.ShowIcon = false;
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).EndInit();
             this.groupBoxGeneros.ResumeLayout(false);

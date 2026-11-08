@@ -61,6 +61,8 @@ namespace Guri_atacarejo.forms
             };
 
             Resize += (s, e) => Redimensionar();
+
+            this.Text = "Cadastro de produtos";
         }
 
         private void ConfigurarUnidadeMedida()
