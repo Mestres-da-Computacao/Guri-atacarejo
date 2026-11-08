@@ -56,6 +56,8 @@ namespace Guri_atacarejo.forms
 
             dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
             dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+            this.Text = "Relatório de Estoque";
         }
 
         private void frmImprimirEstoque_Load(object sender, EventArgs e)

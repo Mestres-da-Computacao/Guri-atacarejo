@@ -41,6 +41,8 @@ namespace Guri_atacarejo.forms
             button2.Click += button2_Click;
             textBox1.TextChanged += textBox1_TextChanged;
             ResponsividadeForm.Aplicar(this);
+
+            this.Text = "Login do Cliente";
         }
 
         private void button2_Click(object sender, EventArgs e)

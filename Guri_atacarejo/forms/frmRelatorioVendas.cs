@@ -50,6 +50,8 @@ namespace Guri_atacarejo.forms
             Load += frmRelatorioVendas_Load;
 
             PadraoTela.AdicionarBarraLateral(this);   // barra lateral fixa
+
+            this.Text = "Relatório de Vendas";
         }
 
         // ------------------------------------------------------

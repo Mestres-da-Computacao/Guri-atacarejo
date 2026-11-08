@@ -46,6 +46,8 @@ namespace Guri_atacarejo.forms
             btnFechar.Click += (s, e) => Close();
 
             PadraoTela.AdicionarBarraLateral(this);   // barra lateral fixa
+
+            this.Text = "Relatório de Estoque por Quantidade";
         }
 
         private void AplicarTema()

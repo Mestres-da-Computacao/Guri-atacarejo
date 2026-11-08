@@ -53,6 +53,8 @@ namespace Guri_atacarejo.forms
             dataGridView1.CellMouseEnter += dataGridView1_CellMouseEnter;
 
             cbtempo.SelectedIndex = 0;
+
+            this.Text = "Relatório de Compras";
         }
 
         private void frmRelatorio_Load(object sender, EventArgs e)

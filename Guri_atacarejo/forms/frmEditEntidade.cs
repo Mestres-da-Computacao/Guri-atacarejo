@@ -112,6 +112,8 @@ namespace Guri_atacarejo.forms
                 Controls.Add(seta);
 
                 Click += (s, e) => _caixa.Focus();
+
+                this.Text = "Editar entidades";
             }
 
             // nada digitado

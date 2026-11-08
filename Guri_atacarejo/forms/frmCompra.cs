@@ -53,6 +53,8 @@ namespace Guri_atacarejo.forms
             btnregforn.Click += btnregforn_Click;
             btnreglote.Click += btnreglote_Click;
             ResponsividadeForm.Aplicar(this);
+
+            this.Text = "Compra de lotes";
         }
 
         private void frmCompra__Load(object sender, EventArgs e)

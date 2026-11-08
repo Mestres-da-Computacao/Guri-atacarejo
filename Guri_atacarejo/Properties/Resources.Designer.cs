@@ -145,7 +145,7 @@ namespace Guri_atacarejo.Properties {
         /// </summary>
         internal static System.Drawing.Icon projeto_icone {
             get {
-                object obj = ResourceManager.GetObject("projeto-icone", resourceCulture);
+                object obj = ResourceManager.GetObject("projeto_icone", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }
