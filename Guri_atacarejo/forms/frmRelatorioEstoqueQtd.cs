@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Reporting.WinForms;
+using System.Data.SqlClient;
+using System.IO;
 
 namespace Guri_atacarejo.forms
 {
@@ -38,12 +41,16 @@ namespace Guri_atacarejo.forms
             DefinirCorBarra(fundo, escuro ? System.Drawing.Color.White : System.Drawing.Color.Black);
         }
 
+        private ReportViewer visualizador;            // visualizador do relatório (criado no código)
+        private bool imprimirAoTerminar = false; // true = abre a janela de impressão quando o relatório ficar pronto
+
         public frmRelatorioEstoqueQtd()
         {
             InitializeComponent();
             AplicarTema();
 
-            btnFechar.Click += (s, e) => Close();
+            ConfigurarRelatorio();
+            Load += frmRelatorioEstoqueQtd_Load;
 
             PadraoTela.AdicionarBarraLateral(this);   // barra lateral fixa
         }
@@ -102,6 +109,177 @@ namespace Guri_atacarejo.forms
         private void pnlRelatorio_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        // ------------------------------------------------------
+        // RELATÓRIO (RDLC)
+        // ------------------------------------------------------
+
+        private void ConfigurarRelatorio()
+        {
+            // No designer a linha do relatório estava com altura fixa de 100 px, então o relatório
+            // ficava espremido. Aqui ela passa a ocupar todo o espaço que sobra na tela.
+            tlpRaiz.RowStyles[2].SizeType = SizeType.Percent;
+            tlpRaiz.RowStyles[2].Height = 100F;
+
+            visualizador = new ReportViewer();
+            visualizador.Dock = DockStyle.Fill;
+            visualizador.RenderingComplete += visualizador_RenderingComplete;
+            pnlRelatorio.Controls.Add(visualizador);
+            visualizador.BringToFront();
+
+            // Tira e põe o evento de novo: assim o botão nunca fica ligado duas vezes,
+            // mesmo que o designer já tenha ligado.
+            Ligar(btnAplicar, btnAplicar_Click);
+            Ligar(btnPrevia, btnPrevia_Click);
+            Ligar(btnImprimir, btnImprimir_Click);
+            Ligar(btnLimpar, btnLimpar_Click);
+            Ligar(btnFechar, btnFechar_Click);
+        }
+
+        private static void Ligar(Button botao, EventHandler acao)
+        {
+            botao.Click -= acao;
+            botao.Click += acao;
+        }
+
+        // O cbProduto do designer é um RoundComboBox. Esta função acha o ComboBox de verdade:
+        // o próprio controle (se ele for um ComboBox) ou o que estiver dentro dele.
+        private static ComboBox ObterCombo(Control controle)
+        {
+            ComboBox combo = controle as ComboBox;
+            if (combo != null) return combo;
+
+            foreach (Control filho in controle.Controls)
+            {
+                combo = ObterCombo(filho);
+                if (combo != null) return combo;
+            }
+            return null;
+        }
+
+        private void frmRelatorioEstoqueQtd_Load(object sender, EventArgs e)
+        {
+            ComboBox combo = ObterCombo(cbProduto);
+
+            if (combo != null)
+            {
+                try
+                {
+                    var tabela = new DataTable();
+                    using (var conn = new SqlConnection(Properties.Settings.Default.ConnectionString))
+                    using (var da = new SqlDataAdapter("SELECT IdProduto AS Id, Nome AS Descricao FROM GA_Produtos ORDER BY Nome", conn))
+                    {
+                        da.Fill(tabela);
+                    }
+
+                    // a primeira opção ("Todos") não filtra nada
+                    DataRow todos = tabela.NewRow();
+                    todos["Id"] = 0;
+                    todos["Descricao"] = "Todos";
+                    tabela.Rows.InsertAt(todos, 0);
+
+                    combo.DisplayMember = "Descricao";
+                    combo.ValueMember = "Id";
+                    combo.DataSource = tabela;
+                    combo.SelectedIndex = 0;
+                }
+                catch (SqlException ex)
+                {
+                    MessageBox.Show("Erro ao carregar produtos: " + ex.Message);
+                }
+            }
+
+            // o relatório já aparece ao abrir a tela (todos os produtos)
+            GerarRelatorio(false, false, false);
+        }
+
+        // Estoque somado por produto. idProduto = 0 traz todos.
+        private DataTable BuscarEstoque(int idProduto)
+        {
+            // O estoque é guardado por lote, então somamos os lotes de cada produto.
+            string sql = @"select p.IdProduto, p.Nome, p.Preco,
+                                  isnull(sum(e.QuantidadeAtual), 0) as QtdEstoque
+                           from GA_Produtos p
+                           left join GA_Lote l on l.FKProduto = p.IdProduto
+                           left join GA_Estoque e on e.FKLote = l.IdLote
+                           where (@produto = 0 or p.IdProduto = @produto)
+                           group by p.IdProduto, p.Nome, p.Preco
+                           order by p.Nome";
+
+            var tabela = new DataTable();
+            using (var conn = new SqlConnection(Properties.Settings.Default.ConnectionString))
+            using (var da = new SqlDataAdapter(sql, conn))
+            {
+                da.SelectCommand.Parameters.Add("@produto", SqlDbType.Int).Value = idProduto;
+                da.Fill(tabela);
+            }
+            return tabela;
+        }
+
+        // previa = true mostra como ficará na página; imprimir = true abre a janela de impressão;
+        // avisos = false deixa as mensagens de lado (usado quando a tela abre sozinha)
+        private void GerarRelatorio(bool previa, bool imprimir, bool avisos)
+        {
+            try
+            {
+                ComboBox combo = ObterCombo(cbProduto);
+                int idProduto = combo == null ? 0 : Convert.ToInt32(combo.SelectedValue);
+
+                DataTable dt = BuscarEstoque(idProduto);
+                if (dt.Rows.Count == 0 && avisos)
+                    MessageBox.Show("Nenhum produto encontrado.");
+
+                lblAreaRelatorio.Visible = false;   // o texto "O relatório aparece aqui" some
+
+                imprimirAoTerminar = imprimir;
+                RelatorioRdlc.Mostrar(visualizador, "rptEstoque.rdlc", "Estoque", dt, previa);
+            }
+            catch (Exception ex)
+            {
+                if (avisos) MessageBox.Show("Erro ao gerar o relatório: " + ex.Message);
+            }
+        }
+
+        // Quando o relatório termina de montar, abre a impressão (se foi o botão Imprimir)
+        private void visualizador_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+            if (!imprimirAoTerminar) return;
+
+            imprimirAoTerminar = false;
+            visualizador.PrintDialog();
+        }
+
+        // ------------------------------------------------------
+        // BOTÕES
+        // ------------------------------------------------------
+
+        private void btnAplicar_Click(object sender, EventArgs e)
+        {
+            GerarRelatorio(false, false, true);
+        }
+
+        private void btnPrevia_Click(object sender, EventArgs e)
+        {
+            GerarRelatorio(true, false, true);
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            GerarRelatorio(false, true, true);
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            ComboBox combo = ObterCombo(cbProduto);
+            if (combo != null && combo.Items.Count > 0) combo.SelectedIndex = 0;
+
+            GerarRelatorio(false, false, true);   // volta a mostrar o relatório completo
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

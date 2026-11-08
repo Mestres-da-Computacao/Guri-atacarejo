@@ -8,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Reporting.WinForms;
+using System.Globalization;
+using System.IO;
 
 namespace Guri_atacarejo.forms
 {
@@ -39,14 +42,16 @@ namespace Guri_atacarejo.forms
             DefinirCorBarra(fundo, escuro ? System.Drawing.Color.White : System.Drawing.Color.Black);
         }
 
+        private ReportViewer visualizador;            // visualizador do relatório (criado no código)
+        private bool imprimirAoTerminar = false; // true = abre a janela de impressão quando o relatório ficar pronto
+
         public frmRelatorioVendas()
         {
             InitializeComponent();
             AplicarTema();
 
-            btnFechar.Click += (s, e) => Close();
-
             ConfigurarFiltros();
+            ConfigurarRelatorio();
             Load += frmRelatorioVendas_Load;
 
             PadraoTela.AdicionarBarraLateral(this);   // barra lateral fixa
@@ -90,6 +95,9 @@ namespace Guri_atacarejo.forms
 
                 CarregarCombo(comboBox2,
                     "SELECT IdProduto AS Id, Nome AS Descricao FROM GA_Produtos ORDER BY Nome");
+
+                // o relatório já aparece ao abrir a tela (todas as vendas)
+                GerarRelatorio(false, false, false);
             }
             catch (SqlException ex)
             {
@@ -181,6 +189,172 @@ namespace Guri_atacarejo.forms
             l.Font = TemaModerno.Fonte(tam, est);
             l.ForeColor = cor;
             l.BackColor = fundo;
+        }
+
+        // ------------------------------------------------------
+        // RELATÓRIO (RDLC)
+        // ------------------------------------------------------
+
+        private void ConfigurarRelatorio()
+        {
+            visualizador = new ReportViewer();
+            visualizador.Dock = DockStyle.Fill;
+            visualizador.RenderingComplete += visualizador_RenderingComplete;
+            pnlRelatorio.Controls.Add(visualizador);
+            visualizador.BringToFront();
+
+            // Tira e põe o evento de novo: assim o botão nunca fica ligado duas vezes,
+            // mesmo que o designer já tenha ligado.
+            Ligar(btnAplicar, btnAplicar_Click);
+            Ligar(btnPrevia, btnPrevia_Click);
+            Ligar(btnImprimir, btnImprimir_Click);
+            Ligar(btnLimpar, btnLimpar_Click);
+            Ligar(btnFechar, btnFechar_Click);
+        }
+
+        private static void Ligar(Button botao, EventHandler acao)
+        {
+            botao.Click -= acao;
+            botao.Click += acao;
+        }
+
+        // Lê a data digitada. Sem data = todas as vendas (devolve true com inicio/fim nulos).
+        private bool LerPeriodo(out DateTime? inicio, out DateTime? fim)
+        {
+            inicio = null;
+            fim = null;
+
+            if (mskData.MaskedTextProvider.AssignedEditPositionCount == 0)
+                return true;
+
+            if (!mskData.MaskCompleted)
+            {
+                MessageBox.Show("Preencha a data completa.");
+                mskData.Focus();
+                return false;
+            }
+
+            string[] formatos = { "dd/MM/yyyy", "MM/yyyy", "yyyy" };   // Dia, Mês, Ano
+            DateTime ini;
+
+            if (!DateTime.TryParseExact(mskData.Text, formatos[cbPeriodo.SelectedIndex],
+                    CultureInfo.InvariantCulture, DateTimeStyles.None, out ini))
+            {
+                MessageBox.Show("Data inválida.", "Data inválida", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                mskData.Clear();
+                mskData.Focus();
+                return false;
+            }
+
+            inicio = ini;
+            switch (cbPeriodo.SelectedIndex)
+            {
+                case 0: fim = ini.AddDays(1); break;
+                case 1: fim = ini.AddMonths(1); break;
+                default: fim = ini.AddYears(1); break;
+            }
+            return true;
+        }
+
+        // Uma linha por item vendido. Valor 0 em lote/produto = "Todos" (não filtra).
+        private DataTable BuscarVendas(DateTime? inicio, DateTime? fim, int idLote, int idProduto)
+        {
+            string sql = @"
+                select v.IdVenda, v.DataVenda,
+                       case when iv.Cancelado = 1 then 'Cancelado' else v.StatusVenda end as Status,
+                       p.Nome as Produto, l.IdLote, iv.Quantidade, iv.PrecoUnitario,
+                       iv.Quantidade * iv.PrecoUnitario as Subtotal
+                from GA_ItensVenda iv
+                inner join GA_Venda v on v.IdVenda = iv.FKVenda
+                inner join GA_Lote l on l.IdLote = iv.FKLote
+                inner join GA_Produtos p on p.IdProduto = l.FKProduto
+                where (@ini is null or v.DataVenda >= @ini)
+                  and (@fim is null or v.DataVenda < @fim)
+                  and (@lote = 0 or l.IdLote = @lote)
+                  and (@produto = 0 or p.IdProduto = @produto)
+                order by v.DataVenda, v.IdVenda";
+
+            var tabela = new DataTable();
+            using (var conn = new SqlConnection(Properties.Settings.Default.ConnectionString))
+            using (var da = new SqlDataAdapter(sql, conn))
+            {
+                SqlParameterCollection p = da.SelectCommand.Parameters;
+                p.Add("@ini", SqlDbType.DateTime).Value = (object)inicio ?? DBNull.Value;
+                p.Add("@fim", SqlDbType.DateTime).Value = (object)fim ?? DBNull.Value;
+                p.Add("@lote", SqlDbType.Int).Value = idLote;
+                p.Add("@produto", SqlDbType.Int).Value = idProduto;
+                da.Fill(tabela);
+            }
+            return tabela;
+        }
+
+        // previa = true mostra como ficará na página; imprimir = true abre a janela de impressão;
+        // avisos = false deixa as mensagens de lado (usado quando a tela abre sozinha)
+        private void GerarRelatorio(bool previa, bool imprimir, bool avisos)
+        {
+            DateTime? inicio, fim;
+            if (!LerPeriodo(out inicio, out fim)) return;
+
+            try
+            {
+                int idLote = Convert.ToInt32(comboBox1.SelectedValue);
+                int idProduto = Convert.ToInt32(comboBox2.SelectedValue);
+
+                DataTable dt = BuscarVendas(inicio, fim, idLote, idProduto);
+                if (dt.Rows.Count == 0 && avisos)
+                    MessageBox.Show("Nenhuma venda encontrada com esses filtros.");
+
+                imprimirAoTerminar = imprimir;
+                RelatorioRdlc.Mostrar(visualizador, "rptVendas.rdlc", "Vendas", dt, previa);
+            }
+            catch (Exception ex)
+            {
+                if (avisos) MessageBox.Show("Erro ao gerar o relatório: " + ex.Message);
+            }
+        }
+
+        // Quando o relatório termina de montar, abre a impressão (se foi o botão Imprimir)
+        private void visualizador_RenderingComplete(object sender, RenderingCompleteEventArgs e)
+        {
+            if (!imprimirAoTerminar) return;
+
+            imprimirAoTerminar = false;
+            visualizador.PrintDialog();
+        }
+
+        // ------------------------------------------------------
+        // BOTÕES
+        // ------------------------------------------------------
+
+        private void btnAplicar_Click(object sender, EventArgs e)
+        {
+            GerarRelatorio(false, false, true);
+        }
+
+        private void btnPrevia_Click(object sender, EventArgs e)
+        {
+            GerarRelatorio(true, false, true);
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            GerarRelatorio(false, true, true);
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            cbPeriodo.SelectedIndex = 0;
+            mskData.Clear();
+
+            if (comboBox1.Items.Count > 0) comboBox1.SelectedIndex = 0;
+            if (comboBox2.Items.Count > 0) comboBox2.SelectedIndex = 0;
+
+            GerarRelatorio(false, false, true);   // volta a mostrar o relatório completo
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

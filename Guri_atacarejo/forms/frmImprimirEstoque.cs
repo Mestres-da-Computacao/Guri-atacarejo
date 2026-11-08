@@ -42,7 +42,6 @@ namespace Guri_atacarejo.forms
         string nomeProduto = "";
         DataTable operacoes;        // compras e vendas do produto clicado (vazio até clicarem em um produto)
 
-        private ReportViewer reportViewer2;
         public frmImprimirEstoque()
         {   
             
@@ -56,6 +55,8 @@ namespace Guri_atacarejo.forms
 
             dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
             dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+            this.Text = "Relatório de Estoque";
         }
 
         private void frmImprimirEstoque_Load(object sender, EventArgs e)
@@ -333,25 +334,14 @@ namespace Guri_atacarejo.forms
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            string caminho = Path.Combine(Application.StartupPath, "Reports", "rptEstoque.rdlc");
-
-            if (!File.Exists(caminho))
-            {
-                MessageBox.Show("Arquivo do relatório não encontrado:\n" + caminho);
-                return;
-            }
-
             try
             {
                 DataTable dt = BuscarProdutos();
 
-                reportViewer2.LocalReport.ReportPath = "Reports/rptEstoque.rdcl";
-                reportViewer2.LocalReport.DataSources.Clear();
-                reportViewer2.LocalReport.DataSources.Add(new ReportDataSource("Estoque", dt));
+                RelatorioRdlc.Mostrar(reportViewer1, "rptEstoque.rdlc", "Estoque", dt);
 
                 pnlRelatorio.Visible = true;
                 pnlRelatorio.BringToFront();
-                reportViewer2.RefreshReport();
             }
             catch (Exception ex)
             {

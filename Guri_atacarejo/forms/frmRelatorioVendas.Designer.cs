@@ -119,6 +119,7 @@ namespace Guri_atacarejo.forms
             this.btnFechar.Text = "Fechar";
             this.btnFechar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnFechar.UseVisualStyleBackColor = true;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
             // btnPrevia
             // 
@@ -141,6 +142,7 @@ namespace Guri_atacarejo.forms
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // lblSubtitulo
             // 
@@ -238,6 +240,7 @@ namespace Guri_atacarejo.forms
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // btnAplicar
             // 
@@ -320,7 +323,7 @@ namespace Guri_atacarejo.forms
             this.Controls.Add(this.tlpRaiz);
             this.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MinimumSize = new System.Drawing.Size(1164, 726);
+            this.MinimumSize = new System.Drawing.Size(1164, 718);
             this.Name = "frmRelatorioVendas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Relatorio Vendas";

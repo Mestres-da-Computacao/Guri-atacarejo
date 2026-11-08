@@ -391,6 +391,7 @@
     </Compile>
     <EmbeddedResource Include="Reports\rptCompras.rdlc" />
     <EmbeddedResource Include="Reports\rptEstoque.rdlc" />
+    <EmbeddedResource Include="Reports\rptVendas.rdlc" />
     <EmbeddedResource Include="RoundComboBox.resx">
       <DependentUpon>RoundComboBox.cs</DependentUpon>
     </EmbeddedResource>

@@ -53,6 +53,8 @@ namespace Guri_atacarejo.forms
             dataGridView1.CellMouseEnter += dataGridView1_CellMouseEnter;
 
             cbtempo.SelectedIndex = 0;
+
+            this.Text = "Relatório de Compras";
         }
 
         private void frmRelatorio_Load(object sender, EventArgs e)
@@ -271,27 +273,16 @@ namespace Guri_atacarejo.forms
 
         private void btnImprimir_Click(object sender, EventArgs e)
         {
-            string caminho = Path.Combine(Application.StartupPath, "Reports", "rptCompras.rdlc");
-
-            if (!File.Exists(caminho))
-            {
-                MessageBox.Show("Arquivo do relatório não encontrado:\n" + caminho);
-                return;
-            }
-
             try
             {
                 DataSet.GA_CompraRelatorioDataTable compras;
                 using (var adapter = new DataSetTableAdapters.GA_CompraRelatorioTableAdapter())
                     compras = adapter.GetCompras(filtroInicio, filtroFim);
 
-                reportViewer1.LocalReport.ReportPath = caminho;
-                reportViewer1.LocalReport.DataSources.Clear();
-                reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("Compras", (DataTable)compras));
+                RelatorioRdlc.Mostrar(reportViewer1, "rptCompras.rdlc", "Compras", (DataTable)compras);
 
                 pnlRelatorio.Visible = true;
                 pnlRelatorio.BringToFront();
-                reportViewer1.RefreshReport();
             }
             catch (Exception ex)
             {

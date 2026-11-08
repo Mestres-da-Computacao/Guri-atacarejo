@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Guri_atacarejo.forms
@@ -11,12 +12,12 @@ namespace Guri_atacarejo.forms
     public partial class frmRelatorioEstoque : Icone
     {
         // ---- Barra de título colorida (Windows 11) ----
-        [System.Runtime.InteropServices.DllImport("dwmapi.dll")]
+        [DllImport("dwmapi.dll")]
         private static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int value, int size);
         private const int DWMWA_CAPTION_COLOR = 35;
         private const int DWMWA_TEXT_COLOR = 36;
 
-        private void DefinirCorBarra(System.Drawing.Color fundo, System.Drawing.Color texto)
+        private void DefinirCorBarra(Color fundo, Color texto)
         {
             // O DWM espera o formato COLORREF: 0x00BBGGRR
             int corFundo = fundo.R | (fundo.G << 8) | (fundo.B << 16);
@@ -30,10 +31,8 @@ namespace Guri_atacarejo.forms
         {
             base.OnHandleCreated(e);
 
-            // Barra do form com a mesma cor do fundo; texto branco (ou preto se o fundo for claro)
-            System.Drawing.Color fundo = BackColor;
-            bool escuro = fundo.GetBrightness() < 0.6f;
-            DefinirCorBarra(fundo, escuro ? System.Drawing.Color.White : System.Drawing.Color.Black);
+            // Cor da barra superior do form
+            DefinirCorBarra(Color.FromArgb(19, 83, 46), Color.White);
         }
 
         string connectionString = Properties.Settings.Default.ConnectionString;
@@ -42,7 +41,6 @@ namespace Guri_atacarejo.forms
         string nomeProduto = "";
         DataTable operacoes;        // compras e vendas do produto clicado (vazio até clicarem em um produto)
 
-        private ReportViewer reportViewer1;
         public frmRelatorioEstoque()
         {
             InitializeComponent();
@@ -54,6 +52,8 @@ namespace Guri_atacarejo.forms
             cbPeriodo.SelectedIndex = 0;  // "Dia"
 
             PadraoTela.AdicionarBarraLateral(this);   // barra lateral fixa
+
+            this.Text = "Relatório de estoque";
         }
 
         private void frmRelatorioEstoque_Load(object sender, EventArgs e)
@@ -465,27 +465,5 @@ namespace Guri_atacarejo.forms
             destino.Controls.Add(lbl);
         }
 
-        private void frmImprimirEstoque_Load(object sender, EventArgs e)
-        {
-            string connectionString = Properties.Settings.Default.ConnectionString;
-
-            string sql = @"select p.IdProduto, p.Nome, p.Preco,
-            isnull(sum(e.QuantidadeAtual), 0) as QtdEstoque
-            from GA_Produtos p
-            left join GA_Lote l on l.FKProduto = p.IdProduto
-            left join GA_Estoque e on e.FKLote = l.IdLote
-            group by p.IdProduto, p.Nome, p.Preco
-            order by p.Nome";
-
-            var dt = new DataTable();
-            using (var conn = new SqlConnection(connectionString))
-            using (var da = new SqlDataAdapter(sql, conn))
-                da.Fill(dt);
-
-            reportViewer1.LocalReport.ReportPath = Path.Combine(Application.StartupPath, "Reports", "rptEstoque.rdlc");
-            reportViewer1.LocalReport.DataSources.Clear();
-            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("Estoque", dt));
-            reportViewer1.RefreshReport();
-        }
     }
 }

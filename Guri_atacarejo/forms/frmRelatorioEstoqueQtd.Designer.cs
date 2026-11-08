@@ -194,6 +194,7 @@ namespace Guri_atacarejo.forms
             this.btnImprimir.TabIndex = 0;
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // btnPrevia
             // 
@@ -214,6 +215,7 @@ namespace Guri_atacarejo.forms
             this.btnFechar.TabIndex = 2;
             this.btnFechar.Text = "Fechar";
             this.btnFechar.UseVisualStyleBackColor = true;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
             // lblSubtitulo
             // 
