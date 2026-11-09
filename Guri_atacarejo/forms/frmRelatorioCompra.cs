@@ -1,4 +1,4 @@
-using Microsoft.Reporting.WinForms;
+﻿using Microsoft.Reporting.WinForms;
 using System;
 using System.Data;
 using System.Drawing;
@@ -35,14 +35,20 @@ namespace Guri_atacarejo.forms
             DefinirCorBarra(Color.FromArgb(19, 83, 46), Color.White);
         }
 
+        // filtro de datas aplicado na tela (o relatório usa o mesmo)
+        DateTime? filtroInicio = null;
+        DateTime? filtroFim = null;
+
         private BarraLateral barraLateral;
-        private Button btnImprimirCompra;   // abre o frmImprimirCompra
 
         public frmRelatorioCompra()
         {
             InitializeComponent();
 
+            CriarControlesRelatorio();
+
             AplicarTema();          // visual igual ao do frmPainel (TemaModerno)
+            AplicarTemaRelatorio("Relat\u00F3rio de compras");
             ResponsividadeForm.Aplicar(this);
 
             cbtempo.Leave += cbtempo_Leave;
@@ -80,6 +86,9 @@ namespace Guri_atacarejo.forms
 
         private void CarregarProdutos(DateTime? inicio = null, DateTime? fim = null)
         {
+            filtroInicio = inicio;
+            filtroFim = fim;
+
             dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
             dataGridView1.DefaultCellStyle.BackColor = Color.White;
 
@@ -275,14 +284,6 @@ namespace Guri_atacarejo.forms
             CarregarProdutos();
             textBox2.Clear();
         }
-
-        // abre a tela de impressão de compra
-        private void btnImprimirCompra_Click(object sender, EventArgs e)
-        {
-            using (var f = new frmImprimirCompra())
-                f.ShowDialog(this);
-        }
-
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             //deslogar o funcionario com a classe sessão que esta na main
@@ -365,15 +366,6 @@ namespace Guri_atacarejo.forms
             btnResetarFiltro.Bounds = new Rectangle(372, 52, 140, 40);
             cartao.Controls.Add(btnResetarFiltro);
 
-            // botão que abre o frmImprimirCompra (à direita do "Resetar filtro")
-            btnImprimirCompra = new Button { Name = "btnImprimirCompra", Text = "Imprimir" };
-            TemaModerno.Botao(btnImprimirCompra, TemaModerno.Accent, Color.White, TemaModerno.Verde2);
-            btnImprimirCompra.Padding = Padding.Empty;
-            btnImprimirCompra.TextAlign = ContentAlignment.MiddleCenter;
-            btnImprimirCompra.Bounds = new Rectangle(528, 52, 140, 40);
-            btnImprimirCompra.Click += btnImprimirCompra_Click;
-            cartao.Controls.Add(btnImprimirCompra);
-
             // mantém combo, data e botão no mesmo eixo, mesmo depois do redimensionamento
             Action alinhar = AlinharFiltros;
             btnResetarFiltro.SizeChanged += (s, e) => alinhar();
@@ -400,6 +392,17 @@ namespace Guri_atacarejo.forms
             textBox2.BackColor = TemaModerno.Campo;
             textBox2.ForeColor = TemaModerno.Texto;
             textBox2.Bounds = new Rectangle(detX, areaY, detW, areaH);
+
+            // botão "Imprimir relatório" no canto direito do cabeçalho
+            TemaModerno.Botao(btnImprimir, TemaModerno.Accent, Color.White, TemaModerno.Verde2);
+            btnImprimir.Text = "Imprimir relat\u00F3rio";
+            btnImprimir.Size = new Size(180, 44);
+            PadraoTela.CentralizarTexto(btnImprimir);
+            host.Controls.Add(btnImprimir);
+            Action posicionarImprimir = () =>
+                btnImprimir.Location = new Point(host.ClientSize.Width - btnImprimir.Width - m, 22);
+            host.Resize += (s, e) => posicionarImprimir();
+            posicionarImprimir();
 
             host.Controls.Add(cartao);
 
@@ -530,5 +533,102 @@ namespace Guri_atacarejo.forms
         }
 
         #endregion
+
+        // ------------------------------------------------------
+        // TELA DO RELATÓRIO (RDLC): mesmo visual das outras telas
+        // ------------------------------------------------------
+
+        // ------------------------------------------------------
+        // Controles da tela do relatório, criados por código
+        // (assim o Designer desta tela não precisa mudar)
+        // ------------------------------------------------------
+        private Panel pnlRelatorio;
+        private Button btnImprimir;
+        private Button btnVoltar;
+        private ReportViewer reportViewer1;
+
+        private void CriarControlesRelatorio()
+        {
+            reportViewer1 = new ReportViewer();
+            btnImprimir = new Button { Name = "btnImprimir" };
+            btnVoltar = new Button { Name = "btnVoltar" };
+            btnImprimir.Click += btnImprimir_Click;
+            btnVoltar.Click += btnVoltar_Click;
+
+            pnlRelatorio = new Panel { Name = "pnlRelatorio", Dock = DockStyle.Fill, Visible = false };
+            Controls.Add(pnlRelatorio);
+        }
+
+        private Button btnImprimirRel;   // botão "Imprimir" dentro da tela do relatório
+
+        private void AplicarTemaRelatorio(string titulo)
+        {
+            pnlRelatorio.BackColor = TemaModerno.Fundo;
+            pnlRelatorio.Padding = new Padding(24, 16, 24, 24);
+
+            // barra do topo: título + botões
+            var barra = new Panel { Dock = DockStyle.Top, Height = 84, BackColor = TemaModerno.Fundo };
+            barra.Controls.Add(NovoRotulo(titulo, 22f, FontStyle.Bold,
+                TemaModerno.Texto, TemaModerno.Fundo, new Point(0, 6)));
+            barra.Controls.Add(NovoRotulo("Pr\u00E9-visualiza\u00E7\u00E3o  \u2022  Guri Atacarejo", 10.5f,
+                FontStyle.Regular, TemaModerno.Verde2, TemaModerno.Fundo, new Point(2, 52)));
+
+            var botoes = new FlowLayoutPanel
+            {
+                Dock = DockStyle.Right,
+                Width = 300,
+                FlowDirection = FlowDirection.RightToLeft,
+                WrapContents = false,
+                BackColor = TemaModerno.Fundo
+            };
+            barra.Controls.Add(botoes);
+
+            btnImprimirRel = new Button { Text = "Imprimir", Size = new Size(140, 44), Margin = new Padding(8, 18, 0, 0) };
+            TemaModerno.Botao(btnImprimirRel, TemaModerno.Accent, Color.White, TemaModerno.Verde2);
+            btnImprimirRel.Click += (s, e) => reportViewer1.PrintDialog();
+
+            // o "Voltar" do designer era uma barra branca no topo: vira um botão igual aos outros
+            btnVoltar.Dock = DockStyle.None;
+            btnVoltar.Text = "Voltar";
+            btnVoltar.Size = new Size(120, 44);
+            btnVoltar.Margin = new Padding(8, 18, 0, 0);
+            TemaModerno.Botao(btnVoltar, Color.White, TemaModerno.Texto, TemaModerno.Cabecalho);
+
+            botoes.Controls.Add(btnImprimirRel);
+            botoes.Controls.Add(btnVoltar);
+            PadraoTela.CentralizarTexto(btnImprimirRel, btnVoltar);
+
+            // o relatório fica dentro de um cartão
+            var cartao = new Panel { Dock = DockStyle.Fill, Padding = new Padding(2) };
+            TemaModerno.Cartao(cartao);
+            reportViewer1.Dock = DockStyle.Fill;
+            cartao.Controls.Add(reportViewer1);
+
+            pnlRelatorio.Controls.Add(cartao);   // Fill primeiro...
+            pnlRelatorio.Controls.Add(barra);    // ...Top depois (docka antes)
+        }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            pnlRelatorio.Visible = false;
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DataSet.GA_CompraRelatorioDataTable compras;
+                using (var adapter = new DataSetTableAdapters.GA_CompraRelatorioTableAdapter())
+                    compras = adapter.GetCompras(filtroInicio, filtroFim);
+
+                pnlRelatorio.Visible = true;
+                pnlRelatorio.BringToFront();
+                RelatorioRdlc.Mostrar(reportViewer1, "rptCompras.rdlc", "Compras", (DataTable)compras, true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao gerar o relatório: " + ex.Message);
+            }
+        }
     }
 }

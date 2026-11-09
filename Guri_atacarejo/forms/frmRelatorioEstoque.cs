@@ -41,13 +41,14 @@ namespace Guri_atacarejo.forms
         string nomeProduto = "";
         DataTable operacoes;        // compras e vendas do produto clicado (vazio até clicarem em um produto)
 
-        private Button btnRelatorioQtd;   // abre o frmRelatorioEstoqueQtd
-
         public frmRelatorioEstoque()
         {
             InitializeComponent();
 
+            CriarControlesRelatorio();
+
             AplicarTema();   // visual igual ao do frmPainel (TemaModerno)
+            AplicarTemaRelatorio("Relat\u00F3rio de estoque");
             ResponsividadeForm.Aplicar(this);
 
             cbTipo.SelectedIndex = 0;     // "Compras e vendas"
@@ -62,13 +63,6 @@ namespace Guri_atacarejo.forms
         {
             CarregarProdutos();
             MostrarMensagem("Clique em um produto para ver as compras e vendas.");
-        }
-
-        // abre a tela do relatório de estoque por quantidade
-        private void btnRelatorioQtd_Click(object sender, EventArgs e)
-        {
-            using (var f = new frmRelatorioEstoqueQtd())
-                f.ShowDialog(this);
         }
 
         // ------------------------------------------------------
@@ -113,16 +107,6 @@ namespace Guri_atacarejo.forms
             cartao.Controls.Add(NovoRotulo("Produtos e movimenta\u00E7\u00F5es", 12f, FontStyle.Bold,
                 TemaModerno.Texto, TemaModerno.Card, new Point(20, 14)));
 
-            // botão no canto superior direito do cartão, que abre o relatório por quantidade
-            btnRelatorioQtd = new Button { Name = "btnRelatorioQtd", Text = "Estoque por quantidade" };
-            TemaModerno.Botao(btnRelatorioQtd, TemaModerno.Accent, Color.White, TemaModerno.Verde2);
-            btnRelatorioQtd.Padding = Padding.Empty;
-            btnRelatorioQtd.TextAlign = ContentAlignment.MiddleCenter;
-            btnRelatorioQtd.Bounds = new Rectangle(cartaoW - 20 - 200, 8, 200, 36);
-            btnRelatorioQtd.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnRelatorioQtd.Click += btnRelatorioQtd_Click;
-            cartao.Controls.Add(btnRelatorioQtd);
-
             int areaY = 108;
             int areaH = cartaoH - areaY - 20;
             int gridW = (cartaoW - 40 - 16) * 40 / 100;
@@ -166,6 +150,17 @@ namespace Guri_atacarejo.forms
             flowCards.BackColor = TemaModerno.Card;
             flowCards.BorderStyle = BorderStyle.None;
             flowCards.Bounds = new Rectangle(detX, areaY, detW, areaH);
+
+            // botão "Imprimir relatório" no canto direito do cabeçalho
+            TemaModerno.Botao(btnImprimir, TemaModerno.Accent, Color.White, TemaModerno.Verde2);
+            btnImprimir.Text = "Imprimir relat\u00F3rio";
+            btnImprimir.Size = new Size(180, 44);
+            PadraoTela.CentralizarTexto(btnImprimir);
+            host.Controls.Add(btnImprimir);
+            Action posicionarImprimir = () =>
+                btnImprimir.Location = new Point(host.ClientSize.Width - btnImprimir.Width - m, 22);
+            host.Resize += (s, e) => posicionarImprimir();
+            posicionarImprimir();
 
             host.Controls.Add(cartao);
 
@@ -484,5 +479,105 @@ namespace Guri_atacarejo.forms
             destino.Controls.Add(lbl);
         }
 
+        // ------------------------------------------------------
+        // TELA DO RELATÓRIO (RDLC): mesmo visual das outras telas
+        // ------------------------------------------------------
+
+        // ------------------------------------------------------
+        // Controles da tela do relatório, criados por código
+        // (assim o Designer desta tela não precisa mudar)
+        // ------------------------------------------------------
+        private Panel pnlRelatorio;
+        private Button btnImprimir;
+        private Button btnVoltar;
+        private ReportViewer reportViewer1;
+
+        private void CriarControlesRelatorio()
+        {
+            reportViewer1 = new ReportViewer();
+            btnImprimir = new Button { Name = "btnImprimir" };
+            btnVoltar = new Button { Name = "btnVoltar" };
+            btnImprimir.Click += btnImprimir_Click;
+            btnVoltar.Click += btnVoltar_Click;
+
+            pnlRelatorio = new Panel { Name = "pnlRelatorio", Dock = DockStyle.Fill, Visible = false };
+            Controls.Add(pnlRelatorio);
+        }
+
+        private Button btnImprimirRel;   // botão "Imprimir" dentro da tela do relatório
+
+        private void AplicarTemaRelatorio(string titulo)
+        {
+            pnlRelatorio.BackColor = TemaModerno.Fundo;
+            pnlRelatorio.Padding = new Padding(24, 16, 24, 24);
+
+            // barra do topo: título + botões
+            var barra = new Panel { Dock = DockStyle.Top, Height = 84, BackColor = TemaModerno.Fundo };
+            barra.Controls.Add(NovoRotulo(titulo, 22f, FontStyle.Bold,
+                TemaModerno.Texto, TemaModerno.Fundo, new Point(0, 6)));
+            barra.Controls.Add(NovoRotulo("Pr\u00E9-visualiza\u00E7\u00E3o  \u2022  Guri Atacarejo", 10.5f,
+                FontStyle.Regular, TemaModerno.Verde2, TemaModerno.Fundo, new Point(2, 52)));
+
+            var botoes = new FlowLayoutPanel
+            {
+                Dock = DockStyle.Right,
+                Width = 300,
+                FlowDirection = FlowDirection.RightToLeft,
+                WrapContents = false,
+                BackColor = TemaModerno.Fundo
+            };
+            barra.Controls.Add(botoes);
+
+            btnImprimirRel = new Button { Text = "Imprimir", Size = new Size(140, 44), Margin = new Padding(8, 18, 0, 0) };
+            TemaModerno.Botao(btnImprimirRel, TemaModerno.Accent, Color.White, TemaModerno.Verde2);
+            btnImprimirRel.Click += (s, e) => reportViewer1.PrintDialog();
+
+            // o "Voltar" do designer era uma barra branca no topo: vira um botão igual aos outros
+            btnVoltar.Dock = DockStyle.None;
+            btnVoltar.Text = "Voltar";
+            btnVoltar.Size = new Size(120, 44);
+            btnVoltar.Margin = new Padding(8, 18, 0, 0);
+            TemaModerno.Botao(btnVoltar, Color.White, TemaModerno.Texto, TemaModerno.Cabecalho);
+
+            botoes.Controls.Add(btnImprimirRel);
+            botoes.Controls.Add(btnVoltar);
+            PadraoTela.CentralizarTexto(btnImprimirRel, btnVoltar);
+
+            // o relatório fica dentro de um cartão
+            var cartao = new Panel { Dock = DockStyle.Fill, Padding = new Padding(2) };
+            TemaModerno.Cartao(cartao);
+            reportViewer1.Dock = DockStyle.Fill;
+            cartao.Controls.Add(reportViewer1);
+
+            pnlRelatorio.Controls.Add(cartao);   // Fill primeiro...
+            pnlRelatorio.Controls.Add(barra);    // ...Top depois (docka antes)
+        }
+
+        private void btnVoltar_Click(object sender, EventArgs e)
+        {
+            pnlRelatorio.Visible = false;
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // o relatório usa a mesma tabela que está na tela
+                DataTable dt = dataGridView1.DataSource as DataTable;
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("Não há produtos para imprimir.");
+                    return;
+                }
+
+                pnlRelatorio.Visible = true;
+                pnlRelatorio.BringToFront();
+                RelatorioRdlc.Mostrar(reportViewer1, "rptEstoque.rdlc", "Estoque", dt, true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao gerar o relatório: " + ex.Message);
+            }
+        }
     }
 }
