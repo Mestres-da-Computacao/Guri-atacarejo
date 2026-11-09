@@ -15,7 +15,7 @@ namespace Guri_atacarejo.forms
         private const int DWMWA_CAPTION_COLOR = 35;
         private const int DWMWA_TEXT_COLOR = 36;
 
-        private void DefinirCorBarra(Color fundo, Color texto)
+        private void DefinirCorBarra(System.Drawing.Color fundo, System.Drawing.Color texto)
         {
             // O DWM espera o formato COLORREF: 0x00BBGGRR
             int corFundo = fundo.R | (fundo.G << 8) | (fundo.B << 16);
@@ -29,8 +29,10 @@ namespace Guri_atacarejo.forms
         {
             base.OnHandleCreated(e);
 
-            // Cor da barra superior do form
-            DefinirCorBarra(Color.FromArgb(19, 83, 46), Color.White);
+            // Barra do form com a mesma cor do fundo; texto branco (ou preto se o fundo for claro)
+            System.Drawing.Color fundo = BackColor;
+            bool escuro = fundo.GetBrightness() < 0.6f;
+            DefinirCorBarra(fundo, escuro ? System.Drawing.Color.White : System.Drawing.Color.Black);
         }
 
         string tipo = "";
@@ -53,8 +55,6 @@ namespace Guri_atacarejo.forms
             dataGridView1.MultiSelect = false;
 
             cbent.SelectedIndex = 0;
-
-            this.Text = "Exibição de entidades";
         }
 
         private void cbent_SelectedIndexChanged(object sender, EventArgs e)

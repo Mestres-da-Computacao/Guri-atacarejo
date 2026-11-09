@@ -53,8 +53,6 @@ namespace Guri_atacarejo.forms
 
             button1.Click += button1_Click;
             Load += frmRegistroLote_Load;
-
-            this.Text = "Registro de Lote";
         }
 
         private void frmRegistroLote_Load(object sender, EventArgs e)

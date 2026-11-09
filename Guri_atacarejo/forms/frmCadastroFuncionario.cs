@@ -74,8 +74,6 @@ namespace Guri_atacarejo.forms
             dateTimePickerDataNasc.MaxDate = DateTime.Today;
 
             // (as cores dos combos agora vêm do próprio CampoCombo)
-
-            this.Text = "Cadastro de funcionário";
         }
 
         private void FormFuncionarios_Load(object sender, EventArgs e)
