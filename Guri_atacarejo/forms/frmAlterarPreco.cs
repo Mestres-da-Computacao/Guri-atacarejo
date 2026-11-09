@@ -51,8 +51,6 @@ namespace Guri_atacarejo.forms
             InitializeComponent();
             txtQtd.KeyPress += txtQtd_KeyPress;
             txtQtd.Text = painel.qtdProd.ToString();
-
-            this.Text = "Altera preço";
         }
 
         private void txtQtd_KeyPress(object sender, KeyPressEventArgs e)

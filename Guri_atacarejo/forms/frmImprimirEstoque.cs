@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 namespace Guri_atacarejo.forms
@@ -11,12 +12,12 @@ namespace Guri_atacarejo.forms
     public partial class frmImprimirEstoque : Icone
     {
         // ---- Barra de título colorida (Windows 11) ----
-        [System.Runtime.InteropServices.DllImport("dwmapi.dll")]
+        [DllImport("dwmapi.dll")]
         private static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int value, int size);
         private const int DWMWA_CAPTION_COLOR = 35;
         private const int DWMWA_TEXT_COLOR = 36;
 
-        private void DefinirCorBarra(System.Drawing.Color fundo, System.Drawing.Color texto)
+        private void DefinirCorBarra(Color fundo, Color texto)
         {
             // O DWM espera o formato COLORREF: 0x00BBGGRR
             int corFundo = fundo.R | (fundo.G << 8) | (fundo.B << 16);
@@ -30,10 +31,8 @@ namespace Guri_atacarejo.forms
         {
             base.OnHandleCreated(e);
 
-            // Barra do form com a mesma cor do fundo; texto branco (ou preto se o fundo for claro)
-            System.Drawing.Color fundo = BackColor;
-            bool escuro = fundo.GetBrightness() < 0.6f;
-            DefinirCorBarra(fundo, escuro ? System.Drawing.Color.White : System.Drawing.Color.Black);
+            // Cor da barra superior do form
+            DefinirCorBarra(Color.FromArgb(19, 83, 46), Color.White);
         }
 
         string connectionString = Properties.Settings.Default.ConnectionString;
@@ -43,36 +42,194 @@ namespace Guri_atacarejo.forms
         DataTable operacoes;        // compras e vendas do produto clicado (vazio até clicarem em um produto)
 
         public frmImprimirEstoque()
-        {   
-            
+        {
             InitializeComponent();
 
-
+            AplicarTema();   // visual igual ao do frmPainel (TemaModerno)
+            AplicarTemaRelatorio("Relat\u00F3rio de estoque");
             ResponsividadeForm.Aplicar(this);
 
             cbTipo.SelectedIndex = 0;     // "Compras e vendas"
             cbPeriodo.SelectedIndex = 0;  // "Dia"
 
-            dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
-            dataGridView1.DefaultCellStyle.SelectionForeColor = Color.Black;
+            PadraoTela.AdicionarBarraLateral(this);   // barra lateral fixa
 
-            this.Text = "Relatório de Estoque";
+            this.Text = "Relatório de estoque";
         }
 
         private void frmImprimirEstoque_Load(object sender, EventArgs e)
         {
-            // Inicialização necessária ao carregar o formulário
-            // Exemplo: CarregarProdutos();
             CarregarProdutos();
             MostrarMensagem("Clique em um produto para ver as compras e vendas.");
+        }
+
+        // ------------------------------------------------------
+        // VISUAL (cartão, barra lateral)
+        // ------------------------------------------------------
+
+        // Reorganiza os controles do designer num cartão, dentro de um painel
+        // "host" que preenche a área ao lado da barra lateral.
+        private void AplicarTema()
+        {
+            SuspendLayout();
+
+            ClientSize = new Size(1180, 640);
+            BackColor = TemaModerno.Fundo;
+            Text = "Relat\u00F3rio de estoque";
+
+            const int m = 24;
+            int W = ClientSize.Width - BarraLateral.LarguraAberta;
+            int H = ClientSize.Height;
+
+            int topo = 96;
+            int cartaoW = W - 2 * m;
+            int cartaoH = H - topo - m;
+
+            var host = new Panel
+            {
+                Name = "pnlConteudo",
+                Dock = DockStyle.Fill,
+                BackColor = TemaModerno.Fundo
+            };
+
+            // ---- título da tela ----
+            host.Controls.Add(NovoRotulo("Estoque", 22f, FontStyle.Bold,
+                TemaModerno.Texto, TemaModerno.Fundo, new Point(m, 14)));
+            host.Controls.Add(NovoRotulo("Relat\u00F3rio de estoque  \u2022  Guri Atacarejo", 10.5f,
+                FontStyle.Regular, TemaModerno.Verde2, TemaModerno.Fundo, new Point(m, 58)));
+
+            // ---- cartão ----
+            var cartao = new Panel { Bounds = new Rectangle(m, topo, cartaoW, cartaoH) };
+            TemaModerno.Cartao(cartao);
+
+            cartao.Controls.Add(NovoRotulo("Produtos e movimenta\u00E7\u00F5es", 12f, FontStyle.Bold,
+                TemaModerno.Texto, TemaModerno.Card, new Point(20, 14)));
+
+            int areaY = 108;
+            int areaH = cartaoH - areaY - 20;
+            int gridW = (cartaoW - 40 - 16) * 40 / 100;
+            int detX = 20 + gridW + 16;
+            int detW = cartaoW - 20 - detX;
+
+            // filtros (ficam acima dos cards, porque é neles que eles atuam)
+            TemaModerno.Combo(cbTipo);
+            TemaModerno.Combo(cbPeriodo);
+            PadraoTela.AjustarAlturaCombo(cbTipo, cbPeriodo);
+
+            cbTipo.Location = new Point(detX, 56);
+            cbTipo.Width = 210;
+            cartao.Controls.Add(cbTipo);
+
+            cbPeriodo.Location = new Point(detX + 226, 56);
+            cbPeriodo.Width = 110;
+            cartao.Controls.Add(cbPeriodo);
+
+            maskData.BorderStyle = BorderStyle.FixedSingle;
+            maskData.Font = TemaModerno.Fonte(11f);
+            maskData.BackColor = TemaModerno.Campo;
+            maskData.ForeColor = TemaModerno.Texto;
+            maskData.Location = new Point(detX + 352, 58);
+            maskData.Width = 140;
+            cartao.Controls.Add(maskData);
+
+            PadraoTela.AlinharNoEixo(cbTipo, cbPeriodo, maskData);
+
+            // tabela de produtos (esquerda)
+            cartao.Controls.Add(dataGridView1);
+            dataGridView1.Bounds = new Rectangle(20, areaY, gridW, areaH);
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.AllowUserToAddRows = false;
+            TemaModerno.Grid(dataGridView1);
+            dataGridView1.DefaultCellStyle.ForeColor = TemaModerno.Texto;
+            dataGridView1.DefaultCellStyle.SelectionForeColor = TemaModerno.Texto;
+
+            // cards das operações (direita)
+            cartao.Controls.Add(flowCards);
+            flowCards.BackColor = TemaModerno.Card;
+            flowCards.BorderStyle = BorderStyle.None;
+            flowCards.Bounds = new Rectangle(detX, areaY, detW, areaH);
+
+            // botão "Imprimir relatório" no canto direito do cabeçalho
+            TemaModerno.Botao(btnImprimir, TemaModerno.Accent, Color.White, TemaModerno.Verde2);
+            btnImprimir.Text = "Imprimir relat\u00F3rio";
+            btnImprimir.Size = new Size(180, 44);
+            PadraoTela.CentralizarTexto(btnImprimir);
+            host.Controls.Add(btnImprimir);
+            Action posicionarImprimir = () =>
+                btnImprimir.Location = new Point(host.ClientSize.Width - btnImprimir.Width - m, 22);
+            host.Resize += (s, e) => posicionarImprimir();
+            posicionarImprimir();
+
+            host.Controls.Add(cartao);
+
+            // esconde a caixa laranja do designer
+            groupBox1.Visible = false;
+
+            // ---- host por último: Fill precisa ser o último a ser "docado" ----
+            Controls.Add(host);
+            host.BringToFront();
+
+            ResumeLayout(true);
+        }
+
+        private static Label NovoRotulo(string texto, float tamanho, FontStyle estilo,
+            Color cor, Color fundo, Point local)
+        {
+            return new Label
+            {
+                AutoSize = true,
+                Text = texto,
+                Font = TemaModerno.Fonte(tamanho, estilo),
+                ForeColor = cor,
+                BackColor = fundo,
+                Location = local
+            };
+        }
+
+        // títulos, alinhamento e formato das colunas da tabela de produtos
+        private void FormatarColunasProdutos()
+        {
+            DataGridView g = dataGridView1;
+
+            ConfigurarColuna(g, "IdProduto", "Id", 60, false, null);
+            ConfigurarColuna(g, "Nome", "Produto", 0, false, null);
+            ConfigurarColuna(g, "Preco", "Pre\u00E7o", 0, true, "C2");
+            ConfigurarColuna(g, "QtdEstoque", "Estoque", 0, true, null);
+        }
+
+        private static void ConfigurarColuna(DataGridView g, string nome, string titulo,
+            int largura, bool direita, string formato)
+        {
+            if (!g.Columns.Contains(nome)) return;
+
+            DataGridViewColumn c = g.Columns[nome];
+            c.HeaderText = titulo;
+
+            if (largura > 0)
+            {
+                c.AutoSizeMode = DataGridViewAutoSizeColumnMode.None;
+                c.Width = largura;
+            }
+            else if (nome == "Nome")
+                c.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            else
+                c.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+
+            if (direita)
+            {
+                c.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                c.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleRight;
+            }
+
+            if (formato != null)
+                c.DefaultCellStyle.Format = formato;
         }
 
         // ------------------------------------------------------
         // GRID DE PRODUTOS
         // ------------------------------------------------------
 
-        // Busca os produtos com o estoque somado (usado pelo grid e pelo relatório)
-        private DataTable BuscarProdutos()
+        private void CarregarProdutos()
         {
             // O estoque é guardado por lote, então somamos os lotes de cada produto.
             // left join = o produto aparece mesmo que ainda não tenha lote (estoque 0).
@@ -84,20 +241,16 @@ namespace Guri_atacarejo.forms
                            group by p.IdProduto, p.Nome, p.Preco
                            order by p.Nome";
 
-            DataTable tabela = new DataTable();
-            using (var conn = new SqlConnection(connectionString))
-            using (var da = new SqlDataAdapter(sql, conn))
-            {
-                da.Fill(tabela);
-            }
-            return tabela;
-        }
-
-        private void CarregarProdutos()
-        {
             try
             {
-                dataGridView1.DataSource = BuscarProdutos();
+                using (var conn = new SqlConnection(connectionString))
+                using (var da = new SqlDataAdapter(sql, conn))
+                {
+                    DataTable tabela = new DataTable();
+                    da.Fill(tabela);
+                    dataGridView1.DataSource = tabela;
+                    FormatarColunasProdutos();
+                }
             }
             catch (SqlException ex)
             {
@@ -269,8 +422,8 @@ namespace Guri_atacarejo.forms
             Panel card = new Panel();
             card.Width = flowCards.ClientSize.Width - 25;
             card.Height = 152;
-            card.BorderStyle = BorderStyle.FixedSingle;
-            card.BackColor = Color.White;
+            card.BorderStyle = BorderStyle.None;
+            card.BackColor = TemaModerno.Campo;
 
             // título
             string titulo = tipo.ToUpper() + " Nº " + linha["IdOperacao"];
@@ -318,40 +471,90 @@ namespace Guri_atacarejo.forms
             lbl.Text = texto;
             lbl.AutoSize = true;
             lbl.Location = new Point(x, y);
-            lbl.ForeColor = Color.Black;
-
-            if (negrito)
-                lbl.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Bold);
-            else
-                lbl.Font = new Font("Microsoft Sans Serif", 9F, FontStyle.Regular);
+            lbl.ForeColor = TemaModerno.Texto;
+            lbl.Font = TemaModerno.Fonte(9.5f, negrito ? FontStyle.Bold : FontStyle.Regular);
 
             destino.Controls.Add(lbl);
         }
 
         // ------------------------------------------------------
-        // RELATÓRIO (RDLC)
+        // TELA DO RELATÓRIO (RDLC): mesmo visual das outras telas
         // ------------------------------------------------------
 
-        private void btnImprimir_Click(object sender, EventArgs e)
+        private Button btnImprimirRel;   // botão "Imprimir" dentro da tela do relatório
+
+        private void AplicarTemaRelatorio(string titulo)
         {
-            try
-            {
-                DataTable dt = BuscarProdutos();
+            pnlRelatorio.BackColor = TemaModerno.Fundo;
+            pnlRelatorio.Padding = new Padding(24, 16, 24, 24);
 
-                RelatorioRdlc.Mostrar(reportViewer1, "rptEstoque.rdlc", "Estoque", dt);
+            // barra do topo: título + botões
+            var barra = new Panel { Dock = DockStyle.Top, Height = 84, BackColor = TemaModerno.Fundo };
+            barra.Controls.Add(NovoRotulo(titulo, 22f, FontStyle.Bold,
+                TemaModerno.Texto, TemaModerno.Fundo, new Point(0, 6)));
+            barra.Controls.Add(NovoRotulo("Pr\u00E9-visualiza\u00E7\u00E3o  \u2022  Guri Atacarejo", 10.5f,
+                FontStyle.Regular, TemaModerno.Verde2, TemaModerno.Fundo, new Point(2, 52)));
 
-                pnlRelatorio.Visible = true;
-                pnlRelatorio.BringToFront();
-            }
-            catch (Exception ex)
+            var botoes = new FlowLayoutPanel
             {
-                MessageBox.Show("Erro ao gerar o relatório: " + ex.Message);
-            }
+                Dock = DockStyle.Right,
+                Width = 300,
+                FlowDirection = FlowDirection.RightToLeft,
+                WrapContents = false,
+                BackColor = TemaModerno.Fundo
+            };
+            barra.Controls.Add(botoes);
+
+            btnImprimirRel = new Button { Text = "Imprimir", Size = new Size(140, 44), Margin = new Padding(8, 18, 0, 0) };
+            TemaModerno.Botao(btnImprimirRel, TemaModerno.Accent, Color.White, TemaModerno.Verde2);
+            btnImprimirRel.Click += (s, e) => reportViewer1.PrintDialog();
+
+            // o "Voltar" do designer era uma barra branca no topo: vira um botão igual aos outros
+            btnVoltar.Dock = DockStyle.None;
+            btnVoltar.Text = "Voltar";
+            btnVoltar.Size = new Size(120, 44);
+            btnVoltar.Margin = new Padding(8, 18, 0, 0);
+            TemaModerno.Botao(btnVoltar, Color.White, TemaModerno.Texto, TemaModerno.Cabecalho);
+
+            botoes.Controls.Add(btnImprimirRel);
+            botoes.Controls.Add(btnVoltar);
+            PadraoTela.CentralizarTexto(btnImprimirRel, btnVoltar);
+
+            // o relatório fica dentro de um cartão
+            var cartao = new Panel { Dock = DockStyle.Fill, Padding = new Padding(2) };
+            TemaModerno.Cartao(cartao);
+            reportViewer1.Dock = DockStyle.Fill;
+            cartao.Controls.Add(reportViewer1);
+
+            pnlRelatorio.Controls.Add(cartao);   // Fill primeiro...
+            pnlRelatorio.Controls.Add(barra);    // ...Top depois (docka antes)
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
         {
             pnlRelatorio.Visible = false;
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // o relatório usa a mesma tabela que está na tela
+                DataTable dt = dataGridView1.DataSource as DataTable;
+                if (dt == null || dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("Não há produtos para imprimir.");
+                    return;
+                }
+
+                pnlRelatorio.Visible = true;
+                pnlRelatorio.BringToFront();
+                RelatorioRdlc.Mostrar(reportViewer1, "rptEstoque.rdlc", "Estoque", dt, true);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao gerar o relatório: " + ex.Message);
+            }
         }
     }
 }

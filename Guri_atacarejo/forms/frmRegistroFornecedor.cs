@@ -55,8 +55,6 @@ namespace Guri_atacarejo.forms
             maskedTextBox2.Mask = "(00) 00000-0000";
 
             textBox3.MaxLength = 200;
-
-            this.Text = "Registro de Fornecedor";
         }
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)

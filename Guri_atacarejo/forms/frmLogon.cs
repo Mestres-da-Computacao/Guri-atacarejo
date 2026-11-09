@@ -62,7 +62,7 @@ namespace Guri_atacarejo.forms
 
             ResponsividadeForm.Aplicar(this);
 
-            this.Text = "Login de funcionário";
+            this.Text = "Login";
         }
 
         
