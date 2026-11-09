@@ -36,6 +36,7 @@ namespace Guri_atacarejo.forms
         }
 
         private BarraLateral barraLateral;
+        private Button btnImprimirCompra;   // abre o frmImprimirCompra
 
         public frmRelatorioCompra()
         {
@@ -274,6 +275,14 @@ namespace Guri_atacarejo.forms
             CarregarProdutos();
             textBox2.Clear();
         }
+
+        // abre a tela de impressão de compra
+        private void btnImprimirCompra_Click(object sender, EventArgs e)
+        {
+            using (var f = new frmImprimirCompra())
+                f.ShowDialog(this);
+        }
+
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
             //deslogar o funcionario com a classe sessão que esta na main
@@ -355,6 +364,15 @@ namespace Guri_atacarejo.forms
             btnResetarFiltro.TextAlign = ContentAlignment.MiddleCenter;
             btnResetarFiltro.Bounds = new Rectangle(372, 52, 140, 40);
             cartao.Controls.Add(btnResetarFiltro);
+
+            // botão que abre o frmImprimirCompra (à direita do "Resetar filtro")
+            btnImprimirCompra = new Button { Name = "btnImprimirCompra", Text = "Imprimir" };
+            TemaModerno.Botao(btnImprimirCompra, TemaModerno.Accent, Color.White, TemaModerno.Verde2);
+            btnImprimirCompra.Padding = Padding.Empty;
+            btnImprimirCompra.TextAlign = ContentAlignment.MiddleCenter;
+            btnImprimirCompra.Bounds = new Rectangle(528, 52, 140, 40);
+            btnImprimirCompra.Click += btnImprimirCompra_Click;
+            cartao.Controls.Add(btnImprimirCompra);
 
             // mantém combo, data e botão no mesmo eixo, mesmo depois do redimensionamento
             Action alinhar = AlinharFiltros;

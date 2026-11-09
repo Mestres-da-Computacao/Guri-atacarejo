@@ -1,27 +1,28 @@
-﻿using System;
+﻿using Microsoft.Reporting.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Microsoft.Reporting.WinForms;
-using System.Data.SqlClient;
-using System.IO;
 
 namespace Guri_atacarejo.forms
 {
     public partial class frmRelatorioEstoqueQtd : Icone
     {
         // ---- Barra de título colorida (Windows 11) ----
-        [System.Runtime.InteropServices.DllImport("dwmapi.dll")]
+        [DllImport("dwmapi.dll")]
         private static extern int DwmSetWindowAttribute(IntPtr hwnd, int attr, ref int value, int size);
         private const int DWMWA_CAPTION_COLOR = 35;
         private const int DWMWA_TEXT_COLOR = 36;
 
-        private void DefinirCorBarra(System.Drawing.Color fundo, System.Drawing.Color texto)
+        private void DefinirCorBarra(Color fundo, Color texto)
         {
             // O DWM espera o formato COLORREF: 0x00BBGGRR
             int corFundo = fundo.R | (fundo.G << 8) | (fundo.B << 16);
@@ -35,10 +36,8 @@ namespace Guri_atacarejo.forms
         {
             base.OnHandleCreated(e);
 
-            // Barra do form com a mesma cor do fundo; texto branco (ou preto se o fundo for claro)
-            System.Drawing.Color fundo = BackColor;
-            bool escuro = fundo.GetBrightness() < 0.6f;
-            DefinirCorBarra(fundo, escuro ? System.Drawing.Color.White : System.Drawing.Color.Black);
+            // Cor da barra superior do form
+            DefinirCorBarra(Color.FromArgb(19, 83, 46), Color.White);
         }
 
         private ReportViewer visualizador;            // visualizador do relatório (criado no código)

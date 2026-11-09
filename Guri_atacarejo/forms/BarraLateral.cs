@@ -127,12 +127,66 @@ namespace Guri_atacarejo.forms
             // filete lima na borda direita: separa a barra do conteúdo claro
             Controls.Add(new Panel { Dock = DockStyle.Right, Width = 3, BackColor = Color.FromArgb(56, 141, 60) });
 
+            // "Relatório de vendas" entra dentro do dropdown "Mais opções".
+            // Se esse menu não existir nesta tela, vira um botão solto no fim da barra.
+            bool entrouNoMais = AdicionarRelatorioVendasNoMenuMais(menu);
+
             foreach (ToolStripItem ti in menu.Items)
             {
                 var mi = ti as ToolStripMenuItem;
                 if (mi != null && mi.Available)
                     AdicionarSecao(mi);
             }
+
+            if (!entrouNoMais)
+                AdicionarSecao(CriarItemRelatorioVendas());
+        }
+
+        // Cria o item que abre o frmRelatorioVendas. Se a tela atual já for o relatório
+        // de vendas, o clique não faz nada (evita abrir a mesma tela por cima dela mesma).
+        private ToolStripMenuItem CriarItemRelatorioVendas()
+        {
+            var item = new ToolStripMenuItem("Relatório de vendas");
+            item.Click += (s, e) =>
+            {
+                Form dono = FindForm();
+                if (dono is frmRelatorioVendas) return;
+
+                using (var f = new frmRelatorioVendas())
+                    f.ShowDialog(dono);
+            };
+            return item;
+        }
+
+        // Procura o item "Mais opções" no menu (qualquer item cujo texto contenha "mais")
+        // e coloca o relatório dentro do dropdown dele. Devolve false se não achar.
+        private bool AdicionarRelatorioVendasNoMenuMais(MenuStrip menu)
+        {
+            foreach (ToolStripItem ti in menu.Items)
+            {
+                var mais = ti as ToolStripMenuItem;
+                if (mais == null || !mais.Available) continue;
+                if ((mais.Text ?? "").ToLowerInvariant().IndexOf("mais", StringComparison.Ordinal) < 0) continue;
+
+                // não duplica se o item já estiver lá
+                foreach (ToolStripItem filho in mais.DropDownItems)
+                    if (filho.Text == "Relatório de vendas") return true;
+
+                // posição: logo abaixo do item "Relatório fluxo estoque" (texto com "fluxo");
+                // se não achar, vai para a terceira posição do dropdown
+                int posicao = -1;
+                for (int i = 0; i < mais.DropDownItems.Count; i++)
+                {
+                    string txt = (mais.DropDownItems[i].Text ?? "").ToLowerInvariant();
+                    if (txt.Contains("fluxo")) { posicao = i + 1; break; }
+                }
+                if (posicao < 0) posicao = 2;
+                if (posicao > mais.DropDownItems.Count) posicao = mais.DropDownItems.Count;
+
+                mais.DropDownItems.Insert(posicao, CriarItemRelatorioVendas());
+                return true;
+            }
+            return false;
         }
 
         // A barra agora é fixa (sempre aberta). Mantido vazio para não quebrar
@@ -272,6 +326,7 @@ namespace Guri_atacarejo.forms
         private static string IconeDe(string titulo)
         {
             string t = (titulo ?? "").ToLowerInvariant();
+            if (t.Contains("relat") && t.Contains("venda")) return "\U0001F4C8";   // 📈
             if (t.Contains("funcion")) return "\U0001F464";   // 👤
             if (t.Contains("client")) return "\U0001F465";    // 👥
             if (t.Contains("fornec")) return "\U0001F69A";    // 🚚

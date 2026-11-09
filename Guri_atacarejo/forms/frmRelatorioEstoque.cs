@@ -41,6 +41,8 @@ namespace Guri_atacarejo.forms
         string nomeProduto = "";
         DataTable operacoes;        // compras e vendas do produto clicado (vazio até clicarem em um produto)
 
+        private Button btnRelatorioQtd;   // abre o frmRelatorioEstoqueQtd
+
         public frmRelatorioEstoque()
         {
             InitializeComponent();
@@ -60,6 +62,13 @@ namespace Guri_atacarejo.forms
         {
             CarregarProdutos();
             MostrarMensagem("Clique em um produto para ver as compras e vendas.");
+        }
+
+        // abre a tela do relatório de estoque por quantidade
+        private void btnRelatorioQtd_Click(object sender, EventArgs e)
+        {
+            using (var f = new frmRelatorioEstoqueQtd())
+                f.ShowDialog(this);
         }
 
         // ------------------------------------------------------
@@ -103,6 +112,16 @@ namespace Guri_atacarejo.forms
 
             cartao.Controls.Add(NovoRotulo("Produtos e movimenta\u00E7\u00F5es", 12f, FontStyle.Bold,
                 TemaModerno.Texto, TemaModerno.Card, new Point(20, 14)));
+
+            // botão no canto superior direito do cartão, que abre o relatório por quantidade
+            btnRelatorioQtd = new Button { Name = "btnRelatorioQtd", Text = "Estoque por quantidade" };
+            TemaModerno.Botao(btnRelatorioQtd, TemaModerno.Accent, Color.White, TemaModerno.Verde2);
+            btnRelatorioQtd.Padding = Padding.Empty;
+            btnRelatorioQtd.TextAlign = ContentAlignment.MiddleCenter;
+            btnRelatorioQtd.Bounds = new Rectangle(cartaoW - 20 - 200, 8, 200, 36);
+            btnRelatorioQtd.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnRelatorioQtd.Click += btnRelatorioQtd_Click;
+            cartao.Controls.Add(btnRelatorioQtd);
 
             int areaY = 108;
             int areaH = cartaoH - areaY - 20;
